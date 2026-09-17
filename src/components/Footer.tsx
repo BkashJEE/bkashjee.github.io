@@ -1,5 +1,28 @@
+import { useState } from 'react'
 import { identity } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
+
+function CopyEmail() {
+  const [copied, setCopied] = useState(false)
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(identity.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1600)
+    } catch {
+      /* clipboard unavailable; the mailto link still works */
+    }
+  }
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-[0.78rem] text-fg-dim transition-colors hover:border-accent hover:text-accent"
+    >
+      {copied ? 'Copied ✓' : 'Copy email'}
+    </button>
+  )
+}
 
 export function Footer() {
   return (
@@ -8,12 +31,15 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <p className="font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">Contact</p>
-          <a
-            href={`mailto:${identity.email}`}
-            className="mt-4 inline-block font-display text-[clamp(1.75rem,5vw,4rem)] leading-tight text-fg transition-colors hover:text-accent"
-          >
-            {identity.email}
-          </a>
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href={`mailto:${identity.email}`}
+              className="inline-block font-display text-[clamp(1.75rem,5vw,4rem)] leading-tight text-fg transition-colors hover:text-accent"
+            >
+              {identity.email}
+            </a>
+            <CopyEmail />
+          </div>
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-10 flex flex-wrap items-center gap-6 font-mono text-[0.85rem] text-fg-dim">

@@ -14,7 +14,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
         <div className={`lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
           <Parallax className="relative">
             <div className={`glow-${study.glow} absolute -inset-12 -z-10`} aria-hidden="true" />
-            <figure className="overflow-hidden rounded-xl border border-line bg-surface shadow-2xl shadow-black/50">
+            <figure className="shine overflow-hidden rounded-xl border border-line bg-surface shadow-2xl shadow-black/50">
               <img
                 src={primary.src}
                 width={primary.width}

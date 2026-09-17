@@ -2,13 +2,17 @@ import { motion } from 'motion/react'
 import { identity } from '../content/projects'
 import { RevealLines, Reveal } from '../motion/Reveal'
 import { useMotionPref } from '../motion/useMotionPref'
+import { HeroPortrait } from './HeroPortrait'
 
 export function Hero() {
   const reduced = useMotionPref()
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-center overflow-clip">
       <div className="ambient absolute inset-0 -z-10" aria-hidden="true" />
-      <div className="mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
+      <HeroPortrait />
+      {/* pointer-events-none so the full-width text block doesn't swallow the
+          portrait's hover; interactive children re-enable themselves. */}
+      <div className="pointer-events-none relative mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
         <Reveal delay={0.05}>
           <p className="mb-6 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
             {identity.role} · desktop apps · web · AI agent systems
@@ -25,7 +29,7 @@ export function Hero() {
           <p className="text-lg leading-relaxed text-fg-dim">{identity.bio}</p>
         </Reveal>
         <Reveal delay={0.45} className="mt-10">
-          <div className="flex flex-wrap items-center gap-6 font-mono text-[0.85rem]">
+          <div className="pointer-events-auto flex flex-wrap items-center gap-6 font-mono text-[0.85rem]">
             <a href="#work" className="rounded-full border border-line bg-surface px-5 py-2.5 text-fg transition-colors hover:border-accent hover:text-accent">
               Selected work ↓
             </a>

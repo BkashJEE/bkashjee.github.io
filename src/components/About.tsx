@@ -10,8 +10,8 @@ export function About() {
         <Reveal className="lg:col-span-3">
           <img
             src="/assets/profile.webp"
-            width={400}
-            height={400}
+            width={600}
+            height={600}
             alt="Portrait of Bikash Joshi"
             loading="lazy"
             className="w-40 rounded-xl border border-line lg:w-full lg:max-w-[220px]"

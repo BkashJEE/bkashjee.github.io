@@ -51,11 +51,17 @@ export function Nav() {
             <Magnetic key={a.id} strength={4}>
               <a
                 href={`#${a.id}`}
-                className={`rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide transition-colors sm:px-3 ${
+                className={`relative rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide transition-colors sm:px-3 ${
                   active === a.id ? 'text-accent' : 'text-fg-dim hover:text-fg'
                 }`}
               >
                 {a.label}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-2 -bottom-0.5 h-px bg-accent transition-transform duration-300 sm:inset-x-3 ${
+                    active === a.id ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
               </a>
             </Magnetic>
           ))}

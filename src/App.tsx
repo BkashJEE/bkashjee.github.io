@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { caseStudies } from './content/projects'
 import { useMotionPref } from './motion/useMotionPref'
+import { PointerGlow } from './motion/PointerGlow'
+import { ScrollProgress } from './motion/ScrollProgress'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { SectionHeading } from './components/SectionHeading'
@@ -32,6 +34,8 @@ export default function App() {
 
   return (
     <div className="grain">
+      <ScrollProgress />
+      <PointerGlow />
       <Nav />
       <main>
         <Hero />

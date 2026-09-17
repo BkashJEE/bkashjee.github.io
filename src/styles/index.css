@@ -91,6 +91,28 @@ body {
   background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--color-violet) 16%, transparent), transparent 75%);
 }
 
+/* Diagonal light sweep across an image on hover. */
+.shine {
+  position: relative;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.09) 50%, transparent 62%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+.shine:hover::after {
+  transform: translateX(110%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .shine::after {
+    display: none;
+  }
+}
+
 /* Underline sweep for inline links. */
 .link-sweep {
   background-image: linear-gradient(currentColor, currentColor);
