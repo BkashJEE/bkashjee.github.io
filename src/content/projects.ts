@@ -20,7 +20,7 @@ export interface CaseStudy {
   description: string[]
   tech: string[]
   glow: 'amber' | 'teal' | 'violet'
-  images: { src: string; width: number; height: number; alt: string }[]
+  images: { src: string; width: number; height: number; alt: string; chrome?: boolean }[]
   link?: { href: string; label: string }
   sourceNote?: string
   platforms?: string
@@ -43,6 +43,7 @@ export const caseStudies: CaseStudy[] = [
         width: 1600,
         height: 1254,
         alt: 'ScreenPolish capture workspace on Linux, showing the recording library, input sources, and PipeWire system audio',
+        chrome: true,
       },
       {
         src: '/assets/work/screenpolish-output.webp',
@@ -90,6 +91,7 @@ export const caseStudies: CaseStudy[] = [
         width: 1600,
         height: 1000,
         alt: 'Hermes X Mission Control’s Today view: editorial team, work queues, and the daily content plan',
+        chrome: true,
       },
     ],
     sourceNote: 'Source private',

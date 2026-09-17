@@ -34,7 +34,7 @@ export function Footer() {
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a
               href={`mailto:${identity.email}`}
-              className="inline-block font-display text-[clamp(1.75rem,5vw,4rem)] leading-tight text-fg transition-colors hover:text-accent"
+              className="inline-block break-all font-display text-[clamp(1.9rem,6vw,5rem)] leading-tight text-fg transition-colors hover:text-accent"
             >
               {identity.email}
             </a>
@@ -43,6 +43,9 @@ export function Footer() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-10 flex flex-wrap items-center gap-6 font-mono text-[0.85rem] text-fg-dim">
+            <a href="#top" className="link-sweep hover:text-fg">
+              ↑ Back to top
+            </a>
             <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep hover:text-fg">
               GitHub
             </a>

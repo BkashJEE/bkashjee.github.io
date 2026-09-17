@@ -40,8 +40,8 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <section id="work" className="pt-8">
-          <SectionHeading eyebrow="Selected work" title="Three things I built and ship" />
+        <section id="work" className="overflow-clip pt-8">
+          <SectionHeading eyebrow="Selected work" title="Three things I built and ship" ghost="Work" />
           {caseStudies.map((study, i) => (
             <CaseStudy key={study.id} study={study} flip={i % 2 === 1} />
           ))}

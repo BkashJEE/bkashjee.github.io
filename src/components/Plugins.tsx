@@ -32,8 +32,8 @@ function InstallCommand({ command }: { command: string }) {
 
 export function Plugins() {
   return (
-    <section id="plugins" className="border-y border-line bg-surface/40 py-20 sm:py-28">
-      <SectionHeading eyebrow="Plugins & open source" title="Install something I made" />
+    <section id="plugins" className="overflow-clip border-y border-line bg-surface/40 py-20 sm:py-28">
+      <SectionHeading eyebrow="Plugins & open source" title="Install something I made" ghost="Tools" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
           Published tools and plugins, live on GitHub — star counts and all. The private case studies above show what I
@@ -43,7 +43,7 @@ export function Plugins() {
       <div className="mx-auto mt-12 grid max-w-6xl gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
         {plugins.map((plugin, i) => (
           <Reveal key={plugin.name} delay={0.05 * (i % 3)}>
-            <article className="flex h-full flex-col rounded-xl border border-line bg-ink p-5 transition-colors hover:border-fg-faint">
+            <article className="flex h-full flex-col rounded-xl border border-line bg-ink p-5 transition-[border-color,transform] duration-300 hover:border-fg-faint motion-safe:hover:-translate-y-1">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-xl">{plugin.name}</h3>
                 <span className="shrink-0 font-mono text-[0.75rem] text-fg-faint" title={`${plugin.stars} GitHub stars`}>

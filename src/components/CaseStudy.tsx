@@ -15,6 +15,14 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
           <Parallax className="relative">
             <div className={`glow-${study.glow} absolute -inset-12 -z-10`} aria-hidden="true" />
             <figure className="shine overflow-hidden rounded-xl border border-line bg-surface shadow-2xl shadow-black/50">
+              {primary.chrome && (
+                <div className="flex items-center gap-1.5 border-b border-line bg-raised px-3.5 py-2.5" aria-hidden="true">
+                  <span className="size-2.5 rounded-full bg-[#ff5f57] opacity-80" />
+                  <span className="size-2.5 rounded-full bg-[#febc2e] opacity-80" />
+                  <span className="size-2.5 rounded-full bg-[#28c840] opacity-80" />
+                  <span className="ml-3 font-mono text-[0.68rem] tracking-wide text-fg-faint">{study.name}</span>
+                </div>
+              )}
               <img
                 src={primary.src}
                 width={primary.width}

@@ -38,8 +38,8 @@ function PetPerch({ item }: { item: LabItem }) {
 
 export function LabGrid() {
   return (
-    <section id="lab" className="py-20 sm:py-28">
-      <SectionHeading eyebrow="Lab" title="Desktop experiments" />
+    <section id="lab" className="overflow-clip py-20 sm:py-28">
+      <SectionHeading eyebrow="Lab" title="Desktop experiments" ghost="Play" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
           Smaller builds for the Omarchy / Hyprland desktop I live in — shell plugins, widgets, and toys, mostly QML with
@@ -51,7 +51,7 @@ export function LabGrid() {
           <Reveal key={item.name} delay={0.05 * (i % 3)}>
             <motion.article
               whileHover={item.pet ? 'hop' : undefined}
-              className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-fg-faint"
+              className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-[border-color,transform] duration-300 hover:border-fg-faint motion-safe:hover:-translate-y-1"
             >
               {item.pet ? (
                 <PetPerch item={item} />

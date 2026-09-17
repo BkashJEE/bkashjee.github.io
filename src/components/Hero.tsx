@@ -28,7 +28,29 @@ export function Hero() {
         <Reveal delay={0.35} className="mt-8 max-w-xl">
           <p className="text-lg leading-relaxed text-fg-dim">{identity.bio}</p>
         </Reveal>
-        <Reveal delay={0.45} className="mt-10">
+        {/* Phones never see the interactive portrait — give them a still. */}
+        <Reveal delay={0.5} className="relative mt-10 lg:hidden">
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
+            style={{
+              background:
+                'radial-gradient(50% 60% at 50% 75%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 75%)',
+            }}
+          />
+          <img
+            src="/assets/portrait-cut-duo.webp"
+            width={1000}
+            height={1080}
+            alt="Portrait of Bikash Joshi"
+            className="relative mx-auto w-56"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
+            }}
+          />
+        </Reveal>
+        <Reveal delay={0.45} className="mt-10 lg:mt-10">
           <div className="pointer-events-auto flex flex-wrap items-center gap-6 font-mono text-[0.85rem]">
             <a href="#work" className="rounded-full border border-line bg-surface px-5 py-2.5 text-fg transition-colors hover:border-accent hover:text-accent">
               Selected work ↓

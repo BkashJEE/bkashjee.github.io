@@ -4,21 +4,28 @@ import { SectionHeading } from './SectionHeading'
 
 export function Skills() {
   return (
-    <section id="skills" className="border-y border-line bg-surface/40 py-20 sm:py-28">
-      <SectionHeading eyebrow="Skills" title="What I work with" />
-      <div className="mx-auto mt-12 grid max-w-6xl gap-x-10 gap-y-10 px-6 sm:grid-cols-2 lg:grid-cols-3">
-        {skillGroups.map((group, i) => (
-          <Reveal key={group.title} delay={0.05 * (i % 3)}>
-            <h3 className="font-mono text-[0.8rem] uppercase tracking-[0.2em] text-fg-dim">{group.title}</h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <li key={item} className="rounded-full border border-line bg-ink px-3 py-1 font-mono text-[0.78rem] text-fg">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        ))}
+    <section id="skills" className="overflow-clip py-20 sm:py-28">
+      <SectionHeading eyebrow="Skills" title="What I work with" ghost="Stack" />
+      <div className="mx-auto mt-14 max-w-6xl px-6">
+        <dl className="border-t border-line">
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.title} delay={0.04 * i}>
+              <div className="grid gap-2 border-b border-line py-6 sm:grid-cols-12 sm:items-baseline sm:gap-8">
+                <dt className="font-mono text-[0.78rem] uppercase tracking-[0.2em] text-fg-dim sm:col-span-3">
+                  {group.title}
+                </dt>
+                <dd className="font-display text-[clamp(1.15rem,2vw,1.5rem)] leading-relaxed text-fg sm:col-span-9">
+                  {group.items.map((item, j) => (
+                    <span key={item}>
+                      {item}
+                      {j < group.items.length - 1 && <span className="mx-2 text-accent" aria-hidden="true">·</span>}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            </Reveal>
+          ))}
+        </dl>
       </div>
     </section>
   )
