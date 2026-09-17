@@ -102,6 +102,8 @@ export interface LabItem {
   tech: string
   image?: { src: string; width: number; height: number; alt: string }
   href?: string
+  /** Renders the image as a transparent pet perched on the card. */
+  pet?: boolean
 }
 
 export const labItems: LabItem[] = [
@@ -119,9 +121,10 @@ export const labItems: LabItem[] = [
   },
   {
     name: 'Window Pets',
-    line: 'Tiny companions that live on top of your windows. A QML shell with a Python window tracker.',
+    line: 'Tiny companions that live on top of your windows. A QML shell with a Python window tracker. This one lives here now — hover to say hi.',
     tech: 'QML · Python',
-    image: { src: '/assets/lab/window-pets.webp', width: 320, height: 360, alt: 'A pixel fox pet sitting on a window title bar' },
+    image: { src: '/assets/lab/window-pets.webp', width: 320, height: 360, alt: 'A fox pet sitting on the edge of this card' },
+    pet: true,
   },
   {
     name: 'Git Repo Widget',
@@ -143,8 +146,76 @@ export const labItems: LabItem[] = [
   },
 ]
 
+export interface Plugin {
+  name: string
+  repo: string
+  stars: number
+  line: string
+  lang: string
+  install?: string
+}
+
+// Live public repos under github.com/BkashJEE — star counts as of 2026-09-17.
+export const plugins: Plugin[] = [
+  {
+    name: 'Hermes Agent Dock',
+    repo: 'https://github.com/BkashJEE/hermes-agent-dock',
+    stars: 42,
+    line: 'Native Hermes Desktop dock: direct profile chat, concurrent jobs, cancellation, and explicit Kanban assignment.',
+    lang: 'Python',
+  },
+  {
+    name: 'Repo Shelf',
+    repo: 'https://github.com/BkashJEE/repo-shelf',
+    stars: 17,
+    line: 'Your git repositories as books on a 3D bookshelf. Browse, search, move, rename, open.',
+    lang: 'TypeScript',
+  },
+  {
+    name: 'Hermes Bot Forge',
+    repo: 'https://github.com/BkashJEE/hermes-bot-forge',
+    stars: 11,
+    line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
+    lang: 'Python',
+    install: 'hermes plugins install BkashJEE/hermes-bot-forge',
+  },
+  {
+    name: 'Codex Usage Meter',
+    repo: 'https://github.com/BkashJEE/codex-usage-meter',
+    stars: 4,
+    line: 'Privacy-first Codex usage meter for Hermes Desktop with one-time install and verified updates.',
+    lang: 'Python',
+  },
+  {
+    name: 'Hermes Skills Hub',
+    repo: 'https://github.com/BkashJEE/hermes-skills',
+    stars: 1,
+    line: 'A public tap of reusable skills for Hermes Agent.',
+    lang: 'Skills',
+    install: 'hermes skills tap add BkashJEE/hermes-skills',
+  },
+  {
+    name: 'Hermex',
+    repo: 'https://github.com/BkashJEE/hermex-app',
+    stars: 1,
+    line: 'Native iPhone app for your Hermes agent.',
+    lang: 'Swift',
+  },
+]
+
+// Real, open PRs to NousResearch/hermes-agent (verified 2026-09-17).
+export const upstreamPRs: { number: number; title: string }[] = [
+  { number: 113268, title: 'perf(desktop): stop the empty-pane HERMES decode from looping forever at idle' },
+  { number: 113249, title: "fix(tui_gateway): don't print peer-less global broadcasts to stdout in WS backends" },
+  { number: 114003, title: 'feat(desktop): compact skill and plugin flashcards with raised icons' },
+  { number: 113209, title: 'fix(profiles): reject a directory or non-archive file on import instead of crashing' },
+  { number: 101951, title: 'feat(desktop): summon the HUD globally and dismiss with Escape' },
+]
+
+export const upstreamPRsUrl = 'https://github.com/NousResearch/hermes-agent/pulls?q=is%3Apr+author%3ABkashJEE'
+
 export const skillGroups: { title: string; items: string[] }[] = [
-  { title: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'QML / Qt', 'Bash'] },
+  { title: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'Swift', 'SQL', 'QML / Qt', 'Bash'] },
   { title: 'Web', items: ['React 19', 'Next.js', 'Tailwind CSS', 'Vite', 'Motion', 'Supabase'] },
   { title: 'Desktop & systems', items: ['Electron', 'WebCodecs', 'FFmpeg', 'Wayland / Hyprland', 'PipeWire', 'evdev', 'systemd', 'Arch Linux'] },
   { title: 'AI & agents', items: ['Hermes Agent plugins', 'Multi-agent orchestration', 'Claude Code', 'Agent-friendly CLI design', 'MCP tooling'] },

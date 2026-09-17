@@ -8,6 +8,7 @@ import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { SectionHeading } from './components/SectionHeading'
 import { CaseStudy } from './components/CaseStudy'
+import { Plugins } from './components/Plugins'
 import { LabGrid } from './components/LabGrid'
 import { Skills } from './components/Skills'
 import { About } from './components/About'
@@ -45,6 +46,7 @@ export default function App() {
             <CaseStudy key={study.id} study={study} flip={i % 2 === 1} />
           ))}
         </section>
+        <Plugins />
         <Skills />
         <LabGrid />
         <About />

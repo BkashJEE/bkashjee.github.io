@@ -50,6 +50,16 @@ export default function ResumePage() {
         </section>
       ))}
 
+      <h2 className="resume-h2">Published tools</h2>
+      <ul className="mt-2 space-y-0.5 text-[0.82rem] leading-snug text-zinc-700">
+        {resume.published.map((t) => (
+          <li key={t.name}>
+            <span className="font-medium text-zinc-900">{t.name}</span>
+            <span className="text-zinc-500"> ({t.stars}★ on GitHub)</span> — {t.note}
+          </li>
+        ))}
+      </ul>
+
       <h2 className="resume-h2">Open source & experiments</h2>
       <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">{resume.openSource}</p>
 

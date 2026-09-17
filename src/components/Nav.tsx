@@ -4,6 +4,7 @@ import { Magnetic } from '../motion/Magnetic'
 
 const anchors = [
   { id: 'work', label: 'Work' },
+  { id: 'plugins', label: 'Plugins' },
   { id: 'lab', label: 'Lab' },
   { id: 'about', label: 'About' },
   { id: 'resume', label: 'Resume' },
