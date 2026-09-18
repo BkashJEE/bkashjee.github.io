@@ -31,6 +31,7 @@ export function PointerGlow() {
       style={{
         x,
         y,
+        willChange: 'transform',
         background: 'radial-gradient(closest-side, color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 70%)',
       }}
     />

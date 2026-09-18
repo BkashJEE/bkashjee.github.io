@@ -39,8 +39,10 @@ export function Nav() {
 
   return (
     <header
+      // No backdrop-filter here: it re-blurs on every scroll frame and
+      // flickers on GPUs without proper compositing (common on Linux).
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'border-b border-line/70 bg-ink/80 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'border-b border-line/70 bg-ink/95' : 'bg-transparent'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main">
