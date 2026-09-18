@@ -2,6 +2,32 @@ import type { CaseStudy as CaseStudyData } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
 import { Parallax } from '../motion/Parallax'
 
+const arrowColor = { amber: 'text-accent', teal: 'text-teal', violet: 'text-violet' } as const
+
+/** "How it works": the project's real pipeline as a compact flow strip. */
+function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; glow: CaseStudyData['glow'] }) {
+  return (
+    <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
+      <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-fg-faint">How it works</p>
+      <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
+        {flow.steps.map((step, i) => (
+          <span key={step} className="contents">
+            {i > 0 && (
+              <span className={`${arrowColor[glow]} select-none font-mono text-sm`} aria-hidden="true">
+                →
+              </span>
+            )}
+            <span className="rounded-md border border-line bg-ink px-2.5 py-1.5 font-mono text-[0.72rem] leading-snug text-fg-dim">
+              {step}
+            </span>
+          </span>
+        ))}
+      </div>
+      {flow.note && <p className="mt-3 text-[0.8rem] italic leading-snug text-fg-faint">{flow.note}</p>}
+    </div>
+  )
+}
+
 export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
   const [primary, secondary] = study.images
   return (
@@ -58,6 +84,11 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               ))}
             </div>
           </Reveal>
+          {study.flow && (
+            <Reveal delay={0.12}>
+              <FlowStrip flow={study.flow} glow={study.glow} />
+            </Reveal>
+          )}
           <Reveal delay={0.15}>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
               {study.tech.map((t) => (

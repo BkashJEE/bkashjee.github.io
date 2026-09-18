@@ -4,6 +4,67 @@ import { useStars } from '../hooks/useStars'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
 
+// Hand-drawn line icons, one per tool — same 24px grid, 1.5px stroke.
+const icons: Record<string, React.ReactNode> = {
+  'Hermes Agent Dock': (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <line x1="3" y1="15" x2="21" y2="15" />
+      <rect x="6.5" y="16.8" width="4" height="1.6" rx="0.8" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'Repo Shelf': (
+    <>
+      <path d="M4 20V6l3-2v16" />
+      <path d="M10 20V4h4v16" />
+      <path d="M17 20 15 5l4-.5L21 19z" />
+      <line x1="3" y1="20" x2="21" y2="20" />
+    </>
+  ),
+  'Hermes Bot Forge': (
+    <>
+      <path d="M4 15h9l4 5H6z" />
+      <path d="M9 15 15 4l4 2-5 9" />
+      <circle cx="18" cy="17.5" r="0.9" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'Codex Usage Meter': (
+    <>
+      <path d="M4 18a8 8 0 0 1 16 0" />
+      <line x1="12" y1="18" x2="16.5" y2="11.5" />
+      <circle cx="12" cy="18" r="1.2" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'Hermes Skills Hub': (
+    <>
+      <path d="M12 3v6" />
+      <path d="M5 9h14l-2 4H7z" />
+      <path d="M9 13v5a3 3 0 0 0 6 0v-5" />
+    </>
+  ),
+}
+
+function PluginIcon({ name }: { name: string }) {
+  const icon = icons[name]
+  if (!icon) return null
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mb-3 text-accent"
+      aria-hidden="true"
+    >
+      {icon}
+    </svg>
+  )
+}
+
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = useStars(plugin.repo, plugin.stars)
   return (
@@ -57,6 +118,7 @@ export function Plugins() {
         {plugins.map((plugin, i) => (
           <Reveal key={plugin.name} delay={0.05 * (i % 3)}>
             <article className="flex h-full flex-col rounded-xl border border-line bg-ink p-5 transition-[border-color,transform] duration-300 hover:border-fg-faint motion-safe:hover:-translate-y-1">
+              <PluginIcon name={plugin.name} />
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-xl">{plugin.name}</h3>
                 <StarCount plugin={plugin} />

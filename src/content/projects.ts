@@ -26,6 +26,8 @@ export interface CaseStudy {
   platforms?: string
   /** A verified, dated fact worth surfacing (e.g. a test-suite count). */
   stat?: string
+  /** "How it works" strip: real pipeline steps plus an optional caveat. */
+  flow?: { steps: string[]; note?: string }
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -40,6 +42,10 @@ export const caseStudies: CaseStudy[] = [
     tech: ['Electron', 'React 19', 'TypeScript', 'Tailwind 4', 'WebCodecs', 'FFmpeg', 'Hyprland IPC', 'PipeWire'],
     glow: 'amber',
     stat: '575 tests passing · verified Sep 2026',
+    flow: {
+      steps: ['Hyprland IPC · evdev · PipeWire', 'screen.mp4 + events.json', 'pure(frame, events, settings)', 'preview = export'],
+      note: 'One renderer for both paths — what you preview is exactly what exports.',
+    },
     images: [
       {
         src: '/assets/work/screenpolish-app.webp',
@@ -77,6 +83,10 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     link: { href: 'https://github.com/BkashJEE/hermes-bot-forge', label: 'View source on GitHub' },
+    flow: {
+      steps: ['one sentence', 'name · face · SOUL.md · memory', 'tools · skills · routines', 'gateway service', 'working bot'],
+      note: 'Every step verified as it runs; any failure rolls the whole bot back.',
+    },
   },
   {
     id: 'agent-dock',
@@ -103,6 +113,10 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     link: { href: 'https://github.com/BkashJEE/hermes-agent-dock', label: 'View source on GitHub' },
+    flow: {
+      steps: ['you', 'dock — floating or docked', 'any specialist profile'],
+      note: 'Chat stays chat. A message becomes a Kanban card only when you explicitly assign it.',
+    },
   },
   {
     id: 'mission-control',
@@ -114,6 +128,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Next.js', 'TypeScript', 'Supabase', 'RLS', 'SQLite', 'zod'],
     glow: 'teal',
+    flow: {
+      steps: ['research', 'draft', 'verify', 'owner review', 'publish'],
+      note: 'Named agent profiles hand work forward with receipts at every step.',
+    },
     images: [
       {
         src: '/assets/work/missioncontrol.webp',
