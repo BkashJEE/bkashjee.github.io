@@ -74,6 +74,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               )}
               {study.sourceNote && <span className="text-fg-faint">{study.sourceNote}</span>}
               {study.platforms && <span className="text-fg-faint">{study.platforms}</span>}
+              {study.stat && <span className="text-teal">{study.stat}</span>}
             </div>
           </Reveal>
         </div>

@@ -1,7 +1,17 @@
 import { useState } from 'react'
-import { plugins, upstreamPRs, upstreamPRsUrl } from '../content/projects'
+import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
+import { useStars } from '../hooks/useStars'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
+
+function StarCount({ plugin }: { plugin: Plugin }) {
+  const stars = useStars(plugin.repo, plugin.stars)
+  return (
+    <span className="shrink-0 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
+      ★ {stars}
+    </span>
+  )
+}
 
 function InstallCommand({ command }: { command: string }) {
   const [copied, setCopied] = useState(false)
@@ -36,8 +46,11 @@ export function Plugins() {
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" ghost="Tools" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-          Published tools and plugins, live on GitHub — star counts and all. The private case studies above show what I
-          build; these show how I build it.
+          Published tools and plugins, live on GitHub. The private case studies above show what I build; these show how
+          I build it.
+        </p>
+        <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
+          ★ counts fetched live from GitHub · fallback checked Sep 2026
         </p>
       </Reveal>
       <div className="mx-auto mt-12 grid max-w-6xl gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -46,9 +59,7 @@ export function Plugins() {
             <article className="flex h-full flex-col rounded-xl border border-line bg-ink p-5 transition-[border-color,transform] duration-300 hover:border-fg-faint motion-safe:hover:-translate-y-1">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-display text-xl">{plugin.name}</h3>
-                <span className="shrink-0 font-mono text-[0.75rem] text-fg-faint" title={`${plugin.stars} GitHub stars`}>
-                  ★ {plugin.stars}
-                </span>
+                <StarCount plugin={plugin} />
               </div>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-fg-dim">{plugin.line}</p>
               {plugin.install && <InstallCommand command={plugin.install} />}

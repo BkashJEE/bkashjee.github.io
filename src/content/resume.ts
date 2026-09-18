@@ -23,7 +23,7 @@ export const resume = {
         'Engineered the Linux/Wayland port without a global input hook: pointer path reconstructed from Hyprland’s IPC socket, clicks from evdev (keyboard deliberately never read), capture via xdg-desktop-portal and PipeWire.',
         'Designed every effect as a pure function of (frame, events, settings) so preview and export share one renderer; packaged with electron-builder for NSIS, AppImage, and pacman, with a JSON-output CLI made for AI agents.',
       ],
-      tech: 'Electron · React 19 · TypeScript · Tailwind 4 · WebCodecs · FFmpeg',
+      tech: 'Electron · React 19 · TypeScript · Tailwind 4 · WebCodecs · FFmpeg · 575-test Vitest suite',
     },
     {
       name: 'Hermes Bot Forge',

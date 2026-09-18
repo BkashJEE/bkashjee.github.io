@@ -24,6 +24,8 @@ export interface CaseStudy {
   link?: { href: string; label: string }
   sourceNote?: string
   platforms?: string
+  /** A verified, dated fact worth surfacing (e.g. a test-suite count). */
+  stat?: string
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -37,6 +39,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Electron', 'React 19', 'TypeScript', 'Tailwind 4', 'WebCodecs', 'FFmpeg', 'Hyprland IPC', 'PipeWire'],
     glow: 'amber',
+    stat: '575 tests passing · verified Sep 2026',
     images: [
       {
         src: '/assets/work/screenpolish-app.webp',
@@ -74,6 +77,32 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     link: { href: 'https://github.com/BkashJEE/hermes-bot-forge', label: 'View source on GitHub' },
+  },
+  {
+    id: 'agent-dock',
+    name: 'Hermes Agent Dock',
+    tagline: 'Reach any specialist agent without leaving your workspace.',
+    description: [
+      'A native dock for Hermes Desktop: direct chat with any configured specialist profile, even while the main orchestrator is busy. It floats as a card or docks into the workspace — the mode is remembered — and ordinary chat stays conversational: a message becomes lifecycle-tracked Kanban work only when you explicitly assign it.',
+      'My most-starred public tool. It ships as one local UI/backend pair that discovers the profiles Hermes already knows, with a stdlib-only installer, a security policy, and documented release QA.',
+    ],
+    tech: ['Python', 'Hermes Desktop plugin', 'stdlib installer', 'Kanban lifecycle'],
+    glow: 'violet',
+    images: [
+      {
+        src: '/assets/work/agentdock-floating.webp',
+        width: 1000,
+        height: 760,
+        alt: 'Agent Dock’s floating specialist chat card',
+      },
+      {
+        src: '/assets/work/agentdock-docked.webp',
+        width: 1600,
+        height: 454,
+        alt: 'Agent Dock docked into the bottom of the Hermes Desktop workspace',
+      },
+    ],
+    link: { href: 'https://github.com/BkashJEE/hermes-agent-dock', label: 'View source on GitHub' },
   },
   {
     id: 'mission-control',
