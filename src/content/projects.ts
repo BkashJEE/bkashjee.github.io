@@ -36,8 +36,8 @@ export const caseStudies: CaseStudy[] = [
     name: 'ScreenPolish',
     tagline: 'A screen recorder that polishes your recordings for you.',
     description: [
-      'Record your screen and get a finished video: automatic zoom on click clusters, a smoothly redrawn cursor with click ripples, padded gradient frames, a webcam bubble, and MP4 or GIF export in landscape, square, or vertical. Think Screen Studio — but for Windows and Linux, and fully local. Recordings never leave your machine.',
-      'The Linux port is the deep end: Wayland gives apps no global input hook, so ScreenPolish reconstructs the pointer path from Hyprland’s IPC socket and reads clicks from evdev — deliberately never opening keyboard devices. Capture runs through xdg-desktop-portal and PipeWire, and every effect is a pure function of (frame, events, settings), so preview and export share one renderer.',
+      'Screen recordings of software usually need an editor before anyone wants to watch them: zooming into the right spot, smoothing a jittery cursor, framing the shot. ScreenPolish does that for you. You record as usual and get a finished video with automatic zoom on clusters of clicks, a smoothly redrawn cursor with click ripples, a padded gradient frame, an optional webcam bubble, and MP4 or GIF export in landscape, square, or vertical. It all happens on your own machine; recordings never leave it.',
+      'I designed and built it end to end. The hardest part was the Linux port: Wayland gives apps no global input hook, so I rebuilt the input record from two sources — the pointer path from Hyprland’s IPC socket and clicks from evdev — and deliberately never open keyboard devices. Capture runs through xdg-desktop-portal and PipeWire. I made every effect a pure function of the frame, the recorded events, and the settings, so the preview you edit and the file you export come from one renderer.',
     ],
     tech: ['Electron', 'React 19', 'TypeScript', 'Tailwind 4', 'WebCodecs', 'FFmpeg', 'Hyprland IPC', 'PipeWire'],
     glow: 'amber',
@@ -62,15 +62,15 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     sourceNote: 'Source private',
-    platforms: 'Windows · Linux',
+    platforms: 'Windows · Linux · macOS (early)',
   },
   {
     id: 'bot-forge',
     name: 'Hermes Bot Forge',
     tagline: 'One sentence in, a complete working bot out.',
     description: [
-      'A plugin for Nous Research’s Hermes Agent. Describe the bot you want — “make me a bot that writes X posts and threads” — and Bot Forge spawns it whole: a generated name and avatar, a purpose-written SOUL.md, seeded memory, tools and skills, optional cron routines, and a gateway service that starts on login.',
-      'Every step is verified as it runs, and if anything fails the entire bot is rolled back — no half-configured agents left behind. Installable with a single command from the Hermes plugin registry.',
+      'Setting up a new AI agent bot by hand means writing its personality file, seeding its memory, choosing its tools, scheduling its routines, and running a background service for it. Bot Forge does all of that from one sentence. Say “make me a bot that writes X posts and threads” and you get a working bot: a generated name and avatar, a purpose-written SOUL.md, seeded memory, tools and skills, optional scheduled routines, and a gateway service that starts on login (on Linux and macOS).',
+      'I built it as an open-source plugin for Nous Research’s Hermes Agent, and I designed it around failure: every step is checked as it runs, and if one fails I roll the whole bot back, so nobody is left with a half-configured agent. It installs with a single command.',
     ],
     tech: ['Python', 'Hermes Agent', 'plugin.yaml', 'systemd', 'pytest'],
     glow: 'violet',
@@ -93,8 +93,8 @@ export const caseStudies: CaseStudy[] = [
     name: 'Hermes Agent Dock',
     tagline: 'Reach any specialist agent without leaving your workspace.',
     description: [
-      'A native dock for Hermes Desktop: direct chat with any configured specialist profile, even while the main orchestrator is busy. It floats as a card or docks into the workspace — the mode is remembered — and ordinary chat stays conversational: a message becomes lifecycle-tracked Kanban work only when you explicitly assign it.',
-      'My most-starred public tool. It ships as one local UI/backend pair that discovers the profiles Hermes already knows, with a stdlib-only installer, a security policy, and documented release QA.',
+      'When you run several AI agents in Hermes Desktop, the main one is often busy and your specialist agents are hard to reach. Agent Dock gives you a direct line to any specialist you’ve already set up, even while the main orchestrator is working. It floats as a card or docks into the workspace, and remembers which you chose.',
+      'I designed and built it, and it’s my most-starred public tool. I kept chat and task tracking deliberately separate: a message becomes a tracked Kanban task only when you explicitly assign it. It ships as one local UI and backend pair that finds the profiles Hermes already knows, with an installer that uses only the Python standard library, a security policy, and documented release testing.',
     ],
     tech: ['Python', 'Hermes Desktop plugin', 'stdlib installer', 'Kanban lifecycle'],
     glow: 'violet',
@@ -123,11 +123,12 @@ export const caseStudies: CaseStudy[] = [
     name: 'Hermes X Mission Control',
     tagline: 'A local-first content operating system, run by agents, reviewed by you.',
     description: [
-      'A private workspace for running an X account like a newsroom: thirteen destinations covering today’s plan, pipeline, calendar, published work, analytics, and a content graph. Named agent profiles hand work through a research → draft → verify pipeline with receipts at every step — and nothing ships without owner review.',
-      'Built local-first with a Supabase backend and a SQLite fallback, row-level security, and guarded research intake: video URLs pass host allowlists and everything fails closed.',
+      'Running an X account well means researching, drafting, checking, and scheduling posts every day. Mission Control is my private workspace for doing that like a newsroom: thirteen screens cover today’s plan, the pipeline, the calendar, published posts, analytics, and a content graph. AI agents do the research, drafting, and checking, handing work along with a record of each step — and nothing is published until I review it.',
+      'I built it end to end: a Supabase backend with row-level security, a local SQLite fallback so it runs with no setup, and guarded research intake that only accepts video links from an allowlist of hosts.',
     ],
     tech: ['Next.js', 'TypeScript', 'Supabase', 'RLS', 'SQLite', 'zod'],
     glow: 'teal',
+    stat: '581 tests passing · verified Sep 2026',
     flow: {
       steps: ['research', 'draft', 'verify', 'owner review', 'publish'],
       note: 'Named agent profiles hand work forward with receipts at every step.',
@@ -204,7 +205,7 @@ export interface Plugin {
   install?: string
 }
 
-// Live public repos under github.com/BkashJEE — star counts as of 2026-09-17.
+// Live public repos under github.com/BkashJEE — fallback star counts as of 2026-09-18.
 export const plugins: Plugin[] = [
   {
     name: 'Hermes Agent Dock',
@@ -223,7 +224,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 11,
+    stars: 24,
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -266,5 +267,5 @@ export const skillGroups: { title: string; items: string[] }[] = [
 
 export const aboutParagraphs: string[] = [
   'I’m an independent software engineer. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
-  'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with ten-plus open pull requests to NousResearch/hermes-agent, and I share what I learn about building with AI agents.',
+  'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with fifteen open pull requests to NousResearch/hermes-agent, and I share what I learn about building with AI agents.',
 ]

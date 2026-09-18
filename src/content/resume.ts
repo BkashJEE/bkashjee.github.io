@@ -16,7 +16,7 @@ export const resume = {
   projects: [
     {
       name: 'ScreenPolish',
-      role: 'Creator · Windows & Linux desktop app',
+      role: 'Creator · Windows, Linux & macOS (early) desktop app',
       note: 'source private',
       bullets: [
         'Built a cross-platform screen recorder that automatically polishes recordings: auto-zoom on click clusters, a redrawn smooth cursor with click ripples, gradient frames, webcam bubble, and MP4/GIF export — fully local, recordings never leave the machine.',
@@ -41,9 +41,9 @@ export const resume = {
       note: 'source private',
       bullets: [
         'Built a local-first content operating system for X with thirteen destinations (pipeline, calendar, analytics, content graph) where named agent profiles hand work through a research → draft → verify pipeline with receipts, gated by owner review.',
-        'Implemented a Supabase backend with row-level security and SQLite fallback, plus fail-closed research intake with host allowlists.',
+        'Implemented a Supabase backend with row-level security and SQLite fallback, plus research intake that only accepts video links from allowlisted hosts.',
       ],
-      tech: 'Next.js · TypeScript · Supabase · SQLite · zod',
+      tech: 'Next.js · TypeScript · Supabase · SQLite · zod · 581-test Vitest suite',
     },
   ],
   published: [
@@ -52,7 +52,7 @@ export const resume = {
     { name: 'Codex Usage Meter', stars: 4, note: 'privacy-first usage meter with verified updates (Python)' },
   ],
   openSource:
-    'Ten-plus open pull requests to NousResearch/hermes-agent — desktop features, performance, and reliability, e.g. #113268 perf(desktop): stop the empty-pane decode looping at idle; #113249 fix(tui_gateway): keep peer-less broadcasts out of stdout; #101951 feat(desktop): global HUD summon. Plus six desktop experiments for the Omarchy/Hyprland shell in QML and Python.',
+    'Fifteen open pull requests to NousResearch/hermes-agent — desktop features, performance, and reliability, e.g. #113268 perf(desktop): stop the empty-pane decode looping at idle; #113249 fix(tui_gateway): keep peer-less broadcasts out of stdout; #101951 feat(desktop): global HUD summon. Plus six desktop experiments for the Omarchy/Hyprland shell in QML and Python.',
   skills: [
     { label: 'Languages', value: 'TypeScript, JavaScript, Python, Swift, SQL, QML/Qt, Bash' },
     { label: 'Web', value: 'React 19, Next.js, Tailwind CSS, Vite, Supabase' },

@@ -1,0 +1,7660 @@
+{
+ "9fa9876677e0468f5d008ae78df3c863009880a28881ec86809fa9bce99bcecb": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "f9936435ea21b163fb8250c2f671e07f61123f0ab58a8bb1f50e511e11ac5f59": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "923cde385fa6e490379e3854632565e365b3c9bdbb4890c5514945ab6c8a9019": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.34
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.96
+   }
+  }
+ },
+ "377c7a002b93b344c9883c64f99fb427883f69f3a301b83ff538da80769dacd3": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.4
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "93f45a988f6530ed7b6639abb40206706a6e7a36de1af4c90a47307fbead7b82": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.55
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.93
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "c612f8198f5dc7f77ecbb110d2258d609f2bb3d75b1a757899ddebd8cea7d50e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.8
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.09
+   }
+  }
+ },
+ "b68f087ef1a1fa621d3f66222f8998294abbe93be549971317ccc569fca77fd1": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.67
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "9e984b43b6a9f368f1d46c0fb1b8f9aca14ce9001a65105a52fc4464f69771ee": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.8
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.93
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "b8557939e94a493b95516134ec71b7e28c8d70b7ff37fc4aca4a4c6bbfbb21dd": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.88
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.32
+   }
+  }
+ },
+ "e6c6ac61f85e5fcf7a7b306a3da175a8f944f635f1851b62c3da95800f37f619": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.39
+   }
+  }
+ },
+ "468e6e6184ac875e5f34a39d3652a9fd7187be2c3977b0a81cbac2189c19de08": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.24
+   }
+  }
+ },
+ "82d205b010128b369215e9ebfb01dac6f9787c4cd1641b3a6103de65207b08a6": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.37
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.48
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.64
+   }
+  }
+ },
+ "e4b2898cc75babf36cbd7151d5adf4c5471433169241e18fd7ba887150a325bb": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.36
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.23
+   }
+  }
+ },
+ "f6ab63133a4274fdac53327cc727c92ee5bae315defb956f7bb40d37268bf69e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.64
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.39
+   }
+  }
+ },
+ "017831478baab00c145a2b68cbdcea30edf3794e9b717243a5a37354a05c8e20": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.54
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.34
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.33
+   }
+  }
+ },
+ "2dd7eeb82f41b2798861f0786fc4c718a07b7232dca84e19eba7dea1cf50da46": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "3c1d772ff142cfa6ae40951505b5bb77489ec04eac0751b76cf2902f6136c94e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.7
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.18
+   }
+  }
+ },
+ "1d46b395fcb9f6115a65f6ee87ee85c769fccab949e334f564ffadf43463cbda": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "13fc6cfd17d7f7e55bf09e29250983e77631fd3fc364589d3b4a134b72407fa5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "7e71c88ce3417ae5a3289c10e1e7430a6fe43a3734515011a0faf25f06bce5d5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.4
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.12
+   }
+  }
+ },
+ "c7d4440cbabd0d059420b273efb0ef1a15d6e25fe59a2196bcc53162490a36ea": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.67
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.88
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.94
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.94
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.64
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.48
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.26
+   }
+  }
+ },
+ "416d20f4ca73d4d87da8772fa0044e29504482fe63d1dc8e128c71fa6a2f9872": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "fadfe0af1fe0f4d21d06d0a9107e265467011a686b1f9496e337faf164e1d20c": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.63
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.92
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  }
+ },
+ "3249d333c90b60e5970b6e1cfb08b982ec2f69ea6b9aff33a44134f3a37d95f5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.4
+   }
+  }
+ },
+ "c95cd76b2003e094c0746a2fe7a5b900121d6e3a47a5e91294d9fe4e3f173cec": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.97
+   }
+  }
+ },
+ "2e8662595423c70313cc820d5233c6007905f3a6b4015e7ca4c072bdd272081f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.65
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.61
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.38
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.47
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.59
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.57
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.24
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.37
+   }
+  }
+ },
+ "893c35b0073be30b99086d402cc751b8e54f57f764a690df5811f060de4ed2ae": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.94
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.66
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.13
+   }
+  }
+ },
+ "5f1985787461cc4d886b8c433c15637ff7d2b82a285e5af6cdc37f99a91fc4d9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.52
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.16
+   }
+  }
+ },
+ "2889a31564ef025c3545e895c47cacc6c2166dd7653ead80a04d8d565e09e88b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.32
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.37
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.69
+   }
+  }
+ },
+ "85188497200586ba1dcc4aa770528af2da56c1d77ea1198b590c388c5e545045": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.59
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.19
+   }
+  }
+ },
+ "676fe31a2083682a3308d1ab53d5e4a015d3892f2345d3bfe9d3e490ebeb2d49": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.46
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.08
+   }
+  }
+ },
+ "eecb6eefc8dd257869c6d81b553ce3677c4dbb27a54afd74eeb7e5a9c85595fa": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.84
+   }
+  }
+ },
+ "d8e48f4ae653d1dc94bf23d3b3d72066d2a46c5da14622634d9c1cbf97becefa": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "e36528ade31fc85e1d98cf2519bba92c73c29b33c6d0b25584cbfe34170561c5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "67c00f171cb60684f778d7f931feee6b1cb7405a33b93abb67bf06df98ef38bf": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.83
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "c1a6a11b13394fb77274959467980174e0bc44440bac9a9a3187666a7f8a2b2d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "eef3cea09cb23979531084339e0914195520db476f9faf2baccd22cd3a9233b9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  }
+ },
+ "f8881deb2d3d52546c273d8d5a25776788e8add77b1525e90ae500282d894ca7": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "67935f32e95fe603d47629910c6bb67abd53462011a90c4dfd720c9e74e88544": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "88b64e584e96a64eb337491a7ad99cf3af4931124da4fe769e6b93834561eac3": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.7
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.32
+   }
+  }
+ },
+ "a889aab201fc468e408408651cafcd19d8be2c52c31691e8b4b33b8c14543df9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "3386e7f17f594da4270ee714a106e093f13d7c23e6a4d171958794a02b933fef": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.46
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.13
+   }
+  }
+ },
+ "61d61779b6e87c1025e460648e822cc9464daa6dc57a2f55c0a86fff6fcd6b38": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.89
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.61
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "08693f2ae09f8089ee9f864e087bae22d203e324ade86a850f74235ac2afb9dd": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "e13d255ab1d6a77e6aedd8ff9c1e8dc964c7623132af6580244a3829e438b5a2": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.87
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "2aa541fb2be265428498e14e1e9eb18d628fb43821bba5ad662303b04a30ca35": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "13ff53d425e57db88e10b5596e44b8853ffaef20184e84d6d8fe731edd5c2c24": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.72
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.81
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "f654cd61e0427037ac0553059544c2ac46f6ca767b7f7f0c7b39d2687bee1613": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.76
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "38da5cac23a132fbe1e361424b9a6c06afda28c1fcdfe16e64f67463a6e00097": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.58
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "157ed335c41834e271cff28849a0c37155b60c9e2c8ca2f38c06d70f75f4743b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.47
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.47
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.94
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.89
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "4bbf7d24f9a976c99dfab4e7484a2eab32df45fe2aaff6ab2c3fd22dd494c7d0": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.26
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.53
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.47
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "9d2a26880d102db8a5a912b4b52d8485595162b0522af71a33303304f1b75433": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.44
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.51
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.6
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.52
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.17
+   }
+  }
+ },
+ "72d8e56b14d01d7eb309a2d28c5185dc1a28de6bc5ac136c6fe88e512de25472": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.46
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.11
+   }
+  }
+ },
+ "a8fb438878f0699f7ef9d463d7a067543a76864dcf756133f7ec45c6bcaa7a85": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "0e91c0ffa798945790598a160e18b5e0e12f79b80f5b5d7a062fe78862a9f0ad": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "d9c18497aa4d1ad7e02f17f19f3a8a0ebc457ef069c000b82fbdd62923e1c1c6": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.62
+   }
+  }
+ },
+ "76f974ec0814db3db58e1a94901dda07891801237bd2789a4a3ba556fb42db53": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.8
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "0547707e85cea1f71270ec059a9533eab84980aa73c2f3dea8fddf63399433ea": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.41
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.67
+   }
+  }
+ },
+ "88b1d82e942ef18c419ec4a2b3e8461f7ceb42735314e580bcf99b332c5c5cf0": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.54
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "d080a0e7bffe1350b4f7713124eb37371928e39abe343e00734a68859e62ad72": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.72
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "5751451325c34b10e5307d3b424a8e5056d34457d667ec1e0ce63dc6b08a5d8b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.88
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "d864d569a45a73b63f7a309631be17fcc45d01852c06c80b02c520a22d21f4c0": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.55
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "32c10b8e53f183e4438c1f6c9fd0d696019da90d81f15c5daa18820a39acd06b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.71
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "9c0089214d11ecb272d0ebdb65e9c2c7cb4eb20115c9b96acadafc3d2918d41f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "29f92cb329575109b392015d74f1ac9be1a7d18711716d33abaf4f341465f956": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.8
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "10fa13147006118a507797e1c995f112687dac553a75cd3c46e40c12b12b310b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.9
+   }
+  }
+ },
+ "80800d628d5823c16fb07c2c59ffc280da255ce7c5ae1043dccd97472d4c550e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.8
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "0dc6a72d8e5d99892fb2c3aaa956381273b754850b25760c4be0714efccc3bfb": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "b255f0d85f18b194f65491410d0d67bb725d493ed46a5e3fb777928b7ad57b3b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.37
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.85
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "4f0a1a3dea1d28a18b028be5fa1c331d59a17bd5fafa56c3816f5bec26946620": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "31a30267e64156d933983c896a7242b6e543b204146b7bc543d225ae2969f84f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.17
+   }
+  }
+ },
+ "2f5ea56f4b84b702527ded8f8479b289a6a28587e8e1abf78e9094d5a439dcb1": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.31
+   }
+  }
+ },
+ "316f4094478b19f5572a5ca8734ed4377905fcd884f22571f0523f037e1cb8aa": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.6
+   }
+  }
+ },
+ "4ae64a505287d8d144b0bb0836e760bb1e1d2978fda9a62cf13211ebf1b2d12b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.7
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.09
+   }
+  }
+ },
+ "5b70558adff9c81dda6ae563e7793df6d3a69c45b0169bdc5b1cfd252812f4e5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "96ca4a5f16286d4e5f0b06942518c71547fb2e521308d1dfdb88db206a9a4cae": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.26
+   }
+  }
+ },
+ "725596cd63d4ba5b413211ba724589b909d141132f0b0919c83aef47712d4f66": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "3a918ab92a58fa7f12cf82c9129fc0becd1f0fa8ad9ca1c4a051a9b875afa73d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "ad_direct_chat": {
+    "type": "noul",
+    "noul": 0.26
+   },
+   "ad_modes": {
+    "type": "noul",
+    "noul": 0.82
+   },
+   "ad_kanban": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "ad_discovery": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "ad_installer": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "ad_security_qa": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "80ac83f53ca09c2d3dbbdfe3874faebce0cdd43615b3d0ca44b527e6e4abdb77": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.32
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.42
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.93
+   }
+  }
+ },
+ "92bf4ccb798259ca8ef039448e7fd6b85a2eb8aabd7c3d0c7415a8bcc5df6e38": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.35
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.86
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "6288ce0b4aaa3ae2e104a283eea51eae22acde65146fefe136e50d3e9243cdae": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.4
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.32
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "0813a21dec8c914eb7a053c9a7c2e2ae1a72a673a7be746439524f38b8c61279": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.76
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "4597bf81f911d005012aceb9a16fe7e3fc7a8d06b95ab2e88cc2d54d5ab82061": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "d009a94245d04d8910f647c2dae02fa9073c877d25c14e116d956a17143efb45": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.88
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "e2474edd1c189621a43bd0d0ea346ab470e9cf0605d170b8806f9e0cff527b30": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.24
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.65
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "9e894e766c0860e3cf507ffa4a90141ef6a7b306f82e58902f332a6e980e9cc0": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "e211a74a851ef2637cbef829714a5f45798a90032d37fc05f6df377e86871f3a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "f63741ed3879e1b170b6af541d95ffb7d9e4cdc8634d123133b9e76b401473ef": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "a647c5e442a67a318a79c155d05ef12f8156b01e905c1457f77a284374572211": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "supports": 0.99,
+     "says_nothing": 0,
+     "contradicts": 0.01
+    }
+   }
+  }
+ },
+ "fab3916480e05a573b3a8310d7f4e5a7c6efb799e05103e1f11bc81af9d10800": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.63,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.25,
+     "supports": 0.75
+    }
+   }
+  }
+ },
+ "d400a73bb8ea9479e94233e5b5bdecd4be12fce156c8b07dcf8811e22dc11357": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 1,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "9011becdf8513d9d3a44fc99a4f4ef5fe2e54bbb2469905cb82b136085a914cd": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "contradicts",
+    "confidence": 0.91,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.94,
+     "supports": 0.06
+    }
+   }
+  }
+ },
+ "0106b28ba02f25a63272ea4929be7f9472a524041b7aaa8658da161320ca35a7": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "contradicts": 0.01,
+     "says_nothing": 0,
+     "supports": 0.99
+    }
+   }
+  }
+ },
+ "236ed7230be176dbe442bcaa3d06c4aef99f5f84ec4b459c12ced13b658b4f82": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.95,
+    "probabilities": {
+     "contradicts": 0.03,
+     "says_nothing": 0,
+     "supports": 0.97
+    }
+   }
+  }
+ },
+ "9202fde131fb0db5c66367fa93524742055762535c934e60497dc772227d592b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "d08ec29d516da21392d7c0b12505828f981ed6116ef4a4358d467947fd25658c": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "14aa0231d4ee29eaba546293048c220ca661143c67390847973b0157ff37513f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "7f14265c5b333f70cbb67a88808818f3cafbb61b386dfe2b489b97e79cad57cf": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "c350781fa8f9e8463ab36ceb06b65f84bae1b1f3123f0a22757e74c2be9e3b73": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "4fb7adc4d48054cc137497f62f71be526c56622a8ffd6df4e623bb82ebeb2654": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 1,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "c3f098d6e6f565b29218e8b072e7621aaf65f64823aed6493a8454f4968b5ce5": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "3b1d377ca21d85fab4da98e03ec6cf3199a354ac4dea2c1ffeed05ea6c95ba46": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 1,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "a9c7066e0bab05d5161a19a5c3e2685cf2bb5ef7f1ac0a6b928fcfb0a6e1f97d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.85,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.1,
+     "supports": 0.9
+    }
+   }
+  }
+ },
+ "f7d727aeec2b40443434a27b69db574fe3257455deb7421a588ebf88ee0b152a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 1,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "f96ae30efbce4a327587be1d32169f1686ccfa03c31f55c43f3b859ea2f1aa3b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.95,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.03,
+     "supports": 0.97
+    }
+   }
+  }
+ },
+ "f8ca12c32fee00484004655909e777a3bd511b1d900fc5578cfc2c6531d86d18": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "cbdf7ba09fd5d6f88f64e1088bc2b0dcd7c136125ef3e6cd11cc029241efe2a9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "supports": 1,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "151fdcbc6bbbdf39d32b5ef1b5393577530922c4af9c6567bc1c6509f75f52c9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "cb7926a859e4927c2c286139ed3b303eaf3c68d1ed6163f7a000d883054af5a2": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "supports": 1,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "c4c9ecec911a8ed3f2ad5b653efa6fdd4e2dd8e8cb7d60d7eed1305d2cc1a6a8": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "says_nothing": 0,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "a8849c107b49b40533672b014e7e6e55b25307a8249c21ebca697d99a2b3e1c4": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 1,
+     "contradicts": 0
+    }
+   }
+  }
+ },
+ "bec275d5026e5d6a859d12e0fa7d3bf4fd4f0d41feee7588eebd6bd58905703f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "contradicts": 0.01,
+     "supports": 0.99,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "358c118adcdb11abded2f1de323d4e96bc818305d084d354a5a540cdedd830ff": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.94,
+    "probabilities": {
+     "contradicts": 0.04,
+     "supports": 0.96,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "99ded16038a567378af31693d4af44bb4e65dfa137938276aa886dff23981095": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.71,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.19,
+     "supports": 0.81
+    }
+   }
+  }
+ },
+ "81cb3d28800fdb4468cb838e489418b91e6c520439ee88b1765513233a400938": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "supports": 0.99,
+     "says_nothing": 0,
+     "contradicts": 0.01
+    }
+   }
+  }
+ },
+ "2986ce412f25704f8cec817305a083ad1f24a443663a22a84c69338f6011417b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "5dea2e5c8b8fdab8857b74a1c51e46f28d7c2bd0a15abcbe05819c091ad47d60": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.94,
+    "probabilities": {
+     "contradicts": 0.04,
+     "says_nothing": 0,
+     "supports": 0.96
+    }
+   }
+  }
+ },
+ "9ca278265d60e48b1d0a5985bb7fc7226d3cb2c0fe9545e6cfc93bb9ca2f8849": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.74,
+    "probabilities": {
+     "says_nothing": 0.11,
+     "contradicts": 0.06,
+     "supports": 0.83
+    }
+   }
+  }
+ },
+ "b3d99083354d36d76dd1ba270f60ac44a73f0e046f032d4473034559ca65108b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "says_nothing": 0,
+     "supports": 0.99,
+     "contradicts": 0.01
+    }
+   }
+  }
+ },
+ "bed5eeb0a6002e7b45662fe1a36595e60f06beef116d6f483a11f34d2bca7e90": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 1.58,
+    "confidence": 0.5,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.44,
+     "2": 0.51,
+     "3": 0.04
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 1.46,
+    "confidence": 0,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0.3,
+     "1": 0.32,
+     "2": 0.01,
+     "3": 0.37
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 3,
+    "confidence": 1,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 2.02,
+    "confidence": 0.96,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.97,
+     "3": 0.03
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.15,
+    "confidence": 0.77,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.85,
+     "2": 0.15
+    }
+   }
+  }
+ },
+ "1251f1362282a319b2f42a38501b4e4bf65c141fa61423c23ed7d8dc3edd27bd": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 1.86,
+    "confidence": 0.13,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.39,
+     "2": 0.37,
+     "3": 0.24
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 1.38,
+    "confidence": 0.58,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0.02,
+     "1": 0.58,
+     "2": 0.39,
+     "3": 0.01
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 1.89,
+    "confidence": 0.88,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.11,
+     "2": 0.88,
+     "3": 0.01
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 2.35,
+    "confidence": 0.64,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.65,
+     "3": 0.35
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 0.94,
+    "confidence": 0.85,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0.08,
+     "1": 0.9,
+     "2": 0.02
+    }
+   }
+  }
+ },
+ "2af18ed821b87ef6870722f8b3d0e5b3fec3e9f819d0cdb524078ee591719a49": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 1.35,
+    "confidence": 0.53,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0.06,
+     "1": 0.6,
+     "2": 0.27,
+     "3": 0.07
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 0.23,
+    "confidence": 0.77,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0.78,
+     "1": 0.21,
+     "2": 0.01,
+     "3": 0
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 1.63,
+    "confidence": 0.63,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.37,
+     "2": 0.63,
+     "3": 0
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 1.99,
+    "confidence": 0.94,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.03,
+     "2": 0.95,
+     "3": 0.02
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.1,
+    "confidence": 0.81,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.87,
+     "2": 0.12
+    }
+   }
+  }
+ },
+ "2f9afbbcc94d48773f0b5b4ef216f5044b2d3ba5d3b8d7afb788912b5b4022e9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 1.71,
+    "confidence": 0.23,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0.03,
+     "1": 0.51,
+     "2": 0.18,
+     "3": 0.28
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 0.53,
+    "confidence": 0.47,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0.53,
+     "1": 0.42,
+     "2": 0.03,
+     "3": 0.02
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 2.03,
+    "confidence": 0.94,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.01,
+     "2": 0.95,
+     "3": 0.04
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 0.01,
+    "confidence": 0.99,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 1,
+     "1": 0,
+     "2": 0,
+     "3": 0
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.11,
+    "confidence": 0.79,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.86,
+     "2": 0.13
+    }
+   }
+  }
+ },
+ "86195a931ed88f5c35efad40a183cedee919e9c3bd788c35258855c2eff46738": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  }
+ },
+ "42b98be87a1ff5cb2907ecbcdf0fc00b26bcd41786965ee0199f5f37cec49692": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.61
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.09
+   }
+  }
+ },
+ "4c790dbf1c560c1170c283abf9a81a9298ba03fd021d6b9188cb8d774fc6a048": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.72
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.26
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "8afe5d315788bed016376204daae6531ac0e373e0b42c41bb7a190454113119f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.34
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "941ca6d65a3a3a844957666be8ed0512f5c67a79854cee8ba6b2130d8efc976b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "ee1e2b4ca7fc39b6449039f46fbd3969925162d471de5c5459749dd4f5173bb9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.18
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.12
+   }
+  }
+ },
+ "09eff6094b93d863b746be1641ff66a135d31962e0f29a8ea7cbfe0d020bf9f1": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.87
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.28
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.91
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "976abddba831860ac65bb4fd567ada007bb9d7baf01bb4264a2243e6a98096d6": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.28
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.29
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "ea3c9c23da2e64d01951fd7dffe05999faf7bc2c6bd1c2428203b12d394c9491": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.43
+   }
+  }
+ },
+ "82d15f86e0162884d7f340c66f44bb70735e5069c062ac38494dfa1b593efd9d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.34
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.38
+   }
+  }
+ },
+ "9186bfc9f4f4e7141282a9934eafbd256bc7936b8f5869fea1b3a99f7f780f67": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.2
+   }
+  }
+ },
+ "60c0fd20b007c6d55e29009ef71d4296116e627f8f3993c314dba83c68b83e99": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.16
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.32
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.24
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.24
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.59
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.51
+   }
+  }
+ },
+ "e798910281df8de8e2c4e36eaefb98184726055dd58281a4797a29bb170b331e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "ff91f350a487ef77b981366cf9f4f7383eee2437ca663f33ca3e976dfee45337": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.58
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.34
+   }
+  }
+ },
+ "b771f368ccadb3b220ffcc52fee4b0e777b93bcb4e6fc672cb1a8625184b214a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.29
+   }
+  }
+ },
+ "31f1177d7b98a42b917c6168b76a8be199b0f99ca56165265fda28b1c7eb96a2": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.36
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.19
+   }
+  }
+ },
+ "47179dc5b6d9d72b065cd4821eb8eaeaa96bff4b3daef82f2bb08579f80426bb": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "0a2430e99217a167f01dfff83d5dddf59cf905e86ef6869774cb338e6bc0614f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.37
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.14
+   }
+  }
+ },
+ "715c9bc57ad4607dbc09244ced657a9f255c32f94514eb84fd5b4a5e60df67c2": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.7
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.51
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.92
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.87
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.23
+   }
+  }
+ },
+ "a3fa53cf5328ebe8d51632018d000841d1e23e276e7a6cd02504a997287d5e51": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "44e7c0c89788287def7dc326d85fa9766bb839be135aa9354252d67d64aa23bb": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.79
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.21
+   }
+  }
+ },
+ "1dfc1c7b9ec6fac68fac09cb65884fe2f587ef43e5ac1f0b0bc4202f63aa0125": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.28
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.81
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.89
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.16
+   }
+  }
+ },
+ "3f5dcea107289a5202db8a2b691110508a40f3450825dae4ca7e17192178e0bc": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.97
+   }
+  }
+ },
+ "5d48e23e7a979f9b4507f99e7c8103f2d7858808eb2cb1d7fd152ae56959431f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "dbb4c27f77b9430e43baf1fb10d28e6a4b1baeb523132a97c28837357ddebe23": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.42
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.16
+   }
+  }
+ },
+ "67e422bf827e9a337fa5222dad0ca083f6e9f808336805f1d44374be9a710b8c": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.6
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.6
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.43
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.5
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.63
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.7
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.6
+   }
+  }
+ },
+ "d22b065469aa4bcfc22037a2fdd2c1a7af1e419ba253004e2a0b03cc57d3288b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.53
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.18
+   }
+  }
+ },
+ "572e1025cfa7a12ab12b18c7df9dc1e61fc86cd4fd52d0466a13ca6eb16ce6ea": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.94
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.92
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.24
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.11
+   }
+  }
+ },
+ "01cd2dbaaf20b95c9a652d0da09fa2385382c75a58117f96be6994664909e7af": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.22
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.82
+   }
+  }
+ },
+ "7e69a42f254421e0c2daaa6202da98705883de542d98e2fc72e1b6ec416b67ea": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.55
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  }
+ },
+ "d13eca2118fb3bb00816179d23469f65fb3cf28deb81591974e2ffce7e72026c": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.82
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "236f1cb697dccefc2d0a60f9f775d2bfd466c033d47e33a989b2d12dba3f3a14": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.26
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.14
+   }
+  }
+ },
+ "c34f8ac19fea4816c2a568ca65cf23f45c8296af82d38c354a9df277b974a47d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.52
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "4c579b1f86a72c87b82e15fdcb8b3b2d65bb5e745f35ac304e0cc275aaf36a9b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "7a38f4f79b5c478f7bfefb272bce5cec5c12309485f90bf49b24e6acf2fe3a45": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "a0e4886444fc27e6dab6e2b4c12b615aa7200829edda78c70b28ca7a06f9e710": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.57
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.51
+   }
+  }
+ },
+ "7ee302e423e3f6436417a690963a1325354944fcd552cb6be6d00cc6e1d2d4be": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "sp_auto_zoom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_cursor": {
+    "type": "noul",
+    "noul": 0.71
+   },
+   "sp_frame": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "sp_webcam": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_export": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_platforms": {
+    "type": "noul",
+    "noul": 0.73
+   },
+   "sp_local": {
+    "type": "noul",
+    "noul": 0.13
+   },
+   "sp_hyprland_ipc": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "sp_evdev": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_no_keyboard": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "sp_capture": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "sp_one_renderer": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "2e5b0d2b8c2359b2a23ebb2a9aeee4800ff3b4f5a29576ca1b33b08378731f15": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.68
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.23
+   }
+  }
+ },
+ "b7d1c372a95ca2880038639d36ad59306f9808f1b4e69e7272eb10aa97d0fbef": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.02
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "48ab263ad4c43a33a45d1ff44a702f0297101cc657105eec4ea0db16d42a808d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.27
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.95
+   }
+  }
+ },
+ "ba4ba7a14185fe4c96353ad7db697ffe8e8b99794967ff7f5928265a19d60231": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.52
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.13
+   }
+  }
+ },
+ "3deefb53ec1f470c1d933cff67a620edc40364080672379c878bc7a194af7cef": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.88
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.61
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "ed52d342202989f0ba6d888bad966d80336adb5bb49c77ed6f7e06fb563a824c": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "c3fd1c740601e7c3aec45c50480574e4db3590eb1bf4c5785498bc6a5b725701": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "f1feae5a0ca7b68eca193cbd9f47a035e1573bf56903fcccaaf82cba5e16ae7a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.85
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.72
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.77
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.19
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "e05aa7abc285693f70a765bcd3d7b2b759eb1355c790baf44c43ee7d7e09434a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.4
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.07
+   }
+  }
+ },
+ "9db8f5c97f4f521f33076bda47e059d84e84828a337e0f839cf7cd3ce2aa4e5d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.53
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "fb201d4cc4fa37618512761283da6e2f258fb228bbdebf1317ca46d39abe6d50": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.54
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.83
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.87
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.56
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.93
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "d824879ba99073ef24a4114792ef2a37005db0ad0802dfc6f35914ca1896ed3a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.2
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.25
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.58
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "b8fa1bb9e663da27f61feb4c28c72527dc066cca1a4c520849faa5290568857d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.39
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.3
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "7ba29016f2444a12998bdaad43801e68484384ead17d2bdcb9a81896ce589395": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.06
+   }
+  }
+ },
+ "bd4932661b19053df4f700bf300d6d20f57cfca137d22d134b750f9a6e38d6fe": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.89
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.78
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "46c60de202254df5d494590972508a1c5eaad50ed8b66a9062bf7c754b0ec041": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.39
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.55
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.6
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.35
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.1
+   }
+  }
+ },
+ "d5220d8c163bbacf941d572feb783495bc799f535b568b3f7036e5e36706ec94": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.31
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.95
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.48
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.12
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.09
+   }
+  }
+ },
+ "7852d99b4594e2d1eaab7367d66aebd7af46f404e6eeef2796a5ce286292bdbd": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "bf_hermes_plugin": {
+    "type": "noul",
+    "noul": 0.44
+   },
+   "bf_one_sentence": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_identity": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_soul_memory": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "bf_tools_routines": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_gateway": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "bf_rollback": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "bf_install": {
+    "type": "noul",
+    "noul": 0.16
+   }
+  }
+ },
+ "b60f0384b16fd5e9020ca4f1966b638af5928a7ac2df136f26127a605f2ad169": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.34
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.17
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.49
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  }
+ },
+ "095a1ce41f65d4ee9893f0ba6dae986045df49d670b1ae35d9390525fc71445f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.33
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "4a6c2ed3935976a44f28768d9ef0e351b7ec74652651f0be2bd0fbb9bd7ae883": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.41
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.11
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.9
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "8f85c9f0f286a16d0516d292a1b72924a16110cbce5d4ac51f2cde3f1e64ed4d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "73acce7b3b9a803e339b68561b1de903e6d0db08cfd70c9d11fa43838c0a580e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.23
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.64
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.21
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.45
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ },
+ "33ef098542e6481419d0cce56c2e08a9778d0dc0206818153d011d46e44e7d81": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  }
+ },
+ "25d21358617671f82d1792047b0a8355e264eb066a427418b6e3d59848b2014a": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "mc_newsroom": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_agent_pipeline": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "mc_owner_review": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "mc_supabase_sqlite": {
+    "type": "noul",
+    "noul": 0.26
+   },
+   "mc_rls": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "mc_guarded_intake": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ },
+ "1760e0a7ee76aec0847f905cfb283d998f45b8672dcd12cf5746f2f293a91b95": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "5541eb5a56e083e55348960426788a1272e4d20884f19550c0f2b760e1ebefd3": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "cbecaf5c308c50d919d0ba101dfd12dd6e122e794eb4706aa4f5102a704524c9": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.65,
+    "probabilities": {
+     "contradicts": 0.24,
+     "supports": 0.76,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "e82491bdb4b1629c1ccf4f71e5acc72a9a87b695a632b77cef3006fdfd9ced42": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "54ab82d346c5e00ed37a64c976d20afd5b353ce2ef52c22f6f32acbcb90b5d53": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "e1a6d8d57b18aab7ada8dfd6dbff936ca0fb2e0e9a508f5958beb7b589600099": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.95,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0.03,
+     "supports": 0.97
+    }
+   }
+  }
+ },
+ "a134ff7f08dec37671e4ac7b9513b8d9cf64604739bbf620944b817910e435b1": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "9e9c1fff06875ffd3391ccb6d7d2eab251b4c9c9befc5f12622b8197ae75cbda": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "0a3d6d25e3103e7e8d0747079111077e68531d6e70a246a62bb049b2f8dd9018": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "127e410e38678b18d3d3bd4b9a3f8a38c733b34152fb7016cbd3c519e6d7241f": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "says_nothing": 0,
+     "contradicts": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "c608d17e87046c8863d0b243c089da06fe6f2c277008e0021087517ba00462e2": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "contradicts": 0,
+     "says_nothing": 0,
+     "supports": 1
+    }
+   }
+  }
+ },
+ "43f00494864ebc27df6583e6499035e1c54af05063bcd4ab88121e4b3fc48180": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "d79c2b3f2abd1db723a7f4c1d15147bc2927699cc211f81cc3ae4ef74227817e": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 1,
+    "probabilities": {
+     "supports": 1,
+     "contradicts": 0,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "d05f080f4527e9e349f34542ed0d368250f3a42519ae39ffd6392c91467154ff": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.99,
+    "probabilities": {
+     "contradicts": 0,
+     "supports": 1,
+     "says_nothing": 0
+    }
+   }
+  }
+ },
+ "97998d3c0b3cca56ce5571c7ff56cea23565e4e64966dab4493a14889b1f5709": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "relation": {
+    "type": "choice",
+    "choice": "supports",
+    "confidence": 0.8,
+    "probabilities": {
+     "supports": 0.87,
+     "says_nothing": 0,
+     "contradicts": 0.13
+    }
+   }
+  }
+ },
+ "aa81d0275015acb9762631a76ab928a3d0fdeccc5fb761c0d3834e732bc4dd61": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 2.59,
+    "confidence": 0.59,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.12,
+     "2": 0.16,
+     "3": 0.72
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 2.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 2.35,
+    "confidence": 0.64,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.64,
+     "3": 0.36
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 2.04,
+    "confidence": 0.94,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.95,
+     "3": 0.05
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.43,
+    "confidence": 0.35,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.57,
+     "2": 0.43
+    }
+   }
+  }
+ },
+ "8260f6557fcc55ced302dde603131464d26f2cf89f84f33e4a28cf8693a63f7b": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 2.94,
+    "confidence": 0.94,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.01,
+     "2": 0.04,
+     "3": 0.95
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 2.78,
+    "confidence": 0.78,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.01,
+     "2": 0.19,
+     "3": 0.8
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 2.4,
+    "confidence": 0.58,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.01,
+     "2": 0.58,
+     "3": 0.41
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 2.58,
+    "confidence": 0.58,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.41,
+     "3": 0.59
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.13,
+    "confidence": 0.78,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.85,
+     "2": 0.14
+    }
+   }
+  }
+ },
+ "c7f5799fe94bd4a07663f0ac634c339aa1177e3ccb4783aef71db620b1d24d02": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 2.07,
+    "confidence": 0.57,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.18,
+     "2": 0.57,
+     "3": 0.25
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 2.84,
+    "confidence": 0.84,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.16,
+     "3": 0.84
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 2.33,
+    "confidence": 0.64,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.02,
+     "2": 0.63,
+     "3": 0.35
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 1.98,
+    "confidence": 0.97,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.02,
+     "2": 0.97,
+     "3": 0.01
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.22,
+    "confidence": 0.66,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.78,
+     "2": 0.22
+    }
+   }
+  }
+ },
+ "d01896444f278679338260b5b9037640f74a0c4d58a1eee0d9916b6db3921f0d": {
+  "model": "jev-1.13.0",
+  "answers": {
+   "problem": {
+    "type": "score",
+    "score": 2.47,
+    "confidence": 0.47,
+    "legend": {
+     "0": "Says what the project is built with or how it works, but not what problem it solves or for whom",
+     "1": "Implies a use, but the reader has to infer the problem or the audience",
+     "2": "Names the problem it solves, but not who has that problem",
+     "3": "Names both the problem and the kind of person who has it"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.08,
+     "2": 0.36,
+     "3": 0.56
+    }
+   },
+   "ownership": {
+    "type": "score",
+    "score": 3,
+    "confidence": 1,
+    "legend": {
+     "0": "Describes the project only in the third person, with no sign of what the author did",
+     "1": "Suggests the author made it, but not which parts they handled",
+     "2": "States the author built it, without naming the hard parts they solved",
+     "3": "Names specific hard problems the author designed or solved themselves"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "technical": {
+    "type": "score",
+    "score": 3,
+    "confidence": 1,
+    "legend": {
+     "0": "Only general claims such as fast, powerful, or modern",
+     "1": "Names technologies but not how they are used",
+     "2": "Explains at least one specific technical approach or decision",
+     "3": "Explains a specific technical problem, the approach taken, and why that approach was chosen"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0,
+     "3": 1
+    }
+   },
+   "evidence": {
+    "type": "score",
+    "score": 2,
+    "confidence": 0.97,
+    "legend": {
+     "0": "No evidence beyond the description of features",
+     "1": "Mentions that it is released or installable, without further evidence",
+     "2": "Gives one concrete, checkable piece of evidence such as a test count, public source, stars, or a verified release",
+     "3": "Gives several concrete, checkable pieces of evidence"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0,
+     "2": 0.98,
+     "3": 0.02
+    }
+   },
+   "plain": {
+    "type": "score",
+    "score": 1.59,
+    "confidence": 0.38,
+    "legend": {
+     "0": "Most sentences depend on technical terms a non-engineer would not know",
+     "1": "The main idea comes through, but key sentences depend on unexplained technical terms",
+     "2": "A non-engineer can follow almost all of it; technical terms appear only where they add detail"
+    },
+    "probabilities": {
+     "0": 0,
+     "1": 0.41,
+     "2": 0.59
+    }
+   }
+  }
+ }
+}
