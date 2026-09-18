@@ -1,0 +1,197 @@
+{
+  "sources": {
+    "screenpolish": [
+      "git:~/screenpolish-linux-omarchy:origin/omarchy:README.md",
+      "git:~/screenpolish-linux-omarchy:origin/omarchy:OMARCHY.md",
+      "git:~/screenpolish-linux-omarchy:origin/omarchy:docs/HANDOFF.md"
+    ],
+    "bot-forge": [
+      "~/hermes-bot-forge/README.md"
+    ],
+    "agent-dock": [
+      "https://raw.githubusercontent.com/BkashJEE/hermes-agent-dock/main/README.md"
+    ],
+    "mission-control": [
+      "~/hermes-content-mission-control/README.md"
+    ]
+  },
+  "claims": [
+    {
+      "id": "sp_auto_zoom",
+      "project": "screenpolish",
+      "claim": "ScreenPolish automatically zooms in on clusters of clicks in a recording."
+    },
+    {
+      "id": "sp_cursor",
+      "project": "screenpolish",
+      "claim": "ScreenPolish redraws the cursor smoothly and adds a ripple effect on clicks."
+    },
+    {
+      "id": "sp_frame",
+      "project": "screenpolish",
+      "claim": "ScreenPolish places the recording inside a padded frame on a gradient background."
+    },
+    {
+      "id": "sp_webcam",
+      "project": "screenpolish",
+      "claim": "ScreenPolish can show the user's webcam as a bubble over the recording."
+    },
+    {
+      "id": "sp_export",
+      "project": "screenpolish",
+      "claim": "ScreenPolish exports MP4 or GIF files in landscape, square, or vertical formats."
+    },
+    {
+      "id": "sp_platforms",
+      "project": "screenpolish",
+      "claim": "ScreenPolish runs on Windows and Linux, and has an early macOS build."
+    },
+    {
+      "id": "sp_local",
+      "project": "screenpolish",
+      "claim": "ScreenPolish works fully locally and recordings never leave the user's machine."
+    },
+    {
+      "id": "sp_hyprland_ipc",
+      "project": "screenpolish",
+      "claim": "On Linux under Wayland, ScreenPolish reconstructs the pointer path from Hyprland's IPC socket."
+    },
+    {
+      "id": "sp_evdev",
+      "project": "screenpolish",
+      "claim": "On Linux, ScreenPolish reads mouse clicks from evdev input devices."
+    },
+    {
+      "id": "sp_no_keyboard",
+      "project": "screenpolish",
+      "claim": "ScreenPolish deliberately never opens keyboard input devices."
+    },
+    {
+      "id": "sp_capture",
+      "project": "screenpolish",
+      "claim": "On Linux, ScreenPolish captures the screen through xdg-desktop-portal and PipeWire."
+    },
+    {
+      "id": "sp_one_renderer",
+      "project": "screenpolish",
+      "claim": "In ScreenPolish, preview and export use the same renderer, with each effect computed from the frame, the recorded events, and the settings."
+    },
+    {
+      "id": "bf_hermes_plugin",
+      "project": "bot-forge",
+      "claim": "Bot Forge is a plugin for Nous Research's Hermes Agent."
+    },
+    {
+      "id": "bf_one_sentence",
+      "project": "bot-forge",
+      "claim": "A user can describe a bot in one sentence and Bot Forge creates the complete bot."
+    },
+    {
+      "id": "bf_identity",
+      "project": "bot-forge",
+      "claim": "Each new bot gets a generated name and avatar."
+    },
+    {
+      "id": "bf_soul_memory",
+      "project": "bot-forge",
+      "claim": "Each new bot gets a purpose-written SOUL.md file and seeded memory."
+    },
+    {
+      "id": "bf_tools_routines",
+      "project": "bot-forge",
+      "claim": "Bot Forge gives new bots tools and skills, and can add scheduled cron routines."
+    },
+    {
+      "id": "bf_gateway",
+      "project": "bot-forge",
+      "claim": "On Linux and macOS, Bot Forge sets up a gateway service for the new bot that starts on login."
+    },
+    {
+      "id": "bf_rollback",
+      "project": "bot-forge",
+      "claim": "Bot Forge verifies each step as it runs and rolls back the whole bot if any step fails."
+    },
+    {
+      "id": "bf_install",
+      "project": "bot-forge",
+      "claim": "Bot Forge can be installed with a single command."
+    },
+    {
+      "id": "ad_direct_chat",
+      "project": "agent-dock",
+      "claim": "Agent Dock lets the user chat directly with any configured specialist profile, even while the main orchestrator is busy."
+    },
+    {
+      "id": "ad_modes",
+      "project": "agent-dock",
+      "claim": "Agent Dock can float as a card or dock into the workspace, and it remembers the chosen mode."
+    },
+    {
+      "id": "ad_kanban",
+      "project": "agent-dock",
+      "claim": "In Agent Dock, a message becomes tracked Kanban work only when the user explicitly assigns it as a task."
+    },
+    {
+      "id": "ad_discovery",
+      "project": "agent-dock",
+      "claim": "Agent Dock discovers the profiles that Hermes already knows about instead of creating new ones."
+    },
+    {
+      "id": "ad_installer",
+      "project": "agent-dock",
+      "claim": "Agent Dock's installer uses only the Python standard library."
+    },
+    {
+      "id": "ad_security_qa",
+      "project": "agent-dock",
+      "claim": "Agent Dock ships with a security policy and documented release testing."
+    },
+    {
+      "id": "mc_newsroom",
+      "project": "mission-control",
+      "claim": "Mission Control is a workspace for planning, drafting, and publishing content for an X account."
+    },
+    {
+      "id": "mc_agent_pipeline",
+      "project": "mission-control",
+      "claim": "In Mission Control, agent profiles move work through research, draft, and verify steps."
+    },
+    {
+      "id": "mc_owner_review",
+      "project": "mission-control",
+      "claim": "Nothing is published from Mission Control without review by the account owner."
+    },
+    {
+      "id": "mc_supabase_sqlite",
+      "project": "mission-control",
+      "claim": "Mission Control uses a Supabase backend with a local SQLite fallback."
+    },
+    {
+      "id": "mc_rls",
+      "project": "mission-control",
+      "claim": "Mission Control's Supabase database uses row-level security."
+    },
+    {
+      "id": "mc_guarded_intake",
+      "project": "mission-control",
+      "claim": "Mission Control only accepts video research links from an allowlist of hosts."
+    }
+  ],
+  "code_checks": [
+    {
+      "id": "tests",
+      "claim": "test counts shown in case-study stats",
+      "how": "run each project's Vitest suite and compare"
+    },
+    {
+      "id": "upstream_prs",
+      "claim": "fifteen open pull requests to NousResearch/hermes-agent",
+      "how": "count open PRs by BkashJEE with gh"
+    },
+    {
+      "id": "stars",
+      "claim": "fallback star counts in projects.ts",
+      "how": "compare against the GitHub API"
+    }
+  ]
+}
