@@ -3,14 +3,16 @@
 @theme {
   --color-ink: #0a0a0f;
   --color-surface: #12121a;
+  --color-raised: #17171f;
   --color-line: #26262f;
   --color-fg: #ededf2;
   --color-fg-dim: #a8a8b5;
+  --color-fg-faint: #6d6d7a;
   --color-accent: #f5a524;
   --color-teal: #2dd4bf;
   --color-violet: #8b7cf6;
 
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-display: 'Inter Variable', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
 }
@@ -25,11 +27,20 @@ html {
   }
 }
 
+/* Display type is the bold, tight grotesque from the brand reference —
+   Tailwind's font-display utility only sets the family, so weight and
+   tracking ride along here. */
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
 body {
   background-color: var(--color-ink);
   color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -41,4 +52,83 @@ body {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* Film-grain overlay: fixed, non-interactive, extremely subtle. */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ambient hero gradient: two slow-drifting radial glows. */
+.ambient {
+  background:
+    radial-gradient(42rem 42rem at 18% 22%, color-mix(in oklab, var(--color-accent) 9%, transparent), transparent 68%),
+    radial-gradient(50rem 50rem at 85% 75%, color-mix(in oklab, var(--color-violet) 8%, transparent), transparent 70%);
+  animation: ambient-drift 36s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, 2%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient {
+    animation: none;
+  }
+}
+
+/* Per-project glow behind case-study imagery. */
+.glow-amber {
+  background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 75%);
+}
+.glow-teal {
+  background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--color-teal) 14%, transparent), transparent 75%);
+}
+.glow-violet {
+  background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--color-violet) 16%, transparent), transparent 75%);
+}
+
+/* Diagonal light sweep across an image on hover. */
+.shine {
+  position: relative;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.09) 50%, transparent 62%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+.shine:hover::after {
+  transform: translateX(110%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .shine::after {
+    display: none;
+  }
+}
+
+/* Underline sweep for inline links. */
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-sweep:hover {
+  background-size: 100% 1px;
 }
