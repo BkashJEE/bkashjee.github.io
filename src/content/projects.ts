@@ -196,13 +196,6 @@ export const plugins: Plugin[] = [
     lang: 'Skills',
     install: 'hermes skills tap add BkashJEE/hermes-skills',
   },
-  {
-    name: 'Hermex',
-    repo: 'https://github.com/BkashJEE/hermex-app',
-    stars: 1,
-    line: 'Native iPhone app for your Hermes agent.',
-    lang: 'Swift',
-  },
 ]
 
 // Real, open PRs to NousResearch/hermes-agent (verified 2026-09-17).

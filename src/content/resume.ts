@@ -12,7 +12,7 @@ export const resume = {
     site: 'bkashjee.github.io',
   },
   summary:
-    'Independent software engineer shipping local-first products end to end: an Electron screen recorder with deep Wayland/Linux systems work, agent-orchestration plugins in Python, full-stack web apps in TypeScript, and a native iOS client in Swift. Six published open-source tools and an active stream of upstream pull requests in the Hermes Agent ecosystem.',
+    'Independent software engineer shipping local-first products end to end: an Electron screen recorder with deep Wayland/Linux systems work, agent-orchestration plugins in Python, and full-stack web apps in TypeScript. Published open-source tools and an active stream of upstream pull requests in the Hermes Agent ecosystem.',
   projects: [
     {
       name: 'ScreenPolish',
@@ -50,7 +50,6 @@ export const resume = {
     { name: 'Hermes Agent Dock', stars: 42, note: 'native Hermes Desktop dock — profile chat, concurrent jobs, Kanban assignment (Python)' },
     { name: 'Repo Shelf', stars: 17, note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
     { name: 'Codex Usage Meter', stars: 4, note: 'privacy-first usage meter with verified updates (Python)' },
-    { name: 'Hermex', stars: 1, note: 'native iPhone app for Hermes Agent (Swift)' },
   ],
   openSource:
     'Ten-plus open pull requests to NousResearch/hermes-agent — desktop features, performance, and reliability, e.g. #113268 perf(desktop): stop the empty-pane decode looping at idle; #113249 fix(tui_gateway): keep peer-less broadcasts out of stdout; #101951 feat(desktop): global HUD summon. Plus six desktop experiments for the Omarchy/Hyprland shell in QML and Python.',
