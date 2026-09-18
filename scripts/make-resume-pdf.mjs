@@ -52,6 +52,16 @@ try {
   await page.pdf({ path, format: 'Letter', printBackground: true, preferCSSPageSize: true })
   await browser.close()
   console.log(`wrote ${path}`)
+
+  // Thumbnail of page 1 for the site's resume band (best effort).
+  try {
+    const { execSync } = await import('node:child_process')
+    execSync(`pdftoppm -png -r 60 -f 1 -l 1 "${path}" /tmp/resume-thumb`, { stdio: 'ignore' })
+    execSync(`magick /tmp/resume-thumb-1.png -resize 480x -strip -quality 82 "${join(root, 'public/assets/resume-thumb.webp')}"`, { stdio: 'ignore' })
+    console.log('wrote public/assets/resume-thumb.webp')
+  } catch {
+    console.warn('thumbnail skipped (pdftoppm/magick unavailable)')
+  }
 } finally {
   preview.kill()
 }
