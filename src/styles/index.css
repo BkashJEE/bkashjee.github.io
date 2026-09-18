@@ -12,7 +12,7 @@
   --color-teal: #2dd4bf;
   --color-violet: #8b7cf6;
 
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-display: 'Inter Variable', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
 }
@@ -25,6 +25,14 @@ html {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Display type is the bold, tight grotesque from the brand reference —
+   Tailwind's font-display utility only sets the family, so weight and
+   tracking ride along here. */
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 body {

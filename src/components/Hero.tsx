@@ -14,14 +14,15 @@ export function Hero() {
           portrait's hover; interactive children re-enable themselves. */}
       <div className="pointer-events-none relative mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
         <Reveal delay={0.05}>
-          <p className="mb-6 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
+          <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
+            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
             {identity.role} · desktop apps · web · AI agent systems
           </p>
         </Reveal>
-        <h1 className="font-display text-[clamp(3.5rem,11vw,9rem)] leading-[0.95] tracking-[-0.01em]">
+        <h1 className="font-display text-[clamp(3.25rem,10vw,8rem)] leading-[0.95]">
           <RevealLines text="Bikash" />
           <br />
-          <span className="italic text-accent">
+          <span className="text-accent">
             <RevealLines text="Joshi" />
           </span>
         </h1>

@@ -12,7 +12,10 @@ export function SectionHeading({ eyebrow, title, ghost }: { eyebrow: string; tit
           {ghost}
         </span>
       )}
-      <p className="relative font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">{eyebrow}</p>
+      <p className="relative flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">
+        <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+        {eyebrow}
+      </p>
       <h2 className="relative mt-3 font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-tight">
         <RevealLines text={title} />
       </h2>

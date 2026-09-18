@@ -14,7 +14,7 @@ export function Skills() {
                 <dt className="font-mono text-[0.78rem] uppercase tracking-[0.2em] text-fg-dim sm:col-span-3">
                   {group.title}
                 </dt>
-                <dd className="font-display text-[clamp(1.15rem,2vw,1.5rem)] leading-relaxed text-fg sm:col-span-9">
+                <dd className="text-[clamp(1.05rem,1.8vw,1.3rem)] font-medium leading-relaxed tracking-tight text-fg sm:col-span-9">
                   {group.items.map((item, j) => (
                     <span key={item}>
                       {item}
