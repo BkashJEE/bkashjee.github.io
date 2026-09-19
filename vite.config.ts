@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         resume: resolve(__dirname, 'resume/index.html'),
+        archive: resolve(__dirname, 'archive/index.html'),
       },
     },
   },

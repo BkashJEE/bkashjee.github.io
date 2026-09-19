@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
 import { useStars } from '../hooks/useStars'
+import github from '../content/github.json'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -62,6 +63,28 @@ function PluginIcon({ name }: { name: string }) {
     >
       {icon}
     </svg>
+  )
+}
+
+const prStatus: Record<string, { opened: string; state: string }> = github.prs
+
+const stateStyle: Record<string, string> = {
+  merged: 'border-violet/50 text-violet',
+  open: 'border-teal/50 text-teal',
+  draft: 'border-line text-fg-faint',
+  closed: 'border-line text-fg-faint',
+}
+
+/** Opened date and current state, refreshed from GitHub at every build. */
+function PrMeta({ number }: { number: number }) {
+  const pr = prStatus[number]
+  if (!pr) return null
+  const date = new Date(pr.opened + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+  return (
+    <span className="ml-auto hidden shrink-0 items-center gap-3 font-mono text-[0.72rem] text-fg-faint sm:flex">
+      <span>{date}</span>
+      <span className={`rounded-full border px-2 py-0.5 ${stateStyle[pr.state] ?? stateStyle.open}`}>{pr.state}</span>
+    </span>
   )
 }
 
@@ -151,9 +174,7 @@ export function Plugins() {
               >
                 <span className="shrink-0 font-mono text-[0.78rem] text-accent">#{pr.number}</span>
                 <span className="text-sm text-fg-dim transition-colors group-hover:text-fg">{pr.title}</span>
-                <span className="ml-auto hidden shrink-0 font-mono text-[0.72rem] text-fg-faint group-hover:text-accent sm:block">
-                  ↗
-                </span>
+                <PrMeta number={pr.number} />
               </a>
             </li>
           ))}

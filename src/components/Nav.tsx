@@ -68,6 +68,12 @@ export function Nav() {
               </a>
             </Magnetic>
           ))}
+          <a
+            href="/archive/"
+            className="hidden rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide text-fg-dim transition-colors hover:text-fg md:block sm:px-3"
+          >
+            Archive
+          </a>
           <span className="mx-1 hidden h-4 w-px bg-line sm:block" aria-hidden="true" />
           <a
             href={identity.github}
