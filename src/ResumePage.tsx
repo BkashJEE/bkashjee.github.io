@@ -41,6 +41,7 @@ export default function ResumePage() {
               {'link' in p && p.link ? <a href={`https://${p.link}`} className="hover:underline">{p.link}</a> : p.note}
             </span>
           </div>
+          <p className="mt-0.5 text-[0.72rem] text-zinc-500">{p.dates}</p>
           <ul className="mt-1.5 space-y-1 pl-4 text-[0.82rem] leading-snug text-zinc-700 [&>li]:list-disc">
             {p.bullets.map((b, i) => (
               <li key={i}>{b}</li>
@@ -55,6 +56,7 @@ export default function ResumePage() {
         {resume.published.map((t) => (
           <li key={t.name}>
             <span className="font-medium text-zinc-900">{t.name}</span>
+            {'dates' in t && <span className="text-zinc-500"> · {t.dates}</span>}
             <span className="text-zinc-500"> ({t.stars}★ on GitHub)</span> — {t.note}
           </li>
         ))}
@@ -62,6 +64,9 @@ export default function ResumePage() {
 
       <h2 className="resume-h2">Open source & experiments</h2>
       <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">{resume.openSource}</p>
+
+      <h2 className="resume-h2">Writing</h2>
+      <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">{resume.writing}</p>
 
       <h2 className="resume-h2">Skills</h2>
       <table className="mt-2 w-full text-[0.82rem] leading-snug">
