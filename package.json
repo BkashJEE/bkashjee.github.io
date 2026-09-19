@@ -6,6 +6,7 @@
   "author": "Bikash Joshi <bkashjee@gmail.com>",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-github.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc -b",

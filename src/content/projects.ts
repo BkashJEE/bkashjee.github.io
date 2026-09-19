@@ -28,6 +28,8 @@ export interface CaseStudy {
   stat?: string
   /** "How it works" strip: real pipeline steps plus an optional caveat. */
   flow?: { steps: string[]; note?: string }
+  /** Short muted demo loop, shown in place of the primary image. */
+  video?: { mp4: string; webm: string; poster: string; width: number; height: number; caption: string }
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -42,6 +44,14 @@ export const caseStudies: CaseStudy[] = [
     tech: ['Electron', 'React 19', 'TypeScript', 'Tailwind 4', 'WebCodecs', 'FFmpeg', 'Hyprland IPC', 'PipeWire'],
     glow: 'amber',
     stat: '575 tests passing · verified Sep 2026',
+    video: {
+      mp4: '/assets/video/screenpolish-demo.mp4',
+      webm: '/assets/video/screenpolish-demo.webm',
+      poster: '/assets/video/screenpolish-demo-poster.webp',
+      width: 1280,
+      height: 720,
+      caption: 'A real ScreenPolish export: automatic zoom on clicks, redrawn cursor, gradient frame.',
+    },
     flow: {
       steps: ['Hyprland IPC · evdev · PipeWire', 'screen.mp4 + events.json', 'pure(frame, events, settings)', 'preview = export'],
       note: 'One renderer for both paths — what you preview is exactly what exports.',
@@ -269,3 +279,20 @@ export const aboutParagraphs: string[] = [
   'I’m an independent software engineer. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
   'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with fifteen open pull requests to NousResearch/hermes-agent, and I share what I learn about building with AI agents.',
 ]
+
+// Private projects listed in the archive next to the public repos.
+export const archiveExtras = [
+  { name: 'ScreenPolish', description: 'Screen recorder that polishes recordings automatically.', created: '2026-09-02', language: 'TypeScript', built: 'Electron · React', href: '/#screenpolish' },
+  { name: 'Hermes X Mission Control', description: 'Local-first content workspace for an X account, run by agents.', created: '2026-09-02', language: 'TypeScript', built: 'Next.js · Supabase', href: '/#mission-control' },
+]
+
+// Last full run of `npm run typesafe:audit`.
+export const factCheck = {
+  date: '2026-09-18',
+  claims: 32,
+  model: 'Jev 1.13',
+  claimsUrl: 'https://github.com/BkashJEE/bkashjee.github.io/blob/main/typesafe/claims.json',
+  scriptUrl: 'https://github.com/BkashJEE/bkashjee.github.io/blob/main/scripts/typesafe-audit.mjs',
+}
+
+export const siteSourceUrl = 'https://github.com/BkashJEE/bkashjee.github.io'

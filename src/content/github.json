@@ -1,0 +1,130 @@
+{
+  "fetched": "2026-09-19",
+  "repos": [
+    {
+      "name": "bkashjee.github.io",
+      "description": "",
+      "url": "https://github.com/BkashJEE/bkashjee.github.io",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "created": "2026-09-17",
+      "pushed": "2026-09-18"
+    },
+    {
+      "name": "hermes-bot-forge",
+      "description": "Hermes Agent plugin: say 'make me a <role>' and your agent builds a complete, working Bot — name, face, SOUL.md, memory, tools, skills, routines, gateway.",
+      "url": "https://github.com/BkashJEE/hermes-bot-forge",
+      "homepage": "https://github.com/BkashJEE/hermes-bot-forge",
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "hermes-agent",
+        "hermes-plugin",
+        "multi-agent",
+        "nous-research"
+      ],
+      "stars": 24,
+      "created": "2026-09-17",
+      "pushed": "2026-09-17"
+    },
+    {
+      "name": "hermes-skills",
+      "description": "Public Hermes Skills Hub tap — install with hermes skills tap add BkashJEE/hermes-skills",
+      "url": "https://github.com/BkashJEE/hermes-skills",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "created": "2026-09-11",
+      "pushed": "2026-09-11"
+    },
+    {
+      "name": "shelf",
+      "description": "My repos on a 3D bookshelf, published from repo shelf",
+      "url": "https://github.com/BkashJEE/shelf",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stars": 0,
+      "created": "2026-09-08",
+      "pushed": "2026-09-09"
+    },
+    {
+      "name": "repo-shelf",
+      "description": "Your git repos as books on a 3D bookshelf. Browse, search, move, rename, open.",
+      "url": "https://github.com/BkashJEE/repo-shelf",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [
+        "3d",
+        "bookshelf",
+        "developer-tools",
+        "git",
+        "react-three-fiber",
+        "repositories",
+        "threejs",
+        "visualization"
+      ],
+      "stars": 17,
+      "created": "2026-09-07",
+      "pushed": "2026-09-09"
+    },
+    {
+      "name": "hermes-achievements-profile-scope",
+      "description": "Profile-aware achievement totals for Hermes Agent",
+      "url": "https://github.com/BkashJEE/hermes-achievements-profile-scope",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 2,
+      "created": "2026-08-16",
+      "pushed": "2026-08-16"
+    },
+    {
+      "name": "codex-usage-meter",
+      "description": "Privacy-first Codex usage meter for Hermes Desktop with one-time install and verified updates.",
+      "url": "https://github.com/BkashJEE/codex-usage-meter",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 4,
+      "created": "2026-08-12",
+      "pushed": "2026-08-12"
+    },
+    {
+      "name": "hermes-agent-dock",
+      "description": "Native Hermes Desktop dock for direct profile chat, concurrent jobs, cancellation, and explicit Kanban assignment.",
+      "url": "https://github.com/BkashJEE/hermes-agent-dock",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 42,
+      "created": "2026-08-07",
+      "pushed": "2026-08-23"
+    }
+  ],
+  "prs": {
+    "101951": {
+      "opened": "2026-09-03",
+      "state": "open"
+    },
+    "113209": {
+      "opened": "2026-09-16",
+      "state": "open"
+    },
+    "113249": {
+      "opened": "2026-09-16",
+      "state": "open"
+    },
+    "113268": {
+      "opened": "2026-09-16",
+      "state": "open"
+    },
+    "114003": {
+      "opened": "2026-09-17",
+      "state": "open"
+    }
+  }
+}

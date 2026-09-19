@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { identity } from '../content/projects'
+import { factCheck, identity, siteSourceUrl } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
 
 function CopyEmail() {
@@ -56,10 +56,22 @@ export function Footer() {
               Resume
             </a>
           </div>
-          <p className="mt-12 border-t border-line pt-6 font-mono text-[0.75rem] text-fg-faint">
-            © {new Date().getFullYear()} Bikash Joshi · Designed and built by hand with React, Tailwind, and Motion ·
-            Everything shown here is real work.
-          </p>
+          <div className="mt-12 space-y-2 border-t border-line pt-6 font-mono text-[0.75rem] text-fg-faint">
+            <p>
+              <span className="mr-2 inline-block size-1.5 rounded-full bg-teal align-middle" aria-hidden="true" />
+              All {factCheck.claims} factual claims on this site are checked against each project’s own docs with
+              TypeSafe {factCheck.model} — last run {factCheck.date}.{' '}
+              <a href={factCheck.claimsUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+                See the claims ↗
+              </a>
+            </p>
+            <p>
+              © {new Date().getFullYear()} Bikash Joshi · Built with React, Tailwind, and Motion ·{' '}
+              <a href={siteSourceUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+                Site source on GitHub ↗
+              </a>
+            </p>
+          </div>
         </Reveal>
       </div>
     </footer>
