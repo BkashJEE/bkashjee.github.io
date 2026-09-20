@@ -60,6 +60,29 @@ body {
   border-radius: 2px;
 }
 
+/* Keep project workflow cards in one readable sequence with a subtle,
+   persistent scroll affordance on compact screens. */
+.flow-scroll {
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: 0.25rem;
+  scrollbar-color: color-mix(in oklab, var(--color-fg) 28%, transparent) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.flow-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.flow-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.flow-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-fg) 28%, transparent);
+  border-radius: 999px;
+}
+
 /* Film-grain overlay: fixed, non-interactive, extremely subtle. */
 .grain::after {
   content: '';
