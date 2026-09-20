@@ -36,26 +36,36 @@ function DemoVideo({ video }: { video: NonNullable<CaseStudyData['video']> }) {
 }
 
 const arrowColor = { amber: 'text-accent', teal: 'text-teal', violet: 'text-violet' } as const
+const stepBorderColor = { amber: 'border-l-accent', teal: 'border-l-teal', violet: 'border-l-violet' } as const
 
 /** "How it works": the project's real pipeline as a compact flow strip. */
 function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; glow: CaseStudyData['glow'] }) {
   return (
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
-      <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
-      <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
+        <span className="font-mono text-[0.65rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
+          Swipe →
+        </span>
+      </div>
+      <ol
+        className="flow-scroll mt-3 flex snap-x snap-mandatory items-stretch gap-2 overflow-x-auto pb-2"
+        aria-label="Project workflow steps"
+        tabIndex={0}
+      >
         {flow.steps.map((step, i) => (
-          <span key={step} className="contents">
+          <li key={step} className="flex shrink-0 snap-start items-center gap-2">
             {i > 0 && (
               <span className={`${arrowColor[glow]} select-none font-mono text-sm`} aria-hidden="true">
                 →
               </span>
             )}
-            <span className="rounded-md border border-line bg-ink px-2.5 py-1.5 font-mono text-[0.72rem] leading-snug text-fg-dim">
+            <span className={`rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.72rem] leading-snug text-fg-dim`}>
               {step}
             </span>
-          </span>
+          </li>
         ))}
-      </div>
+      </ol>
       {flow.note && <p className="mt-3 text-[0.85rem] leading-relaxed text-fg-dim">{flow.note}</p>}
     </div>
   )
