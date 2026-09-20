@@ -6,7 +6,8 @@ const anchors = [
   { id: 'work', label: 'Work' },
   { id: 'plugins', label: 'Plugins' },
   { id: 'lab', label: 'Lab' },
-  { id: 'about', label: 'About' },
+  { id: 'writing', label: 'Writing' },
+  { id: 'about', label: 'About', mobileHidden: true },
   { id: 'resume', label: 'Resume' },
 ]
 
@@ -54,7 +55,7 @@ export function Nav() {
             <Magnetic key={a.id} strength={4}>
               <a
                 href={`#${a.id}`}
-                className={`relative rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal transition-colors sm:px-3 sm:text-[0.8rem] sm:tracking-wide ${
+                className={`relative rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal transition-colors sm:px-3 sm:text-[0.8rem] sm:tracking-wide ${a.mobileHidden ? 'hidden sm:block' : ''} ${
                   active === a.id ? 'text-accent' : 'text-fg-dim hover:text-fg'
                 }`}
               >

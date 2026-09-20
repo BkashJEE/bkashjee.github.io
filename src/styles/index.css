@@ -23,7 +23,8 @@ html {
 
 /* Keep selected-work deep links below the sticky navigation. */
 #work,
-#work article[id] {
+#work article[id],
+#writing {
   scroll-margin-top: 6rem;
 }
 
