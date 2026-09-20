@@ -12,7 +12,7 @@ export const resume = {
     site: 'bkashjee.github.io',
   },
   summary:
-    'Independent software engineer building desktop apps, AI agent plugins, and full-stack TypeScript tools. Use my own screen recorder for demos and my content planner for X; publish open-source tools and contribute upstream pull requests in the Hermes Agent ecosystem.',
+    'Independent software engineer shipping desktop apps, AI agent plugins, and TypeScript websites. Publish open-source tools, use my own apps for recording and content planning, and contribute upstream pull requests.',
   projects: [
     {
       name: 'ScreenPolish',
@@ -20,9 +20,9 @@ export const resume = {
       dates: 'Sep 2026 - present',
       note: 'source private',
       bullets: [
-        'Use this local screen recorder for my own demos and videos; my library holds 41 recordings. Built auto-zoom, cursor effects, webcam overlay, and MP4/GIF export with recordings kept on-device.',
-        'Shipped 3 build formats: Windows installer, AppImage, and pacman. Enabled Wayland recording through PipeWire and portal capture, with Hyprland pointer tracking and evdev clicks that never read keyboard input.',
-        'Share a pure-function renderer between preview and export so both use the same effects; the project has 575 tests passing. Added a JSON-output CLI for agent-driven workflows.',
+        'Built a local screen recorder for my demos and videos; 41 recordings in my library, with auto-zoom and MP4/GIF export.',
+        'Shipped 3 formats (Windows installer, AppImage, pacman); Wayland capture uses PipeWire/portals, Hyprland IPC, and evdev clicks.',
+        'Shared one renderer for preview and export; 575 tests pass. Built a JSON-output CLI for agent workflows.',
       ],
       tech: 'Electron · React 19 · TypeScript · WebCodecs · FFmpeg · Vitest',
     },
@@ -32,7 +32,7 @@ export const resume = {
       dates: 'Sep 2026 - present',
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
-        'Published a Hermes Agent plugin with 24 GitHub stars that turns one sentence into a configured bot: identity, memory, tools, scheduled routines, and a gateway service.',
+        'Published a Hermes Agent plugin with 25 GitHub stars: creates bots with identity, memory, tools, routines, and a gateway.',
         'Verify every provisioning step and roll back the bot if a step fails; install directly from GitHub with 1 command.',
       ],
       tech: 'Python · pytest · systemd',
@@ -43,10 +43,20 @@ export const resume = {
       dates: 'Sep 2026 - present',
       note: 'source private',
       bullets: [
-        'Run content planning and review for 1 X account, my own @BkashJosi, including a daily 8am audit. Agent profiles move research through drafting and verification with owner review; I am the sole user.',
-        'Built a backend with Supabase row-level security, SQLite fallback, and video-host allowlists; the project has 581 automated tests passing.',
+        'Use my content planner for 1 X account (@BkashJosi), with a daily 8am audit and owner review; I am its sole user.',
+        'Implemented Supabase row-level security, SQLite fallback, and video-host allowlists; 581 automated tests pass.',
       ],
       tech: 'Next.js · TypeScript · Supabase · SQLite · zod · Vitest',
+    },
+    {
+      name: 'Personal Portfolio',
+      role: 'Creator · website',
+      dates: 'Sep 2026 - present',
+      link: 'bkashjee.github.io',
+      bullets: [
+        'Published a 3-page portfolio with case studies, a GitHub-fed archive, and a resume/PDF sharing one content source; GitHub Actions builds and deploys each merge to main.',
+      ],
+      tech: 'React 19 · TypeScript · Vite · Tailwind CSS · Playwright · GitHub Actions',
     },
   ],
   published: [
