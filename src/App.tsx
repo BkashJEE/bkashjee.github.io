@@ -11,6 +11,7 @@ import { CaseStudy } from './components/CaseStudy'
 import { Plugins } from './components/Plugins'
 import { LabGrid } from './components/LabGrid'
 import { Skills } from './components/Skills'
+import { Writing } from './components/Writing'
 import { About } from './components/About'
 import { ResumeCard } from './components/ResumeCard'
 import { Footer } from './components/Footer'
@@ -49,6 +50,7 @@ export default function App() {
         <Plugins />
         <Skills />
         <LabGrid />
+        <Writing />
         <About />
         <ResumeCard />
       </main>
