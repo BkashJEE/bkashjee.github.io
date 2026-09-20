@@ -21,6 +21,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep selected-work deep links below the sticky navigation. */
+#work,
+#work article[id] {
+  scroll-margin-top: 6rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
