@@ -45,23 +45,23 @@ export function Nav() {
         scrolled ? 'border-b border-line/70 bg-ink/95' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main">
-        <a href="#top" className="font-display text-xl tracking-wide text-fg">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4" aria-label="Main">
+        <a href="#top" className="shrink-0 font-display text-lg tracking-wide text-fg sm:text-xl">
           BJ<span className="text-accent">.</span>
         </a>
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex min-w-0 items-center justify-end gap-0 sm:gap-2">
           {anchors.map((a) => (
             <Magnetic key={a.id} strength={4}>
               <a
                 href={`#${a.id}`}
-                className={`relative rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide transition-colors sm:px-3 ${
+                className={`relative rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal transition-colors sm:px-3 sm:text-[0.8rem] sm:tracking-wide ${
                   active === a.id ? 'text-accent' : 'text-fg-dim hover:text-fg'
                 }`}
               >
                 {a.label}
                 <span
                   aria-hidden="true"
-                  className={`absolute inset-x-2 -bottom-0.5 h-px bg-accent transition-transform duration-300 sm:inset-x-3 ${
+                  className={`absolute inset-x-1.5 -bottom-0.5 h-px bg-accent transition-transform duration-300 sm:inset-x-3 ${
                     active === a.id ? 'scale-x-100' : 'scale-x-0'
                   }`}
                 />
