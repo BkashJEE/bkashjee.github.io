@@ -1,0 +1,305 @@
+[
+  {
+    "slug": "screenpolish",
+    "title": "Turn a raw screen recording into a polished demo",
+    "description": "Record locally, reconstruct input events on Wayland, and export the same polished composition shown in the editor.",
+    "category": "content-media",
+    "tools": ["Electron", "React 19", "TypeScript", "WebCodecs", "FFmpeg", "PipeWire"],
+    "keywords": ["screen recorder", "video", "Wayland", "Hyprland", "automatic zoom", "local-first"],
+    "image": {
+      "src": "/assets/video/screenpolish-demo-poster.webp",
+      "width": 1280,
+      "height": 720,
+      "alt": "A ScreenPolish export with the recorded application framed on a gradient background"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/work/screenpolish-app.webp",
+        "width": 1600,
+        "height": 1254,
+        "alt": "ScreenPolish capture workspace showing the recording library and capture sources"
+      },
+      {
+        "src": "/assets/work/screenpolish-output.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": "A polished ScreenPolish video export"
+      }
+    ],
+    "status": "working",
+    "sourcePrivate": true,
+    "featured": true,
+    "date": "2026-09-02",
+    "problem": "Software demos usually need a second editing pass for framing, zooms, cursor cleanup, and exports. On Wayland, an application also cannot rely on the global input hooks used by conventional recorders.",
+    "solution": "ScreenPolish records the screen locally, reconstructs pointer motion from Hyprland IPC and clicks from evdev, and applies every visual effect through one pure renderer shared by preview and export.",
+    "workflow": [
+      "Capture video through xdg-desktop-portal and PipeWire while recording pointer motion and click events without opening keyboard devices.",
+      "Store the capture and event timeline together so every edit remains deterministic.",
+      "Render zooms, cursor motion, click ripples, framing, and optional webcam composition from the same frame-and-events function.",
+      "Export MP4 or GIF in landscape, square, or vertical formats from the composition already approved in preview."
+    ],
+    "outcomes": [
+      { "value": "732", "label": "automated tests passing" },
+      { "value": "41", "label": "recordings in the personal library" },
+      { "value": "3", "label": "shipping formats: Windows, AppImage, pacman" }
+    ],
+    "limitations": [
+      "The macOS build is still early.",
+      "The Linux input path is tailored to Hyprland for pointer coordinates and uses evdev only for click events.",
+      "Source is private; the case study documents behavior and architecture without publishing the repository."
+    ],
+    "links": {
+      "demo": "/assets/video/screenpolish-demo.mp4"
+    },
+    "related": ["hermes-x-mission-control", "repo-shelf"]
+  },
+  {
+    "slug": "hermes-x-mission-control",
+    "title": "Run a daily content workflow with agents and owner review",
+    "description": "Coordinate research, drafting, verification, and scheduling in a local-first newsroom for one X account.",
+    "category": "automations",
+    "tools": ["Next.js", "TypeScript", "Supabase", "SQLite", "zod", "Vitest"],
+    "keywords": ["content planning", "editorial workflow", "daily audit", "agents", "local-first", "X"],
+    "image": {
+      "src": "/assets/work/missioncontrol.webp",
+      "width": 1600,
+      "height": 1000,
+      "alt": "Hermes X Mission Control Today view with editorial agents, queues, and the daily content plan"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/work/missioncontrol.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Hermes X Mission Control Today view"
+      }
+    ],
+    "status": "working",
+    "sourcePrivate": true,
+    "featured": true,
+    "date": "2026-09-02",
+    "problem": "Running an active account requires a repeatable cycle of research, drafting, checking, scheduling, and review. Loose documents make handoffs and editorial accountability hard to see.",
+    "solution": "Mission Control turns the process into a thirteen-screen editorial workspace. Named agent profiles move work through explicit queues with receipts, while publication remains behind owner review.",
+    "workflow": [
+      "Run the scheduled 8am audit to collect the day's research and content needs.",
+      "Move candidate ideas through research, drafting, and verification queues with a record of each handoff.",
+      "Review the proposed post, source material, and checks in one owner-facing workspace.",
+      "Approve the final item for the calendar and track published work and analytics."
+    ],
+    "outcomes": [
+      { "value": "13", "label": "workflow and review screens" },
+      { "value": "592", "label": "automated tests" },
+      { "value": "8am", "label": "daily account audit" }
+    ],
+    "limitations": [
+      "The product currently serves one account and one owner.",
+      "Nothing publishes without explicit owner review.",
+      "Source is private; this entry documents the working system without exposing the repository."
+    ],
+    "related": ["screenpolish", "hermes-skills-library"]
+  },
+  {
+    "slug": "hermes-bot-forge",
+    "title": "Create a complete specialist bot from one sentence",
+    "description": "Generate identity, memory, tools, routines, and a managed gateway while rolling back incomplete provisioning.",
+    "category": "ai-agents",
+    "tools": ["Python", "Hermes Agent", "pytest", "systemd", "plugin.yaml"],
+    "keywords": ["agent provisioning", "bot", "identity", "memory", "rollback", "plugin"],
+    "image": {
+      "src": "/assets/work/botforge-banner.webp",
+      "width": 1200,
+      "height": 600,
+      "alt": "Hermes Bot Forge turning a one-sentence request into a complete bot named Inkwell"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/work/botforge-banner.webp",
+        "width": 1200,
+        "height": 600,
+        "alt": "Hermes Bot Forge provisioning sequence"
+      },
+      {
+        "src": "/assets/work/botforge-demo.webp",
+        "width": 1200,
+        "height": 700,
+        "alt": "Hermes Bot Forge working bot demonstration"
+      }
+    ],
+    "status": "working",
+    "sourcePrivate": false,
+    "featured": true,
+    "date": "2026-09-17",
+    "problem": "A useful specialist agent needs more than a prompt: it needs an identity, durable memory, tools, skills, routines, and a service that starts reliably. Manual setup leaves many chances for a half-configured bot.",
+    "solution": "Bot Forge converts one sentence into a complete Hermes Agent bot, verifies every provisioning step, and removes the partial bot if any step fails.",
+    "workflow": [
+      "Interpret the requested role and generate a name, face, purpose-built SOUL.md, and initial memory.",
+      "Select and configure the tools, skills, and optional scheduled routines needed for the role.",
+      "Create and verify the gateway service that keeps the bot available after login.",
+      "Commit the bot only after every step passes; otherwise roll the entire provisioning attempt back."
+    ],
+    "outcomes": [
+      { "value": "44", "label": "tests passing in v0.4.1" },
+      { "value": "29", "label": "GitHub stars checked Sep 2026" },
+      { "value": "Official", "label": "Hermes plugin catalog listing" }
+    ],
+    "limitations": [
+      "Generated bots still need a clear job and reviewed permissions.",
+      "A provisioning rollback protects configuration integrity but cannot guarantee that a chosen external integration is available.",
+      "Gateway setup depends on the host platform's service behavior."
+    ],
+    "links": {
+      "source": "https://github.com/BkashJEE/hermes-bot-forge"
+    },
+    "related": ["hermes-agent-dock", "hermes-skills-library"]
+  },
+  {
+    "slug": "hermes-agent-dock",
+    "title": "Reach specialist agents without leaving the workspace",
+    "description": "Chat with any configured Hermes profile in a floating or docked panel and assign only selected messages to Kanban.",
+    "category": "productivity",
+    "tools": ["Python", "Hermes Desktop", "stdlib installer", "Kanban lifecycle"],
+    "keywords": ["agent chat", "dock", "profiles", "concurrent jobs", "Kanban", "desktop"],
+    "image": {
+      "src": "/assets/work/agentdock-floating.webp",
+      "width": 1000,
+      "height": 760,
+      "alt": "Hermes Agent Dock floating specialist chat panel"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/work/agentdock-floating.webp",
+        "width": 1000,
+        "height": 760,
+        "alt": "Agent Dock floating specialist chat card"
+      },
+      {
+        "src": "/assets/work/agentdock-docked.webp",
+        "width": 1600,
+        "height": 454,
+        "alt": "Agent Dock attached to the bottom of the Hermes Desktop workspace"
+      }
+    ],
+    "status": "working",
+    "sourcePrivate": false,
+    "featured": false,
+    "date": "2026-08-07",
+    "problem": "When the main orchestrator is occupied, specialist profiles are difficult to reach from the desktop. Mixing every conversation with task tracking also creates noise and accidental work items.",
+    "solution": "Agent Dock exposes the profiles Hermes already knows in a direct chat panel that can float or attach to the workspace. Chat remains chat until the user explicitly assigns a message to Kanban.",
+    "workflow": [
+      "Read the local Hermes profile inventory and present available specialists.",
+      "Open a direct conversation while other profile jobs continue independently.",
+      "Keep the panel floating or dock it into the workspace and remember that layout choice.",
+      "Assign a message to Kanban only when it should become tracked work."
+    ],
+    "outcomes": [
+      { "value": "42", "label": "GitHub stars checked Sep 2026" },
+      { "value": "3", "label": "public repository forks" },
+      { "value": "2", "label": "workspace modes: floating and docked" }
+    ],
+    "limitations": [
+      "The dock requires an existing Hermes Desktop installation and configured profiles.",
+      "Kanban assignment is intentionally explicit, so ordinary chat is not automatically converted into tasks.",
+      "The installer and release behavior must track changes in Hermes Desktop."
+    ],
+    "links": {
+      "source": "https://github.com/BkashJEE/hermes-agent-dock"
+    },
+    "related": ["hermes-bot-forge", "hermes-skills-library"]
+  },
+  {
+    "slug": "hermes-skills-library",
+    "title": "Browse skills, plugins, and community workflows in one place",
+    "description": "A profile-aware Hermes Desktop library with compact cards, category and author filters, and reviewed import paths.",
+    "category": "research-data",
+    "tools": ["JavaScript", "Python", "React", "Hermes Desktop SDK", "GitHub Actions"],
+    "keywords": ["catalog", "skills", "plugins", "community stories", "search", "metadata"],
+    "image": {
+      "src": "/assets/use-cases/hermes-skills-library.webp",
+      "width": 722,
+      "height": 1000,
+      "alt": "Hermes Skills Library use-case browser with category filters and compact story cards"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/use-cases/hermes-skills-library.webp",
+        "width": 722,
+        "height": 1000,
+        "alt": "Use cases from the Nous documentation inside Hermes Skills Library"
+      }
+    ],
+    "status": "testing",
+    "sourcePrivate": false,
+    "featured": true,
+    "date": "2026-09-21",
+    "problem": "Hermes capabilities and community workflows live across catalogs, documentation, and attributed source stories. Builders need a fast way to find a relevant capability without losing provenance or installing into the wrong profile.",
+    "solution": "The library adds one Hermes Desktop surface for skills, plugins, and an attributed snapshot of official community stories, with search, source filters, category and author browsing, and explicit destination profiles.",
+    "workflow": [
+      "Load the reviewed skills and plugin catalogs plus the bundled official use-case snapshot.",
+      "Search or filter by source, category, author, and active Agent profile.",
+      "Open a compact card to inspect attribution, requirements, and available details before taking action.",
+      "Import through Hermes' existing scanning and installation paths while preserving profile selection and disable states."
+    ],
+    "outcomes": [
+      { "value": "326", "label": "attributed community stories in the bundled snapshot" },
+      { "value": "15", "label": "use-case categories" },
+      { "value": "4", "label": "GitHub stars checked Sep 2026" }
+    ],
+    "limitations": [
+      "The early community release is verified on Linux; macOS and Windows are not yet verified.",
+      "Hermes internal Python and Desktop SDK APIs can change between releases.",
+      "Inferred categories and brief summaries can require editorial correction; source attribution is preserved for review."
+    ],
+    "links": {
+      "source": "https://github.com/BkashJEE/hermes-skills-library"
+    },
+    "related": ["hermes-bot-forge", "hermes-agent-dock"]
+  },
+  {
+    "slug": "repo-shelf",
+    "title": "Browse local Git repositories as a working 3D bookshelf",
+    "description": "Turn configured folders into shelves and repositories into books that expose status, history, and safe local actions.",
+    "category": "experiments",
+    "tools": ["TypeScript", "React Three Fiber", "Three.js", "Express", "Electron", "GitHub CLI"],
+    "keywords": ["3D", "git", "repository manager", "bookshelf", "desktop", "developer tools"],
+    "image": {
+      "src": "/assets/use-cases/repo-shelf.webp",
+      "width": 1440,
+      "height": 900,
+      "alt": "Repo Shelf interface showing Git repositories as books in a 3D bookcase"
+    },
+    "screenshots": [
+      {
+        "src": "/assets/use-cases/repo-shelf.webp",
+        "width": 1440,
+        "height": 900,
+        "alt": "Repo Shelf 3D bookcase and repository search controls"
+      }
+    ],
+    "status": "working",
+    "sourcePrivate": false,
+    "featured": false,
+    "date": "2026-09-07",
+    "problem": "A large collection of local repositories is difficult to scan as folders alone. Important signals such as activity, size, language, stars, and uncommitted changes are scattered across tools.",
+    "solution": "Repo Shelf maps configured root folders to shelves and Git repositories to books. Visual properties communicate repository state, while opening a book exposes details and guarded local actions.",
+    "workflow": [
+      "Scan configured root folders one level deep and enrich repositories with local Git and optional GitHub CLI metadata.",
+      "Derive book height, thickness, color, bands, tabs, and stamps from repository facts.",
+      "Search, orbit, zoom, or open a book to inspect README, commits, issues, pull requests, files, and branches.",
+      "Run guarded local actions such as moving, renaming, cloning, or opening a repository, with conflicts and uncommitted work surfaced first."
+    ],
+    "outcomes": [
+      { "value": "17", "label": "GitHub stars checked Sep 2026" },
+      { "value": "5", "label": "public repository forks" },
+      { "value": "3", "label": "supported desktop platforms" }
+    ],
+    "limitations": [
+      "Local operation requires Node 24 and Git; GitHub enrichment requires an authenticated GitHub CLI.",
+      "Repository actions have real filesystem effects and therefore use confirmations and conflict checks.",
+      "The 3D interface is intentionally experimental and can demand more graphics performance than a conventional list."
+    ],
+    "links": {
+      "source": "https://github.com/BkashJEE/repo-shelf"
+    },
+    "related": ["screenpolish", "hermes-skills-library"]
+  }
+]

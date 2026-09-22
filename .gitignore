@@ -9,3 +9,4 @@ typesafe/*report.md
 typesafe/judgments.json
 typesafe/.resume.mjs
 typesafe/resume-cache.json
+/use-cases/
