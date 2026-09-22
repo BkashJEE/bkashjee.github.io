@@ -6,7 +6,7 @@ const anchors = [
   { id: 'work', label: 'Work' },
   { id: 'plugins', label: 'Plugins' },
   { id: 'lab', label: 'Lab' },
-  { id: 'writing', label: 'Writing' },
+  { id: 'writing', label: 'Writing', mobileHidden: true },
   { id: 'about', label: 'About', mobileHidden: true },
   { id: 'resume', label: 'Resume' },
 ]
@@ -69,6 +69,12 @@ export function Nav() {
               </a>
             </Magnetic>
           ))}
+          <a
+            href="/use-cases/"
+            className="rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal text-fg-dim transition-colors hover:text-fg sm:px-3 sm:text-[0.8rem] sm:tracking-wide"
+          >
+            Cases
+          </a>
           <a
             href="/archive/"
             className="hidden rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide text-fg-dim transition-colors hover:text-fg md:block sm:px-3"
