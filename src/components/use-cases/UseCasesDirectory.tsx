@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { MostViewed } from './MostViewed'
 import { UseCaseCard } from './UseCaseCard'
 import { categoryLabel, useCaseCategories, useCases, type UseCaseCategory } from '../../content/useCases'
 
@@ -70,6 +71,24 @@ export function UseCasesDirectory() {
               <span className="mt-1 block font-mono text-xs uppercase tracking-[0.18em] text-fg-dim">Published cases</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-line bg-surface/30 py-14 sm:py-20" aria-label="Most viewed use cases">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] uppercase tracking-[0.25em] text-accent">
+            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+            Most viewed
+          </p>
+          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight">
+            The ones people actually read
+          </h2>
+          <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
+            My Hermes, Omarchy and Jev work, ordered by how many people saw it on X. Every card opens the original post.
+          </p>
+        </div>
+        <div className="mt-10">
+          <MostViewed />
         </div>
       </section>
 
