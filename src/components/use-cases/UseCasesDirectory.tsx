@@ -58,17 +58,17 @@ export function UseCasesDirectory() {
       <section className="relative overflow-hidden border-b border-line">
         <div className="ambient absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">Built, tested, documented</p>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">New entries as I build them</p>
           <div className="mt-6 grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div className="max-w-4xl">
-              <h1 className="font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.9] text-fg">Use Cases<span className="text-accent">.</span></h1>
+              <h1 className="font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.9] text-fg">Playbook<span className="text-accent">.</span></h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-fg-dim sm:text-xl">
-                Working software, agent workflows, automations, and experiments—documented with implementation details, measurable outcomes, and honest limitations.
+                Recipes that work: what I build with Hermes, Omarchy and Jev, how each one is wired, what it cost me, and where it still falls short. New entries as I build them.
               </p>
             </div>
             <div className="border-l-2 border-accent pl-5 lg:mb-2">
               <strong className="block font-display text-5xl text-fg">{useCases.length}</strong>
-              <span className="mt-1 block font-mono text-xs uppercase tracking-[0.18em] text-fg-dim">Published cases</span>
+              <span className="mt-1 block font-mono text-xs uppercase tracking-[0.18em] text-fg-dim">Written up in full</span>
             </div>
           </div>
         </div>
@@ -81,10 +81,10 @@ export function UseCasesDirectory() {
             Most viewed
           </p>
           <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight">
-            The ones people actually read
+            The entries that travelled furthest
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-            My Hermes, Omarchy and Jev work, ordered by how many people saw it on X. Every card opens the original post.
+            Every recipe I publish starts as a post. These are the ones that landed hardest, ordered by how many people saw them.
           </p>
         </div>
         <div className="mt-10">

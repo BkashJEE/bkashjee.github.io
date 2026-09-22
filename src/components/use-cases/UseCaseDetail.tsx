@@ -18,7 +18,7 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
       <article>
         <header className="border-b border-line">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-            <a href="/use-cases/" className="font-mono text-xs text-fg-dim transition-colors hover:text-accent">← All use cases</a>
+            <a href="/use-cases/" className="font-mono text-xs text-fg-dim transition-colors hover:text-accent">← Back to the playbook</a>
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end">
               <div>
                 <div className="flex flex-wrap items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.16em]">
