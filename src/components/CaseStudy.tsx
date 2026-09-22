@@ -37,6 +37,12 @@ function DemoVideo({ video }: { video: NonNullable<CaseStudyData['video']> }) {
 
 const arrowColor = { amber: 'text-accent', teal: 'text-teal', violet: 'text-violet' } as const
 const stepBorderColor = { amber: 'border-l-accent', teal: 'border-l-teal', violet: 'border-l-violet' } as const
+const fullCaseSlugs: Record<string, string> = {
+  screenpolish: 'screenpolish',
+  'bot-forge': 'hermes-bot-forge',
+  'agent-dock': 'hermes-agent-dock',
+  'mission-control': 'hermes-x-mission-control',
+}
 
 /** "How it works": the project's real pipeline as a compact flow strip. */
 function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; glow: CaseStudyData['glow'] }) {
@@ -73,6 +79,7 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
 
 export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
   const [primary, secondary] = study.video ? [null, study.images[0]] : study.images
+  const fullCaseSlug = fullCaseSlugs[study.id]
   return (
     <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-14 sm:py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -137,16 +144,26 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
           </div>
 
           <div className={`min-w-0 lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
-            {study.link && (
-              <a
-                href={study.link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[0.8rem] font-medium text-ink transition-colors hover:bg-fg"
-              >
-                {study.link.label} ↗
-              </a>
-            )}
+            <div className="flex flex-wrap items-center gap-3">
+              {fullCaseSlug && (
+                <a
+                  href={`/use-cases/${fullCaseSlug}/`}
+                  className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[0.8rem] font-medium text-ink transition-colors hover:bg-fg"
+                >
+                  Full case study →
+                </a>
+              )}
+              {study.link && (
+                <a
+                  href={study.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 py-2.5 font-mono text-[0.8rem] text-fg transition-colors hover:border-accent hover:text-accent"
+                >
+                  {study.link.label} ↗
+                </a>
+              )}
+            </div>
             {study.platforms && <p className="text-sm leading-relaxed text-fg-dim">{study.platforms}</p>}
             {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
             <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
