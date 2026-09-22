@@ -1,3 +1,4 @@
+import { BrandMark } from './components/BrandMark'
 import github from './content/github.json'
 import { archiveExtras, identity } from './content/projects'
 
@@ -45,9 +46,7 @@ export default function ArchivePage() {
     <div className="min-h-svh">
       <header className="border-b border-line">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main">
-          <a href="/" className="font-display text-xl text-fg">
-            BJ<span className="text-accent">.</span>
-          </a>
+          <BrandMark />
           <a href="/" className="font-mono text-[0.8rem] text-fg-dim transition-colors hover:text-fg">
             ← Back to portfolio
           </a>

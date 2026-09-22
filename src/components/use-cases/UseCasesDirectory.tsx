@@ -74,7 +74,7 @@ export function UseCasesDirectory() {
         </div>
       </section>
 
-      <section className="border-b border-line bg-surface/30 py-14 sm:py-20" aria-label="Most viewed use cases">
+      <section className="scroll-mt-20 border-b border-line bg-surface/30 py-12 sm:py-20" aria-label="Most viewed use cases">
         <div className="mx-auto max-w-6xl px-6">
           <p className="flex items-center gap-2.5 font-mono text-[0.78rem] uppercase tracking-[0.25em] text-accent">
             <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
