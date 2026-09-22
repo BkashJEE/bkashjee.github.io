@@ -36,6 +36,14 @@ const icons: Record<string, React.ReactNode> = {
       <circle cx="12" cy="18" r="1.2" fill="currentColor" stroke="none" />
     </>
   ),
+  'Hermes Skills Library': (
+    <>
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+      <path d="M17 13.5v7M13.5 17h7" />
+    </>
+  ),
   'Hermes Skills Hub': (
     <>
       <path d="M12 3v6" />

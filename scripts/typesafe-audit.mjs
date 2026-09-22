@@ -136,7 +136,8 @@ function codeChecks() {
   try {
     const open = Number(sh(`gh pr list --repo NousResearch/hermes-agent --author BkashJEE --state open --limit 200 --json number --jq length`))
     const merged = Number(sh(`gh pr list --repo NousResearch/hermes-agent --author BkashJEE --state merged --limit 200 --json number --jq length`))
-    results.push({ check: 'open upstream PRs (site: "fifteen")', site: 15, actual: open, ok: open >= 15, note: `${merged} merged` })
+    results.push({ check: 'open upstream PRs (site: "thirteen")', site: 13, actual: open, ok: open >= 13, note: '' })
+    results.push({ check: 'merged upstream PRs (site: "one")', site: 1, actual: merged, ok: merged >= 1, note: '' })
   } catch {
     results.push({ check: 'open upstream PRs', site: 10, actual: null, ok: null, note: 'gh unavailable' })
   }
@@ -145,14 +146,21 @@ function codeChecks() {
   const suites = { screenpolish: 'screenpolish-linux-omarchy', 'mission-control': 'hermes-content-mission-control' }
   for (const [id, dir] of Object.entries(suites)) {
     const block = projects.slice(projects.indexOf(`id: '${id}'`))
-    const claimed = Number(block.match(/stat: '(\d+) tests passing/)?.[1] ?? NaN)
+    // "N tests passing" claims every test passes; "N automated tests" only claims the count.
+    const m = block.match(/stat: '(\d+) (tests passing|automated tests)/)
+    const claimed = Number(m?.[1] ?? NaN)
+    const allMustPass = m?.[2] === 'tests passing'
     const path = join(homedir(), dir)
     if (!existsSync(path) || Number.isNaN(claimed)) continue
     try {
-      const out = execSync('npx vitest run 2>&1', { cwd: path, encoding: 'utf8', timeout: 240_000 })
-      const actual = Number(out.match(/Tests\s+(\d+) passed/)?.[1] ?? NaN)
-      const failed = /Tests\s+.*\d+ failed/.test(out)
-      results.push({ check: `${id} tests passing`, site: claimed, actual, ok: actual === claimed && !failed, note: failed ? 'some tests fail' : '' })
+      // Stray agent worktrees under .claude/ carry their own copies of the tests.
+      const cmd = "npx vitest run --exclude '**/.claude/**' --exclude '**/node_modules/**' 2>&1 || true"
+      const out = execSync(cmd, { cwd: path, encoding: 'utf8', timeout: 240_000 })
+      const line = out.match(/Tests\s+(.*)\((\d+)\)/)
+      const total = Number(line?.[2] ?? NaN)
+      const failed = Number(line?.[1].match(/(\d+) failed/)?.[1] ?? 0)
+      const actual = allMustPass ? total - failed : total
+      results.push({ check: `${id} tests`, site: claimed, actual, ok: actual === claimed && (!allMustPass || failed === 0), note: failed ? `${failed} failing` : '' })
     } catch {
       results.push({ check: `${id} tests passing`, site: claimed, actual: null, ok: false, note: 'suite failed or timed out' })
     }
