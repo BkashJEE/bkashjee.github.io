@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { identity } from '../content/projects'
 import { Magnetic } from '../motion/Magnetic'
+import { BrandMark } from './BrandMark'
 
 const anchors = [
   { id: 'work', label: 'Work' },
-  { id: 'plugins', label: 'Plugins' },
-  { id: 'lab', label: 'Lab' },
+  { id: 'plugins', label: 'Plugins', mobileHidden: true },
+  { id: 'lab', label: 'Lab', mobileHidden: true },
   { id: 'writing', label: 'Writing', mobileHidden: true },
   { id: 'about', label: 'About', mobileHidden: true },
   { id: 'resume', label: 'Resume' },
@@ -46,11 +47,9 @@ export function Nav() {
         scrolled ? 'border-b border-line/70 bg-ink/95' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4" aria-label="Main">
-        <a href="#top" className="shrink-0 font-display text-lg tracking-wide text-fg sm:text-xl">
-          BJ<span className="text-accent">.</span>
-        </a>
-        <div className="flex min-w-0 items-center justify-end gap-0 sm:gap-2">
+      <nav className="mx-auto flex max-w-6xl flex-nowrap items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4" aria-label="Main">
+        <BrandMark href="#top" label="Bikash Joshi — top of page" />
+        <div className="flex min-w-0 flex-nowrap items-center justify-end gap-0 whitespace-nowrap sm:gap-2">
           {anchors.map((a) => (
             <Magnetic key={a.id} strength={4}>
               <a
