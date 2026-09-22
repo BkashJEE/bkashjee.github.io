@@ -54,17 +54,17 @@ function html({ title, description, canonical, image, structuredData, ogType = '
 
 const collectionUrl = `${site}/use-cases/`
 const collectionHtml = html({
-  title: 'Use Cases — Bikash Joshi',
-  description: 'Working software, agent workflows, automations, and experiments documented with tools, implementation details, outcomes, and limitations.',
+  title: 'Playbook — Bikash Joshi',
+  description: 'Recipes that work: what I build with Hermes, Omarchy, and Jev — how each one is wired, what it cost, and where it still falls short.',
   canonical: collectionUrl,
   image: '/assets/og.jpg',
   ogType: 'website',
   structuredData: {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Use Cases',
+    name: 'Playbook',
     url: collectionUrl,
-    description: 'A directory of working software, agent workflows, automations, and experiments by Bikash Joshi.',
+    description: 'Bikash Joshi’s playbook: working recipes for Hermes Agent, the Omarchy desktop, and TypeSafe’s Jev.',
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: entries.length,
