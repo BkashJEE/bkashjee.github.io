@@ -65,7 +65,10 @@ function TopicIcon({ tab, className = 'size-5' }: { tab: MostViewedTab; classNam
 function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
   const label = mostViewedTabs.find((t) => t.id === entry.tab)!.label
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface/70 transition-[border-color,transform,box-shadow] duration-300 hover:border-fg-faint hover:shadow-2xl hover:shadow-black/40 motion-safe:hover:-translate-y-1">
+    <article
+      id={entry.id}
+      className="group relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-xl border border-line bg-surface/70 transition-[border-color,transform,box-shadow] duration-300 [&:target]:border-accent hover:border-fg-faint hover:shadow-2xl hover:shadow-black/40 motion-safe:hover:-translate-y-1"
+    >
       <a href={entry.postUrl} target="_blank" rel="noreferrer" className="flex h-full flex-col focus-visible:outline-none">
         {entry.image && (
           <div className="relative aspect-[16/9] overflow-hidden border-b border-line bg-ink">
@@ -140,6 +143,72 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
         </div>
       )}
     </article>
+  )
+}
+
+/**
+ * First tile of every tab: what the topic is, and the two entries to read
+ * before the rest. The picks jump to the cards further down the same grid.
+ */
+function StartHereCard({ tab }: { tab: MostViewedTab }) {
+  const topic = mostViewedTabs.find((t) => t.id === tab)!
+  const picks = topic.startHere.picks
+    .map((id) => viewedUseCases.find((e) => e.id === id))
+    .filter((e): e is ViewedUseCase => Boolean(e))
+  return (
+    <article className="flex h-full flex-col rounded-xl border border-dashed border-line bg-ink/40 p-5 sm:p-6">
+      <p className="flex items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-fg-faint">
+        <span className={`size-2 shrink-0 rounded-full ${tabDot[tab]}`} aria-hidden="true" />
+        Start here
+      </p>
+      <h3 className="mt-3 flex items-start gap-3 font-display text-[1.45rem] leading-[1.12] tracking-[-0.02em] text-fg sm:text-[1.6rem]">
+        <TopicIcon tab={tab} className="mt-1 size-5 shrink-0" />
+        <span>New to {topic.label}? Read these {picks.length} first</span>
+      </h3>
+      <p className="mt-3 text-[0.95rem] leading-relaxed text-fg-dim">{topic.startHere.lede}</p>
+      <ol className="mt-4 flex-1 space-y-2.5">
+        {picks.map((pick, i) => (
+          <li key={pick.id}>
+            <a href={`#${pick.id}`} className="group/pick flex gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
+              <span className="font-mono text-[0.7rem] leading-5 text-fg-faint">{i + 1}</span>
+              <span className="underline decoration-line underline-offset-4 transition-colors group-hover/pick:decoration-accent">
+                {pick.title}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <a
+        href={topic.startHere.docs.href}
+        target="_blank"
+        rel="noreferrer"
+        className="link-sweep mt-5 border-t border-line pt-3 font-mono text-[0.7rem] text-fg-faint transition-colors hover:text-fg"
+      >
+        {topic.startHere.docs.label} ↗
+      </a>
+    </article>
+  )
+}
+
+/** Closing question for the active tab: a reply is the cheapest way in. */
+function AskStrip({ tab }: { tab: MostViewedTab }) {
+  const topic = mostViewedTabs.find((t) => t.id === tab)!
+  const href = `https://x.com/intent/post?text=${encodeURIComponent(`${topic.ask.prompt} ${audience.handle}`)}`
+  return (
+    <div className="mt-6 flex flex-col gap-4 rounded-xl border border-line bg-surface/50 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div>
+        <h3 className="font-display text-[1.2rem] leading-tight text-fg">{topic.ask.question}</h3>
+        <p className="mt-1.5 text-[0.9rem] leading-relaxed text-fg-dim">Post it at me — I read every reply.</p>
+      </div>
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="shrink-0 rounded-full border border-accent/50 px-5 py-2.5 text-center font-mono text-[0.78rem] text-accent transition-colors hover:bg-accent/10"
+      >
+        Reply on X ↗
+      </a>
+    </div>
   )
 }
 
@@ -260,11 +329,14 @@ export function MostViewed() {
       </p>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <StartHereCard tab={tab} />
         {entries.map((entry, i) => (
           <Card key={entry.id} entry={entry} rank={i + 1} />
         ))}
         <FollowCard />
       </div>
+
+      <AskStrip tab={tab} />
     </section>
   )
 }

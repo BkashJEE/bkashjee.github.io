@@ -3,10 +3,43 @@
 // latest export 22 Sep 2026); each card links to the original post so anyone
 // can check it. Titles and summaries describe what the post actually shows.
 
+// Each tab opens with its own "start here" pick list and closes with its own
+// question, so a newcomer landing on one topic has a first step and a reply to
+// write. `picks` are ids from viewedUseCases below.
 export const mostViewedTabs = [
-  { id: 'hermes', label: 'Hermes', blurb: 'What I build on Nous Research’s Hermes Agent.' },
-  { id: 'omarchy', label: 'Omarchy', blurb: 'Turning the Omarchy/Hyprland desktop into an agent workspace.' },
-  { id: 'jev-hermes', label: 'Jev + Hermes', blurb: 'Giving Hermes a cheap, typed decision layer with TypeSafe’s Jev.' },
+  {
+    id: 'hermes',
+    label: 'Hermes',
+    blurb: 'What I build on Nous Research’s Hermes Agent.',
+    startHere: {
+      lede: 'Hermes Agent is Nous Research’s agent runtime. These are the two people ask for first: where to begin, and the plugin I wrote to spawn and manage bots.',
+      picks: ['hermes-start-somewhere', 'hermes-bot-that-builds-bots'],
+      docs: { label: 'Hermes Agent on GitHub', href: 'https://github.com/NousResearch/hermes-agent' },
+    },
+    ask: { question: 'Built something on Hermes Agent?', prompt: 'Here is what I built on Hermes Agent —' },
+  },
+  {
+    id: 'omarchy',
+    label: 'Omarchy',
+    blurb: 'Turning the Omarchy/Hyprland desktop into an agent workspace.',
+    startHere: {
+      lede: 'Omarchy is an Arch and Hyprland desktop. These two carry the whole idea: bend the desktop around the way you work, then let an agent live inside it.',
+      picks: ['omarchy-own-widgets', 'omarchy-assistant-in-desktop'],
+      docs: { label: 'Omarchy', href: 'https://omarchy.org' },
+    },
+    ask: { question: 'Running agents on your Omarchy desktop?', prompt: 'Here is what I run on my Omarchy desktop —' },
+  },
+  {
+    id: 'jev-hermes',
+    label: 'Jev + Hermes',
+    blurb: 'Giving Hermes a cheap, typed decision layer with TypeSafe’s Jev.',
+    startHere: {
+      lede: 'Jev is TypeSafe’s typed decision layer. Take the walkthrough first, then the one-command setup — together they are the whole path from an API key to an agent that decides.',
+      picks: ['jev-setup-walkthrough', 'jev-connect-skill'],
+      docs: { label: 'TypeSafe docs', href: 'https://docs.typesafe.ai' },
+    },
+    ask: { question: 'Wired a decision layer into your agent?', prompt: 'I wired Jev into my agent like this —' },
+  },
 ] as const
 
 export type MostViewedTab = (typeof mostViewedTabs)[number]['id']
