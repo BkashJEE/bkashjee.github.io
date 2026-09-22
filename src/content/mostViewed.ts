@@ -275,6 +275,22 @@ export const viewedUseCases: ViewedUseCase[] = [
   },
 ]
 
+// Audience totals for the 13 days 10-22 Sep 2026, summed from my X
+// account-overview exports (later exports revise a day upward; the largest
+// figure per day is used). Shown with the date so the claim stays checkable.
+export const audience = {
+  from: '2026-09-10',
+  to: '2026-09-22',
+  days: 13,
+  impressions: 890219,
+  bookmarks: 5818,
+  likes: 4375,
+  newFollows: 887,
+  posts: 27,
+  profileUrl: 'https://x.com/BkashJosi',
+  handle: '@BkashJosi',
+}
+
 export const viewedProvenance = {
   source: 'my X analytics export',
   exported: '2026-09-22',

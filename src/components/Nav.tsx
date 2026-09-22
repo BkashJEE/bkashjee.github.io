@@ -73,7 +73,7 @@ export function Nav() {
             href="/use-cases/"
             className="rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal text-fg-dim transition-colors hover:text-fg sm:px-3 sm:text-[0.8rem] sm:tracking-wide"
           >
-            Cases
+            Playbook
           </a>
           <a
             href="/archive/"

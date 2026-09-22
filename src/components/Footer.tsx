@@ -56,7 +56,7 @@ export function Footer() {
               Resume
             </a>
             <a href="/use-cases/" className="link-sweep hover:text-fg">
-              Use cases
+              Playbook
             </a>
           </div>
           <div className="mt-12 space-y-2 border-t border-line pt-6 font-mono text-[0.75rem] text-fg-faint">

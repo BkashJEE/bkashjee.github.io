@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { mostViewedTabs, viewedProvenance, viewedUseCases, type MostViewedTab, type ViewedUseCase } from '../../content/mostViewed'
+import { audience, mostViewedTabs, viewedProvenance, viewedUseCases, type MostViewedTab, type ViewedUseCase } from '../../content/mostViewed'
 
 const compact = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : String(n))
 const prettyDate = (iso: string) =>
@@ -80,6 +80,32 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
   )
 }
 
+/** Closing tile: the next entry is the reason to follow. */
+function FollowCard() {
+  return (
+    <a
+      href={audience.profileUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="group flex h-full flex-col justify-between rounded-2xl border border-accent/40 bg-gradient-to-br from-accent/12 via-transparent to-transparent p-6 transition-[border-color,transform] duration-300 hover:border-accent motion-safe:hover:-translate-y-1.5"
+    >
+      <div>
+        <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-accent">Next entry</p>
+        <h3 className="mt-3 font-display text-[1.35rem] leading-snug text-fg">
+          I post each one as I build it. {audience.posts} went out in the last {audience.days} days.
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-fg-dim">
+          Follow {audience.handle} and the next recipe — agents, desktop, or Jev — shows up in your feed before it lands here.
+        </p>
+      </div>
+      <p className="mt-6 inline-flex items-center gap-2 font-mono text-[0.8rem] text-accent">
+        Follow on X
+        <span aria-hidden="true" className="transition-transform duration-300 motion-safe:group-hover:translate-x-1">→</span>
+      </p>
+    </a>
+  )
+}
+
 export function MostViewed() {
   const [tab, setTab] = useState<MostViewedTab>('jev-hermes')
   const entries = viewedUseCases.filter((e) => e.tab === tab).sort((a, b) => b.impressions - a.impressions)
@@ -110,6 +136,32 @@ export function MostViewed() {
       </div>
 
       <p className="mt-5 max-w-2xl leading-relaxed text-fg-dim">{active.blurb}</p>
+
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-xl border border-line bg-ink/60 px-5 py-4">
+        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+          {[
+            [compact(audience.impressions), 'views'],
+            [audience.bookmarks.toLocaleString('en-GB'), 'saves'],
+            [audience.newFollows.toLocaleString('en-GB'), 'new followers'],
+          ].map(([value, label]) => (
+            <span key={label} className="flex items-baseline gap-1.5">
+              <strong className="font-display text-[1.4rem] leading-none text-fg">{value}</strong>
+              <span className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">{label}</span>
+            </span>
+          ))}
+          <span className="font-mono text-[0.7rem] text-fg-faint">
+            in {audience.days} days, to {prettyDate(audience.to)}
+          </span>
+        </div>
+        <a
+          href={audience.profileUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="ml-auto rounded-full bg-accent px-5 py-2.5 font-mono text-[0.8rem] font-medium text-ink transition-opacity hover:opacity-90"
+        >
+          Follow {audience.handle}
+        </a>
+      </div>
       <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
         Ranked by X impressions · {compact(total)} views across these {entries.length} · {viewedProvenance.source}, exported{' '}
         {prettyDate(viewedProvenance.exported)}
@@ -119,6 +171,7 @@ export function MostViewed() {
         {entries.map((entry, i) => (
           <Card key={entry.id} entry={entry} rank={i + 1} />
         ))}
+        <FollowCard />
       </div>
     </section>
   )

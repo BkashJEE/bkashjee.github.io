@@ -9,7 +9,7 @@ function NotFound() {
       <p className="font-mono text-xs uppercase tracking-[0.24em] text-accent">404 · Use case not found</p>
       <h1 className="mt-5 font-display text-5xl text-fg">That case study is not in the collection.</h1>
       <a href="/use-cases/" className="mt-8 w-fit rounded-full border border-line px-5 py-2.5 font-mono text-sm text-fg transition-colors hover:border-accent hover:text-accent">
-        Browse all use cases
+        Browse the playbook
       </a>
     </main>
   )
