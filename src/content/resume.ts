@@ -12,7 +12,7 @@ export const resume = {
     site: 'bkashjee.github.io',
   },
   summary:
-    'Independent software engineer shipping desktop apps, AI agent plugins, and TypeScript websites. Publish open-source tools, use my own apps for recording and content planning, and contribute upstream pull requests.',
+    'Independent software engineer shipping desktop apps, AI agent plugins, and TypeScript websites; publishes open-source tools and contributes upstream to NousResearch’s Hermes Agent, whose official plugin catalog includes Bot Forge.',
   projects: [
     {
       name: 'ScreenPolish',
@@ -20,9 +20,9 @@ export const resume = {
       dates: 'Sep 2026 - present',
       note: 'source private',
       bullets: [
-        'Built a local screen recorder for my demos and videos; 41 recordings in my library, with auto-zoom and MP4/GIF export.',
+        'Built a local screen recorder used for personal demos and videos; 41 recordings in the library, with auto-zoom and MP4/GIF export.',
         'Shipped 3 formats (Windows installer, AppImage, pacman); Wayland capture uses PipeWire/portals, Hyprland IPC, and evdev clicks.',
-        'Shared one renderer for preview and export; 575 tests pass. Built a JSON-output CLI for agent workflows.',
+        'Shared one renderer for preview and export; 732 tests pass. Built a JSON-output CLI for agent workflows.',
       ],
       tech: 'Electron · React 19 · TypeScript · WebCodecs · FFmpeg · Vitest',
     },
@@ -32,8 +32,8 @@ export const resume = {
       dates: 'Sep 2026 - present',
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
-        'Published a Hermes Agent plugin with 25 GitHub stars: creates bots with identity, memory, tools, routines, and a gateway.',
-        'Verify every provisioning step and roll back the bot if a step fails; install directly from GitHub with 1 command.',
+        'Published a Hermes Agent plugin (29 GitHub stars, 3 releases in 3 days) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.',
+        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; merged the maintainer’s 3 hardening fixes and shipped v0.4.1 with 44 tests passing.',
       ],
       tech: 'Python · pytest · systemd',
     },
@@ -43,8 +43,8 @@ export const resume = {
       dates: 'Sep 2026 - present',
       note: 'source private',
       bullets: [
-        'Use my content planner for 1 X account (@BkashJosi), with a daily 8am audit and owner review; I am its sole user.',
-        'Implemented Supabase row-level security, SQLite fallback, and video-host allowlists; 581 automated tests pass.',
+        'Built 13 screens (Today, pipeline, calendar, analytics) used daily for the @BkashJosi X account, with an 8am audit and owner review.',
+        'Implemented Supabase row-level security, SQLite fallback, and video-host allowlists; 592 automated tests.',
       ],
       tech: 'Next.js · TypeScript · Supabase · SQLite · zod · Vitest',
     },
@@ -60,14 +60,14 @@ export const resume = {
     },
   ],
   published: [
-    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: 42, note: 'native Hermes Desktop dock: profile chat, concurrent jobs, Kanban assignment (Python)' },
+    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: 42, note: 'Hermes Desktop dock for direct profile chat and Kanban assignment; 3 forks (Python)' },
+    { name: 'Hermes Skills Library', stars: 3, note: 'community Skills & Plugins library for Hermes Desktop, with CI (JavaScript)' },
     { name: 'Repo Shelf', stars: 17, note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
-    { name: 'Codex Usage Meter', stars: 4, note: 'privacy-first usage meter with verified updates (Python)' },
   ],
   openSource:
-    '14 open pull requests to NousResearch/hermes-agent; none merged yet. Proposed performance and reliability fixes for idle decode looping (#113268) and peer-less broadcasts to stdout (#113249), plus a global desktop HUD (#101951).',
+    '1 merged and 13 open pull requests to NousResearch/hermes-agent: #114057 added Bot Forge to the official plugin catalog; open work includes an idle-CPU performance fix (#113268). Started Hermes Mobile, an open community project (early preview).',
   writing:
-    'Post about building with AI agents on X as @BkashJosi (x.com/BkashJosi).',
+    'Writes about building with AI agents on X as @BkashJosi (x.com/BkashJosi).',
   skills: [
     { label: 'Languages', value: 'TypeScript, JavaScript, Python, Swift, SQL, QML/Qt, Bash' },
     { label: 'Web', value: 'React 19, Next.js, Tailwind CSS, Vite, Supabase' },

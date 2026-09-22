@@ -1,6 +1,54 @@
 {
-  "fetched": "2026-09-19",
+  "fetched": "2026-09-22",
   "repos": [
+    {
+      "name": "hermes-skills-library",
+      "description": "Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.",
+      "url": "https://github.com/BkashJEE/hermes-skills-library",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "desktop-plugin",
+        "hermes-agent",
+        "javascript",
+        "open-source",
+        "plugins",
+        "python",
+        "skills"
+      ],
+      "stars": 3,
+      "created": "2026-09-21",
+      "pushed": "2026-09-21"
+    },
+    {
+      "name": "omarchy-workspace-tabs",
+      "description": "Generic workspace tabs for the Omarchy bar",
+      "url": "https://github.com/BkashJEE/omarchy-workspace-tabs",
+      "homepage": null,
+      "language": "QML",
+      "topics": [
+        "hyprland",
+        "linux",
+        "omarchy",
+        "quickshell",
+        "workspace"
+      ],
+      "stars": 0,
+      "created": "2026-09-20",
+      "pushed": "2026-09-21"
+    },
+    {
+      "name": "hermes-mobile",
+      "description": "An independent, open-source Hermes Mobile community project. Shared code, shared credit, built in public.",
+      "url": "https://github.com/BkashJEE/hermes-mobile",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "created": "2026-09-20",
+      "pushed": "2026-09-21"
+    },
     {
       "name": "bkashjee.github.io",
       "description": "",
@@ -10,7 +58,7 @@
       "topics": [],
       "stars": 0,
       "created": "2026-09-17",
-      "pushed": "2026-09-18"
+      "pushed": "2026-09-20"
     },
     {
       "name": "hermes-bot-forge",
@@ -25,9 +73,9 @@
         "multi-agent",
         "nous-research"
       ],
-      "stars": 24,
+      "stars": 29,
       "created": "2026-09-17",
-      "pushed": "2026-09-17"
+      "pushed": "2026-09-20"
     },
     {
       "name": "hermes-skills",
@@ -36,7 +84,7 @@
       "homepage": null,
       "language": null,
       "topics": [],
-      "stars": 1,
+      "stars": 2,
       "created": "2026-09-11",
       "pushed": "2026-09-11"
     },
@@ -122,9 +170,9 @@
       "opened": "2026-09-16",
       "state": "open"
     },
-    "114003": {
+    "114057": {
       "opened": "2026-09-17",
-      "state": "open"
+      "state": "merged"
     }
   }
 }

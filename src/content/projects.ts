@@ -43,7 +43,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Electron', 'React 19', 'TypeScript', 'Tailwind 4', 'WebCodecs', 'FFmpeg', 'Hyprland IPC', 'PipeWire'],
     glow: 'amber',
-    stat: '575 tests passing · verified Sep 2026',
+    stat: '732 tests passing · verified Sep 2026',
     video: {
       mp4: '/assets/video/screenpolish-demo.mp4',
       webm: '/assets/video/screenpolish-demo.webm',
@@ -80,10 +80,11 @@ export const caseStudies: CaseStudy[] = [
     tagline: 'One sentence in, a complete working bot out.',
     description: [
       'Setting up a new AI agent bot by hand means writing its personality file, seeding its memory, choosing its tools, scheduling its routines, and running a background service for it. Bot Forge does all of that from one sentence. Say “make me a bot that writes X posts and threads” and you get a working bot: a generated name and avatar, a purpose-written SOUL.md, seeded memory, tools and skills, optional scheduled routines, and a gateway service that starts on login (on Linux and macOS).',
-      'I built it as an open-source plugin for Nous Research’s Hermes Agent, and I designed it around failure: every step is checked as it runs, and if one fails I roll the whole bot back, so nobody is left with a half-configured agent. It installs with a single command.',
+      'I built it as an open-source plugin for Nous Research’s Hermes Agent, and I designed it around failure: every step is checked as it runs, and if one fails I roll the whole bot back, so nobody is left with a half-configured agent. It passed a NousResearch maintainer’s security review and is now in Hermes Agent’s official plugin catalog, and it installs with a single command.',
     ],
     tech: ['Python', 'Hermes Agent', 'plugin.yaml', 'systemd', 'pytest'],
     glow: 'violet',
+    stat: '44 tests passing · in the official Hermes plugin catalog · verified Sep 2026',
     images: [
       {
         src: '/assets/work/botforge-banner.webp',
@@ -138,7 +139,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Next.js', 'TypeScript', 'Supabase', 'RLS', 'SQLite', 'zod'],
     glow: 'teal',
-    stat: '581 tests passing · verified Sep 2026',
+    stat: '592 automated tests · checked Sep 2026',
     flow: {
       steps: ['research', 'draft', 'verify', 'owner review', 'publish'],
       note: 'Named agent profiles hand work forward with receipts at every step.',
@@ -234,7 +235,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 24,
+    stars: 29,
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -249,18 +250,25 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Skills Hub',
     repo: 'https://github.com/BkashJEE/hermes-skills',
-    stars: 1,
+    stars: 2,
     line: 'A public tap of reusable skills for Hermes Agent.',
     lang: 'Skills',
     install: 'hermes skills tap add BkashJEE/hermes-skills',
   },
+  {
+    name: 'Hermes Skills Library',
+    repo: 'https://github.com/BkashJEE/hermes-skills-library',
+    stars: 3,
+    line: 'Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.',
+    lang: 'JavaScript',
+  },
 ]
 
-// Real, open PRs to NousResearch/hermes-agent (verified 2026-09-17).
+// PRs to NousResearch/hermes-agent; open/merged state is refreshed from GitHub at every build.
 export const upstreamPRs: { number: number; title: string }[] = [
+  { number: 114057, title: 'feat(plugin-catalog): add bot-forge' },
   { number: 113268, title: 'perf(desktop): stop the empty-pane HERMES decode from looping forever at idle' },
   { number: 113249, title: "fix(tui_gateway): don't print peer-less global broadcasts to stdout in WS backends" },
-  { number: 114003, title: 'feat(desktop): compact skill and plugin flashcards with raised icons' },
   { number: 113209, title: 'fix(profiles): reject a directory or non-archive file on import instead of crashing' },
   { number: 101951, title: 'feat(desktop): summon the HUD globally and dismiss with Escape' },
 ]
@@ -277,7 +285,7 @@ export const skillGroups: { title: string; items: string[] }[] = [
 
 export const aboutParagraphs: string[] = [
   'I’m an independent software engineer. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
-  'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with fifteen open pull requests to NousResearch/hermes-agent, and I share what I learn about building with AI agents.',
+  'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with one merged and thirteen open pull requests to NousResearch/hermes-agent — the merged one put Bot Forge in its official plugin catalog — and I share what I learn about building with AI agents.',
 ]
 
 // Private projects listed in the archive next to the public repos.
@@ -288,7 +296,7 @@ export const archiveExtras = [
 
 // Last full run of `npm run typesafe:audit`.
 export const factCheck = {
-  date: '2026-09-18',
+  date: '2026-09-22',
   claims: 32,
   model: 'Jev 1.13',
   claimsUrl: 'https://github.com/BkashJEE/bkashjee.github.io/blob/main/typesafe/claims.json',
