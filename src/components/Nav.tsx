@@ -49,34 +49,27 @@ export function Nav() {
     >
       <nav className="mx-auto flex max-w-6xl flex-nowrap items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4" aria-label="Main">
         <BrandMark href="#top" label="Bikash Joshi — top of page" />
-        <div className="flex min-w-0 flex-nowrap items-center justify-end gap-0 whitespace-nowrap sm:gap-2">
+        <div className="flex min-w-0 flex-nowrap items-center justify-end gap-0 whitespace-nowrap lg:gap-1">
           {anchors.map((a) => (
             <Magnetic key={a.id} strength={4}>
               <a
                 href={`#${a.id}`}
-                className={`relative rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal transition-colors sm:px-3 sm:text-[0.8rem] sm:tracking-wide ${a.mobileHidden ? 'hidden sm:block' : ''} ${
-                  active === a.id ? 'text-accent' : 'text-fg-dim hover:text-fg'
-                }`}
+                aria-current={active === a.id ? 'location' : undefined}
+                className={`nav-link ${a.mobileHidden ? 'hidden lg:inline-flex' : 'inline-flex'} ${active === a.id ? 'nav-link-active' : ''}`}
               >
                 {a.label}
-                <span
-                  aria-hidden="true"
-                  className={`absolute inset-x-1.5 -bottom-0.5 h-px bg-accent transition-transform duration-300 sm:inset-x-3 ${
-                    active === a.id ? 'scale-x-100' : 'scale-x-0'
-                  }`}
-                />
               </a>
             </Magnetic>
           ))}
           <a
             href="/use-cases/"
-            className="rounded px-1.5 py-1 font-mono text-[0.68rem] tracking-normal text-fg-dim transition-colors hover:text-fg sm:px-3 sm:text-[0.8rem] sm:tracking-wide"
+            className="nav-link inline-flex"
           >
             Playbook
           </a>
           <a
             href="/archive/"
-            className="hidden rounded px-2 py-1 font-mono text-[0.8rem] tracking-wide text-fg-dim transition-colors hover:text-fg md:block sm:px-3"
+            className="nav-link hidden lg:inline-flex"
           >
             Archive
           </a>
