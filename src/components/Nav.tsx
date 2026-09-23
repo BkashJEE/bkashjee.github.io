@@ -9,7 +9,6 @@ const anchors = [
   { id: 'lab', label: 'Lab', mobileHidden: true },
   { id: 'writing', label: 'Writing', mobileHidden: true },
   { id: 'about', label: 'About', mobileHidden: true },
-  { id: 'resume', label: 'Resume' },
 ]
 
 export function Nav() {
