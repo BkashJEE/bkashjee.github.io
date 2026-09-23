@@ -34,6 +34,12 @@ const tabDot: Record<MostViewedTab, string> = {
   'jev-hermes': 'bg-teal',
 }
 
+const tabTopEdge: Record<MostViewedTab, string> = {
+  hermes: 'border-t-violet/70',
+  omarchy: 'border-t-accent/70',
+  'jev-hermes': 'border-t-teal/70',
+}
+
 const tabIconColor: Record<MostViewedTab, string> = {
   hermes: 'text-violet',
   omarchy: 'text-accent',
@@ -57,6 +63,34 @@ function TopicIcon({ tab, className = 'size-5' }: { tab: MostViewedTab; classNam
   )
 }
 
+/** Eye and bookmark glyphs, same 24px grid and 1.5px stroke as the topic icons. */
+const metricIcon = {
+  views: (
+    <>
+      <path d="M2.5 12S5.8 5.8 12 5.8 21.5 12 21.5 12 18.2 18.2 12 18.2 2.5 12 2.5 12Z" />
+      <circle cx="12" cy="12" r="2.8" />
+    </>
+  ),
+  saves: <path d="M6.5 3.8h11a1 1 0 0 1 1 1v15.4l-6.5-4-6.5 4V4.8a1 1 0 0 1 1-1Z" />,
+} as const
+
+function MetricIcon({ kind }: { kind: keyof typeof metricIcon }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="size-3.5 shrink-0"
+      aria-hidden="true"
+    >
+      {metricIcon[kind]}
+    </svg>
+  )
+}
+
 /**
  * A flashcard that leads with its topic icon and title. Media (or a quiet
  * gradient panel) sits above; the reach numbers stay small in the footer.
@@ -67,81 +101,97 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
   return (
     <article
       id={entry.id}
-      className="group relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-xl border border-line bg-surface/70 transition-[border-color,transform,box-shadow] duration-300 [&:target]:border-accent hover:border-fg-faint hover:shadow-2xl hover:shadow-black/40 motion-safe:hover:-translate-y-1"
+      className={`group relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-xl border border-t-2 border-line ${tabTopEdge[entry.tab]} bg-surface/70 transition-[border-color,transform,box-shadow] duration-300 [&:target]:border-accent hover:shadow-2xl hover:shadow-black/40 motion-safe:hover:-translate-y-1`}
     >
-      <a href={entry.postUrl} target="_blank" rel="noreferrer" className="flex h-full flex-col focus-visible:outline-none">
-        {entry.image && (
-          <div className="relative aspect-[16/9] overflow-hidden border-b border-line bg-ink">
-            <img
-              src={entry.image.src}
-              width={entry.image.width}
-              height={entry.image.height}
-              alt={entry.image.alt}
-              loading="lazy"
-              className="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.04]"
-            />
-            {/* Hover preview: the post's own opening words slide up over the media. */}
-            <div className="absolute inset-0 flex translate-y-full flex-col justify-end bg-ink/94 p-5 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:hidden">
-              <p className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-fg">“{entry.postText}”</p>
-              <p className="mt-3 font-mono text-[0.7rem] text-accent">Read it on X ↗</p>
-            </div>
+      {entry.image && (
+        <a href={entry.postUrl} target="_blank" rel="noreferrer" className="relative block aspect-[16/9] overflow-hidden border-b border-line bg-ink">
+          <img
+            src={entry.image.src}
+            width={entry.image.width}
+            height={entry.image.height}
+            alt={entry.image.alt}
+            loading="lazy"
+            className="size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.04]"
+          />
+          {/* Hover preview: the post's own opening words slide up over the media. */}
+          <div className="absolute inset-0 flex translate-y-full flex-col justify-end bg-ink/94 p-5 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:hidden">
+            <p className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
+            <p className="mt-2 text-[0.9rem] leading-relaxed text-fg">“{entry.postText}”</p>
           </div>
+        </a>
+      )}
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        {/* Rank left, topic right — the header split from the reference card. */}
+        <div className={`flex items-center justify-between gap-3 font-mono text-[0.68rem] ${tabIconColor[entry.tab]}`}>
+          <span>#{rank}</span>
+          <span className="uppercase tracking-[0.14em]">{label}</span>
+        </div>
+
+        <h3 className="mt-3 flex items-start gap-3 font-display text-[1.45rem] leading-[1.12] tracking-[-0.02em] text-fg sm:text-[1.6rem]">
+          <TopicIcon tab={entry.tab} className="mt-1 size-5 shrink-0" />
+          <a href={entry.postUrl} target="_blank" rel="noreferrer" className="transition-colors hover:text-accent focus-visible:outline-offset-4">
+            {entry.title}
+          </a>
+        </h3>
+
+        <div className="mt-3 flex flex-1 gap-2.5 text-[0.95rem] leading-relaxed text-fg-dim">
+          <span className={`${tabIconColor[entry.tab]} select-none leading-relaxed`} aria-hidden="true">
+            •
+          </span>
+          <p>{entry.summary}</p>
+        </div>
+
+        {!entry.image && (
+          <p className="mt-4 line-clamp-3 border-l-2 border-line pl-3 text-[0.85rem] leading-relaxed text-fg-faint transition-colors group-hover:border-accent/60 group-hover:text-fg-dim">
+            “{entry.postText}”
+          </p>
         )}
 
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
-          {/* Dot + mono label, the header style from my ScreenPolish audit cards. */}
-          <p className="flex flex-wrap items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-fg-faint">
-            <span className={`size-2 shrink-0 rounded-full ${tabDot[entry.tab]}`} aria-hidden="true" />
-            {label}
-            <span aria-hidden="true">·</span>
-            <span>{prettyDate(entry.date)}</span>
-            <span aria-hidden="true">·</span>
-            <span>#{rank}</span>
-          </p>
-
-          <h3 className="mt-3 flex items-start gap-3 font-display text-[1.45rem] leading-[1.12] tracking-[-0.02em] text-fg transition-colors group-hover:text-accent sm:text-[1.6rem]">
-            <TopicIcon tab={entry.tab} className="mt-1 size-5 shrink-0" />
-            <span>{entry.title}</span>
-          </h3>
-
-          <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-fg-dim">{entry.summary}</p>
-
-          {!entry.image && (
-            <p className="mt-4 border-l-2 border-line pl-3 text-[0.85rem] leading-relaxed text-fg-faint transition-colors group-hover:border-accent/60 group-hover:text-fg-dim">
-              “{entry.postText}”
-            </p>
-          )}
-
-          <dl className="mt-5 flex flex-wrap items-baseline gap-x-5 gap-y-1 border-t border-line pt-3 font-mono text-[0.68rem] text-fg-faint">
-            <div className="flex items-baseline gap-1.5">
-              <dt className="sr-only">Views</dt>
-              <dd className="text-fg-dim">{compact(entry.impressions)}</dd>
-              <dt aria-hidden="true">views</dt>
+        {/* Figures, labelled and in full — no rounding to hide behind. */}
+        <dl className="mt-5 flex gap-8 border-t border-line pt-4">
+          {([
+            ['views', 'Views', entry.impressions],
+            ['saves', 'Saves', entry.bookmarks],
+          ] as const).map(([kind, label, value]) => (
+            <div key={kind}>
+              <dt className="flex items-center gap-1.5 font-mono text-[0.68rem] text-fg-faint">
+                <MetricIcon kind={kind} />
+                {label}
+              </dt>
+              <dd className="mt-1 font-display text-[1.3rem] leading-none tracking-tight text-fg">
+                {value.toLocaleString('en-GB')}
+              </dd>
             </div>
-            <div className="flex items-baseline gap-1.5">
-              <dt className="sr-only">Saves</dt>
-              <dd className="text-fg-dim">{entry.bookmarks}</dd>
-              <dt aria-hidden="true">saves</dt>
-            </div>
-            <span className="ml-auto text-accent opacity-0 transition-opacity group-hover:opacity-100">Read on X ↗</span>
-          </dl>
-        </div>
-      </a>
-      {(entry.projectHref || entry.repoUrl) && (
-        <div className="flex gap-4 border-t border-line px-5 py-3 font-mono text-[0.7rem] sm:px-6">
+          ))}
+        </dl>
+        <p className="mt-3 font-mono text-[0.68rem] text-fg-faint">X post · {prettyDate(entry.date)}</p>
+
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.72rem]">
+          <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep text-accent">
+            Read on X
+          </a>
           {entry.projectHref && (
-            <a href={entry.projectHref} className="link-sweep text-accent">
+            <a href={entry.projectHref} className="link-sweep text-fg-dim hover:text-fg">
               See the project
             </a>
           )}
           {entry.repoUrl && (
             <a href={entry.repoUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
-              Source ↗
+              Source
             </a>
           )}
+          <a
+            href={entry.postUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open the post: ${entry.title}`}
+            className="ml-auto text-accent transition-transform duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
+          >
+            ↗
+          </a>
         </div>
-      )}
+      </div>
     </article>
   )
 }
