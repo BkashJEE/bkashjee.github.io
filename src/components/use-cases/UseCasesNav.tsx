@@ -8,7 +8,6 @@ export function UseCasesNav() {
         <div className="flex items-center gap-5 font-mono text-xs tracking-wide text-fg-dim sm:gap-7 sm:text-sm">
           <a href="/" className="transition-colors hover:text-fg">Home</a>
           <a href="/use-cases/" aria-current="page" className="text-accent">Playbook</a>
-          <a href="/resume/" className="transition-colors hover:text-fg">Resume</a>
         </div>
       </nav>
     </header>
