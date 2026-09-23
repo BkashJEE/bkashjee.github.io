@@ -246,9 +246,12 @@ function AskStrip({ tab }: { tab: MostViewedTab }) {
   const href = `https://x.com/intent/post?text=${encodeURIComponent(`${topic.ask.prompt} ${audience.handle}`)}`
   return (
     <div className="mt-6 flex flex-col gap-4 rounded-xl border border-line bg-surface/50 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-      <div>
+      <div className="max-w-2xl">
         <h3 className="font-display text-[1.2rem] leading-tight text-fg">{topic.ask.question}</h3>
-        <p className="mt-1.5 text-[0.9rem] leading-relaxed text-fg-dim">Post it at me — I read every reply.</p>
+        <p className="mt-1.5 text-[0.9rem] leading-relaxed text-fg-dim">
+          Post it at me — I read every reply. I publish each entry as I build it: {audience.posts} went out in
+          the last {audience.days} days.
+        </p>
       </div>
       <a
         href={href}
@@ -259,32 +262,6 @@ function AskStrip({ tab }: { tab: MostViewedTab }) {
         Reply on X ↗
       </a>
     </div>
-  )
-}
-
-/** Closing tile: the next entry is the reason to follow. */
-function FollowCard() {
-  return (
-    <a
-      href={audience.profileUrl}
-      target="_blank"
-      rel="noreferrer"
-      className="group flex h-full flex-col justify-between rounded-2xl border border-accent/40 bg-gradient-to-br from-accent/12 via-transparent to-transparent p-6 transition-[border-color,transform] duration-300 hover:border-accent motion-safe:hover:-translate-y-1.5"
-    >
-      <div>
-        <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-accent">Next entry</p>
-        <h3 className="mt-3 font-display text-[1.3rem] leading-tight text-fg">
-          I post each one as I build it. {audience.posts} went out in the last {audience.days} days.
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-fg-dim">
-          Follow {audience.handle} and the next recipe — agents, desktop, or Jev — shows up in your feed before it lands here.
-        </p>
-      </div>
-      <p className="mt-6 inline-flex items-center gap-2 font-mono text-[0.8rem] text-accent">
-        Follow on X
-        <span aria-hidden="true" className="transition-transform duration-300 motion-safe:group-hover:translate-x-1">→</span>
-      </p>
-    </a>
   )
 }
 
@@ -383,7 +360,6 @@ export function MostViewed() {
         {entries.map((entry, i) => (
           <Card key={entry.id} entry={entry} rank={i + 1} />
         ))}
-        <FollowCard />
       </div>
 
       <AskStrip tab={tab} />
