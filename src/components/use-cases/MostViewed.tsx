@@ -333,8 +333,8 @@ export function MostViewed() {
             [audience.newFollows.toLocaleString('en-GB'), 'new followers'],
           ].map(([value, label]) => (
             <span key={label} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1.5">
-              <strong className="font-display text-[1.25rem] leading-none text-fg sm:text-[1.4rem]">{value}</strong>
-              <span className="font-mono text-[0.64rem] uppercase tracking-wider text-fg-faint sm:text-[0.72rem]">{label}</span>
+              <strong className="font-sans text-[1.45rem] font-semibold leading-none tracking-[-0.04em] text-fg tabular-nums">{value}</strong>
+              <span className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.06em] text-fg-dim sm:text-[0.72rem]">{label}</span>
             </span>
           ))}
           <span className="col-span-3 font-mono text-[0.7rem] text-fg-faint sm:col-span-1">
