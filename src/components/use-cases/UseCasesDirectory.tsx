@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { MostViewed } from './MostViewed'
+import { PlaybookNetwork } from './PlaybookNetwork'
 import { UseCaseCard } from './UseCaseCard'
 import { categoryLabel, useCaseCategories, useCases, type UseCaseCategory } from '../../content/useCases'
 
@@ -55,9 +56,10 @@ export function UseCasesDirectory() {
 
   return (
     <main id="main" className="pb-24 pt-20">
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="relative isolate overflow-hidden border-b border-line">
         <div className="ambient absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <PlaybookNetwork />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">New entries as I build them</p>
           <div className="mt-6 grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div className="max-w-4xl">
