@@ -155,17 +155,17 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
             ['saves', 'Saves', entry.bookmarks],
           ] as const).map(([kind, label, value]) => (
             <div key={kind}>
-              <dt className="flex items-center gap-1.5 font-mono text-[0.68rem] text-fg-faint">
+              <dt className="flex items-center gap-1.5 font-sans text-xs font-medium tracking-[0.01em] text-fg-dim">
                 <MetricIcon kind={kind} />
                 {label}
               </dt>
-              <dd className="mt-1 font-display text-[1.3rem] leading-none tracking-tight text-fg">
+              <dd className="mt-1.5 font-sans text-[1.45rem] font-semibold leading-none tracking-[-0.04em] text-fg tabular-nums">
                 {value.toLocaleString('en-GB')}
               </dd>
             </div>
           ))}
         </dl>
-        <p className="mt-3 font-mono text-[0.68rem] text-fg-faint">X post · {prettyDate(entry.date)}</p>
+        <p className="mt-3 font-mono text-[0.7rem] text-fg-dim">X post · {prettyDate(entry.date)}</p>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.72rem]">
           <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep text-accent">
