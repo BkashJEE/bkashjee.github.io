@@ -99,8 +99,11 @@ function PrMeta({ number }: { number: number }) {
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = useStars(plugin.repo, plugin.stars)
   return (
-    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1 font-mono text-[0.72rem] text-fg-dim" title={`${stars} GitHub stars (live)`}>
-      <span className="text-accent" aria-hidden="true">★</span> {stars}
+    <span className="inline-flex shrink-0 flex-col items-end gap-1" title={`${stars} GitHub stars (live)`} aria-label={`${stars} GitHub stars`}>
+      <span className="flex items-center gap-1.5 font-sans text-lg font-semibold leading-none text-fg tabular-nums">
+        <span className="text-accent" aria-hidden="true">★</span>{stars}
+      </span>
+      <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-fg-dim" aria-hidden="true">GitHub stars</span>
     </span>
   )
 }
