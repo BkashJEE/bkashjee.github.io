@@ -66,7 +66,7 @@ function PluginIcon({ name }: { name: string }) {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="mb-3 text-accent"
+      className="text-accent"
       aria-hidden="true"
     >
       {icon}
@@ -99,8 +99,8 @@ function PrMeta({ number }: { number: number }) {
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = useStars(plugin.repo, plugin.stars)
   return (
-    <span className="shrink-0 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
-      ★ {stars}
+    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1 font-mono text-[0.72rem] text-fg-dim" title={`${stars} GitHub stars (live)`}>
+      <span className="text-accent" aria-hidden="true">★</span> {stars}
     </span>
   )
 }
@@ -120,13 +120,14 @@ function InstallCommand({ command }: { command: string }) {
     <button
       type="button"
       onClick={copy}
-      title="Copy install command"
-      className="group/cmd mt-4 flex w-full items-center gap-2 overflow-x-auto rounded-md border border-line bg-ink px-3 py-2 text-left font-mono text-[0.72rem] text-fg-dim transition-colors hover:border-accent/60"
+      aria-label={`Copy install command: ${command}`}
+      title={command}
+      className="group/cmd mt-5 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2.5 text-left font-mono text-[0.72rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
     >
-      <span className="select-none text-accent">$</span>
-      <span className="whitespace-nowrap">{command}</span>
-      <span className="ml-auto shrink-0 select-none text-fg-faint group-hover/cmd:text-accent">
-        {copied ? '✓ copied' : 'copy'}
+      <span className="shrink-0 select-none text-accent" aria-hidden="true">$</span>
+      <span className="min-w-0 flex-1 truncate">{command}</span>
+      <span className="shrink-0 border-l border-line pl-2 font-medium text-accent" aria-live="polite">
+        {copied ? 'Copied' : 'Copy'}
       </span>
     </button>
   )
@@ -145,22 +146,24 @@ export function Plugins() {
           ★ counts fetched live from GitHub · fallback checked Sep 2026
         </p>
       </Reveal>
-      <div className="mx-auto mt-12 grid max-w-6xl gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
         {plugins.map((plugin, i) => (
           <Reveal key={plugin.name} delay={0.05 * (i % 3)}>
-            <article className="flex h-full flex-col rounded-xl border border-line bg-ink p-5 transition-[border-color,transform] duration-300 hover:border-fg-faint motion-safe:hover:-translate-y-1">
-              <PluginIcon name={plugin.name} />
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-xl">{plugin.name}</h3>
+            <article className="group/card flex h-full min-h-64 min-w-0 flex-col rounded-2xl border border-line bg-ink p-6 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:border-accent/35 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/15 focus-within:border-accent/35 motion-safe:hover:-translate-y-1">
+              <div className="flex items-start justify-between gap-3">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent/8">
+                  <PluginIcon name={plugin.name} />
+                </span>
                 <StarCount plugin={plugin} />
               </div>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-fg-dim">{plugin.line}</p>
+              <h3 className="mt-5 font-display text-xl leading-snug text-fg">{plugin.name}</h3>
+              <p className="mt-2 flex-1 text-[0.93rem] leading-6 text-fg-dim">{plugin.line}</p>
               {plugin.install && <InstallCommand command={plugin.install} />}
-              <div className="mt-4 flex items-center justify-between font-mono text-[0.72rem]">
-                <a href={plugin.repo} target="_blank" rel="noreferrer" className="link-sweep text-accent">
-                  View source ↗
+              <div className="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4 font-mono text-[0.72rem]">
+                <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent transition-colors hover:text-fg">
+                  View source <span aria-hidden="true" className="transition-transform group-hover/card:translate-x-0.5">↗</span>
                 </a>
-                <span className="uppercase tracking-wider text-fg-faint">{plugin.lang}</span>
+                <span className="uppercase tracking-[0.12em] text-fg-faint">{plugin.lang}</span>
               </div>
             </article>
           </Reveal>
