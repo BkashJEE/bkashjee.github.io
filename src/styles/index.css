@@ -175,28 +175,21 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Ambient hero gradient: two slow-drifting radial glows. */
+/*
+ * Ambient hero gradient: two static radial glows.
+ *
+ * This used to animate transform from scale(1) to scale(1.08) on a loop.
+ * Scaling a layer this large repaints both gradients every frame, which
+ * read as a slow zoom and flickered on this machine's compositor - the
+ * same failure the nav's backdrop-filter caused. The glows stay; only the
+ * movement is gone.
+ */
 .ambient {
   background:
     radial-gradient(42rem 42rem at 18% 22%, color-mix(in oklab, var(--color-accent) 9%, transparent), transparent 68%),
     radial-gradient(50rem 50rem at 85% 75%, color-mix(in oklab, var(--color-violet) 8%, transparent), transparent 70%);
-  animation: ambient-drift 36s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-@keyframes ambient-drift {
-  from {
-    transform: translate3d(-2%, -1%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(2%, 2%, 0) scale(1.08);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ambient {
-    animation: none;
-  }
+  /* Own compositor layer, so scrolling over it does not repaint the page. */
+  transform: translateZ(0);
 }
 
 /* One-time branching reveal behind the Playbook hero. */
