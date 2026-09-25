@@ -53,7 +53,7 @@ const icons: Record<string, React.ReactNode> = {
   ),
 }
 
-function PluginIcon({ name }: { name: string }) {
+function PluginIcon({ name, ink }: { name: string; ink: string }) {
   const icon = icons[name]
   if (!icon) return null
   return (
@@ -66,13 +66,34 @@ function PluginIcon({ name }: { name: string }) {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-accent"
+      className={ink}
       aria-hidden="true"
     >
       {icon}
     </svg>
   )
 }
+
+/**
+ * What each tool is, derived from its install command so the label can't
+ * drift from the data. Drives the subtitle and the card's top edge.
+ */
+function kindOf(plugin: Plugin) {
+  if (plugin.install?.startsWith('hermes plugins install')) {
+    return { label: 'Hermes plugin', edge: 'border-t-accent/70', tile: 'border-accent/25 bg-accent/10', ink: 'text-accent' }
+  }
+  if (plugin.install?.startsWith('hermes skills tap add')) {
+    return { label: 'Hermes skills tap', edge: 'border-t-teal/70', tile: 'border-teal/25 bg-teal/10', ink: 'text-teal' }
+  }
+  return { label: 'Open source', edge: 'border-t-violet/70', tile: 'border-violet/25 bg-violet/10', ink: 'text-violet' }
+}
+
+/** The one-liner as the reference card's bullets: one per sentence. */
+const bulletsOf = (line: string) =>
+  line
+    .split('. ')
+    .map((part) => part.trim().replace(/\.$/, ''))
+    .filter(Boolean)
 
 const prStatus: Record<string, { opened: string; state: string }> = github.prs
 
@@ -99,11 +120,11 @@ function PrMeta({ number }: { number: number }) {
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = useStars(plugin.repo, plugin.stars)
   return (
-    <span className="inline-flex shrink-0 flex-col items-end gap-1" title={`${stars} GitHub stars (live)`} aria-label={`${stars} GitHub stars`}>
-      <span className="flex items-center gap-1.5 font-sans text-lg font-semibold leading-none text-fg tabular-nums">
-        <span className="text-accent" aria-hidden="true">★</span>{stars}
-      </span>
-      <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-fg-dim" aria-hidden="true">GitHub stars</span>
+    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.72rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
+      <span className="text-accent" aria-hidden="true">★</span>
+      <span className="text-fg-dim tabular-nums">{stars}</span>
+      <span aria-hidden="true">stars</span>
+      <span className="sr-only">{stars} GitHub stars</span>
     </span>
   )
 }
@@ -125,7 +146,7 @@ function InstallCommand({ command }: { command: string }) {
       onClick={copy}
       aria-label={`Copy install command: ${command}`}
       title={command}
-      className="group/cmd mt-5 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2.5 text-left font-mono text-[0.72rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
+      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.68rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
     >
       <span className="shrink-0 select-none text-accent" aria-hidden="true">$</span>
       <span className="min-w-0 flex-1 truncate">{command}</span>
@@ -152,21 +173,36 @@ export function Plugins() {
       <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
         {plugins.map((plugin, i) => (
           <Reveal key={plugin.name} delay={0.05 * (i % 3)}>
-            <article className="group/card flex h-full min-h-64 min-w-0 flex-col rounded-2xl border border-line bg-ink p-6 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:border-accent/35 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/15 focus-within:border-accent/35 motion-safe:hover:-translate-y-1">
-              <div className="flex items-start justify-between gap-3">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent/8">
-                  <PluginIcon name={plugin.name} />
+            <article className={`group/card flex h-full min-w-0 flex-col rounded-xl border border-t-2 border-line ${kindOf(plugin).edge} bg-ink p-5 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/20 focus-within:border-accent/35 motion-safe:hover:-translate-y-1`}>
+              <div className="flex items-start gap-3">
+                <span className={`flex size-10 shrink-0 items-center justify-center rounded-lg border ${kindOf(plugin).tile}`}>
+                  <PluginIcon name={plugin.name} ink={kindOf(plugin).ink} />
                 </span>
-                <StarCount plugin={plugin} />
+                <div className="min-w-0">
+                  <h3 className="font-display text-[1.05rem] font-semibold leading-tight text-fg">{plugin.name}</h3>
+                  <p className="mt-1 font-mono text-[0.66rem] text-fg-faint">
+                    <span className={kindOf(plugin).ink}>{kindOf(plugin).label}</span> · {plugin.lang}
+                  </p>
+                </div>
               </div>
-              <h3 className="mt-5 font-display text-xl leading-snug text-fg">{plugin.name}</h3>
-              <p className="mt-2 flex-1 text-[0.93rem] leading-6 text-fg-dim">{plugin.line}</p>
+
+              <p className="mt-4 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
+              <ul className="mt-2 flex-1 space-y-1.5">
+                {bulletsOf(plugin.line).map((bullet) => (
+                  <li key={bullet} className="flex gap-2 text-[0.88rem] leading-6 text-fg-dim">
+                    <span className={`${kindOf(plugin).ink} select-none`} aria-hidden="true">•</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
               {plugin.install && <InstallCommand command={plugin.install} />}
-              <div className="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4 font-mono text-[0.72rem]">
+
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-[0.72rem]">
+                <StarCount plugin={plugin} />
                 <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent transition-colors hover:text-fg">
                   View source <span aria-hidden="true" className="transition-transform group-hover/card:translate-x-0.5">↗</span>
                 </a>
-                <span className="uppercase tracking-[0.12em] text-fg-faint">{plugin.lang}</span>
               </div>
             </article>
           </Reveal>

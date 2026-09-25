@@ -1,6 +1,24 @@
 {
-  "fetched": "2026-09-23",
+  "fetched": "2026-09-25",
   "repos": [
+    {
+      "name": "hermes-rehearsal",
+      "description": "Try 3 file-organization futures inside Hermes Desktop. Preview, pin, approve, apply and undo. Linux preview.",
+      "url": "https://github.com/BkashJEE/hermes-rehearsal",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "file-organizer",
+        "hermes-agent",
+        "hermes-desktop",
+        "linux",
+        "plugin",
+        "python"
+      ],
+      "stars": 0,
+      "created": "2026-09-24",
+      "pushed": "2026-09-24"
+    },
     {
       "name": "hermes-skills-library",
       "description": "Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.",
@@ -58,7 +76,7 @@
       "topics": [],
       "stars": 0,
       "created": "2026-09-17",
-      "pushed": "2026-09-23"
+      "pushed": "2026-09-24"
     },
     {
       "name": "hermes-bot-forge",
@@ -75,7 +93,7 @@
       ],
       "stars": 29,
       "created": "2026-09-17",
-      "pushed": "2026-09-20"
+      "pushed": "2026-09-25"
     },
     {
       "name": "hermes-skills",
@@ -164,11 +182,11 @@
     },
     "113249": {
       "opened": "2026-09-16",
-      "state": "open"
+      "state": "closed"
     },
     "113268": {
       "opened": "2026-09-16",
-      "state": "open"
+      "state": "closed"
     },
     "114057": {
       "opened": "2026-09-17",
