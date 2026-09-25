@@ -123,7 +123,7 @@ function StarCount({ plugin }: { plugin: Plugin }) {
     <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.72rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
       <span className="text-accent" aria-hidden="true">★</span>
       <span className="text-fg-dim tabular-nums">{stars}</span>
-      <span aria-hidden="true">stars</span>
+      <span aria-hidden="true">GitHub stars</span>
       <span className="sr-only">{stars} GitHub stars</span>
     </span>
   )
