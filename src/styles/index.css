@@ -199,6 +199,65 @@ body {
   }
 }
 
+/* One-time branching reveal behind the Playbook hero. */
+.playbook-network {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: -4rem;
+  width: min(76vw, 64rem);
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgb(245 165 36 / 0.13));
+  mask-image: linear-gradient(to right, transparent, black 28%);
+}
+
+.playbook-network-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: playbook-draw 1.65s ease-out forwards;
+}
+
+.playbook-network-node {
+  opacity: 0;
+  animation: playbook-node 0.55s ease-out forwards;
+}
+
+@keyframes playbook-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes playbook-node {
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .playbook-network {
+    right: -12rem;
+    width: 48rem;
+    opacity: 0.42;
+    mask-image: linear-gradient(to bottom, black, transparent 65%);
+  }
+}
+
+@media (max-width: 640px) {
+  .playbook-network {
+    right: -15rem;
+    width: 45rem;
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playbook-network-path,
+  .playbook-network-node {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
 /* Per-project glow behind case-study imagery. */
 .glow-amber {
   background: radial-gradient(60% 60% at 50% 50%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 75%);
