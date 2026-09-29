@@ -71,7 +71,8 @@ export const caseStudies: CaseStudy[] = [
         alt: 'A polished ScreenPolish export: recorded app framed on a gradient background',
       },
     ],
-    sourceNote: 'Source private',
+    sourceNote: 'Open source (AGPL-3.0)',
+    link: { href: 'https://github.com/BkashJEE/screenpolish', label: 'Source on GitHub' },
     platforms: 'Windows · Linux · macOS (early)',
   },
   {
@@ -228,14 +229,14 @@ export const plugins: Plugin[] = [
   {
     name: 'Repo Shelf',
     repo: 'https://github.com/BkashJEE/repo-shelf',
-    stars: 17,
+    stars: 18,
     line: 'Your git repositories as books on a 3D bookshelf. Browse, search, move, rename, open.',
     lang: 'TypeScript',
   },
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 29,
+    stars: 49,
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -258,11 +259,40 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Skills Library',
     repo: 'https://github.com/BkashJEE/hermes-skills-library',
-    stars: 3,
+    stars: 6,
     line: 'Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.',
     lang: 'JavaScript',
   },
+  {
+    name: 'Hermes Agent Archive',
+    repo: 'https://github.com/BkashJEE/hermes-agent-archive',
+    stars: 37,
+    line: 'A source-attributed archive of Hermes Agent workflows, skills and community projects. Public metrics, and contributions reviewed before they land.',
+    lang: 'JavaScript',
+  },
+  {
+    name: 'Hermes Newsroom Plugin',
+    repo: 'https://github.com/BkashJEE/hermes-newsroom-plugin',
+    stars: 8,
+    line: 'Opens Hermes Newsroom inside the Hermes Desktop app: a sidebar page, a status-bar launcher and a theme bridge. One file, no backend.',
+    lang: 'JavaScript',
+  },
+  {
+    name: 'Hermes Newsroom',
+    repo: 'https://github.com/BkashJEE/hermes-newsroom',
+    stars: 2,
+    line: 'A local, privacy-first news command center for Hermes Agent. It reports the events and drops the noise.',
+    lang: 'TypeScript',
+  },
+  {
+    name: 'Hermes Rehearsal',
+    repo: 'https://github.com/BkashJEE/hermes-rehearsal',
+    stars: 0,
+    line: 'Try three file-organization futures inside Hermes Desktop. Preview, pin, approve, apply, undo. Linux preview.',
+    lang: 'Python',
+  },
 ]
+
 
 // PRs to NousResearch/hermes-agent; open/merged state is refreshed from GitHub at every build.
 export const upstreamPRs: { number: number; title: string }[] = [

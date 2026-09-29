@@ -44,6 +44,35 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M17 13.5v7M13.5 17h7" />
     </>
   ),
+  'Hermes Agent Archive': (
+    <>
+      <rect x="3" y="4" width="18" height="5" rx="1.5" />
+      <path d="M4.5 9v9.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V9" />
+      <path d="M9.5 13h5" />
+    </>
+  ),
+  'Hermes Newsroom': (
+    <>
+      <path d="M4 5.5h13a1.5 1.5 0 0 1 1.5 1.5v11.5a1.5 1.5 0 0 0 1.5-1.5V9" />
+      <path d="M4 5.5v13h14.5" />
+      <path d="M7 9h7M7 12h7M7 15h4" />
+    </>
+  ),
+  'Hermes Newsroom Plugin': (
+    <>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+      <path d="M14 4.5v15" />
+      <path d="M6.5 9h4M6.5 12.5h4" />
+    </>
+  ),
+  'Hermes Rehearsal': (
+    <>
+      <path d="M12 4v4" />
+      <path d="M6 20v-4.5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2V20" />
+      <path d="M12 13.5V8M7 8h10" />
+      <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
   'Hermes Skills Hub': (
     <>
       <path d="M12 3v6" />
