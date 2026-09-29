@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
 import { useStars } from '../hooks/useStars'
 import github from '../content/github.json'
@@ -186,9 +186,87 @@ function InstallCommand({ command }: { command: string }) {
   )
 }
 
+/**
+ * Horizontal rail for the tool cards.
+ *
+ * Ten tools in a three-column grid is four rows of wall; as a rail the
+ * section stays one screen tall and keeps its shape as more ship. Scrolling
+ * is manual on purpose - an auto-advancing marquee moves content under the
+ * reader and repaints continuously, which is what made the hero flicker.
+ */
+function Rail({ children, count }: { children: React.ReactNode; count: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [at, setAt] = useState({ start: true, end: false })
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const read = () => {
+      const max = el.scrollWidth - el.clientWidth
+      // Snapping settles the last card a few pixels short of max, so the end
+      // check needs more slack than the start one or the button never
+      // disables.
+      setAt({ start: el.scrollLeft <= 2, end: el.scrollLeft >= max - 16 })
+    }
+    read()
+    el.addEventListener('scroll', read, { passive: true })
+    const observer = new ResizeObserver(read)
+    observer.observe(el)
+    return () => {
+      el.removeEventListener('scroll', read)
+      observer.disconnect()
+    }
+  }, [])
+
+  /** One card plus its gap, so a press lands the next card at the same edge. */
+  const page = (dir: 1 | -1) => {
+    const el = ref.current
+    if (!el) return
+    const card = el.querySelector('article')
+    const step = card ? card.getBoundingClientRect().width + 20 : el.clientWidth * 0.8
+    el.scrollBy({ left: dir * step, behavior: 'smooth' })
+  }
+
+  const arrow =
+    'flex size-9 items-center justify-center rounded-full border border-line bg-ink font-mono text-sm text-fg-dim transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-line disabled:hover:text-fg-dim'
+
+  return (
+    <div className="mx-auto mt-10 max-w-6xl px-6">
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
+          {count} published · <span className="sm:hidden">swipe →</span>
+          <span className="hidden sm:inline">most stars first</span>
+        </p>
+        <div className="hidden gap-2 sm:flex">
+          <button type="button" onClick={() => page(-1)} disabled={at.start} aria-label="Previous tools" className={arrow}>
+            ←
+          </button>
+          <button type="button" onClick={() => page(1)} disabled={at.end} aria-label="More tools" className={arrow}>
+            →
+          </button>
+        </div>
+      </div>
+      {/*
+        The rail bleeds to the viewport edge so a partly visible card shows
+        there is more; the inner padding keeps the first card aligned with
+        every other section. Focusable, so arrow keys scroll it.
+      */}
+      <div
+        ref={ref}
+        tabIndex={0}
+        role="group"
+        aria-label={`${count} published tools, scrolls horizontally`}
+        className="flow-scroll mt-4 flex snap-x gap-5 overflow-x-auto pt-1 pb-4 [contain:paint]"
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
 export function Plugins() {
   return (
-    <section id="plugins" className="overflow-clip border-y border-line bg-surface/40 py-20 sm:py-28">
+    <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" ghost="Tools" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
@@ -199,9 +277,9 @@ export function Plugins() {
           ★ counts fetched live from GitHub · fallback checked Sep 2026
         </p>
       </Reveal>
-      <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 px-6 sm:grid-cols-2 lg:grid-cols-3">
-        {plugins.map((plugin, i) => (
-          <Reveal key={plugin.name} delay={0.05 * (i % 3)}>
+      <Rail count={plugins.length}>
+        {[...plugins].sort((a, b) => b.stars - a.stars).map((plugin, i) => (
+          <Reveal key={plugin.name} delay={0.04 * Math.min(i, 3)} className="w-[min(20rem,80vw)] shrink-0 snap-start">
             <article className={`group/card flex h-full min-w-0 flex-col rounded-xl border border-t-2 border-line ${kindOf(plugin).edge} bg-ink p-5 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/20 focus-within:border-accent/35 motion-safe:hover:-translate-y-1`}>
               <div className="flex items-start gap-3">
                 <span className={`flex size-10 shrink-0 items-center justify-center rounded-lg border ${kindOf(plugin).tile}`}>
@@ -236,7 +314,7 @@ export function Plugins() {
             </article>
           </Reveal>
         ))}
-      </div>
+      </Rail>
 
       <Reveal className="mx-auto mt-16 max-w-6xl px-6">
         <h3 className="font-mono text-[0.8rem] uppercase tracking-[0.2em] text-fg-dim">
