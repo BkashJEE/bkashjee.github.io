@@ -1,6 +1,28 @@
 {
-  "fetched": "2026-09-25",
+  "fetched": "2026-09-29",
   "repos": [
+    {
+      "name": "hermes-newsroom-plugin",
+      "description": "Opens Hermes Newsroom inside the Hermes Desktop app: sidebar page, status-bar launcher, theme bridge. One file, no backend.",
+      "url": "https://github.com/BkashJEE/hermes-newsroom-plugin",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 8,
+      "created": "2026-09-25",
+      "pushed": "2026-09-25"
+    },
+    {
+      "name": "hermes-newsroom",
+      "description": "A local, privacy-first news-intelligence command center for Hermes Agent. Reports events, drops noise.",
+      "url": "https://github.com/BkashJEE/hermes-newsroom",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 2,
+      "created": "2026-09-25",
+      "pushed": "2026-09-25"
+    },
     {
       "name": "hermes-rehearsal",
       "description": "Try 3 file-organization futures inside Hermes Desktop. Preview, pin, approve, apply and undo. Linux preview.",
@@ -20,6 +42,46 @@
       "pushed": "2026-09-24"
     },
     {
+      "name": "screenpolish",
+      "description": "A screen recorder that polishes the take for you: zooms into every click, draws its own cursor, runs entirely offline. Linux, Windows and macOS.",
+      "url": "https://github.com/BkashJEE/screenpolish",
+      "homepage": "https://github.com/BkashJEE/screenpolish/releases/latest",
+      "language": "TypeScript",
+      "topics": [
+        "electron",
+        "hyprland",
+        "linux",
+        "omarchy",
+        "screen-capture",
+        "screen-recorder",
+        "screencast",
+        "typescript",
+        "video-editor",
+        "wayland"
+      ],
+      "stars": 1,
+      "created": "2026-09-24",
+      "pushed": "2026-09-28"
+    },
+    {
+      "name": "hermes-agent-archive",
+      "description": "Independent, source-attributed Hermes Agent workflows, skills and community projects. A static archive with public metrics and owner-reviewed contributions.",
+      "url": "https://github.com/BkashJEE/hermes-agent-archive",
+      "homepage": "https://hermes-agent-archive.vercel.app",
+      "language": "JavaScript",
+      "topics": [
+        "agent-tools",
+        "ai-agents",
+        "archive",
+        "hermes-agent",
+        "open-data",
+        "static-site"
+      ],
+      "stars": 37,
+      "created": "2026-09-23",
+      "pushed": "2026-09-28"
+    },
+    {
       "name": "hermes-skills-library",
       "description": "Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.",
       "url": "https://github.com/BkashJEE/hermes-skills-library",
@@ -35,7 +97,7 @@
         "python",
         "skills"
       ],
-      "stars": 5,
+      "stars": 6,
       "created": "2026-09-21",
       "pushed": "2026-09-21"
     },
@@ -91,9 +153,9 @@
         "multi-agent",
         "nous-research"
       ],
-      "stars": 29,
+      "stars": 49,
       "created": "2026-09-17",
-      "pushed": "2026-09-25"
+      "pushed": "2026-09-28"
     },
     {
       "name": "hermes-skills",
@@ -133,7 +195,7 @@
         "threejs",
         "visualization"
       ],
-      "stars": 17,
+      "stars": 18,
       "created": "2026-09-07",
       "pushed": "2026-09-09"
     },
