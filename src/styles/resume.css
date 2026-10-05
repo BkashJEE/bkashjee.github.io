@@ -28,8 +28,14 @@ body {
 
 @media print {
   html {
-    /* One-page fit: scale all rem-based sizes down slightly for print. */
-    font-size: 13.5px;
+    /*
+     * One-page fit: scale all rem-based sizes down slightly for print.
+     * The print column is 7.4in wide (@page margin 0.55in a side), which
+     * wraps text more than the screen does. At 13.5px the content measured
+     * exactly 979px against 979px of usable height, so a single added line
+     * spilled "Practice" onto a second page. 13.2px leaves ~23px of slack.
+     */
+    font-size: 13.2px;
   }
   body {
     background: #ffffff;
