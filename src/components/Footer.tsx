@@ -42,20 +42,20 @@ export function Footer() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <div className="mt-10 flex flex-wrap items-center gap-6 font-mono text-[0.85rem] text-fg-dim">
-            <a href="#top" className="link-sweep hover:text-fg">
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.85rem] text-fg-dim">
+            <a href="#top" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               ↑ Back to top
             </a>
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep hover:text-fg">
+            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               GitHub
             </a>
-            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep hover:text-fg">
+            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               X / Twitter
             </a>
-            <a href="/resume/" className="link-sweep hover:text-fg">
+            <a href="/resume/" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               Resume
             </a>
-            <a href="/use-cases/" className="link-sweep hover:text-fg">
+            <a href="/use-cases/" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               Playbook
             </a>
           </div>

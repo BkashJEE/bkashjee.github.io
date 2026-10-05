@@ -103,7 +103,7 @@ export function HeroPortrait() {
           style={{ ...bottomFade, clipPath }}
           draggable={false}
         />
-        <p className="pointer-events-none absolute -left-8 top-[30%] -rotate-90 font-mono text-[0.68rem] uppercase tracking-[0.3em] text-fg-faint">
+        <p className="pointer-events-none absolute -left-8 top-[30%] -rotate-90 font-mono text-[0.72rem] uppercase tracking-[0.3em] text-fg-faint">
           hover · flashlight
         </p>
       </motion.div>

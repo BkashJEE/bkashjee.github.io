@@ -28,7 +28,7 @@ export function Writing() {
               href="https://x.com/BkashJosi"
               target="_blank"
               rel="noreferrer"
-              className="link-sweep w-fit shrink-0 font-mono text-[0.8rem] text-accent"
+              className="link-sweep inline-flex min-h-11 w-fit shrink-0 items-center font-mono text-[0.8rem] text-accent"
             >
               Follow @BkashJosi ↗
             </a>
@@ -39,7 +39,7 @@ export function Writing() {
           {writingPosts.map((post, i) => (
             <Reveal key={post.href} delay={0.06 * i} className="h-full">
               <article className={`flex h-full flex-col rounded-xl border border-line border-t-2 ${accentBorder[post.accent]} bg-surface p-5 shadow-lg shadow-black/10 transition-colors hover:border-x-fg-faint hover:border-b-fg-faint sm:p-6`}>
-                <div className="flex items-center justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-wider">
+                <div className="flex items-center justify-between gap-3 font-mono text-[0.72rem] uppercase tracking-wider">
                   <span className={accentText[post.accent]}>{post.label}</span>
                   <time className="text-fg-faint">{post.date}</time>
                 </div>

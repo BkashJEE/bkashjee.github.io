@@ -175,7 +175,7 @@ function InstallCommand({ command }: { command: string }) {
       onClick={copy}
       aria-label={`Copy install command: ${command}`}
       title={command}
-      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.68rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
+      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.72rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
     >
       <span className="shrink-0 select-none text-accent" aria-hidden="true">$</span>
       <span className="min-w-0 flex-1 truncate">{command}</span>
@@ -287,13 +287,13 @@ export function Plugins() {
                 </span>
                 <div className="min-w-0">
                   <h3 className="font-display text-[1.05rem] font-semibold leading-tight text-fg">{plugin.name}</h3>
-                  <p className="mt-1 font-mono text-[0.66rem] text-fg-faint">
+                  <p className="mt-1 font-mono text-[0.72rem] text-fg-faint">
                     <span className={kindOf(plugin).ink}>{kindOf(plugin).label}</span> · {plugin.lang}
                   </p>
                 </div>
               </div>
 
-              <p className="mt-4 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
+              <p className="mt-4 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
               <ul className="mt-2 flex-1 space-y-1.5">
                 {bulletsOf(plugin.line).map((bullet) => (
                   <li key={bullet} className="flex gap-2 text-[0.88rem] leading-6 text-fg-dim">

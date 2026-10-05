@@ -30,18 +30,18 @@ function WritingRail() {
           rel="noreferrer"
           className="group flex w-[17rem] shrink-0 snap-start flex-col rounded-lg border border-zinc-300 bg-white p-3 transition-colors hover:border-zinc-500"
         >
-          <p className="font-mono text-[0.62rem] uppercase tracking-wider text-zinc-500">
+          <p className="font-mono text-[0.72rem] uppercase tracking-wider text-zinc-500">
             {shortDate(post.date)}
           </p>
           <h3 className="mt-1 flex-1 text-[0.84rem] font-semibold leading-snug text-zinc-900 group-hover:underline">
             {post.title}
           </h3>
           {(post.projectHref || post.repoUrl) && (
-            <p className="mt-1.5 font-mono text-[0.64rem] text-zinc-500">
+            <p className="mt-1.5 font-mono text-[0.72rem] text-zinc-500">
               about {post.repoUrl ? post.repoUrl.split('/').pop() : 'my desktop work'}
             </p>
           )}
-          <p className="mt-2 border-t border-zinc-200 pt-2 font-mono text-[0.66rem] text-zinc-600">
+          <p className="mt-2 border-t border-zinc-200 pt-2 font-mono text-[0.72rem] text-zinc-600">
             <span className="font-semibold text-zinc-900">{compact(post.impressions)}</span> reads ·{' '}
             <span className="font-semibold text-zinc-900">{post.bookmarks.toLocaleString('en-GB')}</span> saves
           </p>
@@ -135,7 +135,7 @@ export default function ResumePage() {
         </tbody>
       </table>
 
-      <p className="mt-5 border-t border-zinc-200 pt-2 text-center font-mono text-[0.68rem] text-zinc-400 print:hidden">
+      <p className="mt-5 border-t border-zinc-200 pt-2 text-center font-mono text-[0.72rem] text-zinc-400 print:hidden">
         Web version with case studies at {resume.contact.site} · PDF generated from this page
       </p>
     </div>

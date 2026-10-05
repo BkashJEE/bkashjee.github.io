@@ -86,7 +86,7 @@ export function LabGrid() {
                       href={item.image.src}
                       target="_blank"
                       rel="noreferrer"
-                      className="shrink-0 text-xs font-semibold text-fg transition-colors hover:text-accent"
+                      className="inline-flex min-h-11 items-center shrink-0 text-xs font-semibold text-fg transition-colors hover:text-accent"
                     >
                       View image <span aria-hidden="true">↗</span>
                     </a>

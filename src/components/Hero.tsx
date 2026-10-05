@@ -52,17 +52,17 @@ export function Hero() {
           />
         </Reveal>
         <Reveal delay={0.45} className="mt-10 lg:mt-10">
-          <div className="pointer-events-auto flex flex-wrap items-center gap-6 font-mono text-[0.85rem]">
+          <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.85rem]">
             <a href="#work" className="rounded-full border border-line bg-surface px-5 py-2.5 text-fg transition-colors hover:border-accent hover:text-accent">
               Selected work ↓
             </a>
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
               GitHub
             </a>
-            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
               X
             </a>
-            <a href={`mailto:${identity.email}`} className="link-sweep text-fg-dim hover:text-fg">
+            <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
               {identity.email}
             </a>
           </div>
