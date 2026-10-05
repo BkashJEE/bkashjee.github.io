@@ -23,7 +23,7 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
         </div>
       </a>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-[0.14em]">
+        <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[0.72rem] uppercase tracking-[0.14em]">
           <span className="text-accent">{categoryLabel(entry.category)}</span>
           <span className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-fg-dim">
             {entry.sourcePrivate && <span>Source private</span>}
@@ -39,9 +39,9 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
         <p className="mt-3 text-[0.95rem] leading-7 text-fg-dim">{entry.description}</p>
         <div className="mt-5 flex flex-wrap gap-2" aria-label="Tools">
           {entry.tools.slice(0, 3).map((tool) => (
-            <span key={tool} className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.67rem] text-fg-dim">{tool}</span>
+            <span key={tool} className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.72rem] text-fg-dim">{tool}</span>
           ))}
-          {entry.tools.length > 3 && <span className="px-1 py-1 font-mono text-[0.67rem] text-fg-dim">+{entry.tools.length - 3}</span>}
+          {entry.tools.length > 3 && <span className="px-1 py-1 font-mono text-[0.72rem] text-fg-dim">+{entry.tools.length - 3}</span>}
         </div>
         <div className="mt-auto flex items-center justify-between border-t border-line pt-5 font-mono text-xs text-fg-dim">
           <time dateTime={entry.date}>{formatDate(entry.date)}</time>

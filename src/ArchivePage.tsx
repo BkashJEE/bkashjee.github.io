@@ -96,7 +96,7 @@ function Card({ entry }: { entry: Entry }) {
           </a>
         </h2>
         {entry.stars == null ? (
-          <span className="shrink-0 rounded-full border border-line px-2 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider text-fg-faint">
+          <span className="shrink-0 rounded-full border border-line px-2 py-0.5 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
             Private
           </span>
         ) : (
@@ -112,14 +112,14 @@ function Card({ entry }: { entry: Entry }) {
       {entry.topics.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-1.5" aria-label={`${entry.name} topics`}>
           {entry.topics.slice(0, 4).map((topic) => (
-            <li key={topic} className="rounded-full border border-line px-2 py-0.5 font-mono text-[0.62rem] text-fg-faint">
+            <li key={topic} className="rounded-full border border-line px-2 py-0.5 font-mono text-[0.72rem] text-fg-faint">
               {topic}
             </li>
           ))}
         </ul>
       )}
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line pt-3 font-mono text-[0.68rem] text-fg-faint">
+      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line pt-3 font-mono text-[0.72rem] text-fg-faint">
         <span className="flex items-center gap-1.5">
           <span className={`size-2 rounded-full ${langDot[entry.language] ?? 'bg-fg-faint'}`} aria-hidden="true" />
           {entry.language}
@@ -209,7 +209,7 @@ export default function ArchivePage() {
           ].map(([value, label]) => (
             <div key={label}>
               <dd className="font-display text-[1.4rem] leading-none text-fg">{value}</dd>
-              <dt className="mt-1 font-mono text-[0.66rem] uppercase tracking-wider text-fg-faint">{label}</dt>
+              <dt className="mt-1 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">{label}</dt>
             </div>
           ))}
         </dl>
@@ -229,14 +229,14 @@ export default function ArchivePage() {
             />
             <kbd
               aria-hidden="true"
-              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded border border-line px-1.5 font-mono text-[0.62rem] text-fg-faint"
+              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded border border-line px-1.5 font-mono text-[0.72rem] text-fg-faint"
             >
               /
             </kbd>
           </div>
 
           <div className="flex items-center gap-2">
-            <label htmlFor="archive-sort" className="font-mono text-[0.68rem] uppercase tracking-wider text-fg-faint">
+            <label htmlFor="archive-sort" className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
               Sort
             </label>
             <select

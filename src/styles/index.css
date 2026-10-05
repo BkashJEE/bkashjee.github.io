@@ -7,7 +7,10 @@
   --color-line: #26262f;
   --color-fg: #ededf2;
   --color-fg-dim: #a8a8b5;
-  --color-fg-faint: #6d6d7a;
+  /* 4.86:1 on ink, 4.59:1 on surface — passes WCAG AA for normal text.
+     The previous #6d6d7a was 3.87:1, which fails, and it carries the
+     smallest type on the site. */
+  --color-fg-faint: #7d7d8a;
   --color-accent: #f5a524;
   --color-teal: #2dd4bf;
   --color-violet: #8b7cf6;

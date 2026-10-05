@@ -50,7 +50,7 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
-        <span className="font-mono text-[0.65rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
+        <span className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
           Swipe →
         </span>
       </div>
@@ -125,10 +125,10 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               {study.video ? (
                 <>
                   <p className="max-w-md">{study.video.caption}</p>
-                  <a href={study.video.mp4} className="link-sweep shrink-0 text-accent">Open video ↗</a>
+                  <a href={study.video.mp4} className="link-sweep inline-flex min-h-11 items-center shrink-0 text-accent">Open video ↗</a>
                 </>
               ) : primary && (
-                <a href={primary.src} className="link-sweep text-accent">View full-size screenshot ↗</a>
+                <a href={primary.src} className="link-sweep inline-flex min-h-11 items-center text-accent">View full-size screenshot ↗</a>
               )}
             </div>
             {secondary && (

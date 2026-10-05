@@ -115,7 +115,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
           />
           {/* Hover preview: the post's own opening words slide up over the media. */}
           <div className="absolute inset-0 flex translate-y-full flex-col justify-end bg-ink/94 p-5 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:hidden">
-            <p className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
+            <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-fg">“{entry.postText}”</p>
           </div>
         </a>
@@ -123,7 +123,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         {/* Rank left, topic right — the header split from the reference card. */}
-        <div className={`flex items-center justify-between gap-3 font-mono text-[0.68rem] ${tabIconColor[entry.tab]}`}>
+        <div className={`flex items-center justify-between gap-3 font-mono text-[0.72rem] ${tabIconColor[entry.tab]}`}>
           <span>#{rank}</span>
           <span className="uppercase tracking-[0.14em]">{label}</span>
         </div>
@@ -207,7 +207,7 @@ function StartHereCard({ tab }: { tab: MostViewedTab }) {
     .filter((e): e is ViewedUseCase => Boolean(e))
   return (
     <article className="flex h-full flex-col rounded-xl border border-dashed border-line bg-ink/40 p-5 sm:p-6">
-      <p className="flex items-center gap-2 font-mono text-[0.64rem] uppercase tracking-[0.18em] text-fg-faint">
+      <p className="flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-fg-faint">
         <span className={`size-2 shrink-0 rounded-full ${tabDot[tab]}`} aria-hidden="true" />
         Start here
       </p>
@@ -334,7 +334,7 @@ export function MostViewed() {
           ].map(([value, label]) => (
             <span key={label} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1.5">
               <strong className="font-sans text-[1.45rem] font-semibold leading-none tracking-[-0.04em] text-fg tabular-nums">{value}</strong>
-              <span className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.06em] text-fg-dim sm:text-[0.72rem]">{label}</span>
+              <span className="font-sans text-[0.72rem] font-medium uppercase tracking-[0.06em] text-fg-dim sm:text-[0.72rem]">{label}</span>
             </span>
           ))}
           <span className="col-span-3 font-mono text-[0.7rem] text-fg-faint sm:col-span-1">
