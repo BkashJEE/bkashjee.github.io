@@ -1,4 +1,55 @@
 import { resume } from './content/resume'
+import { audience, viewedUseCases } from './content/mostViewed'
+
+const compact = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : String(n))
+const shortDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+
+const picks = resume.writingPicks
+  .map((id) => viewedUseCases.find((e) => e.id === id))
+  .filter((e): e is NonNullable<typeof e> => Boolean(e))
+
+/**
+ * Most-read posts as a scrolling row. Hidden in print: a rail cannot exist on
+ * paper, so the printed resume gets the figures as a sentence instead.
+ */
+function WritingRail() {
+  return (
+    <div
+      tabIndex={0}
+      role="group"
+      aria-label="Most-read posts, scrolls horizontally"
+      // contain:paint keeps the off-screen cards from widening the page.
+      className="mt-3 flex snap-x gap-3 overflow-x-auto pb-2 [contain:paint] print:hidden"
+    >
+      {picks.map((post) => (
+        <a
+          key={post.id}
+          href={post.postUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="group flex w-[17rem] shrink-0 snap-start flex-col rounded-lg border border-zinc-300 bg-white p-3 transition-colors hover:border-zinc-500"
+        >
+          <p className="font-mono text-[0.62rem] uppercase tracking-wider text-zinc-500">
+            {shortDate(post.date)}
+          </p>
+          <h3 className="mt-1 flex-1 text-[0.84rem] font-semibold leading-snug text-zinc-900 group-hover:underline">
+            {post.title}
+          </h3>
+          {(post.projectHref || post.repoUrl) && (
+            <p className="mt-1.5 font-mono text-[0.64rem] text-zinc-500">
+              about {post.repoUrl ? post.repoUrl.split('/').pop() : 'my desktop work'}
+            </p>
+          )}
+          <p className="mt-2 border-t border-zinc-200 pt-2 font-mono text-[0.66rem] text-zinc-600">
+            <span className="font-semibold text-zinc-900">{compact(post.impressions)}</span> reads ·{' '}
+            <span className="font-semibold text-zinc-900">{post.bookmarks.toLocaleString('en-GB')}</span> saves
+          </p>
+        </a>
+      ))}
+    </div>
+  )
+}
 
 // Print-first, light-background resume. @media print locks it to one page —
 // keep bullets tight when editing content/resume.ts.
@@ -66,7 +117,11 @@ export default function ResumePage() {
       <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">{resume.openSource}</p>
 
       <h2 className="resume-h2">Writing</h2>
-      <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">{resume.writing}</p>
+      <p className="mt-2 text-[0.82rem] leading-snug text-zinc-700">
+        {resume.writing} {compact(audience.impressions)} impressions in {audience.days} days to{' '}
+        {shortDate(audience.to)}, from my own X analytics export.
+      </p>
+      <WritingRail />
 
       <h2 className="resume-h2">Skills</h2>
       <table className="mt-2 w-full text-[0.82rem] leading-snug">

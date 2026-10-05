@@ -68,7 +68,20 @@ export const resume = {
   openSource:
     '1 merged and 13 open pull requests to NousResearch/hermes-agent: #114057 added Bot Forge to the official plugin catalog; open work includes an idle-CPU performance fix (#113268). Started Hermes Mobile, an open community project (early preview).',
   writing:
-    'Writes about building with AI agents on X as @BkashJosi (x.com/BkashJosi).',
+    'Writes about building with AI agents on X as @BkashJosi.',
+  /**
+   * Entries from content/mostViewed.ts to show on the resume, by id — curated
+   * for reach and for having an outcome, not purely by read count. The web
+   * page renders them as cards; print falls back to the prose above plus the
+   * headline figures, because a scrolling rail cannot exist on paper.
+   */
+  writingPicks: [
+    'jev-connect-skill',
+    'jev-setup-walkthrough',
+    'omarchy-own-widgets',
+    'hermes-mobile-codex-claude',
+    'hermes-bot-that-builds-bots',
+  ],
   skills: [
     { label: 'Languages', value: 'TypeScript, JavaScript, Python, Swift, SQL, QML/Qt, Bash' },
     { label: 'Web', value: 'React 19, Next.js, Tailwind CSS, Vite, Supabase' },
