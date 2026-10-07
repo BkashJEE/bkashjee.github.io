@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Python', 'Hermes Agent', 'plugin.yaml', 'systemd', 'pytest'],
     glow: 'violet',
-    stat: '44 tests passing · in the official Hermes plugin catalog · verified Sep 2026',
+    stat: '203 tests passing · in the official Hermes plugin catalog · verified Oct 2026',
     images: [
       {
         src: '/assets/work/botforge-banner.webp',
@@ -222,7 +222,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Agent Dock',
     repo: 'https://github.com/BkashJEE/hermes-agent-dock',
-    stars: 42,
+    stars: 43,
     line: 'Native Hermes Desktop dock: direct profile chat, concurrent jobs, cancellation, and explicit Kanban assignment.',
     lang: 'Python',
   },
@@ -236,7 +236,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 49,
+    stars: 87,
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -266,7 +266,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Agent Archive',
     repo: 'https://github.com/BkashJEE/hermes-agent-archive',
-    stars: 37,
+    stars: 38,
     line: 'A source-attributed archive of Hermes Agent workflows, skills and community projects. Public metrics, and contributions reviewed before they land.',
     lang: 'JavaScript',
   },
@@ -291,14 +291,30 @@ export const plugins: Plugin[] = [
     line: 'Try three file-organization futures inside Hermes Desktop. Preview, pin, approve, apply, undo. Linux preview.',
     lang: 'Python',
   },
+  {
+    name: 'Hermes Achievements Profile Scope',
+    repo: 'https://github.com/BkashJEE/hermes-achievements-profile-scope',
+    stars: 2,
+    line: 'Profile-aware achievement totals for Hermes Agent.',
+    lang: 'Python',
+  },
+  {
+    name: 'Omarchy Workspace Tabs',
+    repo: 'https://github.com/BkashJEE/omarchy-workspace-tabs',
+    stars: 0,
+    line: 'Generic workspace tabs for the Omarchy bar.',
+    lang: 'QML',
+  },
 ]
+
 
 
 // PRs to NousResearch/hermes-agent; open/merged state is refreshed from GitHub at every build.
 export const upstreamPRs: { number: number; title: string }[] = [
   { number: 114057, title: 'feat(plugin-catalog): add bot-forge' },
-  { number: 113268, title: 'perf(desktop): stop the empty-pane HERMES decode from looping forever at idle' },
-  { number: 113249, title: "fix(tui_gateway): don't print peer-less global broadcasts to stdout in WS backends" },
+  { number: 97482, title: 'feat(desktop): add AI-isolated secure credential entry' },
+  { number: 103766, title: 'feat(desktop): add secure Hermes mobile pairing' },
+  { number: 121178, title: 'feat(desktop): open /btw in a floating side chat window' },
   { number: 113209, title: 'fix(profiles): reject a directory or non-archive file on import instead of crashing' },
   { number: 101951, title: 'feat(desktop): summon the HUD globally and dismiss with Escape' },
 ]
@@ -320,7 +336,6 @@ export const aboutParagraphs: string[] = [
 
 // Private projects listed in the archive next to the public repos.
 export const archiveExtras = [
-  { name: 'ScreenPolish', description: 'Screen recorder that polishes recordings automatically.', created: '2026-09-02', language: 'TypeScript', built: 'Electron · React', href: '/#screenpolish' },
   { name: 'Hermes X Mission Control', description: 'Local-first content workspace for an X account, run by agents.', created: '2026-09-02', language: 'TypeScript', built: 'Next.js · Supabase', href: '/#mission-control' },
 ]
 

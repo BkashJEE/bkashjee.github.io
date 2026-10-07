@@ -33,8 +33,8 @@ export const resume = {
       dates: 'Sep 2026 - present',
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
-        'Published a Hermes Agent plugin (49 GitHub stars, 3 releases in 3 days) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.',
-        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; merged the maintainer’s 3 hardening fixes and shipped v0.4.1 with 44 tests passing.',
+        'Published a Hermes Agent plugin (87 GitHub stars, 14 forks) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.',
+        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; now at v0.18.0 with 203 tests passing.',
       ],
       tech: 'Python · pytest · systemd',
     },
@@ -61,12 +61,13 @@ export const resume = {
     },
   ],
   published: [
-    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: 42, note: 'Hermes Desktop dock for direct profile chat and Kanban assignment; 3 forks (Python)' },
-    { name: 'Hermes Skills Library', stars: 3, note: 'community Skills & Plugins library for Hermes Desktop, with CI (JavaScript)' },
-    { name: 'Repo Shelf', stars: 17, note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
+    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: 43, note: 'Hermes Desktop dock for direct profile chat and Kanban assignment (Python)' },
+    { name: 'Hermes Agent Archive', stars: 38, note: 'source-attributed archive of Hermes workflows, skills and community projects (JavaScript)' },
+    { name: 'Hermes Skills Library', stars: 6, note: 'community Skills & Plugins library for Hermes Desktop, with CI (JavaScript)' },
+    { name: 'Repo Shelf', stars: 18, note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
   ],
   openSource:
-    '1 merged and 13 open pull requests to NousResearch/hermes-agent: #114057 added Bot Forge to the official plugin catalog; open work includes an idle-CPU performance fix (#113268). Started Hermes Mobile, an open community project (early preview).',
+    '28 pull requests to NousResearch/hermes-agent: 4 merged (Bot Forge’s catalog entry, #114057, and three version bumps), 12 open, including AI-isolated credential entry (#97482). Started Hermes Mobile, an open community project (early preview).',
   writing:
     'Writes about building with AI agents on X as @BkashJosi.',
   /**
@@ -76,11 +77,11 @@ export const resume = {
    * headline figures, because a scrolling rail cannot exist on paper.
    */
   writingPicks: [
+    'hermes-morning-briefing',
+    'hermes-archive-launch',
     'jev-connect-skill',
-    'jev-setup-walkthrough',
-    'omarchy-own-widgets',
-    'hermes-mobile-codex-claude',
-    'hermes-bot-that-builds-bots',
+    'hermes-bot-forge-catalog',
+    'hermes-agent-dock-launch',
   ],
   skills: [
     { label: 'Languages', value: 'TypeScript, JavaScript, Python, Swift, SQL, QML/Qt, Bash' },

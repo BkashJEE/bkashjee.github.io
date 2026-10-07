@@ -1,7 +1,12 @@
 import { resume } from './content/resume'
 import { audience, viewedUseCases } from './content/mostViewed'
 
-const compact = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : String(n))
+const compact = (n: number) =>
+  n >= 1_000_000
+    ? `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`
+    : n >= 1000
+      ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K`
+      : String(n)
 const shortDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
 

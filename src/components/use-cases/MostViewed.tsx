@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { audience, mostViewedTabs, viewedProvenance, viewedUseCases, type MostViewedTab, type ViewedUseCase } from '../../content/mostViewed'
 
-const compact = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : String(n))
+const compact = (n: number) =>
+  n >= 1_000_000
+    ? `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`
+    : n >= 1000
+      ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K`
+      : String(n)
 const prettyDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 
@@ -101,6 +106,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
   return (
     <article
       id={entry.id}
+      tabIndex={-1}
       className={`group relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-xl border border-t-2 border-line ${tabTopEdge[entry.tab]} bg-surface/70 transition-[border-color,transform,box-shadow] duration-300 [&:target]:border-accent hover:shadow-2xl hover:shadow-black/40 motion-safe:hover:-translate-y-1`}
     >
       {entry.image && (
@@ -200,7 +206,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
  * First tile of every tab: what the topic is, and the two entries to read
  * before the rest. The picks jump to the cards further down the same grid.
  */
-function StartHereCard({ tab }: { tab: MostViewedTab }) {
+function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: string) => void }) {
   const topic = mostViewedTabs.find((t) => t.id === tab)!
   const picks = topic.startHere.picks
     .map((id) => viewedUseCases.find((e) => e.id === id))
@@ -219,7 +225,13 @@ function StartHereCard({ tab }: { tab: MostViewedTab }) {
       <ol className="mt-4 flex-1 space-y-2.5">
         {picks.map((pick, i) => (
           <li key={pick.id}>
-            <a href={`#${pick.id}`} className="group/pick flex gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
+            <a
+              href={`#${pick.id}`}
+              onClick={(e) => {
+                e.preventDefault()
+                onPick(pick.id)
+              }}
+              className="group/pick flex gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
               <span className="font-mono text-[0.7rem] leading-5 text-fg-faint">{i + 1}</span>
               <span className="underline decoration-line underline-offset-4 transition-colors group-hover/pick:decoration-accent">
                 {pick.title}
@@ -274,11 +286,27 @@ const sortModes = [
 export function MostViewed() {
   const [tab, setTab] = useState<MostViewedTab>('jev-hermes')
   const [sort, setSort] = useState<(typeof sortModes)[number]['id']>('views')
+  // Long tabs open on their top eight (three rows with the start-here tile).
+  const [expanded, setExpanded] = useState(false)
   const entries = viewedUseCases
     .filter((e) => e.tab === tab)
     .sort(sortModes.find((m) => m.id === sort)!.by)
   const active = mostViewedTabs.find((t) => t.id === tab)!
   const total = entries.reduce((sum, e) => sum + e.impressions, 0)
+  const COLLAPSED = 8
+  const shown = expanded ? entries : entries.slice(0, COLLAPSED)
+
+  /** A start-here pick may sit past the fold: expand first, then jump to it. */
+  const jumpTo = (id: string) => {
+    setExpanded(true)
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id)
+      if (!el) return
+      history.replaceState(null, '', `#${id}`)
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      el.focus({ preventScroll: true })
+    })
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-6 pb-8">
@@ -291,7 +319,10 @@ export function MostViewed() {
               type="button"
               role="tab"
               aria-selected={selected}
-              onClick={() => setTab(t.id)}
+              onClick={() => {
+                setTab(t.id)
+                setExpanded(false)
+              }}
               className={`shrink-0 snap-start rounded-full border px-4 py-2 font-mono text-[0.78rem] transition-colors ${
                 selected ? 'border-accent bg-accent/10 text-accent' : 'border-line text-fg-dim hover:border-fg-faint hover:text-fg'
               }`}
@@ -356,11 +387,24 @@ export function MostViewed() {
       </p>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <StartHereCard tab={tab} />
-        {entries.map((entry, i) => (
+        <StartHereCard tab={tab} onPick={jumpTo} />
+        {shown.map((entry, i) => (
           <Card key={entry.id} entry={entry} rank={i + 1} />
         ))}
       </div>
+
+      {entries.length > COLLAPSED && (
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            aria-expanded={expanded}
+            onClick={() => setExpanded((v) => !v)}
+            className="inline-flex min-h-11 items-center rounded-full border border-line px-5 font-mono text-[0.78rem] text-fg-dim transition-colors hover:border-accent hover:text-accent"
+          >
+            {expanded ? 'Show the top eight' : `Show all ${entries.length} in ${active.label}`}
+          </button>
+        </div>
+      )}
 
       <AskStrip tab={tab} />
     </section>

@@ -73,6 +73,20 @@ const icons: Record<string, React.ReactNode> = {
       <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none" />
     </>
   ),
+  'Hermes Achievements Profile Scope': (
+    <>
+      <path d="M8 4h8v5a4 4 0 0 1-8 0z" />
+      <path d="M8 6H5.5a2 2 0 0 0 2.5 3M16 6h2.5a2 2 0 0 1-2.5 3" />
+      <path d="M12 13v3M9 20h6M10 16h4v4h-4z" />
+    </>
+  ),
+  'Omarchy Workspace Tabs': (
+    <>
+      <rect x="3" y="7" width="18" height="12" rx="2" />
+      <path d="M3 7.5 5 4h5l1.5 3.5M11.5 7.5 13 4h4l1.5 3.5" />
+      <path d="M7 12h10" />
+    </>
+  ),
   'Hermes Skills Hub': (
     <>
       <path d="M12 3v6" />
