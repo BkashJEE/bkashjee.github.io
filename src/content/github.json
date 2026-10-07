@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-05",
+  "fetched": "2026-10-07",
   "repos": [
     {
       "name": "hermes-pr-sentinel",
@@ -32,7 +32,7 @@
       "topics": [],
       "stars": 2,
       "created": "2026-09-25",
-      "pushed": "2026-10-04"
+      "pushed": "2026-10-07"
     },
     {
       "name": "hermes-rehearsal",
@@ -72,7 +72,7 @@
       ],
       "stars": 9,
       "created": "2026-09-24",
-      "pushed": "2026-10-05"
+      "pushed": "2026-10-07"
     },
     {
       "name": "hermes-agent-archive",
@@ -90,7 +90,7 @@
       ],
       "stars": 38,
       "created": "2026-09-23",
-      "pushed": "2026-10-05"
+      "pushed": "2026-10-07"
     },
     {
       "name": "hermes-skills-library",
@@ -164,9 +164,9 @@
         "multi-agent",
         "nous-research"
       ],
-      "stars": 81,
+      "stars": 87,
       "created": "2026-09-17",
-      "pushed": "2026-10-05"
+      "pushed": "2026-10-07"
     },
     {
       "name": "hermes-skills",
@@ -245,25 +245,29 @@
     }
   ],
   "prs": {
+    "97482": {
+      "opened": "2026-08-28",
+      "state": "draft"
+    },
     "101951": {
       "opened": "2026-09-03",
       "state": "open"
+    },
+    "103766": {
+      "opened": "2026-09-05",
+      "state": "draft"
     },
     "113209": {
       "opened": "2026-09-16",
       "state": "open"
     },
-    "113249": {
-      "opened": "2026-09-16",
-      "state": "closed"
-    },
-    "113268": {
-      "opened": "2026-09-16",
-      "state": "closed"
-    },
     "114057": {
       "opened": "2026-09-17",
       "state": "merged"
+    },
+    "121178": {
+      "opened": "2026-09-24",
+      "state": "open"
     }
   }
 }
