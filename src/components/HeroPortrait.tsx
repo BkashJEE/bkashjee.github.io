@@ -86,8 +86,8 @@ export function HeroPortrait() {
 
   return (
     <div
-      className="hero-rise absolute bottom-0 right-[2%] hidden w-[38%] max-w-[560px] lg:block"
-      style={{ perspective: 1400, '--d': '0.15s' } as React.CSSProperties}
+      className="hero-lift absolute bottom-0 right-[2%] hidden w-[38%] max-w-[560px] lg:block"
+      style={{ perspective: 1400 }}
     >
       {glow}
       <motion.div

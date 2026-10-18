@@ -71,7 +71,7 @@ export function Hero() {
           <HeroProof />
         </div>
         {/* Phones never see the interactive portrait — give them a still. */}
-        <div className="hero-rise relative mt-10 lg:hidden" style={{ '--d': '0.3s' } as React.CSSProperties}>
+        <div className="hero-lift relative mt-10 lg:hidden">
           <div
             aria-hidden="true"
             className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
