@@ -1,5 +1,19 @@
 @import 'tailwindcss';
 
+/*
+ * Until Inter arrives, text is set in a local Arial-metric face resized to
+ * Inter's proportions, so the swap does not shift or resize the first screen.
+ * Liberation Sans and Arimo are metric-compatible with Arial on Linux.
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 107.4%;
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+}
+
 @theme {
   --color-ink: #0a0a0f;
   --color-surface: #12121a;
@@ -15,8 +29,8 @@
   --color-teal: #2dd4bf;
   --color-violet: #8b7cf6;
 
-  --font-display: 'Inter Variable', system-ui, -apple-system, sans-serif;
-  --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
 }
 
