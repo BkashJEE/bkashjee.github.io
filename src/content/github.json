@@ -1,16 +1,140 @@
 {
-  "fetched": "2026-10-07",
+  "fetched": "2026-10-18",
   "repos": [
+    {
+      "name": "hermes-vitals",
+      "description": "A bedside monitor for every Hermes Bot inside Hermes Desktop: heartbeat traces, five vital signs and alarms that say what is wrong and what to do.",
+      "url": "https://github.com/BkashJEE/hermes-vitals",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "hermes-agent",
+        "hermes-plugin",
+        "monitoring"
+      ],
+      "stars": 0,
+      "created": "2026-10-15",
+      "pushed": "2026-10-15"
+    },
+    {
+      "name": "hermes-footprint",
+      "description": "See what Hermes Agent left on your disk, inside Hermes Desktop: a treemap by what each folder is to Hermes, git-aware cards for what can go, and what your Bots made. Trash only.",
+      "url": "https://github.com/BkashJEE/hermes-footprint",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [
+        "cleanup",
+        "disk-usage",
+        "hermes-agent",
+        "hermes-desktop",
+        "hermes-plugin",
+        "nous-research",
+        "treemap"
+      ],
+      "stars": 10,
+      "created": "2026-10-15",
+      "pushed": "2026-10-18"
+    },
+    {
+      "name": "hermes-agent-inbox",
+      "description": "Everything your Hermes Bots and tools are waiting on you for, in one list: stuck sessions, failed crons, benched keys, PRs, and cards Bots post themselves. Hermes Desktop page + hermes inbox + /inbox.",
+      "url": "https://github.com/BkashJEE/hermes-agent-inbox",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "hermes-agent",
+        "hermes-plugin",
+        "inbox"
+      ],
+      "stars": 0,
+      "created": "2026-10-15",
+      "pushed": "2026-10-18"
+    },
+    {
+      "name": "hermes-key-doctor",
+      "description": "Why did my Hermes key stop working? Finds benched, expiring and misread logins in every Hermes profile, with the one-line fix. Read-only, never prints a key.",
+      "url": "https://github.com/BkashJEE/hermes-key-doctor",
+      "homepage": "https://github.com/BkashJEE/hermes-key-doctor#readme",
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "credentials",
+        "diagnostics",
+        "hermes-agent",
+        "hermes-plugin",
+        "nous-research"
+      ],
+      "stars": 0,
+      "created": "2026-10-13",
+      "pushed": "2026-10-15"
+    },
+    {
+      "name": "hermes-eyes",
+      "description": "Googly eyes for Hermes Agent: a Desktop pet that watches your agents, plus an 'eyes' pet for the CLI and TUI",
+      "url": "https://github.com/BkashJEE/hermes-eyes",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "desktop-plugin",
+        "googly-eyes",
+        "hermes-agent",
+        "nous-research",
+        "pet"
+      ],
+      "stars": 0,
+      "created": "2026-10-10",
+      "pushed": "2026-10-11"
+    },
+    {
+      "name": "hermes-forward-to-hermes",
+      "description": "Forward any email to your Hermes Agent with a one-line note; it answers in-thread and never obeys instructions hidden in the forwarded part.",
+      "url": "https://github.com/BkashJEE/hermes-forward-to-hermes",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "created": "2026-10-10",
+      "pushed": "2026-10-10"
+    },
+    {
+      "name": "screenpolish-omarchy-plugin",
+      "description": "ScreenPolish in the Omarchy bar: start, stop and watch a recording without leaving the window you are recording.",
+      "url": "https://github.com/BkashJEE/screenpolish-omarchy-plugin",
+      "homepage": null,
+      "language": "QML",
+      "topics": [
+        "hyprland",
+        "omarchy",
+        "omarchy-plugin",
+        "screen-recorder"
+      ],
+      "stars": 0,
+      "created": "2026-10-08",
+      "pushed": "2026-10-08"
+    },
+    {
+      "name": "hermes-nightshift",
+      "description": "Night Shift for Hermes Agent: record every Bot Screen while your Bots work, watch them live on one Bot Wall, and get a tiled time-lapse plus an honest report.",
+      "url": "https://github.com/BkashJEE/hermes-nightshift",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "created": "2026-10-08",
+      "pushed": "2026-10-08"
+    },
     {
       "name": "hermes-pr-sentinel",
       "description": "A local, open-source PR reviewer for Hermes Agent: reviews with any model, fixes behind a test gate, keeps an honest scorecard.",
       "url": "https://github.com/BkashJEE/hermes-pr-sentinel",
       "homepage": null,
-      "language": null,
+      "language": "Python",
       "topics": [],
       "stars": 0,
       "created": "2026-10-03",
-      "pushed": "2026-10-03"
+      "pushed": "2026-10-15"
     },
     {
       "name": "hermes-newsroom-plugin",
@@ -32,7 +156,7 @@
       "topics": [],
       "stars": 2,
       "created": "2026-09-25",
-      "pushed": "2026-10-07"
+      "pushed": "2026-10-09"
     },
     {
       "name": "hermes-rehearsal",
@@ -53,9 +177,9 @@
       "pushed": "2026-09-24"
     },
     {
-      "name": "screenpolish",
+      "name": "ScreenPolish",
       "description": "A screen recorder that polishes the take for you: zooms into every click, draws its own cursor, runs entirely offline. Linux, Windows and macOS.",
-      "url": "https://github.com/BkashJEE/screenpolish",
+      "url": "https://github.com/BkashJEE/ScreenPolish",
       "homepage": "https://github.com/BkashJEE/screenpolish/releases/latest",
       "language": "TypeScript",
       "topics": [
@@ -70,16 +194,16 @@
         "video-editor",
         "wayland"
       ],
-      "stars": 9,
+      "stars": 20,
       "created": "2026-09-24",
-      "pushed": "2026-10-07"
+      "pushed": "2026-10-18"
     },
     {
       "name": "hermes-agent-archive",
       "description": "Independent, source-attributed Hermes Agent workflows, skills and community projects. A static archive with public metrics and owner-reviewed contributions.",
       "url": "https://github.com/BkashJEE/hermes-agent-archive",
       "homepage": "https://hermes-agent-archive.vercel.app",
-      "language": "JavaScript",
+      "language": "HTML",
       "topics": [
         "agent-tools",
         "ai-agents",
@@ -88,9 +212,9 @@
         "open-data",
         "static-site"
       ],
-      "stars": 38,
+      "stars": 41,
       "created": "2026-09-23",
-      "pushed": "2026-10-07"
+      "pushed": "2026-10-18"
     },
     {
       "name": "hermes-skills-library",
@@ -110,7 +234,7 @@
       ],
       "stars": 6,
       "created": "2026-09-21",
-      "pushed": "2026-09-30"
+      "pushed": "2026-10-15"
     },
     {
       "name": "omarchy-workspace-tabs",
@@ -149,7 +273,7 @@
       "topics": [],
       "stars": 0,
       "created": "2026-09-17",
-      "pushed": "2026-10-05"
+      "pushed": "2026-10-07"
     },
     {
       "name": "hermes-bot-forge",
@@ -158,15 +282,28 @@
       "homepage": "https://github.com/BkashJEE/hermes-bot-forge",
       "language": "Python",
       "topics": [
+        "agent-framework",
+        "agent-orchestration",
+        "agentic-ai",
+        "ai-agent",
         "ai-agents",
+        "ai-tools",
+        "automation",
+        "autonomous-agents",
+        "cli",
+        "computer-use",
+        "developer-tools",
         "hermes-agent",
         "hermes-plugin",
+        "hermes-skill",
+        "llm",
         "multi-agent",
-        "nous-research"
+        "nous-research",
+        "python"
       ],
-      "stars": 87,
+      "stars": 104,
       "created": "2026-09-17",
-      "pushed": "2026-10-07"
+      "pushed": "2026-10-18"
     },
     {
       "name": "hermes-skills",
@@ -239,7 +376,7 @@
       "homepage": null,
       "language": "Python",
       "topics": [],
-      "stars": 43,
+      "stars": 44,
       "created": "2026-08-07",
       "pushed": "2026-08-23"
     }
