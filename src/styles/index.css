@@ -314,6 +314,16 @@ body {
     transform: none;
   }
 }
+/* For the portrait: slides in fully opaque, so it counts as painted from
+   the first frame rather than after a fade from invisible. */
+@keyframes hero-lift {
+  from {
+    transform: translateY(18px);
+  }
+  to {
+    transform: none;
+  }
+}
 @keyframes hero-word {
   from {
     transform: translateY(105%);
@@ -335,6 +345,9 @@ body {
   animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--d, 0s);
 }
+.hero-lift {
+  animation: hero-lift 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 .hero-word {
   display: inline-block;
   animation: hero-word 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -346,6 +359,7 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-rise,
+  .hero-lift,
   .hero-word,
   .hero-cue {
     animation: none;
