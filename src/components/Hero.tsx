@@ -18,7 +18,7 @@ function HeroProof() {
   const item = 'inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-fg'
   const figure = 'font-medium text-fg tabular-nums'
   return (
-    <div className="pointer-events-auto flex flex-wrap gap-x-6 font-mono text-[0.78rem] text-fg-dim">
+    <div className="pointer-events-auto flex flex-wrap gap-x-6 font-mono text-[0.8rem] text-fg-dim">
       <a href="#bot-forge" className={item}>
         <span className="text-accent" aria-hidden="true">★</span>
         <span className={figure}>{stars}</span> · Bot Forge, official Hermes catalog
@@ -65,12 +65,29 @@ export function Hero() {
           </span>
         </h1>
         <div className="hero-rise mt-8 max-w-xl" style={{ '--d': '0.25s' } as React.CSSProperties}>
-          <p className="text-lg leading-relaxed text-fg-dim">{identity.bio}</p>
+          <p className="text-base leading-relaxed text-fg-dim sm:text-lg">{identity.bio}</p>
         </div>
         <div className="hero-rise mt-5" style={{ '--d': '0.3s' } as React.CSSProperties}>
           <HeroProof />
         </div>
-        {/* Phones never see the interactive portrait — give them a still. */}
+        <div className="hero-rise mt-8 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
+          <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.8rem]">
+            <a href="#work" className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-medium text-ink transition-colors hover:bg-fg">
+              Selected work ↓
+            </a>
+            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+              GitHub
+            </a>
+            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+              X
+            </a>
+            <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+              {identity.email}
+            </a>
+          </div>
+        </div>
+        {/* Phones never see the interactive portrait — give them a still, below
+            the buttons so the main action stays above the fold. */}
         <div className="hero-lift relative mt-10 lg:hidden">
           <div
             aria-hidden="true"
@@ -94,22 +111,6 @@ export function Hero() {
             }}
             fetchPriority="high"
           />
-        </div>
-        <div className="hero-rise mt-10 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
-          <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.85rem]">
-            <a href="#work" className="rounded-full border border-line bg-surface px-5 py-2.5 text-fg transition-colors hover:border-accent hover:text-accent">
-              Selected work ↓
-            </a>
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              GitHub
-            </a>
-            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              X
-            </a>
-            <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              {identity.email}
-            </a>
-          </div>
         </div>
       </div>
       <div className="hero-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-fg-faint" aria-hidden="true">
