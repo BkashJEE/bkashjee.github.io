@@ -191,6 +191,48 @@ async function measurePage(browser, url, vp) {
   return { status: typeof res?.status === 'function' ? res.status() : null, errors, failed: [...new Set(failed)], bytes, requests, ...m }
 }
 
+/**
+ * First load on a phone over throttled 4G with a 4x slower CPU, median of
+ * three cold loads: first paint, largest paint and layout shift. This is
+ * what "at one sight" means in numbers, so the score protects it.
+ */
+async function firstLoad(browser, url) {
+  const runs = []
+  for (let i = 0; i < 3; i++) {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, deviceScaleFactor: 2 })
+    const page = await ctx.newPage()
+    const cdp = await ctx.newCDPSession(page)
+    await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 })
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 })
+    await cdp.send('Network.setCacheDisabled', { cacheDisabled: true })
+    await page.addInitScript(() => {
+      window.__lcp = 0
+      window.__cls = 0
+      new PerformanceObserver((l) => {
+        const e = l.getEntries().at(-1)
+        window.__lcp = e.startTime
+        window.__lcpEl = `${e.element?.tagName ?? ''} ${(e.url || e.element?.textContent || '').split('/').pop().slice(0, 30)}`
+      }).observe({ type: 'largest-contentful-paint', buffered: true })
+      new PerformanceObserver((l) => {
+        for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value
+      }).observe({ type: 'layout-shift', buffered: true })
+    })
+    await page.goto(url, { waitUntil: 'load', timeout: 90_000 })
+    await page.waitForTimeout(5000)
+    runs.push(
+      await page.evaluate(() => ({
+        fcp: Math.round(performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? 0),
+        lcp: Math.round(window.__lcp),
+        cls: Number(window.__cls.toFixed(3)),
+        lcpElement: window.__lcpEl,
+      })),
+    )
+    await ctx.close()
+  }
+  const median = (k) => runs.map((r) => r[k]).sort((a, b) => a - b)[1]
+  return { fcp: median('fcp'), lcp: median('lcp'), cls: median('cls'), lcpElement: runs[1].lcpElement }
+}
+
 async function checkLinks(urls) {
   const bad = []
   const todo = [...new Set(urls.map((u) => u.split('#')[0]))].filter((u) => !IGNORE.test(u))
@@ -277,6 +319,12 @@ function score(pages, site) {
     s -= site.pdf && site.pdf.pages !== 1 ? 10 : 0
     s -= cut(site.figureDrift.length, 2, 8)
     s -= cut(site.missingMeta.length, 1, 6)
+    const f = site.firstLoad
+    if (f) {
+      s -= f.lcp > 4000 ? 10 : f.lcp > 2500 ? 5 : 0
+      s -= f.fcp > 1800 ? 3 : 0
+      s -= f.cls > 0.1 ? 5 : 0
+    }
   }
   return Math.max(0, Math.round(s))
 }
@@ -303,6 +351,11 @@ function toMarkdown(run, previous) {
     if (run.site.pdf) L.push(`- Resume PDF: HTTP ${run.site.pdf.status}, ${run.site.pdf.pages ?? '?'} page(s)`)
     L.push(`- Resume figures vs GitHub: ${run.site.figureDrift.length ? run.site.figureDrift.map((d) => `\n  - ${d}`).join('') : 'in step'}`)
     L.push(`- Missing metadata: ${run.site.missingMeta.length ? run.site.missingMeta.join('; ') : 'none'}`)
+    const f = run.site.firstLoad
+    if (f) {
+      const mark = (v, good) => (v <= good ? '✓' : '✗')
+      L.push(`- First load, home, phone on 4G with 4× slower CPU (median of 3): first paint ${f.fcp}ms ${mark(f.fcp, 1800)} · largest paint ${f.lcp}ms ${mark(f.lcp, 2500)} (${f.lcpElement}) · layout shift ${f.cls} ${mark(f.cls, 0.1)}`)
+    }
   }
   if (run.benchmark?.length) {
     L.push('', '## Benchmark (home page only, generic checks)', '', '| site | score | drag px m/d | low contrast m/d | tap <24 m/d | smallest px | KB |', '|---|---:|---|---|---|---:|---:|')
@@ -335,6 +388,13 @@ function diff(run, prev) {
       if (now !== was) out.push(`${key(p)}: ${label} ${was} → ${now} ${(now > was) === worseIfUp ? '(worse)' : '(better)'}`)
     }
   }
+  const now = run.site?.firstLoad
+  const was = prev.site?.firstLoad
+  if (now && was) {
+    for (const [k, label, slack] of [['fcp', 'first paint', 250], ['lcp', 'largest paint', 300]]) {
+      if (Math.abs(now[k] - was[k]) >= slack) out.push(`home first load: ${label} ${was[k]}ms → ${now[k]}ms ${now[k] > was[k] ? '(worse)' : '(better)'}`)
+    }
+  }
   return out
 }
 
@@ -358,7 +418,7 @@ async function auditSite(browser, target, paths, withSiteChecks) {
     const missingMeta = pages
       .filter((p) => p.viewport === 'desktop')
       .flatMap((p) => [!p.description && `${p.path} description`, !p.ogImage && `${p.path} og:image`, !p.hasIcon && `${p.path} icon`].filter(Boolean))
-    site = { links, pdf, figureDrift, missingMeta }
+    site = { links, pdf, figureDrift, missingMeta, firstLoad: await firstLoad(browser, `${target}/`) }
   }
   for (const p of pages) delete p.links
   return { target, pages, site, score: score(pages, site) }

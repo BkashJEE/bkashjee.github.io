@@ -1,9 +1,11 @@
-import { useRef, type PointerEvent } from 'react'
+import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'motion/react'
 import { useMotionPref } from '../motion/useMotionPref'
 
 const DUO = '/assets/portrait-cut-duo.webp'
 const COLOR = '/assets/portrait-cut-color.webp'
+const DUO_SRCSET = '/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w'
+const DUO_SIZES = 'min(38vw, 560px)'
 
 /**
  * Background-free cutout portrait, standing at the hero's bottom edge over an
@@ -15,6 +17,14 @@ const COLOR = '/assets/portrait-cut-color.webp'
 export function HeroPortrait() {
   const reduced = useMotionPref()
   const ref = useRef<HTMLDivElement>(null)
+  // The colour layer only exists for the hover flashlight. Touch screens and
+  // the first paint never need it, so it loads after mount on hover-capable
+  // devices only — 108 KB that phones no longer download.
+  const [canHover, setCanHover] = useState(false)
+  const [armed, setArmed] = useState(false)
+  useEffect(() => {
+    setCanHover(window.matchMedia('(hover: hover) and (pointer: fine)').matches)
+  }, [])
 
   const mx = useMotionValue(0.5)
   const my = useMotionValue(0.4)
@@ -29,6 +39,7 @@ export function HeroPortrait() {
   const clipPath = useMotionTemplate`circle(calc(${r} * 1px) at calc(${x} * 100%) calc(${y} * 100%))`
 
   const onMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (!armed) setArmed(true)
     const rect = ref.current?.getBoundingClientRect()
     if (!rect) return
     const nx = (e.clientX - rect.left) / rect.width
@@ -66,13 +77,18 @@ export function HeroPortrait() {
     return (
       <div className="pointer-events-none absolute bottom-0 right-[2%] hidden w-[38%] max-w-[560px] lg:block">
         {glow}
-        <img src={DUO} width={1000} height={1000} alt="Portrait of Bikash Joshi" className="relative w-full" style={bottomFade} />
+        <img src={DUO}
+          srcSet={DUO_SRCSET}
+          sizes={DUO_SIZES} width={1000} height={1000} alt="Portrait of Bikash Joshi" className="relative w-full" style={bottomFade} />
       </div>
     )
   }
 
   return (
-    <div className="absolute bottom-0 right-[2%] hidden w-[38%] max-w-[560px] lg:block" style={{ perspective: 1400 }}>
+    <div
+      className="hero-rise absolute bottom-0 right-[2%] hidden w-[38%] max-w-[560px] lg:block"
+      style={{ perspective: 1400, '--d': '0.15s' } as React.CSSProperties}
+    >
       {glow}
       <motion.div
         ref={ref}
@@ -80,12 +96,11 @@ export function HeroPortrait() {
         onPointerLeave={onLeave}
         className="relative cursor-crosshair"
         style={{ rotateX, rotateY, transformOrigin: '50% 100%' }}
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
           src={DUO}
+          srcSet={DUO_SRCSET}
+          sizes={DUO_SIZES}
           width={1000}
           height={1000}
           alt="Portrait of Bikash Joshi"
@@ -93,19 +108,25 @@ export function HeroPortrait() {
           style={bottomFade}
           fetchPriority="high"
         />
-        <motion.img
-          src={COLOR}
-          width={1000}
-          height={1000}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 block w-full"
-          style={{ ...bottomFade, clipPath }}
-          draggable={false}
-        />
-        <p className="pointer-events-none absolute -left-8 top-[30%] -rotate-90 font-mono text-[0.72rem] uppercase tracking-[0.3em] text-fg-faint">
-          hover · flashlight
-        </p>
+        {canHover && (
+          <>
+            {armed && (
+            <motion.img
+              src={COLOR}
+              width={1000}
+              height={1000}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 block w-full"
+              style={{ ...bottomFade, clipPath }}
+              draggable={false}
+            />
+            )}
+            <p className="pointer-events-none absolute -left-8 top-[30%] -rotate-90 font-mono text-[0.75rem] uppercase tracking-[0.3em] text-fg-faint">
+              hover · flashlight
+            </p>
+          </>
+        )}
       </motion.div>
     </div>
   )

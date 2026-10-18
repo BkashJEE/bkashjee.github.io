@@ -69,7 +69,7 @@ export function Footer() {
               </a>
             </p>
             <p>
-              © {new Date().getFullYear()} Bikash Joshi · Built with React, Tailwind, and Motion ·{' '}
+              © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Bikash Joshi · Built with React, Tailwind, and Motion ·{' '}
               <a href={siteSourceUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
                 Site source on GitHub ↗
               </a>
