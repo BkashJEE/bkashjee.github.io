@@ -10,3 +10,6 @@ typesafe/judgments.json
 typesafe/.resume.mjs
 typesafe/resume-cache.json
 /use-cases/
+
+# UX audit runs (scripts/ux-audit.mjs) — local only, like the TypeSafe reports
+ux-audit/
