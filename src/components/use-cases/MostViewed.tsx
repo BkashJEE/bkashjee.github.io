@@ -121,7 +121,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
           />
           {/* Hover preview: the post's own opening words slide up over the media. */}
           <div className="absolute inset-0 flex translate-y-full flex-col justify-end bg-ink/94 p-5 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:hidden">
-            <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-faint">From the post</p>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-fg">“{entry.postText}”</p>
           </div>
         </a>
@@ -129,7 +129,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         {/* Rank left, topic right — the header split from the reference card. */}
-        <div className={`flex items-center justify-between gap-3 font-mono text-[0.72rem] ${tabIconColor[entry.tab]}`}>
+        <div className={`flex items-center justify-between gap-3 font-mono text-[0.75rem] ${tabIconColor[entry.tab]}`}>
           <span>#{rank}</span>
           <span className="uppercase tracking-[0.14em]">{label}</span>
         </div>
@@ -171,9 +171,9 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
             </div>
           ))}
         </dl>
-        <p className="mt-3 font-mono text-[0.7rem] text-fg-dim">X post · {prettyDate(entry.date)}</p>
+        <p className="mt-3 font-mono text-[0.75rem] text-fg-dim">X post · {prettyDate(entry.date)}</p>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.72rem]">
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.75rem]">
           <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-accent">
             Read on X
           </a>
@@ -213,7 +213,7 @@ function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: strin
     .filter((e): e is ViewedUseCase => Boolean(e))
   return (
     <article className="flex h-full flex-col rounded-xl border border-dashed border-line bg-ink/40 p-5 sm:p-6">
-      <p className="flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-fg-faint">
+      <p className="flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.18em] text-fg-faint">
         <span className={`size-2 shrink-0 rounded-full ${tabDot[tab]}`} aria-hidden="true" />
         Start here
       </p>
@@ -232,7 +232,7 @@ function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: strin
                 onPick(pick.id)
               }}
               className="group/pick flex min-h-11 items-center gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
-              <span className="font-mono text-[0.7rem] leading-5 text-fg-faint">{i + 1}</span>
+              <span className="font-mono text-[0.75rem] leading-5 text-fg-faint">{i + 1}</span>
               <span className="underline decoration-line underline-offset-4 transition-colors group-hover/pick:decoration-accent">
                 {pick.title}
               </span>
@@ -244,7 +244,7 @@ function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: strin
         href={topic.startHere.docs.href}
         target="_blank"
         rel="noreferrer"
-        className="link-sweep mt-5 border-t border-line pt-3 font-mono text-[0.7rem] text-fg-faint transition-colors hover:text-fg"
+        className="link-sweep mt-5 border-t border-line pt-3 font-mono text-[0.75rem] text-fg-faint transition-colors hover:text-fg"
       >
         {topic.startHere.docs.label} ↗
       </a>
@@ -346,7 +346,7 @@ export function MostViewed() {
               type="button"
               aria-pressed={sort === m.id}
               onClick={() => setSort(m.id)}
-              className={`rounded-full px-3 py-1.5 font-mono text-[0.7rem] transition-colors ${
+              className={`rounded-full px-3 py-1.5 font-mono text-[0.75rem] transition-colors ${
                 sort === m.id ? 'bg-raised text-fg' : 'text-fg-faint hover:text-fg'
               }`}
             >
@@ -365,10 +365,10 @@ export function MostViewed() {
           ].map(([value, label]) => (
             <span key={label} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1.5">
               <strong className="font-sans text-[1.45rem] font-semibold leading-none tracking-[-0.04em] text-fg tabular-nums">{value}</strong>
-              <span className="font-sans text-[0.72rem] font-medium uppercase tracking-[0.06em] text-fg-dim sm:text-[0.72rem]">{label}</span>
+              <span className="font-sans text-[0.75rem] font-medium uppercase tracking-[0.06em] text-fg-dim sm:text-[0.75rem]">{label}</span>
             </span>
           ))}
-          <span className="col-span-3 font-mono text-[0.7rem] text-fg-faint sm:col-span-1">
+          <span className="col-span-3 font-mono text-[0.75rem] text-fg-faint sm:col-span-1">
             in {audience.days} days, to {prettyDate(audience.to)}
           </span>
         </div>
@@ -381,7 +381,7 @@ export function MostViewed() {
           Follow {audience.handle}
         </a>
       </div>
-      <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
+      <p className="mt-2 font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
         {sortModes.find((m) => m.id === sort)!.label} · {compact(total)} views across these {entries.length} ·{' '}
         {viewedProvenance.source}, exported {prettyDate(viewedProvenance.exported)}
       </p>

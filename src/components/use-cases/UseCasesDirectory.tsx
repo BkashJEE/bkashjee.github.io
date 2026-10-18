@@ -98,7 +98,7 @@ export function UseCasesDirectory() {
         <div className="grid gap-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12">
           <aside className="hidden lg:block">
             <div className="sticky top-24">
-              <h2 className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-fg-dim">Categories</h2>
+              <h2 className="mb-4 font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">Categories</h2>
               <Filters selected={category} setSelected={setCategory} />
             </div>
           </aside>

@@ -21,7 +21,7 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
             <a href="/use-cases/" className="font-mono text-xs text-fg-dim transition-colors hover:text-accent">← Back to the playbook</a>
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end">
               <div>
-                <div className="flex flex-wrap items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.16em]">
+                <div className="flex flex-wrap items-center gap-3 font-mono text-[0.75rem] uppercase tracking-[0.16em]">
                   <span className="text-accent">{categoryLabel(entry.category)}</span>
                   <span className="text-fg-faint">·</span>
                   <span className="text-fg-dim">{statusLabel(entry.status)}</span>
@@ -85,7 +85,7 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
 
             <aside>
               <div className="sticky top-24 rounded-2xl border border-line bg-surface p-5">
-                <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-fg-dim">Measured outcomes</h2>
+                <h2 className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">Measured outcomes</h2>
                 <dl className="mt-5 divide-y divide-line">
                   {entry.outcomes.map((outcome) => (
                     <div key={outcome.label} className="py-5 first:pt-0 last:pb-0">

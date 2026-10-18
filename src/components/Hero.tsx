@@ -1,11 +1,39 @@
-import { motion } from 'motion/react'
-import { identity } from '../content/projects'
-import { RevealLines, Reveal } from '../motion/Reveal'
-import { useMotionPref } from '../motion/useMotionPref'
+import { identity, plugins } from '../content/projects'
+import github from '../content/github.json'
+import { audience } from '../content/mostViewed'
+import { useStars } from '../hooks/useStars'
 import { HeroPortrait } from './HeroPortrait'
 
+const BOT_FORGE = 'https://github.com/BkashJEE/hermes-bot-forge'
+const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : `${Math.round(n / 1000)}K`)
+
+/**
+ * The strongest facts on the site, at first sight, each linking to its
+ * evidence. Live where it can be: stars refresh from GitHub after load.
+ */
+function HeroProof() {
+  const stars = useStars(BOT_FORGE, plugins.find((p) => p.repo === BOT_FORGE)?.stars ?? 0)
+  // Spaced like the link row below rather than dot-separated, so a wrap can
+  // never leave a separator dangling; each fact stays on one line.
+  const item = 'inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-fg'
+  const figure = 'font-medium text-fg tabular-nums'
+  return (
+    <div className="pointer-events-auto flex flex-wrap gap-x-6 font-mono text-[0.78rem] text-fg-dim">
+      <a href="#bot-forge" className={item}>
+        <span className="text-accent" aria-hidden="true">★</span>
+        <span className={figure}>{stars}</span> · Bot Forge, official Hermes catalog
+      </a>
+      <a href="/archive/" className={item}>
+        <span className={figure}>{github.repos.length}</span> public repos
+      </a>
+      <a href="/use-cases/" className={item}>
+        <span className={figure}>{views(audience.impressions)}</span> views on X
+      </a>
+    </div>
+  )
+}
+
 export function Hero() {
-  const reduced = useMotionPref()
   return (
     <section id="top" className="relative flex min-h-svh flex-col justify-center overflow-clip">
       <div className="ambient absolute inset-0 -z-10" aria-hidden="true" />
@@ -13,24 +41,37 @@ export function Hero() {
       {/* pointer-events-none so the full-width text block doesn't swallow the
           portrait's hover; interactive children re-enable themselves. */}
       <div className="pointer-events-none relative mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
-        <Reveal delay={0.05}>
+        <div className="hero-rise">
           <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
             <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-            {identity.role} · desktop apps · web · AI agent systems
+            {identity.role}
+            {/* On a phone the full list wraps mid-phrase; the bio below already says it. */}
+            <span className="hidden sm:inline"> · desktop apps · web · AI agent systems</span>
           </p>
-        </Reveal>
+        </div>
         <h1 className="font-display text-[clamp(3.25rem,10vw,8rem)] leading-[0.95]">
-          <RevealLines text="Bikash" />
+          {/* Each word slides up out of its own clip; the right padding keeps
+              the last glyph's overhang from being cut off. */}
+          <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom">
+            <span className="hero-word" style={{ '--d': '0.05s' } as React.CSSProperties}>
+              Bikash
+            </span>
+          </span>
           <br />
-          <span className="text-accent">
-            <RevealLines text="Joshi" />
+          <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom text-accent">
+            <span className="hero-word" style={{ '--d': '0.13s' } as React.CSSProperties}>
+              Joshi
+            </span>
           </span>
         </h1>
-        <Reveal delay={0.35} className="mt-8 max-w-xl">
+        <div className="hero-rise mt-8 max-w-xl" style={{ '--d': '0.25s' } as React.CSSProperties}>
           <p className="text-lg leading-relaxed text-fg-dim">{identity.bio}</p>
-        </Reveal>
+        </div>
+        <div className="hero-rise mt-5" style={{ '--d': '0.3s' } as React.CSSProperties}>
+          <HeroProof />
+        </div>
         {/* Phones never see the interactive portrait — give them a still. */}
-        <Reveal delay={0.5} className="relative mt-10 lg:hidden">
+        <div className="hero-rise relative mt-10 lg:hidden" style={{ '--d': '0.3s' } as React.CSSProperties}>
           <div
             aria-hidden="true"
             className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
@@ -41,6 +82,8 @@ export function Hero() {
           />
           <img
             src="/assets/portrait-cut-duo.webp"
+            srcSet="/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w"
+            sizes="224px"
             width={1000}
             height={1080}
             alt="Portrait of Bikash Joshi"
@@ -49,9 +92,10 @@ export function Hero() {
               maskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
               WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
             }}
+            fetchPriority="high"
           />
-        </Reveal>
-        <Reveal delay={0.45} className="mt-10 lg:mt-10">
+        </div>
+        <div className="hero-rise mt-10 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
           <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.85rem]">
             <a href="#work" className="rounded-full border border-line bg-surface px-5 py-2.5 text-fg transition-colors hover:border-accent hover:text-accent">
               Selected work ↓
@@ -66,21 +110,14 @@ export function Hero() {
               {identity.email}
             </a>
           </div>
-        </Reveal>
+        </div>
       </div>
-      {!reduced && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-fg-faint"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          aria-hidden="true"
-        >
-          <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <div className="hero-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-fg-faint" aria-hidden="true">
+        <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" strokeWidth="1.5">
             <rect x="1" y="1" width="16" height="24" rx="8" />
             <line x1="9" y1="7" x2="9" y2="12" strokeLinecap="round" />
-          </svg>
-        </motion.div>
-      )}
+        </svg>
+      </div>
     </section>
   )
 }

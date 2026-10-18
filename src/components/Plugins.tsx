@@ -200,7 +200,7 @@ function PrMeta({ number }: { number: number }) {
   if (!pr) return null
   const date = new Date(pr.opened + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
   return (
-    <span className="ml-auto hidden shrink-0 items-center gap-3 font-mono text-[0.72rem] text-fg-faint sm:flex">
+    <span className="ml-auto hidden shrink-0 items-center gap-3 font-mono text-[0.75rem] text-fg-faint sm:flex">
       <span>{date}</span>
       <span className={`rounded-full border px-2 py-0.5 ${stateStyle[pr.state] ?? stateStyle.open}`}>{pr.state}</span>
     </span>
@@ -210,7 +210,7 @@ function PrMeta({ number }: { number: number }) {
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = useStars(plugin.repo, plugin.stars)
   return (
-    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.72rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
+    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
       <span className="text-accent" aria-hidden="true">★</span>
       <span className="text-fg-dim tabular-nums">{stars}</span>
       <span aria-hidden="true">GitHub stars</span>
@@ -236,7 +236,7 @@ function InstallCommand({ command }: { command: string }) {
       onClick={copy}
       aria-label={`Copy install command: ${command}`}
       title={command}
-      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.72rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
+      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.75rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
     >
       <span className="shrink-0 select-none text-accent" aria-hidden="true">$</span>
       <span className="min-w-0 flex-1 truncate">{command}</span>
@@ -294,7 +294,7 @@ function Rail({ children, count, recent }: { children: React.ReactNode; count: n
   return (
     <div className="mx-auto mt-10 max-w-6xl px-6">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
+        <p className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
           {count} published · {recent} in the last 30 days ·{' '}
           <span className="sm:hidden">swipe →</span>
           <span className="hidden sm:inline">most stars first</span>
@@ -347,7 +347,7 @@ export function Plugins() {
           Published tools and plugins, live on GitHub. The private case studies above show what I build; these show how
           I build it.
         </p>
-        <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
+        <p className="mt-2 font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
           ★ counts fetched live from GitHub · fallback checked 18 Oct 2026
         </p>
       </Reveal>
@@ -361,13 +361,13 @@ export function Plugins() {
                 </span>
                 <div className="min-w-0">
                   <h3 className="font-display text-[1.05rem] font-semibold leading-tight text-fg">{plugin.name}</h3>
-                  <p className="mt-1 font-mono text-[0.72rem] text-fg-faint">
+                  <p className="mt-1 font-mono text-[0.75rem] text-fg-faint">
                     <span className={kindOf(plugin).ink}>{kindOf(plugin).label}</span> · {plugin.lang}
                   </p>
                 </div>
               </div>
 
-              <p className="mt-4 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
+              <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
               <ul className="mt-2 flex-1 space-y-1.5">
                 {bulletsOf(plugin.line).map((bullet) => (
                   <li key={bullet} className="flex gap-2 text-[0.88rem] leading-6 text-fg-dim">
@@ -379,7 +379,7 @@ export function Plugins() {
 
               {plugin.install && <InstallCommand command={plugin.install} />}
 
-              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-[0.72rem]">
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-[0.75rem]">
                 <StarCount plugin={plugin} />
                 <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent transition-colors hover:text-fg">
                   View source <span aria-hidden="true" className="transition-transform group-hover/card:translate-x-0.5">↗</span>

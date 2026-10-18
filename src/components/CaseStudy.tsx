@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { plugins, type CaseStudy as CaseStudyData } from '../content/projects'
 import { useStars } from '../hooks/useStars'
 
@@ -13,14 +14,28 @@ function StarBadge({ href }: { href: string }) {
   )
 }
 
-/** A visible poster and native controls keep playback in the viewer's hands. */
+/**
+ * A visible poster and native controls keep playback in the viewer's hands.
+ * The poster is attached only as the video nears the viewport: poster images
+ * ignore lazy loading, so this one was a 114 KB download on every first visit
+ * for a frame thousands of pixels below the fold.
+ */
 function DemoVideo({ video }: { video: NonNullable<CaseStudyData['video']> }) {
+  const ref = useRef<HTMLElement>(null)
+  const [near, setNear] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => entry.isIntersecting && setNear(true), { rootMargin: '900px 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
   return (
-    <figure>
+    <figure ref={ref}>
       <video
         width={video.width}
         height={video.height}
-        poster={video.poster}
+        poster={near ? video.poster : undefined}
         muted
         playsInline
         controls
@@ -49,8 +64,8 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
   return (
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
-        <span className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
+        <p className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
+        <span className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
           Swipe →
         </span>
       </div>
@@ -66,7 +81,7 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
                 →
               </span>
             )}
-            <span className={`rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.72rem] leading-snug text-fg-dim`}>
+            <span className={`rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug text-fg-dim`}>
               {step}
             </span>
           </li>
@@ -113,7 +128,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                         <span className="size-2.5 rounded-full bg-[#ff5f57] opacity-80" />
                         <span className="size-2.5 rounded-full bg-[#febc2e] opacity-80" />
                         <span className="size-2.5 rounded-full bg-[#28c840] opacity-80" />
-                        <span className="ml-3 font-mono text-[0.72rem] text-fg-dim">{study.name}</span>
+                        <span className="ml-3 font-mono text-[0.75rem] text-fg-dim">{study.name}</span>
                       </div>
                     )}
                     <img src={primary.src} width={primary.width} height={primary.height} alt={primary.alt} loading="lazy" className="block w-full" />
@@ -137,7 +152,8 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                 aria-label={`Open additional ${study.name} screenshot at full size`}
                 className="mt-5 flex items-center gap-4 rounded-lg border border-line bg-surface p-3 text-sm text-fg-dim transition-colors hover:border-accent/50 hover:text-fg"
               >
-                <img src={secondary.src} width={secondary.width} height={secondary.height} alt={secondary.alt} loading="lazy" className="h-16 w-24 shrink-0 rounded object-contain" />
+                {/* A 192px thumbnail for a 96px slot; the link opens the full-size image. */}
+                <img src={secondary.src.replace(/\.webp$/, '-thumb.webp')} width={secondary.width} height={secondary.height} alt={secondary.alt} loading="lazy" className="h-16 w-24 shrink-0 rounded object-contain" />
                 <span>View another screenshot <span aria-hidden="true">↗</span></span>
               </a>
             )}
@@ -168,7 +184,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
             {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
             <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
               {study.tech.map((t) => (
-                <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.72rem] text-fg-dim">{t}</li>
+                <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
               ))}
             </ul>
             <details className="mt-6 border-y border-line">

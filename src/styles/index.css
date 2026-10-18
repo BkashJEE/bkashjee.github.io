@@ -298,3 +298,56 @@ body {
 .link-sweep:hover {
   background-size: 100% 1px;
 }
+
+/*
+ * Hero entrance, in CSS rather than Motion so it runs from the pre-rendered
+ * HTML at first paint instead of waiting for JavaScript to hydrate. Every
+ * animation runs once and stops; nothing here loops or repaints afterwards.
+ */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-word {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes hero-cue {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+.hero-word {
+  display: inline-block;
+  animation: hero-word 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+/* Two nudges, then still: a hint, not a loop. */
+.hero-cue {
+  animation: hero-cue 2.2s ease-in-out 1.4s 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-word,
+  .hero-cue {
+    animation: none;
+  }
+}

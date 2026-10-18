@@ -8,7 +8,7 @@
     "predev": "node scripts/generate-use-case-pages.mjs",
     "dev": "vite",
     "prebuild": "node scripts/generate-use-case-pages.mjs && node scripts/fetch-github.mjs",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr --emptyOutDir && node scripts/prerender.mjs",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc -b",
     "resume:pdf": "node scripts/make-resume-pdf.mjs",

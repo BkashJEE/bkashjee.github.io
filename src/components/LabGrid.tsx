@@ -80,7 +80,7 @@ export function LabGrid() {
                 <h3 className="font-display text-lg text-fg sm:text-xl">{item.name}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-fg-dim">{item.line}</p>
                 <div className="mt-4 flex items-center justify-between gap-2 border-t border-line pt-4 sm:mt-5 sm:gap-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-fg-dim">{item.tech}</p>
+                  <p className="font-mono text-[0.75rem] uppercase tracking-[0.14em] text-fg-dim">{item.tech}</p>
                   {item.image && (
                     <a
                       href={item.image.src}
