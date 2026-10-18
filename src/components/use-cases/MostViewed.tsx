@@ -174,16 +174,16 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
         <p className="mt-3 font-mono text-[0.7rem] text-fg-dim">X post · {prettyDate(entry.date)}</p>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.72rem]">
-          <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep text-accent">
+          <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-accent">
             Read on X
           </a>
           {entry.projectHref && (
-            <a href={entry.projectHref} className="link-sweep text-fg-dim hover:text-fg">
+            <a href={entry.projectHref} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
               See the project
             </a>
           )}
           {entry.repoUrl && (
-            <a href={entry.repoUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+            <a href={entry.repoUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
               Source
             </a>
           )}
@@ -192,7 +192,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
             target="_blank"
             rel="noreferrer"
             aria-label={`Open the post: ${entry.title}`}
-            className="ml-auto text-accent transition-transform duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
+            className="ml-auto inline-flex min-h-11 min-w-11 items-center justify-end text-accent transition-transform duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
           >
             ↗
           </a>
@@ -231,7 +231,7 @@ function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: strin
                 e.preventDefault()
                 onPick(pick.id)
               }}
-              className="group/pick flex gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
+              className="group/pick flex min-h-11 items-center gap-3 text-[0.9rem] leading-snug text-fg-dim transition-colors hover:text-fg">
               <span className="font-mono text-[0.7rem] leading-5 text-fg-faint">{i + 1}</span>
               <span className="underline decoration-line underline-offset-4 transition-colors group-hover/pick:decoration-accent">
                 {pick.title}
