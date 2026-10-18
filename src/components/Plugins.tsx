@@ -87,6 +87,53 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M7 12h10" />
     </>
   ),
+  'Hermes Agent Inbox': (
+    <>
+      <path d="M3.5 13.5 6 5.5h12l2.5 8V18a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 18z" />
+      <path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5" />
+    </>
+  ),
+  'Hermes Footprint': (
+    <>
+      <rect x="3.5" y="4" width="17" height="16" rx="1.5" />
+      <path d="M12 4v16M12 12h8.5M16 12v8" />
+    </>
+  ),
+  'Hermes Key Doctor': (
+    <>
+      <circle cx="8" cy="15" r="3.5" />
+      <path d="m10.5 12.5 7-7M15 8l2 2M17.5 5.5 19 7" />
+    </>
+  ),
+  'Hermes Vitals': <path d="M3 12h4l2-5 3.5 10 2.5-7 1.5 2H21" />,
+  'Hermes Night Shift': (
+    <>
+      <path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" />
+      <path d="M16 4.5v3M14.5 6h3" />
+    </>
+  ),
+  'Hermes Eyes': (
+    <>
+      <circle cx="8" cy="12" r="4" />
+      <circle cx="16" cy="12" r="4" />
+      <circle cx="9" cy="12.5" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="17" cy="12.5" r="1.2" fill="currentColor" stroke="none" />
+    </>
+  ),
+  'Forward to Hermes': (
+    <>
+      <rect x="3" y="6" width="13" height="11" rx="1.5" />
+      <path d="m3.5 7 6 5 6-5M17 12h4M19 10l2 2-2 2" />
+    </>
+  ),
+  'ScreenPolish for Omarchy': (
+    <>
+      <rect x="3" y="5" width="18" height="5" rx="1.5" />
+      <circle cx="7" cy="7.5" r="1" fill="currentColor" stroke="none" />
+      <rect x="6" y="13" width="12" height="7" rx="1.5" />
+      <circle cx="12" cy="16.5" r="1.4" />
+    </>
+  ),
   'Hermes Skills Hub': (
     <>
       <path d="M12 3v6" />
@@ -208,7 +255,7 @@ function InstallCommand({ command }: { command: string }) {
  * is manual on purpose - an auto-advancing marquee moves content under the
  * reader and repaints continuously, which is what made the hero flicker.
  */
-function Rail({ children, count }: { children: React.ReactNode; count: number }) {
+function Rail({ children, count, recent }: { children: React.ReactNode; count: number; recent: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const [at, setAt] = useState({ start: true, end: false })
 
@@ -248,7 +295,8 @@ function Rail({ children, count }: { children: React.ReactNode; count: number })
     <div className="mx-auto mt-10 max-w-6xl px-6">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
-          {count} published · <span className="sm:hidden">swipe →</span>
+          {count} published · {recent} in the last 30 days ·{' '}
+          <span className="sm:hidden">swipe →</span>
           <span className="hidden sm:inline">most stars first</span>
         </p>
         <div className="hidden gap-2 sm:flex">
@@ -278,6 +326,18 @@ function Rail({ children, count }: { children: React.ReactNode; count: number })
   )
 }
 
+/**
+ * Tools on this list first published in the 30 days before the GitHub data
+ * was fetched. Only listed tools count, so a README-only repo cannot
+ * inflate it, and the window is anchored to the fetch date, not today.
+ */
+const createdByRepo = new Map(github.repos.map((r) => [r.url.toLowerCase(), r.created]))
+const fetchedAt = new Date(`${github.fetched}T00:00:00Z`).getTime()
+const shippedRecently = plugins.filter((p) => {
+  const created = createdByRepo.get(p.repo.toLowerCase())
+  return created != null && fetchedAt - new Date(`${created}T00:00:00Z`).getTime() <= 30 * 86_400_000
+}).length
+
 export function Plugins() {
   return (
     <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
@@ -288,10 +348,10 @@ export function Plugins() {
           I build it.
         </p>
         <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-wider text-fg-faint">
-          ★ counts fetched live from GitHub · fallback checked Sep 2026
+          ★ counts fetched live from GitHub · fallback checked 18 Oct 2026
         </p>
       </Reveal>
-      <Rail count={plugins.length}>
+      <Rail count={plugins.length} recent={shippedRecently}>
         {[...plugins].sort((a, b) => b.stars - a.stars).map((plugin, i) => (
           <Reveal key={plugin.name} delay={0.04 * Math.min(i, 3)} className="w-[min(20rem,80vw)] shrink-0 snap-start">
             <article className={`group/card flex h-full min-w-0 flex-col rounded-xl border border-t-2 border-line ${kindOf(plugin).edge} bg-ink p-5 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/20 focus-within:border-accent/35 motion-safe:hover:-translate-y-1`}>

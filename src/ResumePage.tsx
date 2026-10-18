@@ -116,6 +116,7 @@ export default function ResumePage() {
             <span className="text-zinc-500"> ({t.stars}★ on GitHub)</span> — {t.note}
           </li>
         ))}
+        <li className="text-zinc-700">{resume.recent}</li>
       </ul>
 
       <h2 className="resume-h2">Open source & experiments</h2>

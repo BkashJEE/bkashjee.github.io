@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Python', 'Hermes Agent', 'plugin.yaml', 'systemd', 'pytest'],
     glow: 'violet',
-    stat: '203 tests passing · in the official Hermes plugin catalog · verified Oct 2026',
+    stat: '451 tests passing · in the official Hermes plugin catalog · verified 18 Oct 2026',
     images: [
       {
         src: '/assets/work/botforge-banner.webp',
@@ -222,7 +222,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Agent Dock',
     repo: 'https://github.com/BkashJEE/hermes-agent-dock',
-    stars: 43,
+    stars: 44,
     line: 'Native Hermes Desktop dock: direct profile chat, concurrent jobs, cancellation, and explicit Kanban assignment.',
     lang: 'Python',
   },
@@ -236,7 +236,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 87,
+    stars: 104,
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -266,7 +266,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Agent Archive',
     repo: 'https://github.com/BkashJEE/hermes-agent-archive',
-    stars: 38,
+    stars: 41,
     line: 'A source-attributed archive of Hermes Agent workflows, skills and community projects. Public metrics, and contributions reviewed before they land.',
     lang: 'JavaScript',
   },
@@ -305,7 +305,70 @@ export const plugins: Plugin[] = [
     line: 'Generic workspace tabs for the Omarchy bar.',
     lang: 'QML',
   },
+  {
+    name: 'Hermes Agent Inbox',
+    repo: 'https://github.com/BkashJEE/hermes-agent-inbox',
+    stars: 0,
+    line: 'Everything your Hermes Bots and tools are waiting on you for, in one list. Stuck sessions, failed crons, benched keys, PRs, and cards Bots post themselves.',
+    lang: 'Python',
+    install: 'hermes plugins install BkashJEE/hermes-agent-inbox --enable',
+  },
+  {
+    name: 'Hermes Footprint',
+    repo: 'https://github.com/BkashJEE/hermes-footprint',
+    stars: 10,
+    line: 'See what Hermes Agent left on your disk, inside Hermes Desktop. A treemap by what each folder is to Hermes, and git-aware cards for what can go. Trash only.',
+    lang: 'JavaScript',
+    install: 'hermes plugins install BkashJEE/hermes-footprint --enable',
+  },
+  {
+    name: 'Hermes Key Doctor',
+    repo: 'https://github.com/BkashJEE/hermes-key-doctor',
+    stars: 0,
+    line: 'Finds benched, expiring and misread logins in every Hermes profile, with the one-line fix. Read-only, never prints a key.',
+    lang: 'Python',
+    install: 'hermes plugins install BkashJEE/hermes-key-doctor --enable',
+  },
+  {
+    name: 'Hermes Vitals',
+    repo: 'https://github.com/BkashJEE/hermes-vitals',
+    stars: 0,
+    line: 'A bedside monitor for every Hermes Bot inside Hermes Desktop. Heartbeat traces, five vital signs, and alarms that say what is wrong and what to do.',
+    lang: 'Python',
+    install: 'hermes plugins install https://github.com/BkashJEE/hermes-vitals',
+  },
+  {
+    name: 'Hermes Night Shift',
+    repo: 'https://github.com/BkashJEE/hermes-nightshift',
+    stars: 0,
+    line: 'Records every Bot Screen while your Bots work and shows them live on one Bot Wall. Ends with a tiled time-lapse and an honest report.',
+    lang: 'Python',
+    install: 'hermes plugins install BkashJEE/hermes-nightshift',
+  },
+  {
+    name: 'Hermes Eyes',
+    repo: 'https://github.com/BkashJEE/hermes-eyes',
+    stars: 0,
+    line: 'Googly eyes for Hermes Agent: a Desktop pet that watches your agents. Plus an eyes pet for the CLI and TUI.',
+    lang: 'JavaScript',
+  },
+  {
+    name: 'Forward to Hermes',
+    repo: 'https://github.com/BkashJEE/hermes-forward-to-hermes',
+    stars: 0,
+    line: 'Forward any email to your Hermes Agent with a one-line note. It answers in-thread and never obeys instructions hidden in the forwarded part.',
+    lang: 'Python',
+  },
+  {
+    name: 'ScreenPolish for Omarchy',
+    repo: 'https://github.com/BkashJEE/screenpolish-omarchy-plugin',
+    stars: 0,
+    line: 'ScreenPolish in the Omarchy bar: start, stop and watch a recording without leaving the window you are recording.',
+    lang: 'QML',
+    install: 'omarchy plugin add https://github.com/BkashJEE/screenpolish-omarchy-plugin --enable',
+  },
 ]
+
 
 
 
