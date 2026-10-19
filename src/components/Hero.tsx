@@ -38,80 +38,83 @@ export function Hero() {
   return (
     <section id="top" className="relative flex min-h-svh flex-col overflow-clip">
       <div className="ambient absolute inset-0 -z-10" aria-hidden="true" />
-      <HeroPortrait />
-      {/* pointer-events-none so the full-width text block doesn't swallow the
-          portrait's hover; interactive children re-enable themselves. */}
-      <div className="pointer-events-none relative mx-auto my-auto w-full max-w-6xl px-6 pt-24 pb-16">
-        <div className="hero-rise">
-          <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
-            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-            {identity.role}
-            {/* On a phone the full list wraps mid-phrase; the bio below already says it. */}
-            <span className="hidden sm:inline"> · desktop apps · web · AI agent systems</span>
-          </p>
-        </div>
-        <h1 className="font-display text-[clamp(3.25rem,10vw,8rem)] leading-[0.95]">
-          {/* Each word slides up out of its own clip; the right padding keeps
-              the last glyph's overhang from being cut off. */}
-          <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom">
-            <span className="hero-word" style={{ '--d': '0.05s' } as React.CSSProperties}>
-              Bikash
-            </span>
-          </span>
-          <br />
-          <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom text-accent">
-            <span className="hero-word" style={{ '--d': '0.13s' } as React.CSSProperties}>
-              Joshi
-            </span>
-          </span>
-        </h1>
-        <div className="hero-rise mt-8 max-w-xl" style={{ '--d': '0.25s' } as React.CSSProperties}>
-          <p className="text-base leading-relaxed text-fg-dim sm:text-lg">{identity.bio}</p>
-        </div>
-        <div className="hero-rise mt-5" style={{ '--d': '0.3s' } as React.CSSProperties}>
-          <HeroProof />
-        </div>
-        <div className="hero-rise mt-8 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
-          <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.8rem]">
-            <a href="#work" className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-medium text-ink transition-colors hover:bg-fg">
-              Selected work ↓
-            </a>
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              GitHub
-            </a>
-            <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              X
-            </a>
-            <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-              {identity.email}
-            </a>
+      {/* The portrait stands on the post strip rather than behind it. */}
+      <div className="relative flex flex-1 flex-col">
+        <HeroPortrait />
+        {/* pointer-events-none so the full-width text block doesn't swallow the
+            portrait's hover; interactive children re-enable themselves. */}
+        <div className="pointer-events-none relative mx-auto my-auto w-full max-w-6xl px-6 pt-20 pb-6">
+          <div className="hero-rise">
+            <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
+              <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+              {identity.role}
+              {/* On a phone the full list wraps mid-phrase; the bio below already says it. */}
+              <span className="hidden sm:inline"> · desktop apps · web · AI agent systems</span>
+            </p>
           </div>
-        </div>
-        {/* Phones never see the interactive portrait — give them a still, below
-            the buttons so the main action stays above the fold. */}
-        <div className="hero-lift relative mt-10 lg:hidden">
-          <div
-            aria-hidden="true"
-            className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
-            style={{
-              background:
-                'radial-gradient(50% 60% at 50% 75%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 75%)',
-            }}
-          />
-          <img
-            src="/assets/portrait-cut-duo.webp"
-            srcSet="/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w"
-            sizes="224px"
-            width={1000}
-            height={1080}
-            alt="Portrait of Bikash Joshi"
-            className="relative mx-auto w-56"
-            style={{
-              maskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
-            }}
-            fetchPriority="high"
-          />
+          <h1 className="font-display text-[clamp(3.25rem,10vw,8rem)] leading-[0.95]">
+            {/* Each word slides up out of its own clip; the right padding keeps
+                the last glyph's overhang from being cut off. */}
+            <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom">
+              <span className="hero-word" style={{ '--d': '0.05s' } as React.CSSProperties}>
+                Bikash
+              </span>
+            </span>
+            <br />
+            <span className="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] pr-[0.14em] -mr-[0.14em] align-bottom text-accent">
+              <span className="hero-word" style={{ '--d': '0.13s' } as React.CSSProperties}>
+                Joshi
+              </span>
+            </span>
+          </h1>
+          <div className="hero-rise mt-8 max-w-xl" style={{ '--d': '0.25s' } as React.CSSProperties}>
+            <p className="text-base leading-relaxed text-fg-dim sm:text-lg">{identity.bio}</p>
+          </div>
+          <div className="hero-rise mt-5" style={{ '--d': '0.3s' } as React.CSSProperties}>
+            <HeroProof />
+          </div>
+          <div className="hero-rise mt-8 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
+            <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.8rem]">
+              <a href="#work" className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-medium text-ink transition-colors hover:bg-fg">
+                Selected work ↓
+              </a>
+              <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                GitHub
+              </a>
+              <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                X
+              </a>
+              <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                {identity.email}
+              </a>
+            </div>
+          </div>
+          {/* Phones never see the interactive portrait — give them a still, below
+              the buttons so the main action stays above the fold. */}
+          <div className="hero-lift relative mt-10 lg:hidden">
+            <div
+              aria-hidden="true"
+              className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
+              style={{
+                background:
+                  'radial-gradient(50% 60% at 50% 75%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 75%)',
+              }}
+            />
+            <img
+              src="/assets/portrait-cut-duo.webp"
+              srcSet="/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w"
+              sizes="224px"
+              width={1000}
+              height={1080}
+              alt="Portrait of Bikash Joshi"
+              className="relative mx-auto w-56"
+              style={{
+                maskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
+              }}
+              fetchPriority="high"
+            />
+          </div>
         </div>
       </div>
       <HeroTicker />

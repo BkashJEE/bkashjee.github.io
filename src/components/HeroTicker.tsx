@@ -1,60 +1,134 @@
 import { useState } from 'react'
+import { identity } from '../content/projects'
 import { viewedUseCases } from '../content/mostViewed'
 
 const top = [...viewedUseCases].sort((a, b) => b.impressions - a.impressions).slice(0, 10)
-const views = (n: number) => `${Math.round(n / 1000)}K`
+const handle = `@${identity.x.split('/').pop()}`
+
+/** Counts the way X prints them: 139, 4.2K, 116K, 2.3M. */
+function count(n: number) {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`
+  if (n >= 10_000) return `${Math.round(n / 1000)}K`
+  if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`
+  return String(n)
+}
+
+const day = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+
+const X_LOGO =
+  'M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93ZM17.61 20.64h2.04L6.49 3.24H4.3Z'
+
+/** X's own action-row glyphs, redrawn on a 24px, 1.75px-stroke grid. */
+const glyph = {
+  reply: <path d="M4.5 11.5a7 7 0 0 1 7-7h1a7 7 0 0 1 0 14H9l-4 3v-4.6a7 7 0 0 1-.5-2.4Z" />,
+  reposts: <path d="M4 10V8a3 3 0 0 1 3-3h12m-3-3 3 3-3 3M20 14v2a3 3 0 0 1-3 3H5m3 3-3-3 3-3" />,
+  likes: <path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z" />,
+  impressions: <path d="M5 20v-6M10 20V9M15 20v-7M20 20V4" />,
+} as const
+
+const Glyph = ({ k }: { k: keyof typeof glyph }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="size-[1.05rem]" aria-hidden="true">
+    {glyph[k]}
+  </svg>
+)
+
+type Post = (typeof top)[number]
 
 /**
- * The ten most-viewed posts, drifting along the hero's bottom edge. Only
- * transform moves (no scale, no blur), it stops on hover or focus, has its own
- * pause button, and stands still as a swipeable row under reduced motion.
+ * An embedded-tweet card: white, like the real thing, so it reads as a post
+ * at a glance. The whole card opens the post; Follow sits above that link.
+ */
+function PostCard({ post, copy }: { post: Post; copy: boolean }) {
+  const tab = copy ? -1 : undefined
+  return (
+    <article className="relative flex w-[20rem] flex-col rounded-xl border border-[#cfd9de] bg-white p-4 text-left text-[#0f1419] transition-shadow hover:shadow-[0_0_0_2px_var(--color-accent)]">
+      <div className="flex items-start gap-3">
+        <img src="/assets/avatar.webp" alt="" width={40} height={40} loading="lazy" decoding="async" className="size-10 shrink-0 rounded-md" />
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="truncate text-[0.95rem] font-bold">{identity.name}</p>
+          <p className="text-[0.85rem] text-[#536471]">{handle}</p>
+        </div>
+        <a
+          href={identity.x}
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={tab}
+          className="relative z-10 inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-md border border-[#1d9bf0] px-3 text-[0.85rem] font-semibold text-[#0c7abf] transition-colors hover:bg-[#e8f5fd]"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={X_LOGO} />
+          </svg>
+          Follow
+        </a>
+      </div>
+      <p className="mt-2.5 line-clamp-2 whitespace-normal text-[0.95rem] leading-snug">{post.postText}</p>
+      <a
+        href={post.postUrl}
+        target="_blank"
+        rel="noreferrer"
+        tabIndex={tab}
+        aria-label={`${post.title}, ${count(post.impressions)} views. Open the post on X`}
+        className="mt-2 text-[0.85rem] text-[#536471] after:absolute after:inset-0 after:rounded-xl hover:underline"
+      >
+        {day(post.date)}
+      </a>
+      <div className="mt-auto flex items-center gap-6 pt-2.5 text-[0.85rem] tabular-nums text-[#536471]">
+        <Glyph k="reply" />
+        {(['reposts', 'likes', 'impressions'] as const).map((k) => (
+          <span key={k} className={`flex items-center gap-1.5 ${k === 'impressions' ? 'font-bold text-[#0f1419]' : ''}`}>
+            <Glyph k={k} />
+            {count(post[k])}
+            {k === 'impressions' && <span className="font-normal text-[#536471]">views</span>}
+          </span>
+        ))}
+      </div>
+    </article>
+  )
+}
+
+/**
+ * The ten most-viewed posts as embedded-tweet cards, drifting along the hero's
+ * bottom edge. Only transform moves (no scale, no blur); it stops on hover or
+ * focus, has its own pause button, and stands still as a swipeable row under
+ * reduced motion.
  */
 export function HeroTicker() {
   const [paused, setPaused] = useState(false)
   // The list is drawn twice so the loop is seamless; the copy is hidden from
   // screen readers and the keyboard.
   const row = (copy: boolean) => (
-    <ul className="flex shrink-0 items-center gap-3 pr-3" aria-hidden={copy || undefined}>
+    <ul className="flex shrink-0 items-stretch gap-3 pr-3" aria-hidden={copy || undefined}>
       {top.map((p) => (
-        <li key={p.id}>
-          <a
-            href={p.postUrl}
-            target="_blank"
-            rel="noreferrer"
-            tabIndex={copy ? -1 : undefined}
-            className="flex min-h-11 items-center gap-2.5 whitespace-nowrap rounded-full border border-line bg-surface px-4 text-[0.88rem] text-fg-dim transition-colors hover:border-accent hover:text-fg"
-          >
-            <span className="font-mono text-[0.8rem] font-medium tabular-nums text-accent">{views(p.impressions)}</span>
-            {p.title}
-            <span aria-hidden="true" className="text-fg-faint">↗</span>
-          </a>
+        <li key={p.id} className="flex">
+          <PostCard post={p} copy={copy} />
         </li>
       ))}
     </ul>
   )
   return (
     <div className="hero-rise relative z-10 border-t border-line bg-bg" style={{ '--d': '0.45s' } as React.CSSProperties}>
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-3">
-        <p className="hidden shrink-0 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-faint sm:block">
-          Most viewed on X
-        </p>
-        <div className="ticker-mask min-w-0 flex-1 overflow-x-auto [contain:paint] motion-safe:overflow-hidden" aria-label="My most-viewed posts on X" role="region">
+      <div className="mx-auto max-w-6xl px-6 pt-2 pb-3">
+        <div className="mb-1 flex items-center justify-between gap-4">
+          <p className="font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-faint">Most viewed on X</p>
+          <button
+            type="button"
+            onClick={() => setPaused((p) => !p)}
+            aria-pressed={paused}
+            aria-label={paused ? 'Play the most-viewed posts' : 'Pause the most-viewed posts'}
+            className="hidden size-11 shrink-0 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-fg motion-safe:flex"
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+              {paused ? <path d="M3 1.5v9l7.5-4.5z" /> : <path d="M2.5 1.5h2.5v9H2.5zM7 1.5h2.5v9H7z" />}
+            </svg>
+          </button>
+        </div>
+        <div className="ticker-mask overflow-x-auto py-1 [contain:paint] motion-safe:overflow-hidden" aria-label="My most-viewed posts on X" role="region">
           <div className={`ticker-track flex w-max ${paused ? 'is-paused' : ''}`}>
             {row(false)}
             {row(true)}
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => setPaused((p) => !p)}
-          aria-pressed={paused}
-          aria-label={paused ? 'Play the most-viewed posts' : 'Pause the most-viewed posts'}
-          className="hidden size-11 shrink-0 items-center justify-center rounded-full border border-line text-fg-dim transition-colors hover:border-accent hover:text-fg motion-safe:flex"
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-            {paused ? <path d="M3 1.5v9l7.5-4.5z" /> : <path d="M2.5 1.5h2.5v9H2.5zM7 1.5h2.5v9H7z" />}
-          </svg>
-        </button>
       </div>
     </div>
   )
