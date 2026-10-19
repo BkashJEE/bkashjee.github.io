@@ -346,15 +346,6 @@ body {
     transform: none;
   }
 }
-@keyframes hero-cue {
-  0%,
-  100% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, 8px);
-  }
-}
 .hero-rise {
   animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--d, 0s);
@@ -368,14 +359,36 @@ body {
   animation-delay: var(--d, 0s);
 }
 /* Two nudges, then still: a hint, not a loop. */
-.hero-cue {
-  animation: hero-cue 2.2s ease-in-out 1.4s 2;
-}
 @media (prefers-reduced-motion: reduce) {
   .hero-rise,
   .hero-lift,
-  .hero-word,
-  .hero-cue {
+  .hero-word {
     animation: none;
+  }
+}
+
+/* Hero ticker: one transform loop over a doubled list (-50% is exactly one
+   copy). Stops on hover, keyboard focus, or the pause button. */
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-mask {
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ticker-track {
+    animation: ticker 140s linear infinite;
+  }
+  .ticker-mask:hover .ticker-track,
+  .ticker-mask:focus-within .ticker-track,
+  .ticker-track.is-paused {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track > ul[aria-hidden] {
+    display: none;
   }
 }
