@@ -39,9 +39,10 @@ function useTurnFrames(enabled: boolean) {
 }
 
 /**
- * Draws the frame that matches the cursor's place across the window: far
- * left looks left, far right looks right. Eases toward it and only redraws
- * while catching up, so a still cursor costs nothing.
+ * Draws the pose that matches the cursor's place across the window: far left
+ * looks left, far right looks right. Between two poses it cross-fades, so a
+ * handful of stills turns as smoothly as a clip. Eases toward the cursor and
+ * only redraws while catching up, so a still cursor costs nothing.
  */
 function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.CSSProperties }) {
   const ref = useRef<HTMLCanvasElement>(null)
@@ -54,24 +55,29 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
     const last = frames.length - 1
     let target = 0
     let current = 0
-    let drawn = -1
     let raf = 0
-    const draw = () => {
-      current += (target - current) * 0.2
-      if (Math.abs(target - current) < 0.02) current = target
-      const i = Math.round(current)
-      if (i !== drawn) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.drawImage(frames[i], 0, 0)
-        drawn = i
+    const paint = () => {
+      const i = Math.min(Math.floor(current), last)
+      const t = current - i
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.globalAlpha = 1
+      ctx.drawImage(frames[i], 0, 0)
+      if (t > 0.01 && i < last) {
+        ctx.globalAlpha = t
+        ctx.drawImage(frames[i + 1], 0, 0)
       }
-      raf = current === target ? 0 : requestAnimationFrame(draw)
+    }
+    const step = () => {
+      current += (target - current) * 0.2
+      if (Math.abs(target - current) < 0.005) current = target
+      paint()
+      raf = current === target ? 0 : requestAnimationFrame(step)
     }
     const onMove = (e: globalThis.PointerEvent) => {
       target = Math.min(1, Math.max(0, e.clientX / window.innerWidth)) * last
-      if (!raf) raf = requestAnimationFrame(draw)
+      if (!raf) raf = requestAnimationFrame(step)
     }
-    draw()
+    paint()
     window.addEventListener('pointermove', onMove, { passive: true })
     return () => {
       window.removeEventListener('pointermove', onMove)
