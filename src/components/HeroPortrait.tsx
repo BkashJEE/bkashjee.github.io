@@ -56,9 +56,11 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
     let target = 0
     let current = 0
     let raf = 0
-    // Few, far-apart poses would show two faces mid-blend, so they hold and
-    // then dissolve quickly near the midpoint; a dense clip blends linearly.
-    const band = frames.length < 8 ? 0.05 : 0.5
+    // Pose stills are too far apart to blend without showing two faces, so
+    // the head settles on the nearest real pose and dissolves only in passing;
+    // a dense clip follows the cursor exactly and blends linearly.
+    const stills = frames.length < 8
+    const band = stills ? 0.05 : 0.5
     const paint = () => {
       const i = Math.min(Math.floor(current), last)
       const f = current - i
@@ -79,7 +81,8 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
       raf = current === target ? 0 : requestAnimationFrame(step)
     }
     const onMove = (e: globalThis.PointerEvent) => {
-      target = Math.min(1, Math.max(0, e.clientX / window.innerWidth)) * last
+      const at = Math.min(1, Math.max(0, e.clientX / window.innerWidth)) * last
+      target = stills ? Math.round(at) : at
       if (!raf) raf = requestAnimationFrame(step)
     }
     paint()
