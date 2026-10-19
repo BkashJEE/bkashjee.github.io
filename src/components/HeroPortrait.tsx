@@ -1,11 +1,85 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'motion/react'
 import { useMotionPref } from '../motion/useMotionPref'
+import turn from '../content/portrait-turn.json'
 
 const DUO = '/assets/portrait-cut-duo.webp'
 const COLOR = '/assets/portrait-cut-color.webp'
 const DUO_SRCSET = '/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w'
 const DUO_SIZES = 'min(38vw, 560px)'
+const TURN = '/assets/portrait-turn/'
+
+/**
+ * The head-turn frames (scripts/make-portrait-turn.sh), decoded after the
+ * page is idle so they never compete with first paint. Null until every frame
+ * is ready, and always null when no clip has been made.
+ */
+function useTurnFrames(enabled: boolean) {
+  const [frames, setFrames] = useState<HTMLImageElement[] | null>(null)
+  useEffect(() => {
+    if (!enabled || turn.frames < 2) return
+    let cancelled = false
+    const load = () => {
+      const imgs = Array.from({ length: turn.frames }, (_, i) => {
+        const img = new Image()
+        img.src = `${TURN}${String(i).padStart(2, '0')}.webp`
+        return img
+      })
+      Promise.all(imgs.map((img) => img.decode()))
+        .then(() => !cancelled && setFrames(imgs))
+        .catch(() => {})
+    }
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1200))
+    idle(load)
+    return () => {
+      cancelled = true
+    }
+  }, [enabled])
+  return frames
+}
+
+/**
+ * Draws the frame that matches the cursor's place across the window: far
+ * left looks left, far right looks right. Eases toward it and only redraws
+ * while catching up, so a still cursor costs nothing.
+ */
+function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.CSSProperties }) {
+  const ref = useRef<HTMLCanvasElement>(null)
+  useEffect(() => {
+    const canvas = ref.current
+    const ctx = canvas?.getContext('2d')
+    if (!canvas || !ctx) return
+    canvas.width = frames[0].naturalWidth
+    canvas.height = frames[0].naturalHeight
+    const last = frames.length - 1
+    let target = 0
+    let current = 0
+    let drawn = -1
+    let raf = 0
+    const draw = () => {
+      current += (target - current) * 0.2
+      if (Math.abs(target - current) < 0.02) current = target
+      const i = Math.round(current)
+      if (i !== drawn) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(frames[i], 0, 0)
+        drawn = i
+      }
+      raf = current === target ? 0 : requestAnimationFrame(draw)
+    }
+    const onMove = (e: globalThis.PointerEvent) => {
+      target = Math.min(1, Math.max(0, e.clientX / window.innerWidth)) * last
+      if (!raf) raf = requestAnimationFrame(draw)
+    }
+    draw()
+    window.addEventListener('pointermove', onMove, { passive: true })
+    return () => {
+      window.removeEventListener('pointermove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [frames])
+  return <canvas ref={ref} aria-hidden="true" className="absolute inset-0 block h-full w-full" style={style} />
+}
 
 /**
  * Background-free cutout portrait, standing at the hero's bottom edge over an
@@ -21,10 +95,16 @@ export function HeroPortrait() {
   // the first paint never need it, so it loads after mount on hover-capable
   // devices only — 108 KB that phones no longer download.
   const [canHover, setCanHover] = useState(false)
+  const [wide, setWide] = useState(false)
   const [armed, setArmed] = useState(false)
   useEffect(() => {
     setCanHover(window.matchMedia('(hover: hover) and (pointer: fine)').matches)
+    // This portrait only shows from lg up; narrower windows never need the frames.
+    setWide(window.matchMedia('(min-width: 1024px)').matches)
   }, [])
+  // With a head-turn clip, the head follows the cursor instead of the
+  // flashlight; the colour layer would no longer line up with the face.
+  const frames = useTurnFrames(canHover && wide && !reduced)
 
   const mx = useMotionValue(0.5)
   const my = useMotionValue(0.4)
@@ -108,7 +188,8 @@ export function HeroPortrait() {
           style={bottomFade}
           fetchPriority="high"
         />
-        {canHover && (
+        {frames && <HeadTurn frames={frames} style={bottomFade} />}
+        {canHover && !frames && turn.frames < 2 && (
           <>
             {armed && (
             <motion.img
