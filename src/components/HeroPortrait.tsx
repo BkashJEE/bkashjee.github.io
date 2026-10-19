@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type PointerEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react'
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'motion/react'
 import { useMotionPref } from '../motion/useMotionPref'
 import turn from '../content/portrait-turn.json'
@@ -43,8 +43,19 @@ function useTurnFrames(enabled: boolean) {
  * looks left, far right looks right. Between two poses it cross-fades, so a
  * handful of stills turns as smoothly as a clip. Eases toward the cursor and
  * only redraws while catching up, so a still cursor costs nothing.
+ *
+ * It stays hidden until the first pointer move, then appears already facing
+ * the cursor; until then the real photo is what everyone sees.
  */
-function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.CSSProperties }) {
+function HeadTurn({
+  frames,
+  style,
+  onStart,
+}: {
+  frames: HTMLImageElement[]
+  style: React.CSSProperties
+  onStart: () => void
+}) {
   const ref = useRef<HTMLCanvasElement>(null)
   useEffect(() => {
     const canvas = ref.current
@@ -56,6 +67,7 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
     let target = 0
     let current = 0
     let raf = 0
+    let started = false
     // Pose stills are too far apart to blend without showing two faces, so
     // the head settles on the nearest real pose and dissolves only in passing;
     // a dense clip follows the cursor exactly and blends linearly.
@@ -83,15 +95,19 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
     const onMove = (e: globalThis.PointerEvent) => {
       const at = Math.min(1, Math.max(0, e.clientX / window.innerWidth)) * last
       target = stills ? Math.round(at) : at
-      if (!raf) raf = requestAnimationFrame(step)
+      if (!started) {
+        started = true
+        current = target
+        paint()
+        onStart()
+      } else if (!raf) raf = requestAnimationFrame(step)
     }
-    paint()
     window.addEventListener('pointermove', onMove, { passive: true })
     return () => {
       window.removeEventListener('pointermove', onMove)
       cancelAnimationFrame(raf)
     }
-  }, [frames])
+  }, [frames, onStart])
   return <canvas ref={ref} aria-hidden="true" className="absolute inset-0 block h-full w-full" style={style} />
 }
 
@@ -119,6 +135,8 @@ export function HeroPortrait() {
   // With a head-turn clip, the head follows the cursor instead of the
   // flashlight; the colour layer would no longer line up with the face.
   const frames = useTurnFrames(canHover && wide && !reduced)
+  const [turning, setTurning] = useState(false)
+  const startTurning = useCallback(() => setTurning(true), [])
 
   const mx = useMotionValue(0.5)
   const my = useMotionValue(0.4)
@@ -201,10 +219,12 @@ export function HeroPortrait() {
           className="block w-full"
           // Hidden, not removed, under the head-turn canvas: it still sizes the
           // box, and the old head would otherwise show round a narrower pose.
-          style={frames ? { ...bottomFade, opacity: 0 } : bottomFade}
+          style={turning ? { ...bottomFade, opacity: 0 } : bottomFade}
           fetchPriority="high"
         />
-        {frames && <HeadTurn frames={frames} style={bottomFade} />}
+        {frames && (
+          <HeadTurn frames={frames} style={{ ...bottomFade, opacity: turning ? 1 : 0 }} onStart={startTurning} />
+        )}
         {canHover && !frames && turn.frames < 2 && (
           <>
             {armed && (

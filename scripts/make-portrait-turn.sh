@@ -22,13 +22,13 @@ if [[ -d $clip ]]; then
   mapfile -t poses < <(find "$clip" -maxdepth 1 -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.webp' \) | sort)
   n=${#poses[@]}
   for i in "${!poses[@]}"; do
-    ffmpeg -v error -y -i "${poses[$i]}" -frames:v 1 -vf "$vf" -c:v libwebp -quality 80 -lossless 0 "$out/$(printf '%02d' "$i").webp"
+    ffmpeg -v error -y -i "${poses[$i]}" -frames:v 1 -vf "$vf" -c:v libwebp -quality 70 -lossless 0 "$out/$(printf '%02d' "$i").webp"
   done
 else
   dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$clip")
   for i in $(seq 0 $((n - 1))); do
     t=$(awk -v d="$dur" -v i="$i" -v n="$n" 'BEGIN { printf "%.3f", (d - 0.05) * i / (n - 1) }')
-    ffmpeg -v error -y -ss "$t" -i "$clip" -frames:v 1 -vf "$vf" -c:v libwebp -quality 80 -lossless 0 "$out/$(printf '%02d' "$i").webp"
+    ffmpeg -v error -y -ss "$t" -i "$clip" -frames:v 1 -vf "$vf" -c:v libwebp -quality 70 -lossless 0 "$out/$(printf '%02d' "$i").webp"
   done
 fi
 h=$(ffprobe -v error -select_streams v -show_entries stream=height -of csv=p=0 "$out/00.webp")
