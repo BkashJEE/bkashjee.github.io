@@ -56,9 +56,14 @@ function HeadTurn({ frames, style }: { frames: HTMLImageElement[]; style: React.
     let target = 0
     let current = 0
     let raf = 0
+    // Few, far-apart poses would show two faces mid-blend, so they hold and
+    // then dissolve quickly near the midpoint; a dense clip blends linearly.
+    const band = frames.length < 8 ? 0.05 : 0.5
     const paint = () => {
       const i = Math.min(Math.floor(current), last)
-      const t = current - i
+      const f = current - i
+      const u = Math.min(1, Math.max(0, (f - 0.5 + band) / (2 * band)))
+      const t = u * u * (3 - 2 * u)
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.globalAlpha = 1
       ctx.drawImage(frames[i], 0, 0)
@@ -180,7 +185,7 @@ export function HeroPortrait() {
         ref={ref}
         onPointerMove={onMove}
         onPointerLeave={onLeave}
-        className="relative cursor-crosshair"
+        className={`relative ${frames ? '' : 'cursor-crosshair'}`}
         style={{ rotateX, rotateY, transformOrigin: '50% 100%' }}
       >
         <img
@@ -191,7 +196,9 @@ export function HeroPortrait() {
           height={1000}
           alt="Portrait of Bikash Joshi"
           className="block w-full"
-          style={bottomFade}
+          // Hidden, not removed, under the head-turn canvas: it still sizes the
+          // box, and the old head would otherwise show round a narrower pose.
+          style={frames ? { ...bottomFade, opacity: 0 } : bottomFade}
           fetchPriority="high"
         />
         {frames && <HeadTurn frames={frames} style={bottomFade} />}
