@@ -3,6 +3,7 @@ import github from '../content/github.json'
 import { audience } from '../content/mostViewed'
 import { useStars } from '../hooks/useStars'
 import { HeroPortrait } from './HeroPortrait'
+import { HeroTicker } from './HeroTicker'
 
 const BOT_FORGE = 'https://github.com/BkashJEE/hermes-bot-forge'
 const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : `${Math.round(n / 1000)}K`)
@@ -35,12 +36,12 @@ function HeroProof() {
 
 export function Hero() {
   return (
-    <section id="top" className="relative flex min-h-svh flex-col justify-center overflow-clip">
+    <section id="top" className="relative flex min-h-svh flex-col overflow-clip">
       <div className="ambient absolute inset-0 -z-10" aria-hidden="true" />
       <HeroPortrait />
       {/* pointer-events-none so the full-width text block doesn't swallow the
           portrait's hover; interactive children re-enable themselves. */}
-      <div className="pointer-events-none relative mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
+      <div className="pointer-events-none relative mx-auto my-auto w-full max-w-6xl px-6 pt-24 pb-16">
         <div className="hero-rise">
           <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
             <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
@@ -113,12 +114,7 @@ export function Hero() {
           />
         </div>
       </div>
-      <div className="hero-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-fg-faint" aria-hidden="true">
-        <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="1" y="1" width="16" height="24" rx="8" />
-            <line x1="9" y1="7" x2="9" y2="12" strokeLinecap="round" />
-        </svg>
-      </div>
+      <HeroTicker />
     </section>
   )
 }
