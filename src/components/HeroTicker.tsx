@@ -28,7 +28,7 @@ const glyph = {
 } as const
 
 const Glyph = ({ k }: { k: keyof typeof glyph }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="size-[1.05rem]" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="size-3.5" aria-hidden="true">
     {glyph[k]}
   </svg>
 )
@@ -36,50 +36,51 @@ const Glyph = ({ k }: { k: keyof typeof glyph }) => (
 type Post = (typeof top)[number]
 
 /**
- * An embedded-tweet card: white, like the real thing, so it reads as a post
- * at a glance. The whole card opens the post; Follow sits above that link.
+ * An embedded-tweet card in the site's own dark surface and amber, so it
+ * reads as a post without outshining the hero. The whole card opens the
+ * post; Follow sits above that link.
  */
 function PostCard({ post, copy }: { post: Post; copy: boolean }) {
   const tab = copy ? -1 : undefined
   return (
-    <article className="relative flex w-[20rem] flex-col rounded-xl border border-[#cfd9de] bg-white p-4 text-left text-[#0f1419] transition-shadow hover:shadow-[0_0_0_2px_var(--color-accent)]">
-      <div className="flex items-start gap-3">
-        <img src="/assets/avatar.webp" alt="" width={40} height={40} loading="lazy" decoding="async" className="size-10 shrink-0 rounded-md" />
+    <article className="relative flex w-[16.5rem] flex-col rounded-xl border border-line bg-surface/75 p-3 text-left text-fg transition-colors hover:border-accent/60 hover:bg-surface">
+      <div className="flex items-center gap-2.5">
+        <img src="/assets/avatar.webp" alt="" width={32} height={32} loading="lazy" decoding="async" className="size-8 shrink-0 rounded-full" />
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[0.95rem] font-bold">{identity.name}</p>
-          <p className="text-[0.85rem] text-[#536471]">{handle}</p>
+          <p className="truncate text-[0.82rem] font-semibold">{identity.name}</p>
+          <p className="text-[0.78rem] text-fg-faint">{handle}</p>
         </div>
         <a
           href={identity.x}
           target="_blank"
           rel="noreferrer"
           tabIndex={tab}
-          className="relative z-10 inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-md border border-[#1d9bf0] px-3 text-[0.85rem] font-semibold text-[#0c7abf] transition-colors hover:bg-[#e8f5fd]"
+          className="relative z-10 inline-flex min-h-7 shrink-0 items-center gap-1 rounded-full border border-accent/50 px-2.5 text-[0.78rem] font-medium text-accent transition-colors hover:bg-accent hover:text-ink"
         >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d={X_LOGO} />
           </svg>
           Follow
         </a>
       </div>
-      <p className="mt-2.5 line-clamp-2 whitespace-normal text-[0.95rem] leading-snug">{post.postText}</p>
+      <p className="mt-2 line-clamp-2 whitespace-normal text-[0.82rem] leading-snug text-fg-dim">{post.postText}</p>
       <a
         href={post.postUrl}
         target="_blank"
         rel="noreferrer"
         tabIndex={tab}
         aria-label={`${post.title}, ${count(post.impressions)} views. Open the post on X`}
-        className="mt-2 text-[0.85rem] text-[#536471] after:absolute after:inset-0 after:rounded-xl hover:underline"
+        className="mt-1.5 text-[0.78rem] text-fg-faint after:absolute after:inset-0 after:rounded-xl hover:underline"
       >
         {day(post.date)}
       </a>
-      <div className="mt-auto flex items-center gap-6 pt-2.5 text-[0.85rem] tabular-nums text-[#536471]">
+      <div className="mt-auto flex items-center gap-4 pt-2 text-[0.78rem] tabular-nums text-fg-faint">
         <Glyph k="reply" />
         {(['reposts', 'likes', 'impressions'] as const).map((k) => (
-          <span key={k} className={`flex items-center gap-1.5 ${k === 'impressions' ? 'font-bold text-[#0f1419]' : ''}`}>
+          <span key={k} className={`flex items-center gap-1.5 ${k === 'impressions' ? 'font-medium text-accent' : ''}`}>
             <Glyph k={k} />
             {count(post[k])}
-            {k === 'impressions' && <span className="font-normal text-[#536471]">views</span>}
+            {k === 'impressions' && <span className="font-normal text-fg-faint">views</span>}
           </span>
         ))}
       </div>
