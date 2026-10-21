@@ -39,7 +39,7 @@ export function XGrowth() {
         {stats.map(([label, value]) => (
           <div key={label}>
             <dt className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">{label}</dt>
-            <dd className="mt-1 font-display text-2xl font-semibold tabular-nums text-fg sm:text-3xl">{compact(value)}</dd>
+            <dd className="mt-1 font-display text-xl font-semibold tabular-nums text-fg sm:text-2xl">{compact(value)}</dd>
           </div>
         ))}
       </dl>
