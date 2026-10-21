@@ -94,6 +94,16 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
 
 export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
   const [primary, secondary] = study.video ? [null, study.images[0]] : study.images
+  const details = (
+    <>
+      {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
+      <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
+        {study.tech.map((t) => (
+          <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
+        ))}
+      </ul>
+    </>
+  )
   const fullCaseSlug = fullCaseSlugs[study.id]
   return (
     <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-14 sm:py-20">
@@ -181,17 +191,15 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               )}
             </div>
             {study.platforms && <p className="text-sm leading-relaxed text-fg-dim">{study.platforms}</p>}
-            {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
-              {study.tech.map((t) => (
-                <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
-              ))}
-            </ul>
+            {/* On phones the pipeline and tech list move inside the fold, so
+                each project opens on its title, picture and buttons. */}
+            <div className="hidden sm:block">{details}</div>
             <details className="mt-6 border-y border-line">
               <summary className="cursor-pointer py-4 font-medium text-fg marker:text-accent hover:text-accent">
                 Read case study<span className="sr-only">: {study.name}</span>
               </summary>
-              <div className="space-y-4 pb-5 text-[0.95rem] leading-relaxed text-fg-dim">
+              <div className="sm:hidden">{details}</div>
+              <div className="space-y-4 pt-5 pb-5 text-[0.95rem] leading-relaxed text-fg-dim sm:pt-0">
                 {study.description.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
               </div>
             </details>
