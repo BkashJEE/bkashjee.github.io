@@ -1,6 +1,10 @@
 // Resume data — single source for the /resume/ page and the generated PDF.
 // Same content rule as the site: real, verifiable work only.
 
+import github from './github.json'
+
+const upstream = github.upstream
+
 export const resume = {
   name: 'Bikash Joshi',
   title: 'Software Engineer',
@@ -69,7 +73,7 @@ export const resume = {
   /** One line closing the published list: what shipped most recently. */
   recent: 'Oct 2026 — eight more tools on GitHub, including Hermes Agent Inbox, Footprint, Key Doctor, Vitals and Night Shift.',
   openSource:
-    '28 pull requests to NousResearch/hermes-agent: 4 merged (Bot Forge’s catalog entry, #114057, and three version bumps), 12 open, including AI-isolated credential entry (#97482). Started Hermes Mobile, an open community project (early preview).',
+    `${upstream.total} pull requests to NousResearch/hermes-agent: ${upstream.merged} merged (Bot Forge’s catalog entry, #114057, and its version bumps), ${upstream.open} open, including AI-isolated credential entry (#97482). Started Hermes Mobile, an open community project (early preview).`,
   writing:
     'Writes about building with AI agents on X as @BkashJosi.',
   /**

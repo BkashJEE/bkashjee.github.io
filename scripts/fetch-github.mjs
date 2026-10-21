@@ -48,8 +48,14 @@ try {
     }
   }
 
-  writeFileSync(out, JSON.stringify({ fetched: new Date().toISOString().slice(0, 10), repos, prs }, null, 2) + '\n')
-  console.log(`github.json: ${repos.length} repos, ${Object.keys(prs).length} PRs`)
+  // Totals for every PR I've opened upstream, so the About and resume
+  // sentences count them instead of carrying hand-typed numbers.
+  const q = 'repo:NousResearch/hermes-agent+author:' + USER + '+type:pr'
+  const count = async (extra = '') => (await get(`/search/issues?q=${q}${extra}&per_page=1`)).total_count
+  const upstream = { total: await count(), merged: await count('+is:merged'), open: await count('+is:open') }
+
+  writeFileSync(out, JSON.stringify({ fetched: new Date().toISOString().slice(0, 10), repos, prs, upstream }, null, 2) + '\n')
+  console.log(`github.json: ${repos.length} repos, ${Object.keys(prs).length} PRs, upstream ${upstream.merged} merged / ${upstream.open} open of ${upstream.total}`)
 } catch (err) {
   console.warn(`github.json not refreshed (${err.message}); keeping the committed copy`)
 }

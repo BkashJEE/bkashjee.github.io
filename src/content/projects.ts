@@ -2,6 +2,11 @@
 // Content rule: everything here is real and verifiable — no invented stats,
 // clients, testimonials, or employment. "Source private" means exactly that.
 
+import github from './github.json'
+
+/** Upstream PR totals, refreshed from GitHub at every build. */
+const upstream = github.upstream
+
 export const identity = {
   name: 'Bikash Joshi',
   role: 'Software Engineer',
@@ -394,7 +399,7 @@ export const skillGroups: { title: string; items: string[] }[] = [
 
 export const aboutParagraphs: string[] = [
   'I’m an independent software engineer. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
-  'I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with one merged and thirteen open pull requests to NousResearch/hermes-agent — the merged one put Bot Forge in its official plugin catalog — and I share what I learn about building with AI agents.',
+  `I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with ${upstream.merged} merged and ${upstream.open} open pull requests to NousResearch/hermes-agent — one of them put Bot Forge in its official plugin catalog — and I share what I learn about building with AI agents.`,
 ]
 
 // Private projects listed in the archive next to the public repos.
