@@ -1,6 +1,7 @@
 import { writingPosts } from '../content/writing'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
+import { XGrowth } from './XGrowth'
 
 const accentBorder = {
   amber: 'border-t-accent',
@@ -33,6 +34,10 @@ export function Writing() {
               Follow @BkashJosi ↗
             </a>
           </div>
+        </Reveal>
+
+        <Reveal>
+          <XGrowth />
         </Reveal>
 
         <div className="mt-6 grid gap-4 md:grid-cols-3">
