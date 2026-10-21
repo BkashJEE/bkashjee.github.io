@@ -118,8 +118,8 @@ export const caseStudies: CaseStudy[] = [
     images: [
       {
         src: '/assets/work/agentdock-floating.webp',
-        width: 1000,
-        height: 760,
+        width: 720,
+        height: 720,
         alt: 'Agent Dock’s floating specialist chat card',
       },
       {

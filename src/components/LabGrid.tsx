@@ -48,9 +48,12 @@ export function LabGrid() {
           Python bridges.
         </p>
       </Reveal>
-      <div className="mx-auto mt-10 grid max-w-6xl gap-4 px-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 sm:px-6 lg:grid-cols-3">
+      {/* A swipeable row on phones, where six stacked cards ran to three
+          thousand pixels; the grid from sm up. contain:paint keeps the
+          row from widening the page. */}
+      <div className="mx-auto mt-10 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-1 pb-4 [contain:paint] sm:mt-12 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-6 sm:pb-0 lg:grid-cols-3">
         {labItems.map((item, i) => (
-          <Reveal key={item.name} delay={0.05 * (i % 3)}>
+          <Reveal key={item.name} delay={0.05 * (i % 3)} className="w-[80vw] max-w-[21rem] shrink-0 snap-start scroll-ml-4 sm:w-auto sm:max-w-none">
             <motion.article
               whileHover={item.pet ? 'hop' : undefined}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_18px_50px_rgb(0_0_0/0.18)] transition-[border-color,box-shadow,transform] duration-300 hover:border-fg-faint hover:shadow-[0_22px_64px_rgb(0_0_0/0.3)] focus-within:border-accent motion-safe:hover:-translate-y-1"
