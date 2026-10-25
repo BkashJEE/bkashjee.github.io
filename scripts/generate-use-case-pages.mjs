@@ -108,6 +108,7 @@ for (const entry of entries) {
 const routes = [
   { path: '/', frequency: 'monthly', priority: '1.0' },
   { path: '/resume/', frequency: 'monthly', priority: '0.8' },
+  { path: '/partners/', frequency: 'monthly', priority: '0.8' },
   { path: '/archive/', frequency: 'weekly', priority: '0.6' },
   { path: '/use-cases/', frequency: 'weekly', priority: '0.9' },
   ...entries.map((entry) => ({ path: `/use-cases/${entry.slug}/`, frequency: 'monthly', priority: '0.7' })),
