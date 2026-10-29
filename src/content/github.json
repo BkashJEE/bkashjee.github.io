@@ -1,6 +1,23 @@
 {
-  "fetched": "2026-10-21",
+  "fetched": "2026-10-29",
   "repos": [
+    {
+      "name": "hermes-nous-calendar",
+      "description": "Never miss a Nous drop: Hermes Daily Drops calendar for Hermes Desktop — releases, official plugins, features and new catalog plugins, day by day. Also on the web.",
+      "url": "https://github.com/BkashJEE/hermes-nous-calendar",
+      "homepage": "https://nous-calendar.vercel.app",
+      "language": "Python",
+      "topics": [
+        "hermes-agent",
+        "hermes-desktop",
+        "nous-research",
+        "plugin"
+      ],
+      "stars": 7,
+      "forks": 2,
+      "created": "2026-10-23",
+      "pushed": "2026-10-23"
+    },
     {
       "name": "hermes-vitals",
       "description": "A bedside monitor for every Hermes Bot inside Hermes Desktop: heartbeat traces, five vital signs and alarms that say what is wrong and what to do.",
@@ -13,6 +30,7 @@
         "monitoring"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-15",
       "pushed": "2026-10-15"
     },
@@ -31,9 +49,10 @@
         "nous-research",
         "treemap"
       ],
-      "stars": 15,
+      "stars": 17,
+      "forks": 4,
       "created": "2026-10-15",
-      "pushed": "2026-10-18"
+      "pushed": "2026-10-23"
     },
     {
       "name": "hermes-agent-inbox",
@@ -47,9 +66,10 @@
         "hermes-plugin",
         "inbox"
       ],
-      "stars": 11,
+      "stars": 13,
+      "forks": 2,
       "created": "2026-10-15",
-      "pushed": "2026-10-18"
+      "pushed": "2026-10-23"
     },
     {
       "name": "hermes-key-doctor",
@@ -66,6 +86,7 @@
         "nous-research"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-13",
       "pushed": "2026-10-15"
     },
@@ -84,6 +105,7 @@
         "pet"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-10",
       "pushed": "2026-10-11"
     },
@@ -95,6 +117,7 @@
       "language": "Python",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-10",
       "pushed": "2026-10-10"
     },
@@ -111,6 +134,7 @@
         "screen-recorder"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-08",
       "pushed": "2026-10-08"
     },
@@ -122,6 +146,7 @@
       "language": "Python",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-08",
       "pushed": "2026-10-08"
     },
@@ -133,6 +158,7 @@
       "language": "Python",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-10-03",
       "pushed": "2026-10-15"
     },
@@ -144,8 +170,9 @@
       "language": "JavaScript",
       "topics": [],
       "stars": 8,
+      "forks": 2,
       "created": "2026-09-25",
-      "pushed": "2026-10-03"
+      "pushed": "2026-10-23"
     },
     {
       "name": "hermes-newsroom",
@@ -155,6 +182,7 @@
       "language": "TypeScript",
       "topics": [],
       "stars": 2,
+      "forks": 1,
       "created": "2026-09-25",
       "pushed": "2026-10-19"
     },
@@ -173,6 +201,7 @@
         "python"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-09-24",
       "pushed": "2026-09-24"
     },
@@ -194,9 +223,10 @@
         "video-editor",
         "wayland"
       ],
-      "stars": 22,
+      "stars": 25,
+      "forks": 3,
       "created": "2026-09-24",
-      "pushed": "2026-10-20"
+      "pushed": "2026-10-22"
     },
     {
       "name": "hermes-agent-archive",
@@ -213,8 +243,9 @@
         "static-site"
       ],
       "stars": 41,
+      "forks": 3,
       "created": "2026-09-23",
-      "pushed": "2026-10-21"
+      "pushed": "2026-10-29"
     },
     {
       "name": "hermes-skills-library",
@@ -233,8 +264,9 @@
         "skills"
       ],
       "stars": 6,
+      "forks": 1,
       "created": "2026-09-21",
-      "pushed": "2026-10-19"
+      "pushed": "2026-10-23"
     },
     {
       "name": "omarchy-workspace-tabs",
@@ -250,6 +282,7 @@
         "workspace"
       ],
       "stars": 0,
+      "forks": 0,
       "created": "2026-09-20",
       "pushed": "2026-09-21"
     },
@@ -261,6 +294,7 @@
       "language": "TypeScript",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-09-20",
       "pushed": "2026-09-21"
     },
@@ -272,8 +306,9 @@
       "language": "TypeScript",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-09-17",
-      "pushed": "2026-10-19"
+      "pushed": "2026-10-29"
     },
     {
       "name": "hermes-bot-forge",
@@ -301,9 +336,10 @@
         "nous-research",
         "python"
       ],
-      "stars": 105,
+      "stars": 117,
+      "forks": 16,
       "created": "2026-09-17",
-      "pushed": "2026-10-18"
+      "pushed": "2026-10-23"
     },
     {
       "name": "hermes-skills",
@@ -313,6 +349,7 @@
       "language": null,
       "topics": [],
       "stars": 2,
+      "forks": 0,
       "created": "2026-09-11",
       "pushed": "2026-09-11"
     },
@@ -324,6 +361,7 @@
       "language": "HTML",
       "topics": [],
       "stars": 0,
+      "forks": 0,
       "created": "2026-09-08",
       "pushed": "2026-09-09"
     },
@@ -344,6 +382,7 @@
         "visualization"
       ],
       "stars": 18,
+      "forks": 5,
       "created": "2026-09-07",
       "pushed": "2026-09-09"
     },
@@ -355,6 +394,7 @@
       "language": "Python",
       "topics": [],
       "stars": 2,
+      "forks": 0,
       "created": "2026-08-16",
       "pushed": "2026-08-16"
     },
@@ -366,6 +406,7 @@
       "language": "Python",
       "topics": [],
       "stars": 4,
+      "forks": 0,
       "created": "2026-08-12",
       "pushed": "2026-08-12"
     },
@@ -377,6 +418,7 @@
       "language": "Python",
       "topics": [],
       "stars": 44,
+      "forks": 2,
       "created": "2026-08-07",
       "pushed": "2026-08-23"
     }
@@ -410,6 +452,6 @@
   "upstream": {
     "total": 29,
     "merged": 4,
-    "open": 13
+    "open": 12
   }
 }

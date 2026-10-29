@@ -4,6 +4,7 @@
 import github from './github.json'
 
 const upstream = github.upstream
+const botForge = github.repos.find((r) => r.name === 'hermes-bot-forge')
 
 export const resume = {
   name: 'Bikash Joshi',
@@ -37,7 +38,7 @@ export const resume = {
       dates: 'Sep 2026 - present',
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
-        'Published a Hermes Agent plugin (104 GitHub stars, 15 forks) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.',
+        `Published a Hermes Agent plugin (${botForge?.stars} GitHub stars, ${botForge?.forks} forks) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.`,
         'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; now at v0.22.0 with 451 tests passing.',
       ],
       tech: 'Python · pytest · systemd',
