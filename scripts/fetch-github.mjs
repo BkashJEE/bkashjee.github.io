@@ -32,6 +32,7 @@ try {
       language: r.language,
       topics: r.topics ?? [],
       stars: r.stargazers_count,
+      forks: r.forks_count,
       created: r.created_at.slice(0, 10),
       pushed: r.pushed_at.slice(0, 10),
     }))

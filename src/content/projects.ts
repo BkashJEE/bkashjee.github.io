@@ -4,6 +4,9 @@
 
 import github from './github.json'
 
+/** Stars as of the last build, for cards that show a count before the live fetch. */
+const repoStars = (name: string) => github.repos.find((r) => r.name === name)?.stars ?? 0
+
 /** Upstream PR totals, refreshed from GitHub at every build. */
 const upstream = github.upstream
 
@@ -241,7 +244,7 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: 104,
+    stars: repoStars('hermes-bot-forge'),
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
