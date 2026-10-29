@@ -55,6 +55,9 @@ export function Footer() {
             <a href="/resume/" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               Resume
             </a>
+            <a href="/partners/" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
+              Partners
+            </a>
             <a href="/use-cases/" className="link-sweep inline-flex min-h-11 items-center hover:text-fg">
               Playbook
             </a>

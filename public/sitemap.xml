@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bkashjee.github.io/partners/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bkashjee.github.io/archive/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

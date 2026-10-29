@@ -72,6 +72,12 @@ export function Nav() {
           >
             Archive
           </a>
+          <a
+            href="/partners/"
+            className="nav-link hidden sm:inline-flex"
+          >
+            Partners
+          </a>
           <span className="mx-1 hidden h-4 w-px bg-line sm:block" aria-hidden="true" />
           <a
             href={identity.github}

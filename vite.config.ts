@@ -15,6 +15,7 @@ export default defineConfig(({ isSsrBuild }) => ({
         main: resolve(__dirname, 'index.html'),
         resume: resolve(__dirname, 'resume/index.html'),
         archive: resolve(__dirname, 'archive/index.html'),
+        partners: resolve(__dirname, 'partners/index.html'),
         useCases: resolve(__dirname, 'use-cases/index.html'),
         ...Object.fromEntries(
           existsSync(resolve(__dirname, 'use-cases'))
