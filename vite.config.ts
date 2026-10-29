@@ -1,8 +1,11 @@
-import { existsSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+
+// One place for the site's address (src/content/site.json); the HTML pages read it as %VITE_SITE_URL%.
+process.env.VITE_SITE_URL = JSON.parse(readFileSync(resolve(__dirname, 'src/content/site.json'), 'utf8')).url
 
 export default defineConfig(({ isSsrBuild }) => ({
   base: '/',

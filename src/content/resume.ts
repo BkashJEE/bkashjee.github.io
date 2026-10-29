@@ -2,6 +2,10 @@
 // Same content rule as the site: real, verifiable work only.
 
 import github from './github.json'
+import siteConfig from './site.json'
+
+/** The site's address without https://, as printed on the resume. */
+const siteHost = new URL(siteConfig.url).host
 
 const upstream = github.upstream
 const botForge = github.repos.find((r) => r.name === 'hermes-bot-forge')
@@ -14,7 +18,7 @@ export const resume = {
     email: 'bkashjee@gmail.com',
     github: 'github.com/BkashJEE',
     x: 'x.com/BkashJosi',
-    site: 'bkashjee.github.io',
+    site: siteHost,
   },
   summary:
     'Independent software engineer shipping desktop apps, AI agent plugins, and TypeScript websites; publishes open-source tools and contributes upstream to NousResearch’s Hermes Agent, whose official plugin catalog includes Bot Forge.',
@@ -58,7 +62,7 @@ export const resume = {
       name: 'Personal Portfolio',
       role: 'Creator · website',
       dates: 'Sep 2026 - present',
-      link: 'bkashjee.github.io',
+      link: siteHost,
       bullets: [
         'Published a 3-page portfolio with case studies, a GitHub-fed archive, and a resume/PDF sharing one content source; GitHub Actions builds and deploys each merge to main.',
       ],

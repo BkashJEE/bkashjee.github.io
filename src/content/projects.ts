@@ -3,6 +3,7 @@
 // clients, testimonials, or employment. "Source private" means exactly that.
 
 import github from './github.json'
+import siteConfig from './site.json'
 
 /** Stars as of the last build, for cards that show a count before the live fetch. */
 const repoStars = (name: string) => github.repos.find((r) => r.name === name)?.stars ?? 0
@@ -18,7 +19,7 @@ export const identity = {
   email: 'bkashjee@gmail.com',
   github: 'https://github.com/BkashJEE',
   x: 'https://x.com/BkashJosi',
-  site: 'https://bkashjee.github.io',
+  site: siteConfig.url,
 }
 
 export interface CaseStudy {
