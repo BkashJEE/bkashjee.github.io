@@ -22,7 +22,7 @@ const flag = (name) => {
   const i = args.indexOf(name)
   return i === -1 ? null : args[i + 1]
 }
-const base = (flag('--base') ?? 'https://bkashjee.github.io').replace(/\/$/, '')
+const base = (flag('--base') ?? JSON.parse(readFileSync(new URL('../src/content/site.json', import.meta.url), 'utf8')).url).replace(/\/$/, '')
 const benchmark = flag('--benchmark')?.split(',').map((u) => u.trim()).filter(Boolean) ?? []
 const PAGES = ['/', '/use-cases/', '/archive/', '/resume/']
 const VIEWPORTS = [

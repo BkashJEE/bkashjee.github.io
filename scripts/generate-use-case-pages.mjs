@@ -3,7 +3,7 @@ import { join } from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
 const entries = JSON.parse(await readFile(join(root, 'src/content/use-cases.json'), 'utf8'))
-const site = 'https://bkashjee.github.io'
+const site = JSON.parse(await readFile(join(root, 'src/content/site.json'), 'utf8')).url.replace(/\/$/, '')
 
 const escapeHtml = (value) => String(value)
   .replaceAll('&', '&amp;')
@@ -122,5 +122,6 @@ ${routes.map((route) => `  <url>
   </url>`).join('\n')}
 </urlset>\n`
 await writeFile(join(root, 'public/sitemap.xml'), sitemap)
+await writeFile(join(root, 'public/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site}/sitemap.xml\n`)
 
 console.log(`Generated ${entries.length + 1} use-case pages and sitemap.xml`)
