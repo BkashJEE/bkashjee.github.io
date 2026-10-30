@@ -1,6 +1,6 @@
 # bkashjee.github.io
 
-Personal portfolio and resume of Bikash Joshi — Software Engineer building desktop apps, web, and AI agent systems.
+Personal portfolio and resume of Bikash Joshi — AI enthusiast building desktop apps, web, and AI agent systems.
 
 Live at [bkashjee.github.io](https://bkashjee.github.io/).
 

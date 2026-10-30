@@ -13,8 +13,8 @@ const upstream = github.upstream
 
 export const identity = {
   name: 'Bikash Joshi',
-  role: 'Software Engineer',
-  roleLine: 'Software Engineer — desktop apps, web, and AI agent systems',
+  role: 'AI Enthusiast',
+  roleLine: 'AI enthusiast — desktop apps, web, and AI agent systems',
   bio: 'I design and ship local-first tools end to end — from Wayland internals and media pipelines to interfaces with real polish — and maintain Hermes Agent Archive, a source-attributed archive of Hermes Agent workflows, skills and community projects.',
   email: 'bkashjee@gmail.com',
   github: 'https://github.com/BkashJEE',
@@ -402,7 +402,7 @@ export const skillGroups: { title: string; items: string[] }[] = [
 ]
 
 export const aboutParagraphs: string[] = [
-  'I’m an independent software engineer. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
+  'I’m an AI enthusiast and an independent builder. I run Arch Linux with Hyprland as my daily driver, and I build the tools I wish existed: a screen recorder that polishes itself, agents that set up other agents, widgets that make the desktop feel alive.',
   `I care about local-first software and privacy by default — ScreenPolish deliberately never reads your keyboard — and about interfaces with real polish. I’m an active contributor to the Hermes Agent ecosystem, with ${upstream.merged} merged and ${upstream.open} open pull requests to NousResearch/hermes-agent — one of them put Bot Forge in its official plugin catalog. I also maintain Hermes Agent Archive, where every workflow, skill and community project links to its source and credits its author, and I share what I learn about building with AI agents.`,
 ]
 

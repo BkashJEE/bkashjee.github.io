@@ -12,7 +12,7 @@ const botForge = github.repos.find((r) => r.name === 'hermes-bot-forge')
 
 export const resume = {
   name: 'Bikash Joshi',
-  title: 'Software Engineer',
+  title: 'AI Enthusiast',
   subtitle: 'Desktop apps · Web · AI agent systems',
   contact: {
     email: 'bkashjee@gmail.com',
@@ -21,7 +21,7 @@ export const resume = {
     site: siteHost,
   },
   summary:
-    'Independent software engineer shipping desktop apps, AI agent plugins, and TypeScript websites; publishes open-source tools and contributes upstream to NousResearch’s Hermes Agent, whose official plugin catalog includes Bot Forge.',
+    'AI enthusiast and independent builder shipping desktop apps, AI agent plugins, and TypeScript websites; publishes open-source tools and contributes upstream to NousResearch’s Hermes Agent, whose official plugin catalog includes Bot Forge.',
   projects: [
     {
       name: 'ScreenPolish',
