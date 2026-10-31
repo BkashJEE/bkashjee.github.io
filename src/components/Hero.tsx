@@ -6,6 +6,7 @@ import { HeroTicker } from './HeroTicker'
 
 const BOT_FORGE = 'https://github.com/BkashJEE/hermes-bot-forge'
 const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : `${Math.round(n / 1000)}K`)
+const monthDay = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
 
 /**
  * The strongest facts on the site, at first sight, each linking to its
@@ -14,20 +15,27 @@ const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` 
 function HeroProof() {
   const stars = plugins.find((p) => p.repo === BOT_FORGE)?.stars ?? 0
   // Spaced like the link row below rather than dot-separated, so a wrap can
-  // never leave a separator dangling; each fact stays on one line.
-  const item = 'inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-fg'
+  // never leave a separator dangling. Each fact says what its number counts.
+  const item = 'inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-fg'
   const figure = 'font-medium text-fg tabular-nums'
   return (
-    <div className="pointer-events-auto flex flex-wrap gap-x-6 font-mono text-[0.8rem] text-fg-dim">
+    <div className="pointer-events-auto flex max-w-xl flex-wrap gap-x-6 font-mono text-[0.8rem] text-fg-dim">
       <a href="#bot-forge" className={item}>
-        <span className="text-accent" aria-hidden="true">★</span>
-        <span className={figure}>{stars}</span> · Bot Forge, official Hermes catalog
+        <span>
+          Bot Forge · <span className="text-accent" aria-hidden="true">★</span> <span className={figure}>{stars}</span> GitHub
+          stars · in the official Hermes plugin catalog
+        </span>
       </a>
       <a href="/archive/" className={item}>
-        <span className={figure}>{github.repos.length}</span> public repos
+        <span className="whitespace-nowrap">
+          <span className={figure}>{github.repos.length}</span> public repos
+        </span>
       </a>
       <a href="/use-cases/" className={item}>
-        <span className={figure}>{views(audience.impressions)}</span> views on X
+        <span className="whitespace-nowrap">
+          <span className={figure}>{views(audience.impressions)}</span> X impressions · {monthDay(audience.from)}–
+          {monthDay(audience.to)}, {audience.to.slice(0, 4)}
+        </span>
       </a>
     </div>
   )
@@ -67,7 +75,15 @@ export function Hero() {
             </span>
           </h1>
           <div className="hero-rise mt-8 max-w-xl" style={{ '--d': '0.25s' } as React.CSSProperties}>
-            <p className="text-base leading-relaxed text-fg-dim sm:text-lg">{identity.bio}</p>
+            {/* identity.bio in plain text; here ScreenPolish links to its project. */}
+            <p className="text-base leading-relaxed text-fg-dim sm:text-lg">
+              I build desktop tools and AI agent plugins. I made{' '}
+              <a href="#screenpolish" className="link-sweep pointer-events-auto text-fg hover:text-accent">
+                ScreenPolish
+              </a>
+              , a screen recorder that polishes your recordings for you, and I maintain Hermes Agent Archive, a
+              source-attributed collection of Hermes Agent workflows and skills.
+            </p>
           </div>
           <div className="hero-rise mt-5" style={{ '--d': '0.3s' } as React.CSSProperties}>
             <HeroProof />
