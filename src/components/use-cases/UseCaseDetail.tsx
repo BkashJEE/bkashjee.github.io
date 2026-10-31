@@ -13,6 +13,8 @@ function ExternalLink({ href, children }: { href: string; children: string }) {
 export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
   const related = entry.related.map((slug) => useCases.find((item) => item.slug === slug)).filter((item): item is UseCaseEntry => Boolean(item))
 
+  const screenshots = entry.screenshots.filter((image) => image.src !== entry.image.src)
+
   return (
     <main className="pb-24 pt-20">
       <article>
@@ -37,7 +39,7 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
             </div>
             {entry.links && (
               <div className="mt-9 flex flex-wrap gap-3">
-                {entry.links.demo && <ExternalLink href={entry.links.demo}>Live demo</ExternalLink>}
+                {entry.links.demo && <ExternalLink href={entry.links.demo}>{/\.(mp4|webm|mov)(?:[?#]|$)/i.test(entry.links.demo) ? 'Watch demo video' : 'Live demo'}</ExternalLink>}
                 {entry.links.source && <ExternalLink href={entry.links.source}>Source code</ExternalLink>}
                 {entry.links.post && <ExternalLink href={entry.links.post}>Original post</ExternalLink>}
               </div>
@@ -98,12 +100,12 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
             </aside>
           </div>
 
-          {entry.screenshots.length > 0 && (
+          {screenshots.length > 0 && (
             <section className="mt-20 border-t border-line pt-16" aria-labelledby="screenshots-heading">
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">Screenshots</p>
               <h2 id="screenshots-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">Inside the workflow</h2>
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                {entry.screenshots.map((image) => (
+                {screenshots.map((image) => (
                   <figure key={image.src} className="overflow-hidden rounded-2xl border border-line bg-surface p-3">
                     <img src={image.src} width={image.width} height={image.height} alt={image.alt} loading="lazy" decoding="async" className="h-full max-h-[34rem] w-full rounded-lg object-contain" />
                   </figure>
@@ -119,6 +121,10 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
               <div className="mt-8 grid gap-5 md:grid-cols-2">{related.map((item) => <UseCaseCard key={item.slug} entry={item} />)}</div>
             </section>
           )}
+          <nav aria-label="Case study navigation" className="mt-16 flex flex-wrap justify-between gap-4 border-t border-line pt-6 font-mono text-sm">
+            <a href="/use-cases/" className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">← All case studies</a>
+            {related[0] && <a href={`/use-cases/${related[0].slug}/`} className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">Next: {related[0].title} →</a>}
+          </nav>
         </div>
       </article>
     </main>

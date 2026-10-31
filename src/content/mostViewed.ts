@@ -227,7 +227,7 @@ export const viewedUseCases: ViewedUseCase[] = [
     tab: 'jev-hermes',
     title: 'Connect the Jev skill and let Hermes decide faster',
     summary:
-      'The setup, end to end: get a TypeSafe API key, put it in .env, add the skill with one npx command, then ask Hermes to use it. My most-viewed and most-saved post: 1,092 bookmarks.',
+      'Get a TypeSafe API key, add the skill, and ask Hermes to use it.',
     postUrl: 'https://x.com/BkashJosi/status/2101057981861552342',
     postText: 'Your Hermes can get 100x faster if you connect it to the Jev skill. 🚀🪽 👉Login to Typesafe console get the api key. Set in the .env file. Then in terminal 👉npx skills add typesafe-ai/skills -…',
     date: '2026-09-18',

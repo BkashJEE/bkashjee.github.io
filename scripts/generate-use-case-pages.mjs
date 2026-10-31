@@ -56,7 +56,7 @@ function html({ title, description, canonical, image, structuredData, ogType = '
 const collectionUrl = `${site}/use-cases/`
 const collectionHtml = html({
   title: 'Playbook — Bikash Joshi',
-  description: 'Recipes that work: what I build with Hermes, Omarchy, and Jev — how each one is wired, what it cost, and where it still falls short.',
+  description: 'What I built, how it works, and where it still falls short.',
   canonical: collectionUrl,
   image: '/assets/og.jpg',
   ogType: 'website',

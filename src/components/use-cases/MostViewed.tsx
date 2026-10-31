@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMotionPref } from '../../motion/useMotionPref'
 import { audience, mostViewedTabs, viewedProvenance, viewedUseCases, type MostViewedTab, type ViewedUseCase } from '../../content/mostViewed'
 
 const compact = (n: number) =>
@@ -252,7 +253,7 @@ function StartHereCard({ tab, onPick }: { tab: MostViewedTab; onPick: (id: strin
   )
 }
 
-/** Closing question for the active tab: a reply is the cheapest way in. */
+/** Invite visitors to share a build for the active topic. */
 function AskStrip({ tab }: { tab: MostViewedTab }) {
   const topic = mostViewedTabs.find((t) => t.id === tab)!
   const href = `https://x.com/intent/post?text=${encodeURIComponent(`${topic.ask.prompt} ${audience.handle}`)}`
@@ -261,8 +262,7 @@ function AskStrip({ tab }: { tab: MostViewedTab }) {
       <div className="max-w-2xl">
         <h3 className="font-display text-[1.2rem] leading-tight text-fg">{topic.ask.question}</h3>
         <p className="mt-1.5 text-[0.9rem] leading-relaxed text-fg-dim">
-          Post it at me — I read every reply. I publish each entry as I build it: {audience.posts} went out in
-          the last {audience.days} days.
+          {audience.posts} posts from {audienceDate(audience.from)} to {audienceDate(audience.to, true)}.
         </p>
       </div>
       <a
@@ -271,7 +271,7 @@ function AskStrip({ tab }: { tab: MostViewedTab }) {
         rel="noreferrer"
         className="shrink-0 rounded-full border border-accent/50 px-5 py-2.5 text-center font-mono text-[0.78rem] text-accent transition-colors hover:bg-accent/10"
       >
-        Reply on X ↗
+        Share your build on X ↗
       </a>
     </div>
   )
@@ -283,7 +283,11 @@ const sortModes = [
   { id: 'newest', label: 'Newest', by: (a: ViewedUseCase, b: ViewedUseCase) => b.date.localeCompare(a.date) },
 ] as const
 
+const audienceDate = (iso: string, year = false) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', ...(year ? { year: 'numeric' } : {}), timeZone: 'UTC' })
+
 export function MostViewed() {
+  const reduced = useMotionPref()
   const [tab, setTab] = useState<MostViewedTab>('jev-hermes')
   const [sort, setSort] = useState<(typeof sortModes)[number]['id']>('views')
   // Long tabs open on their top eight (three rows with the start-here tile).
@@ -303,27 +307,26 @@ export function MostViewed() {
       const el = document.getElementById(id)
       if (!el) return
       history.replaceState(null, '', `#${id}`)
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
       el.focus({ preventScroll: true })
     })
   }
 
   return (
     <section className="mx-auto max-w-6xl px-6 pb-8">
-      <div className="-mx-6 flex snap-x gap-2 overflow-x-auto px-6 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" role="tablist" aria-label="Use case topics">
+      <div className="flex flex-wrap gap-2 pb-1" role="group" aria-label="Use case topics">
         {mostViewedTabs.map((t) => {
           const selected = t.id === tab
           return (
             <button
               key={t.id}
               type="button"
-              role="tab"
-              aria-selected={selected}
+              aria-pressed={selected}
               onClick={() => {
                 setTab(t.id)
                 setExpanded(false)
               }}
-              className={`shrink-0 snap-start rounded-full border px-4 py-2 font-mono text-[0.78rem] transition-colors ${
+              className={`shrink-0 rounded-full border px-4 py-2 font-mono text-[0.78rem] transition-colors ${
                 selected ? 'border-accent bg-accent/10 text-accent' : 'border-line text-fg-dim hover:border-fg-faint hover:text-fg'
               }`}
             >
@@ -386,7 +389,7 @@ export function MostViewed() {
         {viewedProvenance.source}, exported {prettyDate(viewedProvenance.exported)}
       </p>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div id="related-post-cards" className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <StartHereCard tab={tab} onPick={jumpTo} />
         {shown.map((entry, i) => (
           <Card key={entry.id} entry={entry} rank={i + 1} />
@@ -398,10 +401,14 @@ export function MostViewed() {
           <button
             type="button"
             aria-expanded={expanded}
-            onClick={() => setExpanded((v) => !v)}
+            aria-controls="related-post-cards"
+            onClick={() => {
+              setExpanded((v) => !v)
+              if (expanded) document.getElementById(entries[0].id)?.focus()
+            }}
             className="inline-flex min-h-11 items-center rounded-full border border-line px-5 font-mono text-[0.78rem] text-fg-dim transition-colors hover:border-accent hover:text-accent"
           >
-            {expanded ? 'Show the top eight' : `Show all ${entries.length} in ${active.label}`}
+            {expanded ? 'Show fewer' : `Show all ${entries.length} in ${active.label}`}
           </button>
         </div>
       )}

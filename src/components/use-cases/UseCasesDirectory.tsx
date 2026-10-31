@@ -65,7 +65,7 @@ export function UseCasesDirectory() {
             <div className="max-w-4xl">
               <h1 className="font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.9] text-fg">Playbook<span className="text-accent">.</span></h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-fg-dim sm:text-xl">
-                Recipes that work: what I build with Hermes, Omarchy and Jev, how each one is wired, what it cost me, and where it still falls short. New entries as I build them.
+                What I built, how it works, and where it still falls short.
               </p>
             </div>
             <div className="border-l-2 border-accent pl-5 lg:mb-2">
@@ -76,25 +76,8 @@ export function UseCasesDirectory() {
         </div>
       </section>
 
-      <section className="scroll-mt-20 border-b border-line bg-surface/30 py-12 sm:py-20" aria-label="Most viewed use cases">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] uppercase tracking-[0.25em] text-accent">
-            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-            Most viewed
-          </p>
-          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight">
-            The entries that travelled furthest
-          </h2>
-          <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-            Every recipe I publish starts as a post. These are the ones that landed hardest, ordered by how many people saw them.
-          </p>
-        </div>
-        <div className="mt-10">
-          <MostViewed />
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16" aria-label="Use-case directory">
+        <h2 className="mb-7 font-display text-3xl text-fg sm:text-4xl">Browse the playbook</h2>
         <div className="grid gap-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12">
           <aside className="hidden lg:block">
             <div className="sticky top-24">
@@ -113,7 +96,7 @@ export function UseCasesDirectory() {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search titles, tools, keywords…"
-                  className="h-12 w-full rounded-xl border border-line bg-surface pl-11 pr-4 text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent focus:outline-none"
+                  className="h-12 w-full rounded-xl border border-line bg-surface pl-11 pr-4 text-base sm:text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent"
                 />
               </label>
               <label>
@@ -121,7 +104,7 @@ export function UseCasesDirectory() {
                 <select
                   value={sort}
                   onChange={(event) => setSort(event.target.value as SortMode)}
-                  className="h-12 w-full rounded-xl border border-line bg-surface px-4 font-mono text-xs text-fg transition-colors hover:border-fg-faint focus:border-accent focus:outline-none"
+                  className="h-12 w-full rounded-xl border border-line bg-surface px-4 font-mono text-base sm:text-sm text-fg transition-colors hover:border-fg-faint focus:border-accent"
                 >
                   <option value="newest">Newest first</option>
                   <option value="featured">Featured first</option>
@@ -158,6 +141,24 @@ export function UseCasesDirectory() {
           </div>
         </div>
       </section>
+      <section className="scroll-mt-20 border-b border-line bg-surface/30 py-12 sm:py-20" aria-label="Related posts on X">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] uppercase tracking-[0.25em] text-accent">
+            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+            X posts
+          </p>
+          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight">
+            Related posts on X
+          </h2>
+          <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
+            X posts ranked by recorded views. Each links to the original post.
+          </p>
+        </div>
+        <div className="mt-10">
+          <MostViewed />
+        </div>
+      </section>
+
     </main>
   )
 }
