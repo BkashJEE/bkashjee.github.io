@@ -45,10 +45,13 @@ export function LabGrid() {
           Python bridges.
         </p>
       </Reveal>
+      <p className="mx-auto mt-6 max-w-6xl px-6 font-mono text-[0.75rem] text-fg-dim sm:hidden">
+        {labItems.length} experiments · swipe →
+      </p>
       {/* A swipeable row on phones, where six stacked cards ran to three
           thousand pixels; the grid from sm up. contain:paint keeps the
           row from widening the page. */}
-      <div className="mx-auto mt-10 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-1 pb-4 [contain:paint] sm:mt-12 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-6 sm:pb-0 lg:grid-cols-3">
+      <div tabIndex={0} role="group" aria-label="Desktop experiments" className="mx-auto mt-4 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-1 pb-4 [contain:paint] sm:mt-12 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-6 sm:pb-0 lg:grid-cols-3">
         {labItems.map((item, i) => (
           <Reveal key={item.name} delay={0.05 * (i % 3)} className="w-[80vw] max-w-[21rem] shrink-0 snap-start scroll-ml-4 sm:w-auto sm:max-w-none">
             <motion.article
@@ -72,7 +75,7 @@ export function LabGrid() {
                         height={item.image.height}
                         alt={item.image.alt}
                         loading="lazy"
-                        className="relative max-h-full max-w-full rounded-lg object-contain shadow-[0_14px_32px_rgb(0_0_0/0.32)] transition-transform duration-500 group-hover:scale-[1.035]"
+                        className="relative max-h-full max-w-full rounded-lg object-contain shadow-[0_14px_32px_rgb(0_0_0/0.32)] transition-transform duration-500 motion-safe:group-hover:scale-[1.035]"
                       />
                     </div>
                   )}
