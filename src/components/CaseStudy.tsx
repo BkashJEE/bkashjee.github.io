@@ -63,23 +63,19 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
-        <span className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint sm:hidden" aria-hidden="true">
-          Swipe →
-        </span>
       </div>
       <ol
-        className="flow-scroll mt-3 flex snap-x snap-mandatory items-stretch gap-2 overflow-x-auto pb-2"
+        className="mt-3 flex flex-wrap items-stretch gap-2"
         aria-label="Project workflow steps"
-        tabIndex={0}
       >
         {flow.steps.map((step, i) => (
-          <li key={step} className="flex shrink-0 snap-start items-center gap-2">
+          <li key={step} className="flex min-w-0 max-w-full items-center gap-2">
             {i > 0 && (
               <span className={`${arrowColor[glow]} select-none font-mono text-sm`} aria-hidden="true">
                 →
               </span>
             )}
-            <span className={`rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug text-fg-dim`}>
+            <span className={`min-w-0 max-w-full break-words rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug text-fg-dim`}>
               {step}
             </span>
           </li>
@@ -92,19 +88,22 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
 
 export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
   const [primary, secondary] = study.video ? [null, study.images[0]] : study.images
+  const [detailsOpen, setDetailsOpen] = useState(false)
+  const techChips = (tech: string[]) => (
+    <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
+      {tech.map((t) => (
+        <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
+      ))}
+    </ul>
+  )
   const details = (
     <>
       {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
-      <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
-        {study.tech.map((t) => (
-          <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
-        ))}
-      </ul>
     </>
   )
   const fullCaseSlug = fullCaseSlugs[study.id]
   return (
-    <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-14 sm:py-20">
+    <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-10 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
         <header className="mb-7 flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-2xl">
@@ -174,7 +173,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                   href={`/use-cases/${fullCaseSlug}/`}
                   className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[0.8rem] font-medium text-ink transition-colors hover:bg-fg"
                 >
-                  Full case study →
+                  View full case study →
                 </a>
               )}
               {study.link && (
@@ -191,12 +190,13 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
             {study.platforms && <p className="text-sm leading-relaxed text-fg-dim">{study.platforms}</p>}
             {/* On phones the pipeline and tech list move inside the fold, so
                 each project opens on its title, picture and buttons. */}
-            <div className="hidden sm:block">{details}</div>
-            <details className="mt-6 border-y border-line">
+            <div className="hidden sm:block">{details}{!detailsOpen && techChips(study.tech.slice(0, 4))}</div>
+            <details className="mt-6 border-y border-line" onToggle={(event) => setDetailsOpen(event.currentTarget.open)}>
               <summary className="cursor-pointer py-4 font-medium text-fg marker:text-accent hover:text-accent">
-                Read case study<span className="sr-only">: {study.name}</span>
+                Build details<span className="sr-only">: {study.name}</span>
               </summary>
               <div className="sm:hidden">{details}</div>
+              {detailsOpen && techChips(study.tech)}
               <div className="space-y-4 pt-5 pb-5 text-[0.95rem] leading-relaxed text-fg-dim sm:pt-0">
                 {study.description.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
               </div>
