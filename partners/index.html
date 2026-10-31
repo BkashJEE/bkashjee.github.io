@@ -21,7 +21,7 @@
     <style>
     :root{
       color-scheme:dark;
-      --bg:#0d0e10; --card:#16181d; --line:#2a2d35; --ink:#f4f4f1; --mute:#9a9ca5; --dim:#6c6f78;
+      --bg:#0d0e10; --card:#16181d; --line:#2a2d35; --ink:#f4f4f1; --mute:#9a9ca5; --dim:#9a9ca5;
       --y:#F5C518; --blue:#3b82f6; --cobalt:#0a4cff; --red:#ff6b6b; --gold:#7a6420;
       --disp:Anton,"Bebas Neue",Impact,"Arial Narrow",sans-serif;
       --body:"Instrument Sans Variable","Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -95,7 +95,7 @@
     .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
     .chip{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 9px;border-radius:8px;border:1px solid var(--line);color:#cfd0d4}
     .chip.k{border-color:var(--y);color:var(--y)}
-    .chip.b{border-color:rgba(59,130,246,.6);color:#8fb6ff}
+    .chip-blue{border-color:rgba(59,130,246,.6);color:#8fb6ff}
     
     /* packages */
     .pk{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -137,15 +137,34 @@
     .handle span{color:var(--blue)}
     .fine{font-family:var(--mono);font-size:11.5px;color:var(--dim);max-width:60em;line-height:1.6}
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+    .skip-link{position:fixed;left:16px;top:16px;z-index:100;padding:12px 16px;background:var(--ink);color:var(--bg);transform:translateY(-200%)}
+    .skip-link:focus{transform:none;outline:2px solid var(--y);outline-offset:3px}
+    @media(max-width:639px){
+      .tbl-scroll{overflow:visible}
+      .tbl table,.tbl tbody{display:block;min-width:0}
+      .tbl thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
+      .tbl tr{display:grid;grid-template-columns:1fr 1fr;padding:16px 18px;gap:8px 16px;border-bottom:1px solid var(--line)}
+      .tbl tr:last-child{border-bottom:0}
+      .tbl td{display:block;padding:0;border:0;min-width:0}
+      .tbl td:first-child{grid-column:1 / -1;display:contents}
+      .tbl td:first-child a{grid-column:1 / -1}
+      .tbl td:first-child br{display:none}
+      .tbl td:first-child .when{grid-column:1 / -1;grid-row:3}
+      .tbl td.num{grid-row:2;white-space:normal}
+      .tbl td[data-label]::before{content:attr(data-label) ": ";font-family:var(--mono);font-size:12px;font-weight:400;color:var(--mute)}
+      .tbl td[data-label="Source"]{grid-column:1 / -1;font-size:12px;color:var(--dim)}
+    }
     </style>
   </head>
   <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="wrap">
   <div class="top">
     <span class="lab"><a class="home" href="/">← Portfolio</a> · PARTNER KIT · <b>No. 01</b> · OCT 2026</span>
     <span class="badge">HERMES AGENT</span>
   </div>
 
+  <main id="main" tabindex="-1">
   <div class="hero">
     <div>
       <h1>Launch films for AI tools, <span class="y">from a builder who runs them.</span></h1>
@@ -195,13 +214,13 @@
       <table>
         <thead><tr><th>Post</th><th>Reach</th><th>Saves</th><th>Source</th></tr></thead>
         <tbody>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">SEP 9 2026 · HERMES AGENT WORKFLOW</span></td><td class="num k">115,855</td><td class="num">457</td><td class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">SEP 26 2026 · 118 NEW FOLLOWS FROM ONE POST</span></td><td class="num">67,137</td><td class="num">506</td><td class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">SEP 18 2026 · PRODUCT WALKTHROUGH · TYPESAFE</span></td><td class="num">58,627</td><td class="num k">1,102</td><td class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">SEP 10 2026 · BUILD</span></td><td class="num">51,405</td><td class="num">404</td><td class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">SEP 17 2026 · BUILD</span></td><td class="num">44,988</td><td class="num">309</td><td class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">OCT 18 2026 · REAL RUN VIDEO</span></td><td class="num">13,751</td><td class="num">54</td><td class="when">Public views, Oct 25</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">OCT 23 2026 · LAUNCH FILM</span></td><td class="num">13,033</td><td class="num">95</td><td class="when">Public views, Oct 25</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">SEP 9 2026 · HERMES AGENT WORKFLOW</span></td><td data-label="Reach" class="num k">115,855</td><td data-label="Saves" class="num">457</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">SEP 26 2026 · 118 NEW FOLLOWS FROM ONE POST</span></td><td data-label="Reach" class="num">67,137</td><td data-label="Saves" class="num">506</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">SEP 18 2026 · PRODUCT WALKTHROUGH · TYPESAFE</span></td><td data-label="Reach" class="num">58,627</td><td data-label="Saves" class="num k">1,102</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">SEP 10 2026 · BUILD</span></td><td data-label="Reach" class="num">51,405</td><td data-label="Saves" class="num">404</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">SEP 17 2026 · BUILD</span></td><td data-label="Reach" class="num">44,988</td><td data-label="Saves" class="num">309</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">OCT 18 2026 · REAL RUN VIDEO</span></td><td data-label="Reach" class="num">13,751</td><td data-label="Saves" class="num">54</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">OCT 23 2026 · LAUNCH FILM</span></td><td data-label="Reach" class="num">13,033</td><td data-label="Saves" class="num">95</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
         </tbody>
       </table>
     </div></div>
@@ -229,7 +248,7 @@
       <article class="work">
         <video src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" controls playsinline preload="none"></video>
         <div class="b"><h3>Website showcase: webdev.teknium.io</h3><p>A tilt-shift 3D fly-over built from real 2x page captures, with cards that stand up off the page.</p>
-          <div class="chips"><span class="chip b">WEBSITE SHOWCASE</span><span class="chip">34 S</span></div></div>
+          <div class="chips"><span class="chip chip-blue">WEBSITE SHOWCASE</span><span class="chip">34 S</span></div></div>
       </article>
       <article class="work">
         <video src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" controls playsinline preload="none"></video>
@@ -348,6 +367,7 @@
     </div>
   </div>
 
+</main>
   <footer>
     <div class="handle">@Bkash<span>Josi</span></div>
     <div class="fine">Samples are from my own posts, not paid work. Product names appear because I covered them. Numbers come from my X analytics export (to Oct 21 2026) and X's public counts read Oct 25 2026.</div>

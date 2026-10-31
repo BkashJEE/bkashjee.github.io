@@ -10,15 +10,15 @@ export function Skills() {
         <dl className="border-t border-line">
           {skillGroups.map((group, i) => (
             <Reveal key={group.title} delay={0.04 * i}>
-              <div className="grid gap-2 border-b border-line py-6 sm:grid-cols-12 sm:items-baseline sm:gap-8">
+              <div className="grid grid-cols-1 gap-2 border-b border-line py-6 sm:grid-cols-12 sm:items-baseline sm:gap-8">
                 <dt className="font-mono text-[0.78rem] uppercase tracking-[0.2em] text-fg-dim sm:col-span-3">
                   {group.title}
                 </dt>
-                <dd className="text-[clamp(1.05rem,1.8vw,1.3rem)] font-medium leading-relaxed tracking-tight text-fg sm:col-span-9">
+                <dd className="flex min-w-0 flex-wrap gap-x-2 gap-y-1 text-[clamp(1.05rem,1.8vw,1.3rem)] font-medium leading-relaxed tracking-tight text-fg sm:col-span-9">
                   {group.items.map((item, j) => (
-                    <span key={item}>
+                    <span key={item} className="inline-flex min-w-0 items-baseline">
                       {item}
-                      {j < group.items.length - 1 && <span className="mx-2 text-accent" aria-hidden="true">·</span>}
+                      {j < group.items.length - 1 && <span className="ml-2 text-accent" aria-hidden="true">·</span>}
                     </span>
                   ))}
                 </dd>

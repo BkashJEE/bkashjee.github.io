@@ -65,10 +65,9 @@ export function Footer() {
           <div className="mt-12 space-y-2 border-t border-line pt-6 font-mono text-[0.75rem] text-fg-faint">
             <p>
               <span className="mr-2 inline-block size-1.5 rounded-full bg-teal align-middle" aria-hidden="true" />
-              All {factCheck.claims} factual claims on this site are checked against each project’s own docs with
-              TypeSafe {factCheck.model} — last run {factCheck.date}.{' '}
+              Last recorded fact check: {factCheck.claims} claims · {new Date(`${factCheck.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}.{' '}
               <a href={factCheck.claimsUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
-                See the claims ↗
+                View checked claims ↗
               </a>
             </p>
             <p>
