@@ -36,10 +36,6 @@ export function Writing() {
           </div>
         </Reveal>
 
-        <Reveal>
-          <XGrowth />
-        </Reveal>
-
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {writingPosts.map((post, i) => (
             <Reveal key={post.href} delay={0.06 * i} className="h-full">
@@ -62,6 +58,10 @@ export function Writing() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <XGrowth />
+        </Reveal>
       </div>
     </section>
   )

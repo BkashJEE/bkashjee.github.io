@@ -8,7 +8,7 @@ const formatDate = (date: string) => new Intl.DateTimeFormat('en-US', {
 
 export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
   return (
-    <article className="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 hover:-translate-y-1 hover:border-fg-faint/70">
+    <article className="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 motion-safe:hover:-translate-y-1 hover:border-fg-faint/70">
       <a href={`/use-cases/${entry.slug}/`} className="shine block overflow-hidden border-b border-line bg-raised" aria-label={`Read use case: ${entry.title}`}>
         <div className="aspect-[16/10] p-5 sm:p-6">
           <img
@@ -18,7 +18,7 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
             alt={entry.image.alt}
             loading="lazy"
             decoding="async"
-            className="h-full w-full rounded-lg object-contain transition-transform duration-500 group-hover:scale-[1.025]"
+            className="h-full w-full rounded-lg object-contain transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
           />
         </div>
       </a>
@@ -45,7 +45,7 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
         </div>
         <div className="mt-auto flex items-center justify-between border-t border-line pt-5 font-mono text-xs text-fg-dim">
           <time dateTime={entry.date}>{formatDate(entry.date)}</time>
-          <span className="text-fg-dim transition-colors group-hover:text-accent">Read case study →</span>
+          <a href={`/use-cases/${entry.slug}/`} className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">Read case study →</a>
         </div>
       </div>
     </article>

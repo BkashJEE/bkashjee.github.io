@@ -35,6 +35,7 @@ export function XGrowth() {
 
   return (
     <figure className="mt-6 rounded-xl border border-line bg-surface p-5 sm:p-6">
+      <h3 className="mb-5 font-display text-2xl text-fg">Reach of these build notes</h3>
       <dl className="grid grid-cols-3 gap-4 border-b border-line pb-5">
         {stats.map(([label, value]) => (
           <div key={label}>
