@@ -15,7 +15,7 @@ export const identity = {
   name: 'Bikash Joshi',
   role: 'AI Enthusiast',
   roleLine: 'AI enthusiast — desktop apps, web, and AI agent systems',
-  bio: 'I design and ship local-first tools end to end — from Wayland internals and media pipelines to interfaces with real polish — and maintain Hermes Agent Archive, a source-attributed archive of Hermes Agent workflows, skills and community projects.',
+  bio: 'I build desktop tools and AI agent plugins. I made ScreenPolish, a screen recorder that polishes your recordings for you, and I maintain Hermes Agent Archive, a source-attributed collection of Hermes Agent workflows and skills.',
   email: 'bkashjee@gmail.com',
   github: 'https://github.com/BkashJEE',
   x: 'https://x.com/BkashJosi',
