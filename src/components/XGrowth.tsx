@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import weekly from '../content/xWeekly.json'
 import { audience } from '../content/mostViewed'
+import { CountUp } from '../motion/CountUp'
 
 const compact = (n: number) =>
   n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : n >= 10_000 ? `${Math.round(n / 1000)}K` : n >= 1000 ? `${(n / 1000).toFixed(1)}K` : String(n)
@@ -40,7 +41,9 @@ export function XGrowth() {
         {stats.map(([label, value]) => (
           <div key={label}>
             <dt className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">{label}</dt>
-            <dd className="mt-1 font-display text-xl font-semibold tabular-nums text-fg sm:text-2xl">{compact(value)}</dd>
+            <dd className="mt-1 font-display text-xl font-semibold tabular-nums text-fg sm:text-2xl">
+              <CountUp value={value} format={compact} />
+            </dd>
           </div>
         ))}
       </dl>

@@ -31,11 +31,18 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <p className="font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">Contact</p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+          {/* The closing line from the site fly-over film, then one clear action. */}
+          <h2 className="mt-4 max-w-4xl font-display text-[clamp(2.2rem,6vw,5rem)] leading-[1.02] text-fg">
+            I build what I wish existed, <span className="text-accent">so you don’t have to.</span>
+          </h2>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
             <a
               href={`mailto:${identity.email}`}
-              className="inline-block break-all font-display text-[clamp(1.9rem,6vw,5rem)] leading-tight text-fg transition-colors hover:text-accent"
+              className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[0.85rem] font-medium text-ink transition-colors hover:bg-fg"
             >
+              Email me →
+            </a>
+            <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center break-all font-mono text-[0.85rem] text-fg-dim hover:text-fg">
               {identity.email}
             </a>
             <CopyEmail />
