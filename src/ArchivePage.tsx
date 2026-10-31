@@ -43,6 +43,9 @@ const entries: Entry[] = [
   })),
 ]
 
+const publicCount = entries.filter((e) => e.external).length
+const privateCount = entries.length - publicCount
+
 const totalStars = entries.reduce((sum, e) => sum + (e.stars ?? 0), 0)
 
 const languages = [...new Set(entries.map((e) => e.language))]
@@ -89,23 +92,24 @@ function Card({ entry }: { entry: Entry }) {
           <a
             href={entry.href}
             {...(entry.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-            className="text-fg transition-colors hover:text-accent"
+            className="inline-flex min-h-6 items-baseline gap-1 text-fg transition-colors hover:text-accent"
           >
-            {entry.name}
-            <span aria-hidden="true" className="text-fg-faint"> {entry.external ? '↗' : '→'}</span>
+            <span className="min-w-0 break-words">{entry.name}</span>
+            <span aria-hidden="true" className="shrink-0 text-fg-faint">{entry.external ? '↗' : '→'}</span>
           </a>
         </h2>
-        {entry.stars == null ? (
-          <span className="shrink-0 rounded-full border border-line px-2 py-0.5 font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
-            Private
-          </span>
-        ) : (
+        {entry.stars != null && (
           <span className="shrink-0 font-mono text-[0.75rem] text-fg-dim" title={`${entry.stars} GitHub stars`}>
             <span className="text-accent" aria-hidden="true">★</span> {entry.stars}
             <span className="sr-only"> GitHub stars</span>
           </span>
         )}
       </div>
+      {!entry.external && (
+        <span className="mt-2 self-start rounded-full border border-line px-2 py-0.5 font-mono text-[0.75rem] uppercase tracking-wider text-fg-dim">
+          Source private
+        </span>
+      )}
 
       {entry.description && <p className="mt-2 flex-1 text-[0.88rem] leading-6 text-fg-dim">{entry.description}</p>}
 
@@ -118,6 +122,10 @@ function Card({ entry }: { entry: Entry }) {
           ))}
         </ul>
       )}
+
+      <a href={entry.href} {...(entry.external ? { target: '_blank', rel: 'noreferrer' } : {})} className="mt-3 inline-flex min-h-6 items-center self-start text-sm text-accent hover:underline">
+        {entry.external ? 'View source ↗' : 'Read case study →'}
+      </a>
 
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line pt-3 font-mono text-[0.75rem] text-fg-faint">
         <span className="flex items-center gap-1.5">
@@ -180,6 +188,7 @@ export default function ArchivePage() {
 
   return (
     <div className="min-h-svh">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-white focus:px-4 focus:text-zinc-900 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900">Skip to content</a>
       <header className="border-b border-line">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main">
           <BrandMark />
@@ -189,23 +198,22 @@ export default function ArchivePage() {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-6 py-10 sm:py-20">
         <p className="flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">
           <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
           {identity.name}
         </p>
         <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">Project archive</h1>
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-          Every public project I’ve published, plus the private ones featured on the portfolio. Search it, filter it by
-          language, or sort by what is moving.
+          Browse my public repositories and selected private projects.
         </p>
 
-        <dl className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+        <p className="mt-6 text-fg-dim">{entries.length} projects · {publicCount} public · {privateCount} source private</p>
+
+        <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-3">
           {[
-            [String(github.repos.length), 'public repos'],
-            [String(totalStars), 'stars'],
+            [String(totalStars), 'GitHub stars'],
             [String(languages.length), 'languages'],
-            [github.fetched ?? '—', 'last refreshed'],
           ].map(([value, label]) => (
             <div key={label}>
               <dd className="font-display text-[1.4rem] leading-none text-fg">{value}</dd>
@@ -214,7 +222,9 @@ export default function ArchivePage() {
           ))}
         </dl>
 
-        <div className="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <p className="mt-3 font-mono text-[0.75rem] text-fg-faint">Last refreshed: {github.fetched ?? '—'}</p>
+
+        <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="relative w-full lg:max-w-xs">
             <label htmlFor="archive-search" className="sr-only">
               Search projects
@@ -225,7 +235,7 @@ export default function ArchivePage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search name, description, topic"
-              className="w-full rounded-full border border-line bg-surface/70 px-4 py-2.5 pr-10 font-mono text-[0.78rem] text-fg placeholder:text-fg-faint focus-visible:border-accent focus-visible:outline-none"
+              className="w-full rounded-full border border-line bg-surface/70 px-4 py-2.5 pr-10 font-mono text-base sm:text-sm text-fg placeholder:text-fg-faint focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             />
             <kbd
               aria-hidden="true"
@@ -243,7 +253,7 @@ export default function ArchivePage() {
               id="archive-sort"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortId)}
-              className="rounded-full border border-line bg-surface/70 px-3 py-2 font-mono text-[0.75rem] text-fg focus-visible:border-accent focus-visible:outline-none"
+              className="rounded-full border border-line bg-surface/70 px-3 py-2 font-mono text-base sm:text-sm text-fg focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {sorts.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -283,19 +293,15 @@ export default function ArchivePage() {
           {query ? ` · “${query}”` : ''}
         </p>
 
+        {(query || lang !== 'All') && (
+          <button type="button" onClick={() => { setQuery(''); setLang('All') }} className="mt-2 inline-flex min-h-6 items-center text-sm text-accent hover:underline">
+            Clear filters
+          </button>
+        )}
+
         {shown.length === 0 ? (
           <p className="mt-10 rounded-xl border border-dashed border-line px-6 py-10 text-center text-fg-dim">
-            Nothing matches that.{' '}
-            <button
-              type="button"
-              onClick={() => {
-                setQuery('')
-                setLang('All')
-              }}
-              className="link-sweep text-accent"
-            >
-              Clear the filters
-            </button>
+            Nothing matches that.
           </p>
         ) : (
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -304,6 +310,7 @@ export default function ArchivePage() {
             ))}
           </div>
         )}
+        <a href="/#work" className="mt-8 inline-flex min-h-11 items-center text-accent hover:underline">Back to selected work →</a>
       </main>
     </div>
   )

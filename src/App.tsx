@@ -35,10 +35,11 @@ export default function App() {
 
   return (
     <div className="grain">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-white focus:px-4 focus:text-zinc-900 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900">Skip to content</a>
       <ScrollProgress />
       <PointerGlow />
       <Nav />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <section id="work" className="overflow-clip pt-8">
           <SectionHeading eyebrow="Selected work" title="Projects, built and shipped" ghost="Work" />
