@@ -30,6 +30,7 @@ function html({ title, description, canonical, image, structuredData, ogType = '
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description" content="${escapeHtml(description)}" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0a0a0f" />

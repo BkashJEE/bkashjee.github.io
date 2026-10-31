@@ -1,7 +1,6 @@
 import { identity, plugins } from '../content/projects'
 import github from '../content/github.json'
 import { audience } from '../content/mostViewed'
-import { useStars } from '../hooks/useStars'
 import { HeroPortrait } from './HeroPortrait'
 import { HeroTicker } from './HeroTicker'
 
@@ -10,10 +9,10 @@ const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` 
 
 /**
  * The strongest facts on the site, at first sight, each linking to its
- * evidence. Live where it can be: stars refresh from GitHub after load.
+ * evidence. Stars are GitHub's count at the last build.
  */
 function HeroProof() {
-  const stars = useStars(BOT_FORGE, plugins.find((p) => p.repo === BOT_FORGE)?.stars ?? 0)
+  const stars = plugins.find((p) => p.repo === BOT_FORGE)?.stars ?? 0
   // Spaced like the link row below rather than dot-separated, so a wrap can
   // never leave a separator dangling; each fact stays on one line.
   const item = 'inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-fg'

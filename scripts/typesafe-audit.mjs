@@ -20,7 +20,7 @@ import { execSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -53,6 +53,11 @@ if (hasKey) {
 const sh = (cmd, opts = {}) => execSync(cmd, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], ...opts }).trim()
 
 async function loadSource(ref) {
+  // $NAME is read from the environment (private checkouts are named there, not here).
+  ref = ref.replace(/^\$(\w+)/, (_, name) => {
+    if (!process.env[name]) throw new Error(`${name} is not set`)
+    return resolve(homedir(), process.env[name])
+  })
   // git:<repo>:<ref>:<path> reads a file as published on a branch, not the working copy.
   if (ref.startsWith('git:')) {
     const [, repo, rev, path] = ref.split(':')
@@ -143,14 +148,16 @@ function codeChecks() {
   }
 
   // Each case-study stat of the form "N tests passing" is re-measured.
-  const suites = { screenpolish: 'screenpolish-linux-omarchy', 'mission-control': 'hermes-content-mission-control' }
+  // The Mission Control checkout's name stays out of this public repo: set MISSION_CONTROL_DIR.
+  const suites = { screenpolish: 'screenpolish-linux-omarchy', 'mission-control': process.env.MISSION_CONTROL_DIR }
   for (const [id, dir] of Object.entries(suites)) {
     const block = projects.slice(projects.indexOf(`id: '${id}'`))
     // "N tests passing" claims every test passes; "N automated tests" only claims the count.
     const m = block.match(/stat: '(\d+) (tests passing|automated tests)/)
     const claimed = Number(m?.[1] ?? NaN)
     const allMustPass = m?.[2] === 'tests passing'
-    const path = join(homedir(), dir)
+    if (!dir) continue
+    const path = resolve(homedir(), dir)
     if (!existsSync(path) || Number.isNaN(claimed)) continue
     try {
       // Stray agent worktrees under .claude/ carry their own copies of the tests.

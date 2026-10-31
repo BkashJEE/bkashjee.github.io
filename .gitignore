@@ -14,3 +14,7 @@ typesafe/resume-cache.json
 # UX audit runs (scripts/ux-audit.mjs) — local only, like the TypeSafe reports
 ux-audit/
 dist-ssr/
+
+# Environment files (none are used today; keep any future ones out of git)
+.env*
+!.env.example

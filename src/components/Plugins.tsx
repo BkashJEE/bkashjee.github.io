@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
-import { useStars } from '../hooks/useStars'
 import github from '../content/github.json'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -208,9 +207,9 @@ function PrMeta({ number }: { number: number }) {
 }
 
 function StarCount({ plugin }: { plugin: Plugin }) {
-  const stars = useStars(plugin.repo, plugin.stars)
+  const stars = plugin.stars
   return (
-    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars (live)`}>
+    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars`}>
       <span className="text-accent" aria-hidden="true">★</span>
       <span className="text-fg-dim tabular-nums">{stars}</span>
       <span aria-hidden="true">GitHub stars</span>

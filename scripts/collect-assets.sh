@@ -25,11 +25,11 @@ lab() { # src dst
 [ -f "$STAGE/sp-output.jpg" ] && work "$STAGE/sp-output.jpg" screenpolish-output.webp
 [ -f "$STAGE/mc-today.png" ] && work "$STAGE/mc-today.png" missioncontrol.webp
 
-BF=/home/bkash86/hermes-bot-forge/docs
+BF="$HOME/hermes-bot-forge/docs"
 [ -f "$BF/banner.png" ] && work "$BF/banner.png" botforge-banner.webp
 [ -f "$BF/demo-create.png" ] && work "$BF/demo-create.png" botforge-demo.webp
 
-OW=/home/bkash86/.openclaw/workspace
+OW="$HOME/.openclaw/workspace"
 [ -f "$OW/hermes-island/preview-work.png" ] && lab "$OW/hermes-island/preview-work.png" hermes-island.webp
 [ -f "$OW/hermes-studio/preview.png" ] && lab "$OW/hermes-studio/preview.png" hermes-studio.webp
 [ -f "$OW/window-pets/fox-preview.png" ] && lab "$OW/window-pets/fox-preview.png" window-pets.webp
@@ -37,7 +37,7 @@ OW=/home/bkash86/.openclaw/workspace
 [ -f "$OW/github-watch/panel-preview.png" ] && lab "$OW/github-watch/panel-preview.png" github-watch.webp
 [ -f "$OW/hermes-cursor/preview.png" ] && lab "$OW/hermes-cursor/preview.png" hermes-cursor.webp
 
-PROFILE=/home/bkash86/.openclaw/workspace/personal-portfolio/dist/assets/profile.jpg
+PROFILE="$HOME/.openclaw/workspace/personal-portfolio/dist/assets/profile.jpg"
 [ -f "$PROFILE" ] && magick "$PROFILE" -resize 400x400 -strip -quality 84 "$ROOT/public/assets/profile.webp" && echo profile.webp
 
 du -sh "$ROOT/public/assets"
