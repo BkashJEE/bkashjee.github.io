@@ -12,7 +12,7 @@
       "https://raw.githubusercontent.com/BkashJEE/hermes-agent-dock/main/README.md"
     ],
     "mission-control": [
-      "~/hermes-content-mission-control/README.md"
+      "$MISSION_CONTROL_DIR/README.md"
     ]
   },
   "claims": [

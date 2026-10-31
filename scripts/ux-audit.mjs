@@ -13,6 +13,7 @@ import { chromium } from 'playwright'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { homedir } from 'node:os'
 import { execFileSync } from 'node:child_process'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -29,12 +30,11 @@ const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844, touch: true },
   { name: 'desktop', width: 1440, height: 900, touch: false },
 ]
-// Requests that fail for reasons outside the site: GitHub's unauthenticated API
-// rate limit (the site falls back to baked figures) and X, which blocks bots.
-const IGNORE = /api\.github\.com|(^|\/\/)(x|twitter)\.com/
+// Requests that fail for reasons outside the site: X, which blocks bots.
+const IGNORE = /(^|\/\/)(x|twitter)\.com/
 
 async function launch() {
-  const cached = '/home/bkash86/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome'
+  const cached = join(homedir(), '.cache/ms-playwright/chromium-1234/chrome-linux64/chrome')
   const executablePath = process.env.UX_AUDIT_CHROME ?? (existsSync(cached) ? cached : undefined)
   return chromium.launch(executablePath ? { executablePath } : {})
 }

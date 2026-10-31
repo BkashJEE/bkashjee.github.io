@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-29",
+  "fetched": "2026-10-31",
   "repos": [
     {
       "name": "hermes-nous-calendar",
@@ -13,7 +13,7 @@
         "nous-research",
         "plugin"
       ],
-      "stars": 7,
+      "stars": 8,
       "forks": 2,
       "created": "2026-10-23",
       "pushed": "2026-10-23"
@@ -49,7 +49,7 @@
         "nous-research",
         "treemap"
       ],
-      "stars": 17,
+      "stars": 18,
       "forks": 4,
       "created": "2026-10-15",
       "pushed": "2026-10-23"
@@ -104,7 +104,7 @@
         "nous-research",
         "pet"
       ],
-      "stars": 0,
+      "stars": 1,
       "forks": 0,
       "created": "2026-10-10",
       "pushed": "2026-10-11"
@@ -242,10 +242,10 @@
         "open-data",
         "static-site"
       ],
-      "stars": 41,
+      "stars": 42,
       "forks": 3,
       "created": "2026-09-23",
-      "pushed": "2026-10-29"
+      "pushed": "2026-10-30"
     },
     {
       "name": "hermes-skills-library",
@@ -308,7 +308,7 @@
       "stars": 0,
       "forks": 0,
       "created": "2026-09-17",
-      "pushed": "2026-10-29"
+      "pushed": "2026-10-30"
     },
     {
       "name": "hermes-bot-forge",
@@ -336,8 +336,8 @@
         "nous-research",
         "python"
       ],
-      "stars": 117,
-      "forks": 16,
+      "stars": 118,
+      "forks": 17,
       "created": "2026-09-17",
       "pushed": "2026-10-23"
     },

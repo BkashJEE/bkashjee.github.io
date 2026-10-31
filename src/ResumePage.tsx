@@ -61,6 +61,15 @@ function WritingRail() {
 export default function ResumePage() {
   return (
     <div className="resume-page">
+      <p className="-mt-2 mb-2 flex justify-end print:hidden">
+        <a
+          href="/resume/bikash-joshi-resume.pdf"
+          download
+          className="inline-flex min-h-8 items-center rounded-md border border-zinc-300 px-3 font-mono text-[0.75rem] text-zinc-700 hover:border-zinc-900 hover:text-zinc-900"
+        >
+          Download PDF
+        </a>
+      </p>
       <header className="flex flex-wrap items-baseline justify-between gap-x-6 border-b-2 border-zinc-900 pb-3">
         <div>
           <h1 className="text-[1.9rem] font-semibold leading-none tracking-tight">{resume.name}</h1>

@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { plugins, type CaseStudy as CaseStudyData } from '../content/projects'
-import { useStars } from '../hooks/useStars'
 
-/** Live GitHub star count for a case study's public repo. */
+/** GitHub star count for a case study's public repo, as of the last build. */
 function StarBadge({ href }: { href: string }) {
-  const fallback = plugins.find((p) => p.repo === href)?.stars ?? 0
-  const stars = useStars(href, fallback)
+  const stars = plugins.find((p) => p.repo === href)?.stars ?? 0
   if (!stars) return null
   return (
-    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[0.75rem] text-accent" title="GitHub stars (live)">
+    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[0.75rem] text-accent" title="GitHub stars">
       ★ {stars} on GitHub
     </span>
   )

@@ -226,26 +226,24 @@ export interface Plugin {
   install?: string
 }
 
-// Live public repos under github.com/BkashJEE — fallback star counts as of 2026-09-18.
-export const plugins: Plugin[] = [
+// Live public repos under github.com/BkashJEE. Star counts come from GitHub at
+// build time (scripts/fetch-github.mjs), so visitors' browsers never call GitHub.
+export const plugins: Plugin[] = ([
   {
     name: 'Hermes Agent Dock',
     repo: 'https://github.com/BkashJEE/hermes-agent-dock',
-    stars: 44,
     line: 'Native Hermes Desktop dock: direct profile chat, concurrent jobs, cancellation, and explicit Kanban assignment.',
     lang: 'Python',
   },
   {
     name: 'Repo Shelf',
     repo: 'https://github.com/BkashJEE/repo-shelf',
-    stars: 18,
     line: 'Your git repositories as books on a 3D bookshelf. Browse, search, move, rename, open.',
     lang: 'TypeScript',
   },
   {
     name: 'Hermes Bot Forge',
     repo: 'https://github.com/BkashJEE/hermes-bot-forge',
-    stars: repoStars('hermes-bot-forge'),
     line: 'One sentence in, a complete working bot out — verified end to end, rolled back on failure.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-bot-forge',
@@ -253,14 +251,12 @@ export const plugins: Plugin[] = [
   {
     name: 'Codex Usage Meter',
     repo: 'https://github.com/BkashJEE/codex-usage-meter',
-    stars: 4,
     line: 'Privacy-first Codex usage meter for Hermes Desktop with one-time install and verified updates.',
     lang: 'Python',
   },
   {
     name: 'Hermes Skills Hub',
     repo: 'https://github.com/BkashJEE/hermes-skills',
-    stars: 2,
     line: 'A public tap of reusable skills for Hermes Agent.',
     lang: 'Skills',
     install: 'hermes skills tap add BkashJEE/hermes-skills',
@@ -268,56 +264,48 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Skills Library',
     repo: 'https://github.com/BkashJEE/hermes-skills-library',
-    stars: 6,
     line: 'Community Skills & Plugins library for Hermes Desktop: compact cards, category and author browsing, and profile-aware imports.',
     lang: 'JavaScript',
   },
   {
     name: 'Hermes Agent Archive',
     repo: 'https://github.com/BkashJEE/hermes-agent-archive',
-    stars: 41,
     line: 'A source-attributed archive of Hermes Agent workflows, skills and community projects. Public metrics, and contributions reviewed before they land.',
     lang: 'JavaScript',
   },
   {
     name: 'Hermes Newsroom Plugin',
     repo: 'https://github.com/BkashJEE/hermes-newsroom-plugin',
-    stars: 8,
     line: 'Opens Hermes Newsroom inside the Hermes Desktop app: a sidebar page, a status-bar launcher and a theme bridge. One file, no backend.',
     lang: 'JavaScript',
   },
   {
     name: 'Hermes Newsroom',
     repo: 'https://github.com/BkashJEE/hermes-newsroom',
-    stars: 2,
     line: 'A local, privacy-first news command center for Hermes Agent. It reports the events and drops the noise.',
     lang: 'TypeScript',
   },
   {
     name: 'Hermes Rehearsal',
     repo: 'https://github.com/BkashJEE/hermes-rehearsal',
-    stars: 0,
     line: 'Try three file-organization futures inside Hermes Desktop. Preview, pin, approve, apply, undo. Linux preview.',
     lang: 'Python',
   },
   {
     name: 'Hermes Achievements Profile Scope',
     repo: 'https://github.com/BkashJEE/hermes-achievements-profile-scope',
-    stars: 2,
     line: 'Profile-aware achievement totals for Hermes Agent.',
     lang: 'Python',
   },
   {
     name: 'Omarchy Workspace Tabs',
     repo: 'https://github.com/BkashJEE/omarchy-workspace-tabs',
-    stars: 0,
     line: 'Generic workspace tabs for the Omarchy bar.',
     lang: 'QML',
   },
   {
     name: 'Hermes Agent Inbox',
     repo: 'https://github.com/BkashJEE/hermes-agent-inbox',
-    stars: 0,
     line: 'Everything your Hermes Bots and tools are waiting on you for, in one list. Stuck sessions, failed crons, benched keys, PRs, and cards Bots post themselves.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-agent-inbox --enable',
@@ -325,7 +313,6 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Footprint',
     repo: 'https://github.com/BkashJEE/hermes-footprint',
-    stars: 10,
     line: 'See what Hermes Agent left on your disk, inside Hermes Desktop. A treemap by what each folder is to Hermes, and git-aware cards for what can go. Trash only.',
     lang: 'JavaScript',
     install: 'hermes plugins install BkashJEE/hermes-footprint --enable',
@@ -333,7 +320,6 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Key Doctor',
     repo: 'https://github.com/BkashJEE/hermes-key-doctor',
-    stars: 0,
     line: 'Finds benched, expiring and misread logins in every Hermes profile, with the one-line fix. Read-only, never prints a key.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-key-doctor --enable',
@@ -341,7 +327,6 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Vitals',
     repo: 'https://github.com/BkashJEE/hermes-vitals',
-    stars: 0,
     line: 'A bedside monitor for every Hermes Bot inside Hermes Desktop. Heartbeat traces, five vital signs, and alarms that say what is wrong and what to do.',
     lang: 'Python',
     install: 'hermes plugins install https://github.com/BkashJEE/hermes-vitals',
@@ -349,7 +334,6 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Night Shift',
     repo: 'https://github.com/BkashJEE/hermes-nightshift',
-    stars: 0,
     line: 'Records every Bot Screen while your Bots work and shows them live on one Bot Wall. Ends with a tiled time-lapse and an honest report.',
     lang: 'Python',
     install: 'hermes plugins install BkashJEE/hermes-nightshift',
@@ -357,26 +341,23 @@ export const plugins: Plugin[] = [
   {
     name: 'Hermes Eyes',
     repo: 'https://github.com/BkashJEE/hermes-eyes',
-    stars: 0,
     line: 'Googly eyes for Hermes Agent: a Desktop pet that watches your agents. Plus an eyes pet for the CLI and TUI.',
     lang: 'JavaScript',
   },
   {
     name: 'Forward to Hermes',
     repo: 'https://github.com/BkashJEE/hermes-forward-to-hermes',
-    stars: 0,
     line: 'Forward any email to your Hermes Agent with a one-line note. It answers in-thread and never obeys instructions hidden in the forwarded part.',
     lang: 'Python',
   },
   {
     name: 'ScreenPolish for Omarchy',
     repo: 'https://github.com/BkashJEE/screenpolish-omarchy-plugin',
-    stars: 0,
     line: 'ScreenPolish in the Omarchy bar: start, stop and watch a recording without leaving the window you are recording.',
     lang: 'QML',
     install: 'omarchy plugin add https://github.com/BkashJEE/screenpolish-omarchy-plugin --enable',
   },
-]
+] satisfies Omit<Plugin, 'stars'>[]).map((p) => ({ ...p, stars: repoStars(p.repo.split('/').pop()!) }))
 
 
 
