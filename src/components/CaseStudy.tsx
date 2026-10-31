@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { plugins, type CaseStudy as CaseStudyData } from '../content/projects'
+import { CountUp } from '../motion/CountUp'
+import { useMotionPref } from '../motion/useMotionPref'
 
 /** GitHub star count for a case study's public repo, as of the last build. */
 function StarBadge({ href }: { href: string }) {
@@ -7,7 +9,7 @@ function StarBadge({ href }: { href: string }) {
   if (!stars) return null
   return (
     <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[0.75rem] text-accent" title="GitHub stars">
-      ★ {stars} on GitHub
+      ★ <CountUp value={stars} className="tabular-nums" /> on GitHub
     </span>
   )
 }
@@ -57,29 +59,82 @@ const fullCaseSlugs: Record<string, string> = {
   'mission-control': 'hermes-x-mission-control',
 }
 
+/**
+ * How far the strip has travelled up the screen, as a count of lit steps:
+ * the first step is lit as it enters, the last by the time it reaches the
+ * middle. It follows the scroll both ways and never moves on its own. The
+ * pre-rendered HTML, and reduced motion, show every step lit.
+ */
+function useLitSteps(ref: React.RefObject<HTMLOListElement | null>, count: number) {
+  const reduced = useMotionPref()
+  const [lit, setLit] = useState(count)
+  useEffect(() => {
+    const el = ref.current
+    if (reduced || !el) {
+      setLit(count)
+      return
+    }
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const box = el.getBoundingClientRect()
+      if (!box.height) return // folded away on phones
+      const progress = (window.innerHeight * 0.9 - box.top) / (window.innerHeight * 0.45)
+      setLit(Math.max(1, Math.min(count, Math.ceil(progress * count))))
+    }
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    // Opening the phone fold gives the strip a size without any scroll.
+    const resize = new ResizeObserver(schedule)
+    resize.observe(el)
+    return () => {
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      resize.disconnect()
+      cancelAnimationFrame(frame)
+    }
+  }, [ref, count, reduced])
+  return lit
+}
+
 /** "How it works": the project's real pipeline as a compact flow strip. */
 function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; glow: CaseStudyData['glow'] }) {
+  const list = useRef<HTMLOListElement>(null)
+  const lit = useLitSteps(list, flow.steps.length)
   return (
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
       </div>
       <ol
+        ref={list}
         className="mt-3 flex flex-wrap items-stretch gap-2"
         aria-label="Project workflow steps"
       >
-        {flow.steps.map((step, i) => (
-          <li key={step} className="flex min-w-0 max-w-full items-center gap-2">
-            {i > 0 && (
-              <span className={`${arrowColor[glow]} select-none font-mono text-sm`} aria-hidden="true">
-                →
+        {flow.steps.map((step, i) => {
+          const on = i < lit
+          return (
+            <li key={step} className="flex min-w-0 max-w-full items-center gap-2">
+              {i > 0 && (
+                <span className={`${on ? arrowColor[glow] : 'text-fg-faint'} select-none font-mono text-sm transition-colors duration-300`} aria-hidden="true">
+                  →
+                </span>
+              )}
+              <span
+                // Unlit steps keep readable contrast: faint text and a plain edge, no fading.
+                className={`min-w-0 max-w-full break-words rounded-md border border-line border-l-2 bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug transition-colors duration-300 ${
+                  on ? stepBorderColor[glow] : 'border-l-line'
+                } ${!on ? 'text-fg-faint' : i === lit - 1 && lit < flow.steps.length ? 'text-fg' : 'text-fg-dim'}`}
+              >
+                {step}
               </span>
-            )}
-            <span className={`min-w-0 max-w-full break-words rounded-md border border-line border-l-2 ${stepBorderColor[glow]} bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug text-fg-dim`}>
-              {step}
-            </span>
-          </li>
-        ))}
+            </li>
+          )
+        })}
       </ol>
       {flow.note && <p className="mt-3 text-[0.85rem] leading-relaxed text-fg-dim">{flow.note}</p>}
     </div>
