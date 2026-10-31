@@ -26,9 +26,6 @@ function PetPerch({ item }: { item: LabItem }) {
           {...img}
           loading="lazy"
           className="absolute bottom-0 left-1/2 h-32 w-auto -translate-x-1/2 drop-shadow-[0_16px_18px_rgb(0_0_0/0.35)] min-[380px]:h-36 sm:h-40"
-          // A few idle breaths, then still: looping animation repaints for ever.
-          animate={{ y: [0, -3, 0] }}
-          transition={{ duration: 3.2, repeat: 2, ease: 'easeInOut' }}
           variants={{
             hop: { y: [0, -22, 0, -10, 0], scaleY: [1, 1.06, 0.94, 1.03, 1], transition: { duration: 0.7, ease: 'easeOut' } },
           }}

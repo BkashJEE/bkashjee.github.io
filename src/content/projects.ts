@@ -5,7 +5,7 @@
 import github from './github.json'
 import siteConfig from './site.json'
 
-/** Stars as of the last build, for cards that show a count before the live fetch. */
+/** GitHub stars as of the last build (scripts/fetch-github.mjs). */
 const repoStars = (name: string) => github.repos.find((r) => r.name === name)?.stars ?? 0
 
 /** Upstream PR totals, refreshed from GitHub at every build. */
@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
     tagline: 'Reach any specialist agent without leaving your workspace.',
     description: [
       'When you run several AI agents in Hermes Desktop, the main one is often busy and your specialist agents are hard to reach. Agent Dock gives you a direct line to any specialist you’ve already set up, even while the main orchestrator is working. It floats as a card or docks into the workspace, and remembers which you chose.',
-      'I designed and built it, and it’s my most-starred public tool. I kept chat and task tracking deliberately separate: a message becomes a tracked Kanban task only when you explicitly assign it. It ships as one local UI and backend pair that finds the profiles Hermes already knows, with an installer that uses only the Python standard library, a security policy, and documented release testing.',
+      'I designed and built it. I kept chat and task tracking deliberately separate: a message becomes a tracked Kanban task only when you explicitly assign it. It ships as one local UI and backend pair that finds the profiles Hermes already knows, with an installer that uses only the Python standard library, a security policy, and documented release testing.',
     ],
     tech: ['Python', 'Hermes Desktop plugin', 'stdlib installer', 'Kanban lifecycle'],
     glow: 'violet',

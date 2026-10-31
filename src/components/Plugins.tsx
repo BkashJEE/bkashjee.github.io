@@ -337,6 +337,9 @@ const shippedRecently = plugins.filter((p) => {
   return created != null && fetchedAt - new Date(`${created}T00:00:00Z`).getTime() <= 30 * 86_400_000
 }).length
 
+// The date the build read star counts from GitHub (the site rebuilds daily).
+const starsChecked = new Date(github.fetched).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+
 export function Plugins() {
   return (
     <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
@@ -347,7 +350,7 @@ export function Plugins() {
           I build it.
         </p>
         <p className="mt-2 font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
-          ★ counts fetched live from GitHub · fallback checked 18 Oct 2026
+          ★ GitHub stars checked {starsChecked}
         </p>
       </Reveal>
       <Rail count={plugins.length} recent={shippedRecently}>
