@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
 import github from '../content/github.json'
+import { useMotionPref } from '../motion/useMotionPref'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -199,8 +200,8 @@ function PrMeta({ number }: { number: number }) {
   if (!pr) return null
   const date = new Date(pr.opened + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
   return (
-    <span className="ml-auto hidden shrink-0 items-center gap-3 font-mono text-[0.75rem] text-fg-faint sm:flex">
-      <span>{date}</span>
+    <span className="flex w-full shrink-0 flex-wrap items-center gap-3 font-mono text-[0.75rem] text-fg-faint sm:ml-auto sm:w-auto">
+      <span className="hidden sm:inline">{date}</span>
       <span className={`rounded-full border px-2 py-0.5 ${stateStyle[pr.state] ?? stateStyle.open}`}>{pr.state}</span>
     </span>
   )
@@ -219,30 +220,28 @@ function StarCount({ plugin }: { plugin: Plugin }) {
 }
 
 function InstallCommand({ command }: { command: string }) {
-  const [copied, setCopied] = useState(false)
+  const [status, setStatus] = useState('')
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(command)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1600)
+      setStatus('Copied')
     } catch {
-      /* clipboard unavailable */
+      setStatus("Couldn't copy. Select the command above.")
     }
   }
   return (
-    <button
-      type="button"
-      onClick={copy}
-      aria-label={`Copy install command: ${command}`}
-      title={command}
-      className="group/cmd mt-4 flex w-full min-w-0 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3 py-2 text-left font-mono text-[0.75rem] text-fg-dim transition-colors hover:border-accent/60 hover:bg-raised focus-visible:border-accent"
-    >
-      <span className="shrink-0 select-none text-accent" aria-hidden="true">$</span>
-      <span className="min-w-0 flex-1 truncate">{command}</span>
-      <span className="shrink-0 border-l border-line pl-2 font-medium text-accent" aria-live="polite">
-        {copied ? 'Copied' : 'Copy'}
-      </span>
-    </button>
+    <div className="mt-4 min-w-0 rounded-lg border border-line bg-surface/70 px-3 py-2">
+      <code className="block whitespace-pre-wrap break-all font-mono text-[0.75rem] text-fg-dim">{command}</code>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={`Copy install command: ${command}`}
+        className="mt-2 inline-flex min-h-11 items-center font-mono text-[0.75rem] font-medium text-accent transition-colors hover:text-fg"
+      >
+        Copy command
+      </button>
+      <p role="status" className="font-mono text-[0.75rem] text-fg-dim">{status}</p>
+    </div>
   )
 }
 
@@ -255,6 +254,7 @@ function InstallCommand({ command }: { command: string }) {
  * reader and repaints continuously, which is what made the hero flicker.
  */
 function Rail({ children, count, recent }: { children: React.ReactNode; count: number; recent: number }) {
+  const reduced = useMotionPref()
   const ref = useRef<HTMLDivElement>(null)
   const [at, setAt] = useState({ start: true, end: false })
 
@@ -284,7 +284,7 @@ function Rail({ children, count, recent }: { children: React.ReactNode; count: n
     if (!el) return
     const card = el.querySelector('article')
     const step = card ? card.getBoundingClientRect().width + 20 : el.clientWidth * 0.8
-    el.scrollBy({ left: dir * step, behavior: 'smooth' })
+    el.scrollBy({ left: dir * step, behavior: reduced ? 'auto' : 'smooth' })
   }
 
   const arrow =
@@ -341,6 +341,7 @@ const shippedRecently = plugins.filter((p) => {
 const starsChecked = new Date(github.fetched).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 
 export function Plugins() {
+  const [expanded, setExpanded] = useState(false)
   return (
     <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" ghost="Tools" />
@@ -364,7 +365,7 @@ export function Plugins() {
                 <div className="min-w-0">
                   <h3 className="font-display text-[1.05rem] font-semibold leading-tight text-fg">{plugin.name}</h3>
                   <p className="mt-1 font-mono text-[0.75rem] text-fg-faint">
-                    <span className={kindOf(plugin).ink}>{kindOf(plugin).label}</span> · {plugin.lang}
+                    <span className={kindOf(plugin).ink}>{plugin.platform}</span> · {plugin.lang}
                   </p>
                 </div>
               </div>
@@ -391,6 +392,29 @@ export function Plugins() {
           </Reveal>
         ))}
       </Rail>
+      <div className="mx-auto mt-4 max-w-6xl px-6">
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls="all-tools"
+          onClick={() => setExpanded((value) => !value)}
+          className="inline-flex min-h-11 items-center rounded-lg border border-line px-4 text-sm font-medium text-accent transition-colors hover:border-accent hover:text-fg"
+        >
+          {expanded ? 'Hide all tools' : `Browse all ${plugins.length} tools`}
+        </button>
+        <ul id="all-tools" hidden={!expanded} className={`mt-4 grid-cols-1 gap-4 sm:grid-cols-2 ${expanded ? 'grid' : 'hidden'}`}>
+          {plugins.map((plugin) => (
+            <li key={plugin.name} className="min-w-0 rounded-xl border border-line bg-ink p-5">
+              <h3 className="font-display text-lg text-fg">{plugin.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-fg-dim">{bulletsOf(plugin.line)[0]}.</p>
+              {plugin.install && <InstallCommand command={plugin.install} />}
+              <a href={plugin.repo} target="_blank" rel="noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:text-fg">
+                View source ↗<span className="sr-only"> for {plugin.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <Reveal className="mx-auto mt-16 max-w-6xl px-6">
         <h3 className="font-mono text-[0.8rem] uppercase tracking-[0.2em] text-fg-dim">
@@ -403,7 +427,7 @@ export function Plugins() {
                 href={`https://github.com/NousResearch/hermes-agent/pull/${pr.number}`}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-baseline gap-4 py-3 transition-colors hover:bg-surface/60"
+                className="group flex flex-wrap items-baseline gap-x-4 gap-y-2 py-3 transition-colors hover:bg-surface/60 sm:flex-nowrap"
               >
                 <span className="shrink-0 font-mono text-[0.78rem] text-accent">#{pr.number}</span>
                 <span className="text-sm text-fg-dim transition-colors group-hover:text-fg">{pr.title}</span>

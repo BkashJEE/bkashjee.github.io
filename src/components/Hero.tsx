@@ -90,7 +90,7 @@ export function Hero() {
           </div>
           {/* Phones never see the interactive portrait — give them a still, below
               the buttons so the main action stays above the fold. */}
-          <div className="hero-lift relative mt-10 lg:hidden">
+          <div className="hero-lift relative mt-6 sm:mt-10 lg:hidden">
             <div
               aria-hidden="true"
               className="absolute bottom-0 left-1/2 h-3/4 w-[120%] -translate-x-1/2"
@@ -102,11 +102,11 @@ export function Hero() {
             <img
               src="/assets/portrait-cut-duo.webp"
               srcSet="/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w"
-              sizes="224px"
+              sizes="(min-width: 640px) 224px, 160px"
               width={1000}
               height={1080}
               alt="Portrait of Bikash Joshi"
-              className="relative mx-auto w-56"
+              className="relative mx-auto w-40 sm:w-56"
               style={{
                 maskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
                 WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 99%)',
