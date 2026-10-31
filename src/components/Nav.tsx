@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { identity } from '../content/projects'
+import { useMotionPref } from '../motion/useMotionPref'
 import { Magnetic } from '../motion/Magnetic'
 import { BrandMark } from './BrandMark'
 
@@ -12,18 +13,29 @@ const anchors = [
 ]
 
 export function Nav() {
+  const reduced = useMotionPref()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuButton = useRef<HTMLButtonElement>(null)
+  const closeMenu = () => {
+    setMenuOpen(false)
+    menuButton.current?.focus({ preventScroll: true })
+  }
   const [active, setActive] = useState('')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24)
+      // At the very top no section is current, whatever the observer saw last.
+      if (window.scrollY <= 24) setActive('')
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id)
+          if (entry.isIntersecting && window.scrollY > 24) setActive(entry.target.id)
         }
       },
       { rootMargin: '-40% 0px -55% 0px' },
@@ -38,11 +50,29 @@ export function Nav() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+        menuButton.current?.focus({ preventScroll: true })
+      }
+    }
+    const media = window.matchMedia('(min-width: 640px)')
+    const onResize = () => { if (media.matches) setMenuOpen(false) }
+    document.addEventListener('keydown', onKeyDown)
+    media.addEventListener('change', onResize)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      media.removeEventListener('change', onResize)
+    }
+  }, [menuOpen])
+
   return (
     <header
       // No backdrop-filter here: it re-blurs on every scroll frame and
       // flickers on GPUs without proper compositing (common on Linux).
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 ${reduced ? '' : 'transition-colors duration-300'} ${
         scrolled ? 'border-b border-line/70 bg-ink/95' : 'bg-transparent'
       }`}
     >
@@ -78,6 +108,16 @@ export function Nav() {
           >
             Partners
           </a>
+          <button
+            ref={menuButton}
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="phone-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="nav-link inline-flex min-h-11 min-w-11 items-center justify-center sm:hidden"
+          >
+            Menu
+          </button>
           <span className="mx-1 hidden h-4 w-px bg-line sm:block" aria-hidden="true" />
           <a
             href={identity.github}
@@ -103,6 +143,18 @@ export function Nav() {
           </a>
         </div>
       </nav>
+      <div id="phone-navigation" hidden={!menuOpen} className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-y border-line bg-ink px-4 py-3 sm:hidden">
+        <nav aria-label="Phone menu" className="mx-auto grid max-w-6xl grid-cols-2 gap-2">
+          {anchors.map((a) => (
+            <a key={a.id} href={`#${a.id}`} onClick={closeMenu} aria-current={active === a.id ? 'location' : undefined} className="nav-link flex min-h-11 items-center">
+              {a.label}
+            </a>
+          ))}
+          <a href="/use-cases/" onClick={closeMenu} className="nav-link flex min-h-11 items-center">Playbook</a>
+          <a href="/archive/" onClick={closeMenu} className="nav-link flex min-h-11 items-center">Archive</a>
+          <a href="/partners/" onClick={closeMenu} className="nav-link flex min-h-11 items-center">Partners</a>
+        </nav>
+      </div>
     </header>
   )
 }
