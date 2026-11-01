@@ -392,15 +392,3 @@ body {
     display: none;
   }
 }
-
-/* Hero portrait assembling from pixels: the photo is held until the canvas
-   has drawn it in. If the script never finishes, it shows itself at 4 s. */
-@keyframes pixel-failsafe {
-  to {
-    opacity: 1;
-  }
-}
-.pixel-in .pixel-photo {
-  opacity: 0;
-  animation: pixel-failsafe 0s 4s forwards;
-}

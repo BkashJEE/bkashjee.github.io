@@ -6,164 +6,53 @@ const DUO = '/assets/portrait-cut-duo.webp'
 const DUO_SRCSET = '/assets/portrait-cut-duo-480.webp 480w, /assets/portrait-cut-duo.webp 1000w'
 const DUO_SIZES = 'min(38vw, 560px)'
 
-const CELL = 5 // CSS px per pixel square
-const RADIUS = 72 // how far the cursor scatters pixels
-const ASSEMBLE = 0.9 // seconds each square takes to fly home
-
 /**
- * The portrait as pixel squares on a canvas over the photo. On load it
- * assembles itself once (squares fly in from up and to the right and settle);
- * afterwards the cursor scatters the squares near it and they drift back. The
- * canvas draws the real photo and cuts out only the cells that are displaced,
- * so a still portrait stays sharp, and nothing runs while the pointer is still.
- * Desktop with a mouse only; the page head holds the photo (`pixel-in`) until
- * the canvas has drawn it in.
+ * The portrait as carved stone. Once the page has loaded, desktop visitors
+ * with a mouse get a WebGL relief of the photo drawn over it (Three.js is
+ * fetched only then): its first frame matches the photo, it rises once, and
+ * afterwards the light follows the pointer. Nothing draws while the pointer
+ * is still. Everyone else, and any failure, keeps the photo.
  */
-function usePixelPortrait(on: boolean | null, img: RefObject<HTMLImageElement | null>, canvas: RefObject<HTMLCanvasElement | null>, area: RefObject<HTMLDivElement | null>) {
+function useTerrainPortrait(on: boolean, img: RefObject<HTMLImageElement | null>, canvas: RefObject<HTMLCanvasElement | null>) {
   useEffect(() => {
-    const root = document.documentElement
-    const reveal = () => root.classList.remove('pixel-in')
-    if (on === null) return // not measured yet: keep the photo held
-    const photo = img.current, cv = canvas.current, box = area.current
-    if (!on || !photo || !cv || !box) { reveal(); return }
-    const ctx = cv.getContext('2d')
-    if (!ctx) { reveal(); return }
-
-    let w = 0, h = 0, dpr = 1, n = 0
-    let hx = new Float32Array(0), hy = hx, ox = hx, oy = hx, sx = hx, sy = hx, delay = hx
-    let colour: string[] = []
-    const sheet = document.createElement('canvas')
-    let mode: 'assemble' | 'idle' = 'assemble'
-    let t0 = 0, raf = 0, cancelled = false
-    let px = 0, py = 0, inside = false
-
-    // Sample the photo into cells: one square per cell, its average colour.
-    const build = () => {
-      w = photo.offsetWidth; h = photo.offsetHeight; dpr = Math.min(window.devicePixelRatio || 1, 2)
-      const cw = Math.round(w * dpr), ch = Math.round(h * dpr)
-      cv.width = cw; cv.height = ch; sheet.width = cw; sheet.height = ch
-      const sctx = sheet.getContext('2d', { willReadFrequently: true })!
-      sctx.clearRect(0, 0, cw, ch); sctx.drawImage(photo, 0, 0, cw, ch)
-      const data = sctx.getImageData(0, 0, cw, ch).data
-      const cols = Math.ceil(w / CELL), rows = Math.ceil(h / CELL), step = CELL * dpr
-      const cells: number[] = [], cs: string[] = []
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          let R = 0, G = 0, B = 0, A = 0, k = 0
-          for (let y = Math.floor(r * step); y < Math.min(ch, Math.floor((r + 1) * step)); y++) {
-            for (let x = Math.floor(c * step); x < Math.min(cw, Math.floor((c + 1) * step)); x++) {
-              const i = (y * cw + x) * 4, a = data[i + 3]
-              R += data[i] * a; G += data[i + 1] * a; B += data[i + 2] * a; A += a; k++
-            }
-          }
-          if (!k || A / k < 8) continue
-          cells.push(c * CELL, r * CELL, r / rows)
-          cs.push(`rgba(${Math.round(R / A)},${Math.round(G / A)},${Math.round(B / A)},${(A / k / 255).toFixed(3)})`)
-        }
-      }
-      n = cs.length; colour = cs
-      hx = new Float32Array(n); hy = new Float32Array(n); ox = new Float32Array(n); oy = new Float32Array(n)
-      sx = new Float32Array(n); sy = new Float32Array(n); delay = new Float32Array(n)
-      for (let i = 0; i < n; i++) {
-        hx[i] = cells[i * 3]; hy[i] = cells[i * 3 + 1]
-        const ang = -Math.PI * (0.05 + Math.random() * 0.45), dist = 60 + Math.random() * 240 // from up and to the right
-        sx[i] = Math.cos(ang) * dist; sy[i] = Math.sin(ang) * dist
-        delay[i] = cells[i * 3 + 2] * 0.45 + Math.random() * 0.3 // top first, with a little noise
+    const photo = img.current, cv = canvas.current
+    if (!on || !photo || !cv) return
+    let cleanup = () => {}
+    let cancelled = false
+    const start = async () => {
+      try {
+        await photo.decode()
+        const { mountTerrain } = await import('./portraitTerrain')
+        if (cancelled) return
+        cleanup = mountTerrain(photo, cv, () => {
+          cv.style.visibility = 'visible'
+          photo.style.visibility = 'hidden'
+        })
+      } catch {
+        /* no WebGL or the chunk failed: the photo stays */
       }
     }
-
-    // The photo with the displaced cells cut out, and those cells as squares where they are now.
-    const draw = (fade?: (i: number) => number) => {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      ctx.clearRect(0, 0, w, h)
-      ctx.drawImage(sheet, 0, 0, w, h)
-      for (let i = 0; i < n; i++) if (Math.abs(ox[i]) + Math.abs(oy[i]) > 0.25) ctx.clearRect(hx[i], hy[i], CELL, CELL)
-      for (let i = 0; i < n; i++) {
-        if (Math.abs(ox[i]) + Math.abs(oy[i]) <= 0.25) continue
-        ctx.globalAlpha = fade ? fade(i) : 1
-        ctx.fillStyle = colour[i]
-        ctx.fillRect(hx[i] + ox[i] + 0.5, hy[i] + oy[i] + 0.5, CELL - 1, CELL - 1)
-      }
-      ctx.globalAlpha = 1
+    // After load, so the relief never competes with the first paint.
+    const begin = () => {
+      if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(() => start(), { timeout: 1500 })
+      else setTimeout(start, 300)
     }
-    const clear = () => { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height) }
-
-    const assemble = () => {
-      const t = (performance.now() - t0) / 1000
-      const prog = new Float32Array(n)
-      let done = true
-      for (let i = 0; i < n; i++) {
-        const p = Math.min(1, Math.max(0, (t - delay[i]) / ASSEMBLE)), e = 1 - (1 - p) ** 3
-        prog[i] = e; ox[i] = sx[i] * (1 - e); oy[i] = sy[i] * (1 - e)
-        if (p < 1) done = false
-      }
-      if (done) { ox.fill(0); oy.fill(0); clear(); reveal(); mode = 'idle'; raf = 0; return }
-      draw((i) => prog[i])
-      raf = requestAnimationFrame(assemble)
-    }
-
-    // Scatter near the cursor; everything eases home when it leaves.
-    const scatter = () => {
-      let moved = false
-      const r2 = RADIUS * RADIUS
-      for (let i = 0; i < n; i++) {
-        if (inside) {
-          const dx = hx[i] + CELL / 2 + ox[i] - px, dy = hy[i] + CELL / 2 + oy[i] - py, d2 = dx * dx + dy * dy
-          if (d2 < r2) {
-            const d = Math.sqrt(d2) || 1, f = (RADIUS - d) / RADIUS
-            ox[i] += (dx / d) * f * 3.2; oy[i] += (dy / d) * f * 3.2 - f * 0.8 // a ripple, not a hole
-          }
-        }
-        ox[i] *= 0.9; oy[i] *= 0.9
-        if (Math.abs(ox[i]) + Math.abs(oy[i]) > 0.25) moved = true
-        else { ox[i] = 0; oy[i] = 0 }
-      }
-      if (moved) { photo.style.visibility = 'hidden'; draw() }
-      else { clear(); photo.style.visibility = '' }
-      raf = moved || inside ? requestAnimationFrame(scatter) : 0
-    }
-
-    const onMove = (e: globalThis.PointerEvent) => {
-      const r = photo.getBoundingClientRect()
-      px = ((e.clientX - r.left) / r.width) * w; py = ((e.clientY - r.top) / r.height) * h
-      inside = true
-      if (mode === 'idle' && !raf) raf = requestAnimationFrame(scatter)
-    }
-    const onLeave = () => { inside = false }
-    let resizeTimer = 0
-    const onResize = () => {
-      window.clearTimeout(resizeTimer)
-      resizeTimer = window.setTimeout(() => { if (mode === 'idle' && !raf) { build(); clear() } }, 200)
-    }
-
-    ;(async () => {
-      try { await photo.decode() } catch { reveal(); return }
-      if (cancelled) return
-      build()
-      t0 = performance.now()
-      raf = requestAnimationFrame(assemble)
-    })()
-    box.addEventListener('pointermove', onMove)
-    box.addEventListener('pointerleave', onLeave)
-    window.addEventListener('resize', onResize)
+    if (document.readyState === 'complete') begin()
+    else window.addEventListener('load', begin, { once: true })
     return () => {
       cancelled = true
-      cancelAnimationFrame(raf)
-      window.clearTimeout(resizeTimer)
-      box.removeEventListener('pointermove', onMove)
-      box.removeEventListener('pointerleave', onLeave)
-      window.removeEventListener('resize', onResize)
+      window.removeEventListener('load', begin)
+      cleanup()
       photo.style.visibility = ''
-      reveal()
+      cv.style.visibility = 'hidden'
     }
-  }, [on, img, canvas, area])
+  }, [on, img, canvas])
 }
 
 /**
  * Background-free cutout portrait, standing at the hero's bottom edge over an
- * amber glow. On desktop it assembles from pixel squares once, the cursor
- * scatters the squares near it, and the figure leans slightly toward the
- * cursor. The cutout's lower edge fades out so the figure melts into the
+ * amber glow. On desktop it rises into a stone relief once, the light
+ * follows the cursor, and the figure leans slightly toward the cursor. The cutout's lower edge fades out so the figure melts into the
  * section. Static duotone under reduced motion.
  */
 export function HeroPortrait() {
@@ -171,12 +60,12 @@ export function HeroPortrait() {
   const ref = useRef<HTMLDivElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  // Pixels need a mouse and room: the same test the page head uses for `pixel-in`.
-  const [pixels, setPixels] = useState<boolean | null>(null)
+  // The relief needs a mouse and room.
+  const [desktop, setDesktop] = useState(false)
   useEffect(() => {
-    setPixels(window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)').matches)
+    setDesktop(window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)').matches)
   }, [])
-  usePixelPortrait(pixels === null ? null : pixels && !reduced, imgRef, canvasRef, ref)
+  useTerrainPortrait(desktop && !reduced, imgRef, canvasRef)
 
   const rotateY = useSpring(useMotionValue(0), { stiffness: 60, damping: 18 })
   const rotateX = useSpring(useMotionValue(0), { stiffness: 60, damping: 18 })
@@ -240,11 +129,11 @@ export function HeroPortrait() {
           width={1000}
           height={1000}
           alt="Portrait of Bikash Joshi"
-          className="pixel-photo block w-full"
+          className="block w-full"
           style={bottomFade}
           fetchPriority="high"
         />
-        <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 block h-full w-full" style={bottomFade} />
+        <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 block h-full w-full" style={{ ...bottomFade, visibility: 'hidden' }} />
       </motion.div>
     </div>
   )
