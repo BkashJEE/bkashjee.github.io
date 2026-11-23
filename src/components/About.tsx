@@ -33,8 +33,11 @@ export function About() {
             )}
           </div>
           <div className="mt-8">
-            <Eyebrow>Available For</Eyebrow>
-            <p className="mt-2 text-fg-dim">Open to launch films and real-run demo posts for AI tools · Updated Nov 2026</p>
+            <Eyebrow>Available for</Eyebrow>
+            <p className="mt-2 text-fg-dim">
+              {identity.available} · Updated{' '}
+              {new Date(`${identity.availableUpdated}-01T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
+            </p>
           </div>
           <p className="mt-4 font-mono text-sm">
             <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-accent">
