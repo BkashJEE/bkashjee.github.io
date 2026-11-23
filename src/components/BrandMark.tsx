@@ -7,7 +7,7 @@ export function BrandMark({ href = '/', label = 'Bikash Joshi — home' }: { hre
     <a
       href={href}
       aria-label={label}
-      className="brand-mark flex shrink-0 items-center gap-2.5 rounded-full focus-visible:outline-offset-4"
+      className="brand-mark flex min-h-11 shrink-0 items-center gap-2.5 rounded-full focus-visible:outline-offset-4"
     >
       <span className="brand-mark-avatar relative flex size-9 items-center justify-center overflow-hidden rounded-full border border-accent/50 bg-raised sm:size-10">
         <img

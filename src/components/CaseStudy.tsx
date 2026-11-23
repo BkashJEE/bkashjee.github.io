@@ -14,37 +14,117 @@ function StarBadge({ href }: { href: string }) {
   )
 }
 
-/**
- * A visible poster and native controls keep playback in the viewer's hands.
- * The poster is attached only as the video nears the viewport: poster images
- * ignore lazy loading, so this one was a 114 KB download on every first visit
- * for a frame thousands of pixels below the fold.
- */
-function DemoVideo({ video }: { video: NonNullable<CaseStudyData['video']> }) {
+const SCRUB_SOURCE = '/assets/video/screenpolish-demo-scrub.mp4'
+const SCRUB_QUERY = '(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+
+/** Load the poster near view and attach scroll playback only to eligible devices. */
+function DemoVideo({ video, scrollable }: { video: NonNullable<CaseStudyData['video']>; scrollable: boolean }) {
   const ref = useRef<HTMLElement>(null)
+  const player = useRef<HTMLVideoElement>(null)
   const [near, setNear] = useState(false)
+  const [eligible, setEligible] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [failed, setFailed] = useState(false)
+  const scrub = eligible && loaded && !failed
+
   useEffect(() => {
     const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(([entry]) => entry.isIntersecting && setNear(true), { rootMargin: '900px 0px' })
+    if (!el || !('IntersectionObserver' in window)) {
+      setNear(true)
+      return
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNear(true)
+        io.disconnect()
+      }
+    }, { rootMargin: '900px 0px' })
     io.observe(el)
     return () => io.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (!scrollable || !('IntersectionObserver' in window)) return
+    const media = window.matchMedia(SCRUB_QUERY)
+    const touch = window.matchMedia('(any-pointer: coarse)')
+    const update = () => setEligible(media.matches && !touch.matches && navigator.maxTouchPoints === 0)
+    update()
+    media.addEventListener('change', update)
+    touch.addEventListener('change', update)
+    return () => {
+      media.removeEventListener('change', update)
+      touch.removeEventListener('change', update)
+    }
+  }, [scrollable])
+
+  useEffect(() => {
+    const section = ref.current?.closest('article')
+    const el = player.current
+    if (!eligible || failed || !section || !el) return
+
+    let frame = 0
+    const schedule = () => {
+      if (frame) return
+      frame = requestAnimationFrame(() => {
+        frame = 0
+        const box = section.getBoundingClientRect()
+        if (box.bottom <= 0 || box.top >= window.innerHeight || !Number.isFinite(el.duration)) return
+        const progress = (window.innerHeight - box.top) / (window.innerHeight + box.height)
+        el.currentTime = Math.min(progress * el.duration, el.duration - 0.001)
+      })
+    }
+    const stop = () => {
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      el.removeEventListener('loadedmetadata', schedule)
+      cancelAnimationFrame(frame)
+      frame = 0
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) {
+        stop()
+        return
+      }
+      if (!scrub) {
+        setLoaded(true)
+        return
+      }
+      window.addEventListener('scroll', schedule, { passive: true })
+      window.addEventListener('resize', schedule)
+      el.addEventListener('loadedmetadata', schedule)
+      schedule()
+    })
+    io.observe(section)
+    return () => {
+      io.disconnect()
+      stop()
+    }
+  }, [eligible, failed, scrub])
+
   return (
     <figure ref={ref}>
       <video
+        key={scrub ? 'scrub' : 'player'}
+        ref={player}
+        src={scrub ? SCRUB_SOURCE : undefined}
+        onError={scrub ? () => setFailed(true) : undefined}
         width={video.width}
         height={video.height}
         poster={near ? video.poster : undefined}
         muted
         playsInline
-        controls
-        preload="none"
+        controls={!scrub}
+        preload={scrub ? 'auto' : 'none'}
         aria-label={video.caption}
         className="block w-full"
+        style={{ aspectRatio: `${video.width} / ${video.height}` }}
       >
-        <source src={video.webm} type="video/webm" />
-        <source src={video.mp4} type="video/mp4" />
+        {!scrub && (
+          <>
+            <source src={video.webm} type="video/webm" />
+            <source src={video.mp4} type="video/mp4" />
+          </>
+        )}
       </video>
     </figure>
   )
@@ -155,7 +235,7 @@ export function CaseStudy({ study, flip, eagerImage }: { study: CaseStudyData; f
   )
   const fullCaseSlug = fullCaseSlugs[study.id]
   return (
-    <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-10 sm:py-16">
+    <article id={study.id} aria-labelledby={`${study.id}-title`} className="relative py-7 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
         <header className="mb-7 flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-2xl">
@@ -174,7 +254,7 @@ export function CaseStudy({ study, flip, eagerImage }: { study: CaseStudyData; f
             <div className="relative isolate">
               <div className="overflow-hidden rounded-xl border border-line bg-surface p-2">
                 {study.video ? (
-                  <DemoVideo video={study.video} />
+                  <DemoVideo video={study.video} scrollable={study.id === 'screenpolish'} />
                 ) : primary && (
                   <a
                     href={primary.src}
@@ -235,7 +315,7 @@ export function CaseStudy({ study, flip, eagerImage }: { study: CaseStudyData; f
                 each project opens on its title, picture and buttons. */}
             <div className="hidden sm:block">{details}{!detailsOpen && techChips(study.tech.slice(0, 4))}</div>
             <details className="mt-6 border-y border-line" onToggle={(event) => setDetailsOpen(event.currentTarget.open)}>
-              <summary className="cursor-pointer py-4 font-medium text-fg marker:text-accent hover:text-accent">
+              <summary className="min-h-11 cursor-pointer py-4 font-medium text-fg marker:text-accent hover:text-accent">
                 Build details<span className="sr-only">: {study.name}</span>
               </summary>
               <div className="sm:hidden">{details}</div>

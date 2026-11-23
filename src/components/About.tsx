@@ -1,3 +1,4 @@
+import { HomeDivider } from './HomeDivider'
 import { Eyebrow } from './Eyebrow'
 import { aboutParagraphs, identity } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
@@ -5,9 +6,10 @@ import { SectionHeading } from './SectionHeading'
 
 export function About() {
   return (
-    <section id="about" className="overflow-clip py-20 sm:py-28">
+    <section id="about" className="relative overflow-clip py-14 sm:py-28">
+      <HomeDivider />
       <SectionHeading eyebrow="About" title="Behind the work" />
-      <div className="mx-auto mt-12 grid max-w-6xl items-start gap-10 px-6 lg:grid-cols-12">
+      <div className="mx-auto mt-7 sm:mt-12 grid max-w-6xl items-start gap-10 px-6 lg:grid-cols-12">
         <Reveal className="lg:col-span-3">
           <img
             src="/assets/profile.webp"
@@ -40,7 +42,7 @@ export function About() {
             </p>
           </div>
           <p className="mt-4 font-mono text-sm">
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-accent">
+            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 sm:min-h-6 items-center text-accent">
               github.com/BkashJEE ↗
             </a>
           </p>

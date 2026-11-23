@@ -30,13 +30,13 @@ export function SiteFooter() {
         <p>
           <span className="mr-2 inline-block size-1.5 rounded-full bg-accent align-middle" aria-hidden="true" />
           Last recorded fact check: {factCheck.claims} claims · {new Date(`${factCheck.date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}.{' '}
-          <a href={factCheck.claimsUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-fg-dim hover:text-fg">
+          <a href={factCheck.claimsUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 sm:min-h-6 items-center text-fg-dim hover:text-fg">
             View checked claims ↗
           </a>
         </p>
         <p>
           © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Bikash Joshi ·{' '}
-          <a href={siteSourceUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-fg-dim hover:text-fg">
+          <a href={siteSourceUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 sm:min-h-6 items-center text-fg-dim hover:text-fg">
             Site source on GitHub ↗
           </a>
         </p>

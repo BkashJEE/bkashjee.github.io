@@ -1,3 +1,5 @@
+import { More } from './More'
+import { HomeDivider } from './HomeDivider'
 import { startTransition, useState, ViewTransition } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
 import github from '../content/github.json'
@@ -254,7 +256,7 @@ function PluginCard({ plugin }: { plugin: Plugin }) {
           </span>
           <div className="min-w-0">
             <h3 className="font-display text-base font-extrabold leading-tight">
-              <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center hover:text-accent">{plugin.name}</a>
+              <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-11 sm:min-h-6 items-center hover:text-accent">{plugin.name}</a>
             </h3>
             <p className="mt-1 font-mono text-xs text-fg-dim">{plugin.platform} · {plugin.lang}</p>
           </div>
@@ -271,7 +273,7 @@ function PluginCard({ plugin }: { plugin: Plugin }) {
 
       <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-2 font-mono text-xs">
         <StarCount plugin={plugin} />
-        <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent hover:text-fg">
+        <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-11 sm:min-h-8 items-center gap-1.5 font-medium text-accent hover:text-fg">
           Source <span aria-hidden="true">↗</span><span className="sr-only"> for {plugin.name}</span>
         </a>
       </div>
@@ -281,6 +283,27 @@ function PluginCard({ plugin }: { plugin: Plugin }) {
 
 // The date the build read star counts from GitHub (the site rebuilds daily).
 const starsChecked = new Date(github.fetched).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+
+function UpstreamList({ pullRequests }: { pullRequests: typeof upstreamPRs }) {
+  return (
+    <ul className="divide-y divide-line border-b border-line">
+      {pullRequests.map((pr) => (
+        <li key={pr.number}>
+          <a
+            href={`https://github.com/NousResearch/hermes-agent/pull/${pr.number}`}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex flex-wrap min-h-11 items-center gap-x-4 gap-y-2 py-3 transition-colors hover:bg-surface/60 sm:flex-nowrap"
+          >
+            <span className="shrink-0 font-mono text-xs text-accent">#{pr.number}</span>
+            <span className="text-sm text-fg-dim transition-colors group-hover:text-fg">{pr.title}</span>
+            <PrMeta number={pr.number} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export function Plugins() {
   const reduced = useMotionPref()
@@ -294,7 +317,8 @@ export function Plugins() {
   }
 
   return (
-    <section id="plugins" className="border-y border-line bg-surface/40 py-20 sm:py-28">
+    <section id="plugins" className="relative bg-surface/40 py-14 sm:py-28">
+      <HomeDivider />
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" />
       <div className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
@@ -348,28 +372,20 @@ export function Plugins() {
         )}
       </div>
 
-      <Reveal className="mx-auto mt-16 max-w-6xl px-6">
+      <Reveal className="mx-auto mt-8 sm:mt-16 max-w-6xl px-6">
         <h3 className="font-mono text-[13px] text-fg-dim">
           Upstream · NousResearch/hermes-agent
         </h3>
-        <ul className="mt-4 divide-y divide-line border-y border-line">
-          {upstreamPRs.map((pr) => (
-            <li key={pr.number}>
-              <a
-                href={`https://github.com/NousResearch/hermes-agent/pull/${pr.number}`}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex flex-wrap items-baseline gap-x-4 gap-y-2 py-3 transition-colors hover:bg-surface/60 sm:flex-nowrap"
-              >
-                <span className="shrink-0 font-mono text-xs text-accent">#{pr.number}</span>
-                <span className="text-sm text-fg-dim transition-colors group-hover:text-fg">{pr.title}</span>
-                <PrMeta number={pr.number} />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4 border-t border-line">
+          <UpstreamList pullRequests={upstreamPRs.slice(0, 3)} />
+          {upstreamPRs.length > 3 && (
+            <More label="upstream pull requests">
+              <UpstreamList pullRequests={upstreamPRs.slice(3)} />
+            </More>
+          )}
+        </div>
         <p className="mt-4 font-mono text-[13px]">
-          <a href={upstreamPRsUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-fg-dim hover:text-fg">
+          <a href={upstreamPRsUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 sm:min-h-6 items-center text-fg-dim hover:text-fg">
             All pull requests by @BkashJEE ↗
           </a>
         </p>
