@@ -43,7 +43,7 @@ function PostCard({ post, copy }: { post: Post; copy: boolean }) {
   return (
     <article className="relative flex w-[16.5rem] flex-col card p-5 text-left text-fg">
       <div className="flex items-center gap-2.5">
-        <img src="/assets/avatar.webp" alt="" width={32} height={32} loading="lazy" decoding="async" className="size-8 shrink-0 rounded-full" />
+        <img src="/assets/avatar.webp" alt="" width={32} height={32} decoding="async" className="size-8 shrink-0 rounded-full" />
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-[13px] font-semibold">{identity.name}</p>
           <p className="text-xs card-meta">{handle}</p>
