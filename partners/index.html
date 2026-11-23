@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Work with @BkashJosi — Partner kit</title>
-    <meta name="description" content="Launch films and real-run demo posts for AI tools, from a builder who runs them. Ready in 5 working days, quote on request. Dated numbers, linked posts, samples from my own posts." />
+    <meta name="description" content="Launch films and real-run demo posts for AI tools, from a builder who runs them. Ready in 5 working days, quote on request. Dated numbers, linked posts, film samples." />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0d0e10" />
+    <meta name="theme-color" content="#0a0a0f" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-weight='800' font-size='36' fill='%23f5a524' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E" />
     <link rel="canonical" href="%VITE_SITE_URL%/partners/" />
     <meta property="og:type" content="website" />
@@ -22,138 +22,158 @@
     :root{
       color-scheme:dark;
       /* The main site's tokens (src/styles/index.css), so this page reads as part of it. */
-      --bg:#0a0a0f; --card:#12121a; --raised:#17171f; --line:#26262f; --ink:#ededf2; --mute:#a8a8b5; --dim:#7d7d8a;
-      --y:#f5a524; --blue:#2dd4bf; --red:#ff6b6b; --gold:rgba(245,165,36,.45);
+      --ink:#0a0a0f; --surface:#12121a; --raised:#17171f; --line:#26262f; --fg:#ededf2; --fg-dim:#a8a8b5; --fg-faint:#7d7d8a;
+      --accent:#f5a524;
       --disp:"Inter Variable",system-ui,-apple-system,sans-serif;
       --body:"Inter Variable",system-ui,-apple-system,"Segoe UI",sans-serif;
       --mono:"JetBrains Mono Variable",ui-monospace,"SFMono-Regular",Menlo,monospace;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-      background-image:radial-gradient(1100px 560px at 70% -10%,rgba(245,165,36,.07),transparent 70%)}
-    ::selection{background:var(--y);color:var(--bg)}
-    .wrap{max-width:1120px;margin:0 auto;padding-inline:24px;padding-block:28px 64px}
-    @media (max-width:520px){.wrap{padding-inline:16px}}
-    a{color:var(--ink)}
-    .lab{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.8px;letter-spacing:.25em;text-transform:uppercase;color:var(--y)}
-    .lab::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--y);flex-shrink:0}
-    .lab b{color:var(--ink);font-weight:500}
+    body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--accent);color:var(--ink)}
+    .container{max-width:1152px;margin-inline:auto;padding-inline:24px}
+    .wrap{padding-block:28px 64px}
+    a{color:var(--fg)}
+    .lab{display:block;font-family:var(--mono);font-size:12.8px;letter-spacing:.08em;color:var(--accent)}
+    .lab::before,.available::before,.fact-dot{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;vertical-align:middle;border-radius:50%;background:var(--accent)}
     h1,h2{font-family:var(--disp);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin:0;text-wrap:balance}
-    h1{font-size:clamp(42px,6vw,76px)}
-    h2{font-size:clamp(30px,4.2vw,52px)}
-    .y{color:var(--y)}
-    .hl{color:var(--ink);font-weight:600}
-    
-    /* top bar */
-    .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    h1{font-size:clamp(2.5rem,6vw,4.5rem)}
+    h2{font-size:36px}
+    .y{color:var(--accent)}
+    .hl{color:var(--fg);font-weight:600}
+
+    /* Site navigation */
+    .site-header{position:sticky;top:0;z-index:50;height:64px;border-bottom:1px solid var(--line);background:rgb(10 10 15 / .95)}
+    .top{display:flex;height:100%;justify-content:space-between;align-items:center;gap:8px}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none;border-radius:999px}
-    .brand .av{display:flex;width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid var(--gold);background:var(--raised)}
+    .brand .av{display:flex;width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid rgb(245 165 36 / .5);background:var(--raised)}
     .brand .av img{width:100%;height:100%;object-fit:cover;object-position:top;transform:scale(1.08)}
-    .brand .nm{font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
-    .brand .nm b{color:var(--y)}
-    .nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
-    .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 9px;border-radius:7px;color:var(--mute);text-decoration:none;font-size:14px;font-weight:500}
-    .nav a:hover,.nav a:focus-visible{background:rgba(245,165,36,.08);color:var(--ink)}
-    .nav a[aria-current]{color:var(--y);box-shadow:inset 0 -2px 0 -0px var(--y)}
-    .kit{margin-top:26px}
-    @media (max-width:520px){.brand .nm{display:none}}
-    
+    .brand .nm{font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--fg)}
+    .brand .nm b{color:var(--accent)}
+    .nav{display:flex;align-items:center}
+    .nav a,.menu-button{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 .55rem;border-radius:8px;color:var(--fg-dim);text-decoration:none;font:500 14px var(--body)}
+    .nav a:hover,.menu-button:hover{color:var(--fg)}
+    .nav a[aria-current="page"]{color:var(--fg)}
+    .nav a[aria-current="page"]::after{content:"";position:absolute;inset:auto .55rem .3rem;height:2px;background:var(--accent)}
+    .menu-button,.phone-navigation{display:none}
+    .nav-social{display:flex}
+    .kit{margin:0}
+    @media (max-width:639px){
+      .brand .av{width:36px;height:36px}
+      .brand .nm,.desktop-navigation{display:none}
+      .menu-button{display:inline-flex;border:0;background:none;cursor:pointer}
+      .phone-navigation:not([hidden]){position:absolute;inset:100% 0 auto;display:block;max-height:calc(100dvh - 64px);overflow:auto;border-bottom:1px solid var(--line);background:var(--ink)}
+      .phone-navigation .nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-block:12px}
+      .phone-navigation a:not([aria-label]){justify-content:flex-start}
+    }
+
     /* hero */
     .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;margin-top:44px}
     @media (max-width:880px){.hero{grid-template-columns:1fr;gap:28px}}
-    .hero p.sub{font-size:19px;color:var(--mute);max-width:34em;margin:22px 0 0}
+    .hero p.sub{font-size:18px;color:var(--fg-dim);max-width:34em;margin:22px 0 0}
+    .available,.hero-proof{margin:14px 0 0;font-family:var(--mono);font-size:13px;color:var(--fg-dim)}
+    .hero-proof{color:var(--accent)}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .glance{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-    .glance b{color:var(--ink);font-weight:600}
-    .btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;font-weight:500;padding:10px 20px;border-radius:999px;text-decoration:none;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
-    .btn:hover{border-color:var(--y);color:var(--y)}
-    .btn.p{background:var(--y);color:var(--bg);border-color:var(--y)}
-    .btn.p:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-    .btn:focus-visible{outline:2px solid var(--y);outline-offset:3px}
-    .reel{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 60px rgba(245,165,36,.08)}
-    .reel video{display:block;width:100%;aspect-ratio:16/9;height:auto}
-    .reel-cap{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:10px;letter-spacing:.04em}
-    
+    .glance{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--fg-dim)}
+    .glance b{color:var(--fg);font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-family:var(--mono);font-size:13px;font-weight:500;padding:10px 20px;overflow-wrap:anywhere;border-radius:999px;text-decoration:none;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
+    .btn:hover{border-color:var(--accent);color:var(--accent)}
+    .btn.p{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+    .btn.p:hover{background:var(--fg);border-color:var(--fg);color:var(--ink)}
+    .reel{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+    .film{position:relative}
+    .film video{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#000;object-fit:contain}
+    .film-play:not([hidden]){position:absolute;top:50%;left:50%;translate:-50% -50%;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--fg-dim);border-radius:50%;background:var(--ink);color:var(--fg);cursor:pointer}
+    .film-play:hover{background:var(--raised);color:var(--accent)}
+    .reel-cap{font-family:var(--mono);font-size:12px;color:var(--fg-faint);margin-top:10px}
+
     /* stats */
     section{margin-top:84px}
     .shead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-    .shead p{margin:8px 0 0;color:var(--mute);max-width:40em}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
-    @media (max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+    .shead p{margin:8px 0 0;color:var(--fg-dim);max-width:40em}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+    @media (max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
     .stat{padding:22px 22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .stat .n{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;font-size:clamp(36px,4.4vw,50px);line-height:1;font-variant-numeric:tabular-nums}
-    .stat .n.k{color:var(--y)}
-    .stat .d{margin-top:8px;font-size:15px;color:var(--ink)}
-    .stat .s{margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--dim)}
-    .honest{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--dim);line-height:1.6}
-    
+    .stat .n{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;font-size:36px;line-height:1;font-variant-numeric:tabular-nums}
+    @media (max-width:400px){.stat{padding-inline:16px}.stat .n{font-size:24px}}
+    .stat .n.k{color:var(--accent)}
+    .stat .d{margin-top:8px;font-size:16px;color:var(--fg)}
+    .stat .s{margin-top:6px;font-family:var(--mono);font-size:12px;color:var(--fg-faint)}
+    .honest{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--fg-faint);line-height:1.6}
+
     /* table */
-    .tbl{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+    .tbl{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
     .tbl-scroll{overflow-x:auto}
     table{width:100%;border-collapse:collapse;min-width:640px}
     th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
-    th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:400}
-    td.num{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
-    td.num.k{color:var(--y)}
-    td .when{font-family:var(--mono);font-size:12px;color:var(--dim)}
+    th{font-family:var(--mono);font-size:12px;color:var(--fg-dim);font-weight:400}
+    td.num{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+    td.num.k{color:var(--accent)}
+    td .when{font-family:var(--mono);font-size:12px;color:var(--fg-faint)}
     tr:last-child td{border-bottom:0}
-    td a{text-decoration-color:var(--blue);text-underline-offset:3px}
-    
+    td a{text-decoration-color:var(--accent);text-underline-offset:3px}
+
     /* portfolio */
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
     @media (max-width:760px){.grid{grid-template-columns:1fr}}
-    .work{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .work video{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#000;object-fit:contain}
-    .work .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-    .work h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em}
-    .work p{margin:0;color:var(--mute);font-size:15px}
+    .work{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .work .b{padding:20px;display:flex;flex-direction:column;gap:6px;flex:1}
+    .work h3{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em}
+    .work p{margin:0;color:var(--fg-dim);font-size:16px}
     .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
-    .chip{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mute)}
-    .chip.k{border-color:var(--y);color:var(--y)}
-    .chip-blue{border-color:rgba(45,212,191,.5);color:var(--blue)}
-    
+    .chip{font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg-dim)}
+
     /* packages */
-    .pk{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .pk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
     @media (max-width:980px){.pk{grid-template-columns:1fr}}
-    .pack{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-    .pack.lead{border-color:var(--gold);box-shadow:0 0 40px rgba(245,165,36,.08)}
-    .pack .for{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-    .pack h3{font-family:var(--disp);font-weight:800;font-size:28px;letter-spacing:-.03em;margin:8px 0 12px}
-    .rows{display:grid;grid-template-columns:110px 1fr;gap:8px 14px;margin:0}
-    .rows dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;padding-top:3px}
-    .rows dd{margin:0;font-size:15px;color:var(--mute)}
-    .rows dd b{color:var(--y);font-weight:600}
-    .rate{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--mute);border-top:1px dashed var(--line);padding-top:12px}
-    
+    .pack{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+    .pack .for{font-family:var(--mono);font-size:12px;color:var(--fg-dim)}
+    .pack h3{font-family:var(--disp);font-weight:800;font-size:24px;letter-spacing:-.03em;margin:8px 0 12px}
+    .rows{display:grid;grid-template-columns:minmax(65px,110px) minmax(0,1fr);gap:8px 14px;margin:0}
+    .rows dt{font-family:var(--mono);font-size:12px;color:var(--fg-faint);padding-top:3px}
+    .rows dd{margin:0;font-size:16px;color:var(--fg-dim)}
+    .rows dd b{color:var(--accent);font-weight:600}
+    .rate{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--fg-dim);border-top:1px dashed var(--line);padding-top:12px}
+
     /* rules */
     .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
     @media (max-width:760px){.cols{grid-template-columns:1fr}}
-    .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-    .box h3{margin:0 0 12px;font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+    .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+    .box h3{margin:0 0 12px;font-size:13px;font-family:var(--mono);font-weight:600}
     ul.bul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
-    ul.bul li{position:relative;padding-left:22px;color:var(--mute);font-size:15.5px}
-    ul.bul li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--blue)}
-    ul.bul.r li::before{background:var(--red)}
-    ol.steps{margin:0;padding:0;list-style:none;display:grid;gap:0;counter-reset:s;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+    ul.bul li{position:relative;padding-left:22px;color:var(--fg-dim);font-size:16px}
+    ul.bul li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    ol.steps{margin:0;padding:0;list-style:none;display:grid;gap:0;counter-reset:s;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
     ol.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
     ol.steps li:last-child{border-bottom:0}
-    ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--y);font-size:14px;padding-top:2px}
+    ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--accent);font-size:14px;padding-top:2px}
     ol.steps b{display:block;font-size:16px;font-weight:600}
-    ol.steps span{color:var(--mute);font-size:15px}
-    
+    ol.steps span{color:var(--fg-dim);font-size:16px}
+
     /* contact */
-    .contact{margin-top:84px;border:1px solid var(--gold);border-radius:20px;padding:34px;background:linear-gradient(180deg,rgba(245,165,36,.06),transparent 60%),var(--card)}
-    .prompt{margin-top:22px;border:1px solid var(--gold);border-radius:12px;background:var(--bg);padding:16px 18px;font-family:var(--mono);font-size:14px;color:var(--ink);white-space:pre-wrap;line-height:1.6}
-    .prompt .dollar{color:var(--y)}
+    .contact{margin-top:84px;border:1px solid var(--line);border-radius:12px;padding:24px;background:var(--surface)}
+    .prompt{margin-top:22px;border:1px solid var(--line);border-radius:12px;background:var(--ink);padding:16px 18px;font-family:var(--mono);font-size:14px;color:var(--fg);white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+    .prompt .dollar{color:var(--accent)}
     .copyrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
-    #copied{font-family:var(--mono);font-size:12px;color:var(--y)}
-    footer{margin-top:44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:end}
-    .handle{font-family:var(--disp);font-weight:800;font-size:30px;letter-spacing:-.03em}
-    .handle span{color:var(--y)}
-    .fine{font-family:var(--mono);font-size:11.5px;color:var(--dim);max-width:60em;line-height:1.6}
-    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-    .skip-link{position:fixed;left:16px;top:16px;z-index:100;padding:12px 16px;background:var(--ink);color:var(--bg);transform:translateY(-200%)}
-    .skip-link:focus{transform:none;outline:2px solid var(--y);outline-offset:3px}
+    #copied{font-family:var(--mono);font-size:12px;color:var(--accent)}
+    .work:hover,.pack:hover,.box:hover,.contact:hover{border-color:rgb(125 125 138 / .6);background:var(--raised)}
+    .pack:hover .rows dt{color:var(--fg-dim)}
+    .partnerships article{padding:20px 0;border-block-start:1px solid var(--line)}
+    .partnerships h3{margin:4px 0;font-size:20px;font-weight:800}
+    .partnerships p{margin:0;color:var(--fg-dim)}
+    .meta{font:12px var(--mono)}
+    .partnerships a,.tbl a,.footer-meta a{display:inline-flex;align-items:center;min-height:24px;min-width:24px}
+    .site-footer{padding-block:24px 48px;color:var(--fg-dim);font:14px/1.6 var(--mono)}
+    .footer-links{display:flex;flex-wrap:wrap;gap:4px 24px}
+    .footer-links a{display:inline-flex;min-height:44px;align-items:center;text-decoration:none}
+    .site-footer a{color:var(--fg-dim)}
+    .site-footer a:hover{color:var(--fg)}
+    .footer-meta{margin-top:24px;border-top:1px solid var(--line);padding-top:24px;font-size:12px;color:var(--fg-faint)}
+    .footer-meta p{margin:0 0 8px}
+    .fact-dot{width:6px;height:6px;margin-right:8px;background:var(--accent)}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    .skip-link{position:fixed;left:16px;top:16px;z-index:100;padding:12px 16px;background:var(--fg);color:var(--ink);transform:translateY(-200%)}
+    .skip-link:focus{transform:none;outline:2px solid var(--accent);outline-offset:3px}
     @media(max-width:639px){
       .tbl-scroll{overflow:visible}
       .tbl table,.tbl tbody{display:block;min-width:0}
@@ -162,75 +182,116 @@
       .tbl tr:last-child{border-bottom:0}
       .tbl td{display:block;padding:0;border:0;min-width:0}
       .tbl td:first-child{grid-column:1 / -1;display:contents}
-      .tbl td:first-child a{grid-column:1 / -1}
+      .tbl td:first-child a{grid-column:1 / -1;justify-self:start}
       .tbl td:first-child br{display:none}
       .tbl td:first-child .when{grid-column:1 / -1;grid-row:3}
       .tbl td.num{grid-row:2;white-space:normal}
-      .tbl td[data-label]::before{content:attr(data-label) ": ";font-family:var(--mono);font-size:12px;font-weight:400;color:var(--mute)}
-      .tbl td[data-label="Source"]{grid-column:1 / -1;font-size:12px;color:var(--dim)}
+      .tbl td[data-label]::before{content:attr(data-label) ": ";font-family:var(--mono);font-size:12px;font-weight:400;color:var(--fg-dim)}
+      .tbl td[data-label="Source"]{grid-column:1 / -1;font-size:12px;color:var(--fg-faint)}
     }
     </style>
   </head>
   <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="wrap">
-  <header class="top">
+<header id="site-header" class="site-header">
+  <nav class="container top" aria-label="Main">
     <a class="brand" href="/" aria-label="Bikash Joshi — home"><span class="av"><img src="/assets/avatar.webp" width="192" height="192" alt=""></span><span class="nm">Bikash<b>.</b></span></a>
-    <nav class="nav" aria-label="Main">
-      <a href="/#work">Work</a><a href="/use-cases/">Playbook</a><a href="/archive/">Archive</a><a href="/partners/" aria-current="page">Partners</a>
+    <!-- GitHub and X marks: Simple Icons, CC0. -->
+    <div class="nav desktop-navigation">
+      <a href="/#work">Work</a>
+      <a href="/use-cases/">Playbook</a>
+      <a href="/archive/">All work</a>
+      <a href="/partners/" aria-current="page">Partners</a>
+      <a href="/#about">About</a>
+      <a href="https://github.com/BkashJEE" target="_blank" rel="noreferrer" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.35.96.11-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .3.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+        </svg>
+      </a>
+      <a href="https://x.com/BkashJosi" target="_blank" rel="noreferrer" aria-label="X (Twitter)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93ZM17.61 20.64h2.04L6.49 3.24H4.3Z" />
+        </svg>
+      </a>
+    </div>
+    <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="phone-navigation">Menu</button>
+  </nav>
+  <div id="phone-navigation" class="phone-navigation" hidden>
+    <nav class="container nav" aria-label="Phone menu">
+      <a href="/#work">Work</a>
+      <a href="/use-cases/">Playbook</a>
+      <a href="/archive/">All work</a>
+      <a href="/partners/" aria-current="page">Partners</a>
+      <a href="/#about">About</a>
+      <div class="nav-social">
+        <a href="https://github.com/BkashJEE" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.35.96.11-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .3.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+          </svg>
+        </a>
+        <a href="https://x.com/BkashJosi" target="_blank" rel="noreferrer" aria-label="X (Twitter)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93ZM17.61 20.64h2.04L6.49 3.24H4.3Z" />
+          </svg>
+        </a>
+      </div>
     </nav>
-  </header>
-  <p class="lab kit">Partner kit · <b>Hermes Agent</b> · Oct 2026</p>
-
-  <main id="main" tabindex="-1">
+  </div>
+</header>
+<main id="main" class="container wrap" tabindex="-1">
+  <p class="lab kit">Partner Kit</p>
   <div class="hero">
     <div>
       <h1>Launch films for AI tools, <span class="y">from a builder who runs them.</span></h1>
       <p class="sub">I'm Bikash, <b>@BkashJosi</b> on X. I build with <span class="hl">Hermes Agent</span> every day and turn real runs into launch films, demo posts and threads.</p>
+      <p class="available">Open to launch films and real-run demo posts for AI tools · <time datetime="2026-11">Updated Nov 2026</time></p>
+      <p class="hero-proof">5.3M X impressions · last 12 months</p>
       <div class="glance" aria-label="At a glance">
         <span><b>For</b> AI tools · Hermes Agent projects</span>
         <span><b>Ready in</b> 5 working days</span>
         <span><b>Price</b> quote on request</span>
       </div>
       <div class="cta">
-        <a class="btn p" href="https://x.com/BkashJosi" target="_blank" rel="noopener">DM @BkashJosi on X →</a>
+        <a class="btn p" href="https://x.com/BkashJosi" target="_blank" rel="noopener">DM on X →</a>
         <a class="btn" href="mailto:bkashjee@gmail.com?subject=Partnership%3A%20%3Cyour%20product%3E">Email me</a>
-        <a class="btn" href="#packages">What you get</a>
       </div>
     </div>
     <div>
       <div class="reel">
-        <video id="sizzle" src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" controls playsinline preload="metadata"></video>
+        <div class="film">
+          <video src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play the reel"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
       </div>
-      <div class="reel-cap">41 S SIZZLE · CLIPS FROM MY OWN POSTS · SOUND ON</div>
+      <div class="reel-cap">41 s reel · Sound on</div>
     </div>
   </div>
 
   <section id="numbers">
     <div class="shead">
       <div>
-        <span class="lab">THE NUMBERS · <b>REAL, DATED</b></span>
-        <h2>Small account. <span class="y">Saves well.</span></h2>
+        <span class="lab">The Numbers</span>
+        <h2>Audience on X</h2>
         <p>The audience is people who install and run agents: Hermes Agent builders and the Nous Research crowd.</p>
       </div>
     </div>
     <div class="stats">
-      <div class="stat"><div class="n">4,105</div><div class="d">followers on @BkashJosi</div><div class="s">PUBLIC COUNT · OCT 25 2026</div></div>
-      <div class="stat"><div class="n">3.68M</div><div class="d">impressions on posts and replies</div><div class="s">X EXPORT · MAY 8 – OCT 21 2026</div></div>
-      <div class="stat"><div class="n k">23,154</div><div class="d">bookmarks, the same window</div><div class="s">X EXPORT · MAY 8 – OCT 21 2026</div></div>
-      <div class="stat"><div class="n k">7,874</div><div class="d">median views on my launch films</div><div class="s">3 FILMS · OCT 17–25 · READ OCT 25</div></div>
-      <div class="stat"><div class="n">1,044</div><div class="d">median views, all of my last 51 posts</div><div class="s">OCT 17–25 · READ OCT 25</div></div>
-      <div class="stat"><div class="n">1,115</div><div class="d">new follows in 28 days</div><div class="s">X EXPORT · SEP 24 – OCT 21</div></div>
-      <div class="stat"><div class="n">4,385</div><div class="d">new follows in the year to Oct 21</div><div class="s">X EXPORT · DAILY OVERVIEW</div></div>
-      <div class="stat"><div class="n">Jul 2026</div><div class="d">when I started posting video</div><div class="s">FOUR MONTHS OF FILMS</div></div>
+      <div class="stat"><div class="n">7.1K</div><div class="d">followers on @BkashJosi</div><div class="s">X Analytics · 23 Nov 2026</div></div>
+      <div class="stat"><div class="n k">5.3M</div><div class="d">impressions in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
+      <div class="stat"><div class="n">40.5K</div><div class="d">bookmarks in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
+      <div class="stat"><div class="n k">7,874</div><div class="d">median views on my launch films</div><div class="s">3 films · 17–25 Oct · read 25 Oct 2026</div></div>
+      <div class="stat"><div class="n">1,044</div><div class="d">median views across 51 posts</div><div class="s">17–25 Oct · read 25 Oct 2026</div></div>
+      <div class="stat"><div class="n">1.5M</div><div class="d">impressions in the last four weeks</div><div class="s">X Analytics · 27 Oct–23 Nov 2026</div></div>
+      <div class="stat"><div class="n">38K</div><div class="d">likes in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
+      <div class="stat"><div class="n">Jul 2026</div><div class="d">when I started posting video</div></div>
     </div>
-    <div class="honest">Impressions and bookmarks come from my X analytics export, which ends Oct 21. View counts are X's public counts, read Oct 25 2026. Posts under 48 hours old still undercount. Nothing here is rounded up.</div>
+    <div class="honest">Account totals are rounded by X and were read on 23 Nov 2026. The October medians use public view counts read on 25 Oct 2026.</div>
   </section>
 
   <section>
     <div class="shead">
       <div>
-        <span class="lab">TOP POSTS · <b>LINKED</b></span>
+        <span class="lab">Top Posts</span>
         <h2>What travelled</h2>
       </div>
     </div>
@@ -238,13 +299,13 @@
       <table>
         <thead><tr><th>Post</th><th>Reach</th><th>Saves</th><th>Source</th></tr></thead>
         <tbody>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">SEP 9 2026 · HERMES AGENT WORKFLOW</span></td><td data-label="Reach" class="num k">115,855</td><td data-label="Saves" class="num">457</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">SEP 26 2026 · 118 NEW FOLLOWS FROM ONE POST</span></td><td data-label="Reach" class="num">67,137</td><td data-label="Saves" class="num">506</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">SEP 18 2026 · PRODUCT WALKTHROUGH · TYPESAFE</span></td><td data-label="Reach" class="num">58,627</td><td data-label="Saves" class="num k">1,102</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">SEP 10 2026 · BUILD</span></td><td data-label="Reach" class="num">51,405</td><td data-label="Saves" class="num">404</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">SEP 17 2026 · BUILD</span></td><td data-label="Reach" class="num">44,988</td><td data-label="Saves" class="num">309</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">OCT 18 2026 · REAL RUN VIDEO</span></td><td data-label="Reach" class="num">13,751</td><td data-label="Saves" class="num">54</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">OCT 23 2026 · LAUNCH FILM</span></td><td data-label="Reach" class="num">13,033</td><td data-label="Saves" class="num">95</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">Sep 9 2026 · Hermes Agent workflow</span></td><td data-label="Reach" class="num k">115,855</td><td data-label="Saves" class="num">457</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">Sep 26 2026 · 118 new follows from one post</span></td><td data-label="Reach" class="num">67,137</td><td data-label="Saves" class="num">506</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">Sep 18 2026 · product walkthrough · TypeSafe</span></td><td data-label="Reach" class="num">58,627</td><td data-label="Saves" class="num k">1,102</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">Sep 10 2026 · build</span></td><td data-label="Reach" class="num">51,405</td><td data-label="Saves" class="num">404</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">Sep 17 2026 · build</span></td><td data-label="Reach" class="num">44,988</td><td data-label="Saves" class="num">309</td><td data-label="Source" class="when">X export</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">Oct 18 2026 · real run video</span></td><td data-label="Reach" class="num">13,751</td><td data-label="Saves" class="num">54</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">Oct 23 2026 · launch film</span></td><td data-label="Reach" class="num">13,033</td><td data-label="Saves" class="num">95</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
         </tbody>
       </table>
     </div></div>
@@ -253,65 +314,109 @@
   <section id="work">
     <div class="shead">
       <div>
-        <span class="lab">PORTFOLIO · <b>MY OWN POSTS</b></span>
+        <span class="lab">Portfolio</span>
         <h2>The formats</h2>
-        <p>These are samples from my own posts, not client work. Every one uses real UI, real output or real data, and anything illustrated says so on screen.</p>
+        <p>These are samples I made. Every one uses real UI, real output or real data, and anything illustrated says so on screen.</p>
       </div>
     </div>
     <div class="grid">
       <article class="work">
-        <video src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Nous Calendar launch film"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Nous Calendar launch film</h3><p>Plugin launch: the real app recorded in Hermes Desktop, one idea per beat, and an install command on the end card.</p>
-          <div class="chips"><span class="chip k">13,033 VIEWS · OCT 23</span><span class="chip">LAUNCH FILM</span><span class="chip">49 S</span></div></div>
+          <div class="chips"><span class="chip">13,033 views · read 25 Oct 2026</span><span class="chip">Launch film</span><span class="chip">49 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Hermes took over my TV"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Hermes took over my TV</h3><p>Real terminal output from my own Roku TV. The TV screen is labelled as an illustration.</p>
-          <div class="chips"><span class="chip">REAL RUN</span><span class="chip">LAUNCH FILM</span><span class="chip">42 S</span></div></div>
+          <div class="chips"><span class="chip">Real run</span><span class="chip">Launch film</span><span class="chip">42 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Website showcase: webdev.teknium.io"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Website showcase: webdev.teknium.io</h3><p>A tilt-shift 3D fly-over built from real 2x page captures, with cards that stand up off the page.</p>
-          <div class="chips"><span class="chip chip-blue">WEBSITE SHOWCASE</span><span class="chip">34 S</span></div></div>
+          <div class="chips"><span class="chip">Website showcase</span><span class="chip">34 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" controls playsinline preload="none"></video>
-        <div class="b"><h3>Hermes Desktop, in a tab</h3><p>A feature walkthrough with a countdown carrier and every screen captured from the real app.</p>
-          <div class="chips"><span class="chip">FEATURE FILM</span><span class="chip">76 S</span></div></div>
+        <div class="film">
+          <video src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Hermes Desktop, in a tab"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
+        <div class="b"><h3>Hermes Desktop, in a tab</h3><p>A feature walkthrough with every screen captured from the real app.</p>
+          <div class="chips"><span class="chip">Feature film</span><span class="chip">76 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play 10 apps Hermes users are connecting"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>10 apps Hermes users are connecting</h3><p>A ranked road-trip story film, with the ranking taken from GitHub issue data.</p>
-          <div class="chips"><span class="chip">STORY FILM</span><span class="chip">RANKED BY DATA</span><span class="chip">58 S</span></div></div>
+          <div class="chips"><span class="chip">Story film</span><span class="chip">Ranked by data</span><span class="chip">58 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Terminal dies here. Hermes still answers."><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Terminal dies here. Hermes still answers.</h3><p>Stop #11 of the same story world, with setup steps quoted from the official docs.</p>
-          <div class="chips"><span class="chip">SERIES</span><span class="chip">30 S</span></div></div>
+          <div class="chips"><span class="chip">Series</span><span class="chip">30 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Hermes Agent Inbox"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Hermes Agent Inbox</h3><p>A launch video for my own open-source plugin, with real UI captured at 2x.</p>
-          <div class="chips"><span class="chip">1,559 VIEWS · OCT 20</span><span class="chip">OPEN SOURCE LAUNCH</span><span class="chip">40 S</span></div></div>
+          <div class="chips"><span class="chip">1,559 views · Oct 20</span><span class="chip">Open source launch</span><span class="chip">40 s</span></div></div>
       </article>
       <article class="work">
-        <video src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" controls playsinline preload="none"></video>
+        <div class="film">
+          <video src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" playsinline preload="none"></video>
+          <button class="film-play" type="button" aria-label="Play Hermes Agent: 41 releases in 217 days"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
+        </div>
         <div class="b"><h3>Hermes Agent: 41 releases in 217 days</h3><p>A long-form timeline film. This is a 60 s excerpt of the 3-minute cut.</p>
-          <div class="chips"><span class="chip">1,214 VIEWS · OCT 21</span><span class="chip">JOURNEY FILM</span><span class="chip">EXCERPT</span></div></div>
+          <div class="chips"><span class="chip">1,214 views · Oct 21</span><span class="chip">Journey film</span><span class="chip">Excerpt</span></div></div>
       </article>
     </div>
+  </section>
+
+  <section aria-labelledby="partnerships">
+    <div class="shead">
+      <h2 id="partnerships">Paid partnerships</h2>
+    </div>
+    <div class="partnerships">
+      <article>
+        <p class="meta">Paid partnership · <time datetime="2026-11-10">10 Nov 2026</time></p>
+        <h3>Fish Audio · Live 3</h3>
+        <p>Launch quote post on X. 1,716 views as of <time datetime="2026-11-12">12 Nov 2026</time>.</p>
+      </article>
+      <article>
+        <p class="meta">Paid partnership · <time datetime="2026-11-12">12 Nov 2026</time></p>
+        <h3>Fish Audio · Fish Agent</h3>
+        <p>Launch quote post and 41 s film, published on X <time datetime="2026-11-12">12 Nov 2026</time>.</p>
+        <a href="https://x.com/BkashJosi/status/2120926122934513764" target="_blank" rel="noreferrer">View the Fish Agent launch post ↗</a>
+      </article>
+    </div>
+    <p class="honest"><strong>Disclosures.</strong> Paid posts are labelled on X.</p>
   </section>
 
   <section id="packages">
     <div class="shead">
       <div>
-        <span class="lab">PACKAGES · <b>5 WORKING DAYS</b> · QUOTE ON REQUEST</span>
+        <span class="lab">Packages · 5 Working Days · Quote on Request</span>
         <h2>Ways to work together</h2>
         <p>Every package starts with me running your product. If it doesn't work on my machine, I tell you before anything is made.</p>
       </div>
     </div>
     <div class="pk">
-      <div class="pack lead">
+      <div class="pack">
         <span class="for">AI tools · agent and devtool startups</span>
         <h3>Launch film</h3>
         <dl class="rows">
@@ -320,7 +425,7 @@
           <dt>Best for</dt><dd>Launch day, a new feature, or a version release</dd>
           <dt>Timeline</dt><dd>5 working days from go-ahead: storyboard by day 2, film by day 5</dd>
         </dl>
-        <div class="rate">QUOTE ON REQUEST · DM ON X OR EMAIL</div>
+        <div class="rate">Quote on request · DM on X or email</div>
       </div>
       <div class="pack">
         <span class="for">Hermes / Nous ecosystem projects</span>
@@ -331,7 +436,7 @@
           <dt>Best for</dt><dd>Plugins, skills, MCP servers and model providers</dd>
           <dt>Timeline</dt><dd>5 working days from go-ahead, including the run on my machine</dd>
         </dl>
-        <div class="rate">QUOTE ON REQUEST · DM ON X OR EMAIL</div>
+        <div class="rate">Quote on request · DM on X or email</div>
       </div>
     </div>
   </section>
@@ -339,7 +444,7 @@
   <section>
     <div class="cols">
       <div>
-        <span class="lab">HOW IT RUNS</span>
+        <span class="lab">How It Runs</span>
         <h2 style="margin:6px 0 20px">Five steps</h2>
         <ol class="steps">
           <li><div><b>Intro by DM or email</b><span>You tell me what launches and when. I say yes only if it fits my audience, and send a quote.</span></div></li>
@@ -351,7 +456,7 @@
       </div>
       <div style="display:grid;gap:22px;align-content:start">
         <div class="box">
-          <h3 class="y">What you can count on</h3>
+          <h3>What you can count on</h3>
           <ul class="bul">
             <li>Every paid post is clearly labelled as paid</li>
             <li>Real UI and real output. Illustrations are labelled on screen</li>
@@ -360,8 +465,8 @@
           </ul>
         </div>
         <div class="box">
-          <h3 style="color:var(--red)">What I don't do</h3>
-          <ul class="bul r">
+          <h3>What I don't do</h3>
+          <ul class="bul">
             <li>Claim results I haven't tested myself</li>
             <li>Fake reviews, testimonials or customer quotes</li>
             <li>Pass off a sample as client work</li>
@@ -373,7 +478,7 @@
   </section>
 
   <div class="contact" id="contact">
-    <span class="lab">START HERE · <b>COPY THIS</b></span>
+    <span class="lab">Start Here</span>
     <h2 style="margin-top:8px">Send me <span class="y">one message.</span></h2>
     <div class="prompt" id="dm"><span class="dollar">$</span> Hi Bikash, we're &lt;product&gt;. It &lt;does one thing&gt;. We launch &lt;date&gt;. Interested in a &lt;launch film / demo post&gt;. Here's access: &lt;link&gt;.</div>
     <div class="copyrow">
@@ -385,13 +490,61 @@
   </div>
 
 </main>
-  <footer>
-    <div class="handle">@Bkash<span>Josi</span></div>
-    <div class="fine">Samples are from my own posts, not paid work. Product names appear because I covered them. Numbers come from my X analytics export (to Oct 21 2026) and X's public counts read Oct 25 2026.</div>
-  </footer>
-</div>
+<footer class="container site-footer">
+  <div class="footer-links">
+    <a href="#top">↑ Back to top</a>
+    <a href="https://github.com/BkashJEE" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="https://x.com/BkashJosi" target="_blank" rel="noreferrer">X / Twitter</a>
+    <a href="/resume/">Resume</a>
+    <a href="/partners/">Partners</a>
+    <a href="/use-cases/">Playbook</a>
+    <a href="mailto:bkashjee@gmail.com">Email</a>
+  </div>
+  <div class="footer-meta">
+    <p><span class="fact-dot" aria-hidden="true"></span>Last recorded fact check: 32 claims · 22 Sep 2026.
+      <a href="https://github.com/BkashJEE/bkashjee.github.io/blob/main/typesafe/claims.json" target="_blank" rel="noreferrer">View checked claims ↗</a>
+    </p>
+    <p>© <span id="footer-year">2026</span> Bikash Joshi ·
+      <a href="https://github.com/BkashJEE/bkashjee.github.io" target="_blank" rel="noreferrer">Site source on GitHub ↗</a>
+    </p>
+  </div>
+</footer>
 
 <script>
+var menuButton = document.getElementById('menu-button');
+var phoneNavigation = document.getElementById('phone-navigation');
+function setMenu(open) {
+  phoneNavigation.hidden = !open;
+  menuButton.setAttribute('aria-expanded', String(open));
+  if (open) phoneNavigation.querySelector('a').focus({ preventScroll: true });
+}
+menuButton.addEventListener('click', function () { setMenu(phoneNavigation.hidden); });
+phoneNavigation.addEventListener('click', function (event) {
+  if (event.target.closest('a')) {
+    setMenu(false);
+    menuButton.focus({ preventScroll: true });
+  }
+});
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && !phoneNavigation.hidden) {
+    setMenu(false);
+    menuButton.focus({ preventScroll: true });
+  }
+});
+window.matchMedia('(min-width: 640px)').addEventListener('change', function (event) {
+  if (event.matches) setMenu(false);
+});
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+document.querySelectorAll('.film-play').forEach(function (button) {
+  button.addEventListener('click', function () {
+    var video = button.previousElementSibling;
+    video.controls = true;
+    video.focus({ preventScroll: true });
+    button.hidden = true;
+    video.play().catch(function () { /* Native controls remain available. */ });
+  });
+});
+
 document.getElementById('copyBtn').addEventListener('click', function () {
   var el = document.getElementById('dm'), out = document.getElementById('copied');
   var text = el.innerText.replace(/^\$\s*/, '');
