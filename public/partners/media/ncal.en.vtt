@@ -1,0 +1,102 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.400
+Nous Calendar
+
+2
+00:00:01.400 --> 00:00:03.200
+[Clicks]
+Nous Calendar keeps up for you.
+
+3
+00:00:03.200 --> 00:00:04.700
+Releases, official plugins and features,
+day by day, inside Hermes Desktop.
+
+4
+00:00:04.700 --> 00:00:06.100
+2,193 merged PRs in October so far.
+
+5
+00:00:06.100 --> 00:00:08.600
+[Whoosh]
+A month of Hermes. One page.
+
+6
+00:00:08.600 --> 00:00:10.900
+Black days are releases.
+Blue tags are launches.
+
+7
+00:00:10.900 --> 00:00:12.800
+It knows your version.
+
+8
+00:00:12.800 --> 00:00:14.300
+3 releases behind? One click
+copies the update command.
+
+9
+00:00:14.300 --> 00:00:16.400
+[Click]
+You're on v0.22.2 · 3 releases behind.
+
+10
+00:00:16.400 --> 00:00:18.800
+[Click]
+Tap a day. It opens on X.
+
+11
+00:00:18.800 --> 00:00:21.000
+Oct 11: Anatomy goes official.
+
+12
+00:00:21.000 --> 00:00:23.700
+[Click]
+The post opens right inside Hermes.
+
+13
+00:00:23.700 --> 00:00:26.400
+[Click]
+Every release, the day it lands.
+
+14
+00:00:26.400 --> 00:00:30.700
+Oct 22: v0.22.5. One tap to the
+release notes on GitHub.
+
+15
+00:00:30.700 --> 00:00:33.400
+[Click]
+New plugins, one click to install.
+
+16
+00:00:33.400 --> 00:00:37.000
+Oct 16: the official xchat plugin,
+plus 30 new plugins in the catalog.
+
+17
+00:00:37.000 --> 00:00:39.600
+[Typing]
+Or just ask.
+
+18
+00:00:39.600 --> 00:00:41.400
+Same data in the terminal, in chat with
+/nous-calendar, or ask Hermes.
+
+19
+00:00:41.400 --> 00:00:43.000
+$ hermes nous-calendar --today
+Fri Oct 23 · 7 merged PRs
+
+20
+00:00:43.000 --> 00:00:45.600
+[Typing] hermes plugins install
+BkashJEE/hermes-nous-calendar --enable
+
+21
+00:00:45.600 --> 00:00:48.700
+Free · MIT · reads public GitHub data only
+Not affiliated with Nous Research

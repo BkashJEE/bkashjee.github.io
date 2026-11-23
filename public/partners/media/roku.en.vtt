@@ -1,0 +1,100 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.000
+[Music]
+
+2
+00:00:01.000 --> 00:00:02.800
+Hermes took over my TV.
+
+3
+00:00:02.800 --> 00:00:04.800
+A 58" Roku TV, controlled over Wi-Fi.
+No app. No dev mode. Roku's own local API.
+
+4
+00:00:04.800 --> 00:00:07.200
+It finds the TV by itself.
+
+5
+00:00:07.200 --> 00:00:09.900
+It asks the network first, then scans
+for Roku's control port, 8060.
+
+6
+00:00:09.900 --> 00:00:11.600
+It knows every app.
+
+7
+00:00:11.600 --> 00:00:13.400
+Every app and input on the TV, with the
+ID it uses to open each one.
+
+8
+00:00:13.400 --> 00:00:15.200
+42 apps and inputs on my TV: Netflix,
+YouTube, Hulu, Disney Plus and more
+
+9
+00:00:15.200 --> 00:00:17.500
+Ask it in plain words.
+
+10
+00:00:17.500 --> 00:00:19.200
+"Put the Tesla livestream on the TV."
+
+11
+00:00:19.200 --> 00:00:20.900
+Illustration. The tool behind it
+played this on my TV on Oct 18.
+
+12
+00:00:20.900 --> 00:00:23.000
+How it plays the exact video.
+
+13
+00:00:23.000 --> 00:00:24.600
+It looks up the video, then tells the
+TV's YouTube app which one to open.
+
+14
+00:00:24.600 --> 00:00:26.000
+1 yt-dlp finds the video ID
+2 POST launch  3 It plays on the TV
+
+15
+00:00:26.000 --> 00:00:28.200
+A remote, from the chat.
+
+16
+00:00:28.200 --> 00:00:31.000
+Home, Play, Back, volume, power,
+typing into search boxes.
+
+17
+00:00:31.000 --> 00:00:33.000
+What it can't do.
+
+18
+00:00:33.000 --> 00:00:34.700
+Remove ads: no. Hide home rows: no.
+Install apps: only in Roku dev mode.
+
+19
+00:00:34.700 --> 00:00:36.400
+Needs: same Wi-Fi, port 8060 open.
+
+20
+00:00:36.400 --> 00:00:38.600
+My TV. One skill.
+$ ~/hermes-roku/roku.py find
+
+21
+00:00:38.600 --> 00:00:40.600
+Real output from my TV. Tested by me
+Oct 18. The TV screen is an illustration.
+
+22
+00:00:40.600 --> 00:00:41.800
+[Music fades out]

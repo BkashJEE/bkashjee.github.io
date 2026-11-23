@@ -1,0 +1,99 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.400
+[Music]
+10 apps Hermes users are connecting.
+
+2
+00:00:02.400 --> 00:00:04.800
+Ranked by GitHub issues naming each app
+NousResearch/hermes-agent, last 90 days
+
+3
+00:00:04.800 --> 00:00:07.200
+One request. Many apps.
+
+4
+00:00:07.200 --> 00:00:10.000
+"Check my Gmail, post the summary to
+Slack, and ping me on Telegram."
+
+5
+00:00:10.000 --> 00:00:12.600
+[Music builds]
+#10 Notion · #9 YouTube
+
+6
+00:00:12.600 --> 00:00:16.000
+#10 Notion · 4 issues in 90 days
+hermes mcp install notion
+
+7
+00:00:16.000 --> 00:00:19.200
+#9 YouTube · 5 issues in 90 days
+Bundled skill: youtube-content
+
+8
+00:00:19.200 --> 00:00:22.200
+#8 Home Assistant · 8 issues in 90 days
+Official plugin
+
+9
+00:00:22.200 --> 00:00:24.400
+#7 Browser · 18 issues in 90 days
+Built-in tool · Playwright MCP
+
+10
+00:00:24.400 --> 00:00:26.400
+Road signs: Nous Tool Gateway,
+50+ connectors, no account needed
+
+11
+00:00:26.400 --> 00:00:29.400
+#6 Signal · ~20 issues, hand-checked
+hermes gateway setup
+
+12
+00:00:29.400 --> 00:00:32.600
+#5 Google Workspace · 31 issues in 90 days
+Skill + Gmail connector
+
+13
+00:00:32.600 --> 00:00:35.600
+#4 Slack · 142 issues in 90 days
+Messaging gateway
+
+14
+00:00:35.600 --> 00:00:39.400
+#3 WhatsApp · 161 issues in 90 days
+Messaging gateway
+
+15
+00:00:39.400 --> 00:00:42.600
+#2 Discord · 245 issues in 90 days
+Messaging gateway
+
+16
+00:00:42.600 --> 00:00:46.200
+#1 Telegram · 506 issues in 90 days
+hermes gateway setup
+
+17
+00:00:49.600 --> 00:00:51.800
+It's all in the Hermes docs.
+
+18
+00:00:51.800 --> 00:00:53.600
+Connectors need a Nous identity. You do
+not have to sign in for one.
+
+19
+00:00:53.600 --> 00:00:56.000
+00:44.52 · 10 apps. One agent.
+$ hermes connectors connect gmail
+
+20
+00:00:56.000 --> 00:00:58.000
+Counts = GitHub issues naming the app (90
+days), not users. Illustrative journey.

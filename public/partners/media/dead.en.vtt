@@ -1,0 +1,75 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.000
+Terminal dies here. Hermes still answers.
+Stop #11 · via @NetworkChuck
+
+2
+00:00:03.000 --> 00:00:05.600
+Dead zone
+(Illustrative · not a recording)
+
+3
+00:00:05.600 --> 00:00:07.400
+[Tone] No Service.
+Connection to homelab closed.
+
+4
+00:00:07.400 --> 00:00:08.800
+Rewind
+
+5
+00:00:08.800 --> 00:00:10.400
+[Tone]
+iMessage to Hermes Agent: "check my PRs"
+
+6
+00:00:10.400 --> 00:00:13.200
+[Tone] "3 open, #212 is green,
+ready to merge." iMessage just works.
+
+7
+00:00:13.200 --> 00:00:15.000
+Built into Hermes.
+Real docs page, captured Oct 25 2026.
+
+8
+00:00:15.000 --> 00:00:16.600
+Docs: "That's it — there is no public
+URL or tunnel to set up."
+
+9
+00:00:16.600 --> 00:00:18.000
+[Two tones]
+$ hermes photon setup --help
+
+10
+00:00:18.000 --> 00:00:19.500
+Real --help output, Hermes v0.22.2.
+Setup not run.
+
+11
+00:00:19.500 --> 00:00:21.600
+[Four blips] How to set it up:
+3 steps from the Photon iMessage docs
+
+12
+00:00:21.600 --> 00:00:23.000
+1. Sign up free at app.photon.codes
+2. Run setup with your number
+
+13
+00:00:23.000 --> 00:00:25.600
+3. Start the gateway, text that line:
+hermes gateway start
+
+14
+00:00:25.600 --> 00:00:27.600
+[Tones]
+Texts get through. #11 iMessage via Photon
+
+15
+00:00:27.600 --> 00:00:30.000
+No Mac? Photon. Have a Mac? BlueBubbles.
+hermes-agent.nousresearch.com/docs

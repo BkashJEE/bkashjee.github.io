@@ -1,0 +1,89 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.400
+[Music]
+Your bots are working.
+
+2
+00:00:01.400 --> 00:00:03.000
+Your bots are working.
+Waiting on you.
+
+3
+00:00:03.000 --> 00:00:06.000
+See every ask.
+
+4
+00:00:06.000 --> 00:00:09.000
+Click any card:
+why it's there, the facts, the command.
+
+5
+00:00:09.000 --> 00:00:11.500
+The exact command.
+
+6
+00:00:11.500 --> 00:00:13.500
+Cron failed: nightly-backup
+hermes -p default cron runs backup
+
+7
+00:00:13.500 --> 00:00:15.000
+Copied. Paste it in the Bot's terminal.
+Nothing else to find.
+
+8
+00:00:15.000 --> 00:00:18.000
+Every source.
+
+9
+00:00:18.000 --> 00:00:21.000
+Chats · Crons · Keys · Vitals · PRs ·
+Posted · X Studio · Claude Code · Codex
+
+10
+00:00:21.000 --> 00:00:24.000
+One inbox per agent.
+
+11
+00:00:24.000 --> 00:00:27.000
+A Hermes Bot picks up
+where Claude Code stopped.
+
+12
+00:00:27.000 --> 00:00:29.000
+Bots can ask you.
+
+13
+00:00:29.000 --> 00:00:30.600
+hermes inbox add "Pick a thumbnail for
+Friday's video" --from Gary
+
+14
+00:00:30.600 --> 00:00:31.800
+--priority today
+
+15
+00:00:31.800 --> 00:00:33.000
+New card: "Three options are ready;
+the deadline is Friday."
+
+16
+00:00:33.000 --> 00:00:34.500
+Done. Snooze.
+
+17
+00:00:34.500 --> 00:00:36.000
+Done hides a card until it changes.
+Snooze hides it for a day.
+
+18
+00:00:36.000 --> 00:00:38.000
+Hermes Agent Inbox. One list of everything
+your bots are waiting on you for.
+
+19
+00:00:38.000 --> 00:00:40.000
+hermes plugins install
+BkashJEE/hermes-agent-inbox --enable
