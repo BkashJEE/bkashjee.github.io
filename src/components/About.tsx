@@ -1,3 +1,4 @@
+import { Eyebrow } from './Eyebrow'
 import { aboutParagraphs, identity } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -5,7 +6,7 @@ import { SectionHeading } from './SectionHeading'
 export function About() {
   return (
     <section id="about" className="overflow-clip py-20 sm:py-28">
-      <SectionHeading eyebrow="About" title="Behind the work" ghost="Me" />
+      <SectionHeading eyebrow="About" title="Behind the work" />
       <div className="mx-auto mt-12 grid max-w-6xl items-start gap-10 px-6 lg:grid-cols-12">
         <Reveal className="lg:col-span-3">
           <img
@@ -21,7 +22,7 @@ export function About() {
           <div className="space-y-6">
             {aboutParagraphs.map((p, i) =>
               i === 0 ? (
-                <p key={i} className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] leading-snug text-fg">
+                <p key={i} className="font-display text-2xl leading-snug text-fg">
                   {p}
                 </p>
               ) : (
@@ -31,8 +32,15 @@ export function About() {
               ),
             )}
           </div>
-          <p className="mt-8 font-mono text-[0.85rem]">
-            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep text-accent">
+          <div className="mt-8">
+            <Eyebrow>Available for</Eyebrow>
+            <p className="mt-2 text-fg-dim">
+              {identity.available} · Updated{' '}
+              {new Date(`${identity.availableUpdated}-01T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
+            </p>
+          </div>
+          <p className="mt-4 font-mono text-sm">
+            <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-accent">
               github.com/BkashJEE ↗
             </a>
           </p>

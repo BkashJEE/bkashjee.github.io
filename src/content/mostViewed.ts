@@ -312,7 +312,7 @@ export const viewedUseCases: ViewedUseCase[] = [
     tab: 'hermes',
     title: 'A morning briefing that is ready before you wake',
     summary:
-      'The Hermes automation I would want most: wake up with the prep already done — calendar, email and a personal newspaper waiting in one briefing. My most-viewed post so far.',
+      'The Hermes automation I would want most: wake up with the prep already done — calendar, email and a personal newspaper waiting in one briefing. The post with the most impressions in this export.',
     postUrl: 'https://x.com/BkashJosi/status/2097555264803377456',
     postText: 'A Perfect Morning Briefing by an Agent 🪽🚀 This would be my favorite kind of Hermes Agent Morning Briefing automation. 🌟 Waking up with the prep already done. Calendar,email and personal newspaper…',
     date: '2026-09-09',
@@ -501,7 +501,7 @@ export const audience = {
 }
 
 export const viewedProvenance = {
-  source: 'my X content export',
+  source: 'X export · Oct 6, 2026',
   exported: '2026-10-06',
   note: 'Impressions, likes, bookmarks and reposts are the numbers X reported for each post on the export date; every card links to the post.',
 }

@@ -6,7 +6,7 @@ import {
   PlaneGeometry,
   Scene,
   ShaderMaterial,
-  Vector3,
+  Vector2,
   WebGLRenderer,
 } from 'three'
 
@@ -92,7 +92,7 @@ const vertexShader = /* glsl */ `
     float s = 1.0 / ${GRID.toFixed(1)};
     float dx = height(uv - vec2(s, 0.0)) - height(uv + vec2(s, 0.0));
     float dy = height(uv - vec2(0.0, s)) - height(uv + vec2(0.0, s));
-    vNormal = normalize(vec3(dx * 24.0 * e, dy * 24.0 * e, 1.0));
+    vNormal = normalize(vec3(dx * 38.0 * e, dy * 38.0 * e, 1.0));
     vec3 p = position + vec3(0.0, 0.0, h * 0.22 * e);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
   }
@@ -100,17 +100,30 @@ const vertexShader = /* glsl */ `
 
 const fragmentShader = /* glsl */ `
   uniform sampler2D map;
-  uniform vec3 light;
+  uniform vec2 spot;     // the pointer, in the photo's 0..1 space (can sit outside it)
+  uniform float aspect;  // width / height, so the spot stays round
+  uniform float glow;    // 0 = resting light, 1 = the pointer is near
   varying vec2 vUv;
   varying vec3 vNormal;
   varying float vRise;
   void main() {
     vec4 c = texture2D(map, vUv);
     if (c.a < 0.01) discard;
-    float diffuse = max(dot(normalize(vNormal), normalize(light)), 0.0);
+    vec3 n = normalize(vNormal);
+    // A lamp held just above the pointer: light rakes across the relief from
+    // wherever the pointer is, so every ridge shades as it moves.
+    vec2 d = (spot - vUv) * vec2(aspect, 1.0);
+    vec3 l = normalize(vec3(d, 0.42));
+    float diffuse = max(dot(n, l), 0.0);
+    float near = exp(-dot(d, d) * 3.2);
+    float spec = pow(max(dot(reflect(-l, n), vec3(0.0, 0.0, 1.0)), 0.0), 18.0);
+    // Resting: a soft top-left light. Pointer near: the lamp takes over.
+    float rest = 0.62 + 0.75 * max(dot(n, normalize(vec3(-0.6, 0.7, 0.9))), 0.0);
+    float lamp = 0.42 + 1.15 * diffuse * (0.35 + 0.65 * near);
+    float lit = mix(rest, lamp, glow);
+    vec3 col = c.rgb * lit + vec3(1.0, 0.72, 0.32) * spec * near * glow * 0.55;
     // Flat, it is exactly the photo; risen, it is lit like carved stone.
-    float lit = mix(1.0, 0.62 + 0.75 * diffuse, vRise);
-    gl_FragColor = vec4(c.rgb * lit, c.a);
+    gl_FragColor = vec4(mix(c.rgb, col, vRise), c.a);
   }
 `
 
@@ -138,9 +151,16 @@ export function mountTerrain(photo: HTMLImageElement, canvas: HTMLCanvasElement,
   const map = new CanvasTexture(copy)
   map.colorSpace = NoColorSpace
   const hmap = heightMap(photo)
-  const light = new Vector3(-0.6, 0.7, 0.9)
+  const spot = new Vector2(0.2, 0.15)
   const material = new ShaderMaterial({
-    uniforms: { map: { value: map }, hmap: { value: hmap }, rise: { value: 0 }, light: { value: light } },
+    uniforms: {
+      map: { value: map },
+      hmap: { value: hmap },
+      rise: { value: 0 },
+      spot: { value: spot },
+      aspect: { value: 1 },
+      glow: { value: 0 },
+    },
     vertexShader,
     fragmentShader,
     transparent: true,
@@ -154,31 +174,38 @@ export function mountTerrain(photo: HTMLImageElement, canvas: HTMLCanvasElement,
     renderer.setSize(w, h, false)
     camera.aspect = w / h
     mesh.scale.set(w / h, 1, 1)
+    material.uniforms.aspect.value = w / h
     // Far enough back that the flat plane exactly fills the box.
     camera.position.set(0, 0, 1 / Math.tan((camera.fov * Math.PI) / 360))
     camera.updateProjectionMatrix()
   }
   size()
 
-  let raf = 0, start = 0
-  const target = light.clone()
+  let raf = 0, start = 0, glowTarget = 0
+  const target = spot.clone()
   const draw = () => renderer.render(scene, camera)
   const tick = (now: number) => {
     raf = 0
     const rise = Math.min(1, (now - start) / RISE_MS)
     material.uniforms.rise.value = rise
-    light.lerp(target, 0.12)
+    spot.lerp(target, 0.18)
+    const glow = material.uniforms.glow.value as number
+    material.uniforms.glow.value = glow + (glowTarget - glow) * 0.12
     draw()
-    if (rise < 1 || light.distanceTo(target) > 0.002) raf = requestAnimationFrame(tick)
+    const settled = spot.distanceTo(target) < 0.001 && Math.abs(glowTarget - material.uniforms.glow.value) < 0.004
+    if (rise < 1 || !settled) raf = requestAnimationFrame(tick)
   }
   const kick = () => {
     if (!raf) raf = requestAnimationFrame(tick)
   }
   const onMove = (e: PointerEvent) => {
     const r = canvas.getBoundingClientRect()
-    const x = (e.clientX - (r.left + r.width / 2)) / window.innerWidth
-    const y = (e.clientY - (r.top + r.height / 2)) / window.innerHeight
-    target.set(x * 2.4, -y * 2.4 + 0.3, 0.9)
+    const u = (e.clientX - r.left) / r.width
+    const v = 1 - (e.clientY - r.top) / r.height
+    target.set(u, v)
+    // The lamp brightens as the pointer comes within half a portrait of it.
+    const away = Math.max(0, Math.max(-u, u - 1, -v, v - 1))
+    glowTarget = Math.max(0, 1 - away * 2)
     kick()
   }
   const onResize = () => {

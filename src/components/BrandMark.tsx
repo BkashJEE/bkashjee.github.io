@@ -18,7 +18,7 @@ export function BrandMark({ href = '/', label = 'Bikash Joshi — home' }: { hre
           className="size-full scale-[1.08] object-cover object-top"
         />
       </span>
-      <span className="brand-mark-name hidden font-display text-base tracking-tight text-fg sm:inline sm:text-lg">
+      <span className="brand-mark-name font-display text-base tracking-tight text-fg sm:text-lg">
         Bikash<span className="text-accent">.</span>
       </span>
     </a>

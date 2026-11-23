@@ -10,9 +10,6 @@
     ],
     "agent-dock": [
       "https://raw.githubusercontent.com/BkashJEE/hermes-agent-dock/main/README.md"
-    ],
-    "mission-control": [
-      "$MISSION_CONTROL_DIR/README.md"
     ]
   },
   "claims": [
@@ -145,36 +142,6 @@
       "id": "ad_security_qa",
       "project": "agent-dock",
       "claim": "Agent Dock ships with a security policy and documented release testing."
-    },
-    {
-      "id": "mc_newsroom",
-      "project": "mission-control",
-      "claim": "Mission Control is a workspace for planning, drafting, and publishing content for an X account."
-    },
-    {
-      "id": "mc_agent_pipeline",
-      "project": "mission-control",
-      "claim": "In Mission Control, agent profiles move work through research, draft, and verify steps."
-    },
-    {
-      "id": "mc_owner_review",
-      "project": "mission-control",
-      "claim": "Nothing is published from Mission Control without review by the account owner."
-    },
-    {
-      "id": "mc_supabase_sqlite",
-      "project": "mission-control",
-      "claim": "Mission Control uses a Supabase backend with a local SQLite fallback."
-    },
-    {
-      "id": "mc_rls",
-      "project": "mission-control",
-      "claim": "Mission Control's Supabase database uses row-level security."
-    },
-    {
-      "id": "mc_guarded_intake",
-      "project": "mission-control",
-      "claim": "Mission Control only accepts video research links from an allowlist of hosts."
     }
   ],
   "code_checks": [

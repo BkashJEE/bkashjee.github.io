@@ -8,7 +8,7 @@ function StarBadge({ href }: { href: string }) {
   const stars = plugins.find((p) => p.repo === href)?.stars ?? 0
   if (!stars) return null
   return (
-    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[0.75rem] text-accent" title="GitHub stars">
+    <span className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-xs text-accent" title="GitHub stars">
       ★ <CountUp value={stars} className="tabular-nums" /> on GitHub
     </span>
   )
@@ -50,13 +50,10 @@ function DemoVideo({ video }: { video: NonNullable<CaseStudyData['video']> }) {
   )
 }
 
-const arrowColor = { amber: 'text-accent', teal: 'text-teal', violet: 'text-violet' } as const
-const stepBorderColor = { amber: 'border-l-accent', teal: 'border-l-teal', violet: 'border-l-violet' } as const
 const fullCaseSlugs: Record<string, string> = {
   screenpolish: 'screenpolish',
   'bot-forge': 'hermes-bot-forge',
   'agent-dock': 'hermes-agent-dock',
-  'mission-control': 'hermes-x-mission-control',
 }
 
 /**
@@ -102,13 +99,13 @@ function useLitSteps(ref: React.RefObject<HTMLOListElement | null>, count: numbe
 }
 
 /** "How it works": the project's real pipeline as a compact flow strip. */
-function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; glow: CaseStudyData['glow'] }) {
+function FlowStrip({ flow }: { flow: NonNullable<CaseStudyData['flow']> }) {
   const list = useRef<HTMLOListElement>(null)
   const lit = useLitSteps(list, flow.steps.length)
   return (
     <div className="mt-6 rounded-lg border border-line bg-surface/60 p-4">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">How it works</p>
+        <p className="font-mono text-xs text-fg-dim">How it works</p>
       </div>
       <ol
         ref={list}
@@ -120,14 +117,14 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
           return (
             <li key={step} className="flex min-w-0 max-w-full items-center gap-2">
               {i > 0 && (
-                <span className={`${on ? arrowColor[glow] : 'text-fg-faint'} select-none font-mono text-sm transition-colors duration-300`} aria-hidden="true">
+                <span className={`${on ? 'text-fg' : 'text-fg-faint'} select-none font-mono text-sm transition-colors duration-300`} aria-hidden="true">
                   →
                 </span>
               )}
               <span
                 // Unlit steps keep readable contrast: faint text and a plain edge, no fading.
-                className={`min-w-0 max-w-full break-words rounded-md border border-line border-l-2 bg-ink px-3 py-2 font-mono text-[0.75rem] leading-snug transition-colors duration-300 ${
-                  on ? stepBorderColor[glow] : 'border-l-line'
+                className={`min-w-0 max-w-full break-words rounded-md border border-line border-l-2 bg-ink px-3 py-2 font-mono text-xs leading-snug transition-colors duration-300 ${
+                  on ? 'border-l-fg-faint' : 'border-l-line'
                 } ${!on ? 'text-fg-faint' : i === lit - 1 && lit < flow.steps.length ? 'text-fg' : 'text-fg-dim'}`}
               >
                 {step}
@@ -136,24 +133,24 @@ function FlowStrip({ flow, glow }: { flow: NonNullable<CaseStudyData['flow']>; g
           )
         })}
       </ol>
-      {flow.note && <p className="mt-3 text-[0.85rem] leading-relaxed text-fg-dim">{flow.note}</p>}
+      {flow.note && <p className="mt-3 text-sm leading-relaxed text-fg-dim">{flow.note}</p>}
     </div>
   )
 }
 
-export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
+export function CaseStudy({ study, flip, eagerImage }: { study: CaseStudyData; flip: boolean; eagerImage: boolean }) {
   const [primary, secondary] = study.video ? [null, study.images[0]] : study.images
   const [detailsOpen, setDetailsOpen] = useState(false)
   const techChips = (tech: string[]) => (
     <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${study.name} technologies`}>
       {tech.map((t) => (
-        <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-[0.75rem] text-fg-dim">{t}</li>
+        <li key={t} className="rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-fg-dim">{t}</li>
       ))}
     </ul>
   )
   const details = (
     <>
-      {study.flow && <FlowStrip flow={study.flow} glow={study.glow} />}
+      {study.flow && <FlowStrip flow={study.flow} />}
     </>
   )
   const fullCaseSlug = fullCaseSlugs[study.id]
@@ -162,21 +159,20 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
       <div className="mx-auto max-w-6xl px-6">
         <header className="mb-7 flex flex-wrap items-end justify-between gap-5">
           <div className="max-w-2xl">
-            <h3 id={`${study.id}-title`} className="font-display text-[clamp(2rem,4vw,3rem)] leading-tight">{study.name}</h3>
+            <h3 id={`${study.id}-title`} className="font-display text-4xl leading-tight">{study.name}</h3>
             <p className="mt-3 text-lg leading-relaxed text-fg-dim">{study.tagline}</p>
           </div>
-          <div className="flex flex-wrap items-center gap-3 font-mono text-[0.8rem]">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-[13px]">
             {study.link?.href.startsWith('https://github.com/') && <StarBadge href={study.link.href} />}
             {study.sourceNote && <span className="rounded-full border border-line px-3 py-1 text-fg-dim">{study.sourceNote}</span>}
-            {study.stat && <span className="text-teal">{study.stat}</span>}
+            {study.stat && <span className="text-fg-dim">{study.stat}</span>}
           </div>
         </header>
 
         <div className="grid items-start gap-7 lg:grid-cols-12 lg:gap-10">
           <div className={`min-w-0 lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
             <div className="relative isolate">
-              <div className={`glow-${study.glow} pointer-events-none absolute -inset-8 -z-10`} aria-hidden="true" />
-              <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-xl shadow-black/30">
+              <div className="overflow-hidden rounded-xl border border-line bg-surface p-2">
                 {study.video ? (
                   <DemoVideo video={study.video} />
                 ) : primary && (
@@ -185,15 +181,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                     aria-label={`Open ${study.name} screenshot at full size`}
                     className="block focus-visible:outline-offset-[-4px]"
                   >
-                    {primary.chrome && (
-                      <div className="flex items-center gap-1.5 border-b border-line bg-raised px-3.5 py-2.5" aria-hidden="true">
-                        <span className="size-2.5 rounded-full bg-[#ff5f57] opacity-80" />
-                        <span className="size-2.5 rounded-full bg-[#febc2e] opacity-80" />
-                        <span className="size-2.5 rounded-full bg-[#28c840] opacity-80" />
-                        <span className="ml-3 font-mono text-[0.75rem] text-fg-dim">{study.name}</span>
-                      </div>
-                    )}
-                    <img src={primary.src} width={primary.width} height={primary.height} alt={primary.alt} loading="lazy" className="block w-full" />
+                    <img src={primary.src} width={primary.width} height={primary.height} alt={primary.alt} loading={eagerImage ? 'eager' : 'lazy'} decoding="async" className="block w-full" />
                   </a>
                 )}
               </div>
@@ -215,7 +203,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                 className="mt-5 flex items-center gap-4 rounded-lg border border-line bg-surface p-3 text-sm text-fg-dim transition-colors hover:border-accent/50 hover:text-fg"
               >
                 {/* A 192px thumbnail for a 96px slot; the link opens the full-size image. */}
-                <img src={secondary.src.replace(/\.webp$/, '-thumb.webp')} width={secondary.width} height={secondary.height} alt={secondary.alt} loading="lazy" className="h-16 w-24 shrink-0 rounded object-contain" />
+                <img src={secondary.src.replace(/\.webp$/, '-thumb.webp')} width={secondary.width} height={secondary.height} alt={secondary.alt} loading={eagerImage && !primary ? 'eager' : 'lazy'} decoding="async" className="h-16 w-24 shrink-0 rounded object-contain" />
                 <span>View another screenshot <span aria-hidden="true">↗</span></span>
               </a>
             )}
@@ -226,7 +214,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               {fullCaseSlug && (
                 <a
                   href={`/use-cases/${fullCaseSlug}/`}
-                  className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[0.8rem] font-medium text-ink transition-colors hover:bg-fg"
+                  className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-mono text-[13px] font-medium text-ink transition-colors hover:bg-fg"
                 >
                   View full case study →
                 </a>
@@ -236,7 +224,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                   href={study.link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 py-2.5 font-mono text-[0.8rem] text-fg transition-colors hover:border-accent hover:text-accent"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 py-2.5 font-mono text-[13px] text-fg transition-colors hover:border-accent hover:text-accent"
                 >
                   {study.link.label} ↗
                 </a>
@@ -252,7 +240,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
               </summary>
               <div className="sm:hidden">{details}</div>
               {detailsOpen && techChips(study.tech)}
-              <div className="space-y-4 pt-5 pb-5 text-[0.95rem] leading-relaxed text-fg-dim sm:pt-0">
+              <div className="space-y-4 pt-5 pb-5 text-base leading-relaxed text-fg-dim sm:pt-0">
                 {study.description.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
               </div>
             </details>

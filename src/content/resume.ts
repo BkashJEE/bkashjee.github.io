@@ -9,6 +9,8 @@ const siteHost = new URL(siteConfig.url).host
 
 const upstream = github.upstream
 const botForge = github.repos.find((r) => r.name === 'hermes-bot-forge')
+/** GitHub stars at build time, never typed by hand. */
+const stars = (name: string) => github.repos.find((r) => r.name === name)?.stars ?? 0
 
 export const resume = {
   name: 'Bikash Joshi',
@@ -25,14 +27,14 @@ export const resume = {
   projects: [
     {
       name: 'ScreenPolish',
-      role: 'Creator · open source (AGPL-3.0)',
-      link: 'github.com/BkashJEE/screenpolish',
+      role: 'Creator · open source (MIT)',
+      link: 'github.com/BkashJEE/ScreenPolish',
       dates: 'Sep 2026 - present',
-      note: 'open source (AGPL-3.0)',
+      note: 'open source (MIT)',
       bullets: [
-        'Built a local screen recorder used for personal demos and videos; 41 recordings in the library, with auto-zoom and MP4/GIF export.',
+        'Built a local screen recorder with auto-zoom and MP4/GIF export for personal demos and videos.',
         'Shipped 3 formats (Windows installer, AppImage, pacman); Wayland capture uses PipeWire/portals, Hyprland IPC, and evdev clicks.',
-        'Shared one renderer for preview and export; 732 tests pass. Built a JSON-output CLI for agent workflows.',
+        'Shared one renderer for preview and export (732 tests passing · Sep 2026). Built a JSON-output CLI for agents.',
       ],
       tech: 'Electron · React 19 · TypeScript · WebCodecs · FFmpeg · Vitest',
     },
@@ -43,20 +45,20 @@ export const resume = {
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
         `Published a Hermes Agent plugin (${botForge?.stars} GitHub stars, ${botForge?.forks} forks) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.`,
-        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; now at v0.22.0 with 451 tests passing.',
+        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review. 451 tests passing · verified 18 Oct 2026.',
       ],
       tech: 'Python · pytest · systemd',
     },
     {
-      name: 'Hermes X Mission Control',
-      role: 'Creator · full-stack web app',
-      dates: 'Sep 2026 - present',
-      note: 'source private',
+      name: 'Nous Calendar',
+      role: 'Creator · open source (MIT)',
+      dates: 'Oct 2026 - present',
+      link: 'github.com/BkashJEE/hermes-nous-calendar',
       bullets: [
-        'Built 13 screens (Today, pipeline, calendar, analytics) used daily for the @BkashJosi X account, with an 8am audit and owner review.',
-        'Implemented Supabase row-level security, SQLite fallback, and video-host allowlists; 592 automated tests.',
+        'Built a Hermes Desktop plugin that shows what Nous shipped for Hermes Agent, one card per day.',
+        'Re-reads GitHub every six hours. Opt-in checks run every 15 minutes and alert all connected Hermes channels.',
       ],
-      tech: 'Next.js · TypeScript · Supabase · SQLite · zod · Vitest',
+      tech: 'Python · GitHub API · hermes cron',
     },
     {
       name: 'Personal Portfolio',
@@ -64,23 +66,23 @@ export const resume = {
       dates: 'Sep 2026 - present',
       link: siteHost,
       bullets: [
-        'Published a 3-page portfolio with case studies, a GitHub-fed archive, and a resume/PDF sharing one content source; GitHub Actions builds and deploys each merge to main.',
+        'Published a multi-page portfolio with case studies, a GitHub-fed list of all work, and a resume/PDF sharing one content source; GitHub Actions builds and deploys each merge to main.',
       ],
       tech: 'React 19 · TypeScript · Vite · Tailwind CSS · Playwright · GitHub Actions',
     },
   ],
   published: [
-    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: 44, note: 'Desktop dock for direct profile chat and Kanban assignment (Python)' },
-    { name: 'Hermes Agent Archive', stars: 41, note: 'source-attributed archive of Hermes workflows, skills and community projects (JavaScript)' },
-    { name: 'Hermes Skills Library', stars: 6, note: 'community Skills & Plugins library for Hermes Desktop, with CI (JavaScript)' },
-    { name: 'Repo Shelf', stars: 18, note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
+    { name: 'Hermes Agent Dock', dates: 'Aug 2026 - present', stars: stars('hermes-agent-dock'), note: 'Desktop dock for direct profile chat and Kanban assignment (Python)' },
+    { name: 'Hermes Agent Archive', stars: stars('hermes-agent-archive'), note: 'source-attributed archive of Hermes workflows, skills and community projects (JavaScript)' },
+    { name: 'Hermes Skills Library', stars: stars('hermes-skills-library'), note: 'community Skills & Plugins library for Hermes Desktop, with CI (JavaScript)' },
+    { name: 'Repo Shelf', stars: stars('repo-shelf'), note: 'git repositories as books on a 3D bookshelf (TypeScript)' },
   ],
   /** One line closing the published list: what shipped most recently. */
   recent: 'Oct 2026 — eight more tools on GitHub, including Hermes Agent Inbox, Footprint, Key Doctor, Vitals and Night Shift.',
   openSource:
     `${upstream.total} pull requests to NousResearch/hermes-agent: ${upstream.merged} merged (Bot Forge’s catalog entry, #114057, and its version bumps), ${upstream.open} open, including AI-isolated credential entry (#97482). Started Hermes Mobile, an open community project (early preview).`,
   writing:
-    'Writes about building with AI agents on X as @BkashJosi.',
+    '5.3M X impressions in the 12 months to Nov 23, 2026 (X Analytics)',
   /**
    * Entries from content/mostViewed.ts to show on the resume, by id — curated
    * for reach and for having an outcome, not purely by read count. The web
