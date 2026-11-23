@@ -32,9 +32,9 @@ export const resume = {
       dates: 'Sep 2026 - present',
       note: 'open source (MIT)',
       bullets: [
-        'Built a local screen recorder used for personal demos and videos; 41 recordings in the library, with auto-zoom and MP4/GIF export.',
+        'Built a local screen recorder with auto-zoom and MP4/GIF export for personal demos and videos.',
         'Shipped 3 formats (Windows installer, AppImage, pacman); Wayland capture uses PipeWire/portals, Hyprland IPC, and evdev clicks.',
-        'Shared one renderer for preview and export; 732 tests pass. Built a JSON-output CLI for agent workflows.',
+        'Shared one renderer for preview and export (732 tests passing · Sep 2026). Built a JSON-output CLI for agents.',
       ],
       tech: 'Electron · React 19 · TypeScript · WebCodecs · FFmpeg · Vitest',
     },
@@ -56,7 +56,7 @@ export const resume = {
       link: 'github.com/BkashJEE/hermes-nous-calendar',
       bullets: [
         'Built a Hermes Desktop plugin that shows what Nous shipped for Hermes Agent, one card per day.',
-        'Refreshes from GitHub every 6 hours; opt-in alerts reach every Hermes channel within 15 minutes.',
+        'Re-reads GitHub every six hours. Opt-in checks run every 15 minutes and alert all connected Hermes channels.',
       ],
       tech: 'Python · GitHub API · hermes cron',
     },
@@ -82,7 +82,7 @@ export const resume = {
   openSource:
     `${upstream.total} pull requests to NousResearch/hermes-agent: ${upstream.merged} merged (Bot Forge’s catalog entry, #114057, and its version bumps), ${upstream.open} open, including AI-isolated credential entry (#97482). Started Hermes Mobile, an open community project (early preview).`,
   writing:
-    'Writes about building with AI agents on X as @BkashJosi.',
+    '5.3M X impressions in the 12 months to Nov 23, 2026 (X Analytics)',
   /**
    * Entries from content/mostViewed.ts to show on the resume, by id — curated
    * for reach and for having an outcome, not purely by read count. The web

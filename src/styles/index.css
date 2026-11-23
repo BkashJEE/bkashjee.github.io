@@ -110,15 +110,27 @@ body {
   color: var(--color-accent);
 }
 
+input[type="search"]:not(:focus) {
+  border-color: var(--color-fg-faint);
+}
+
 @utility card {
   border: 1px solid var(--color-line);
   border-radius: var(--radius-xl);
   background-color: var(--color-surface);
   transition: border-color 150ms var(--ease-out), background-color 150ms var(--ease-out);
 
+  & .card-meta {
+    color: var(--color-fg-faint);
+  }
+
   &:is(:hover, :focus-within) {
     border-color: color-mix(in oklab, var(--color-fg-faint) 60%, transparent);
     background-color: var(--color-raised);
+
+    & .card-meta {
+      color: var(--color-fg-dim);
+    }
   }
 }
 

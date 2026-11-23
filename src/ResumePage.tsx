@@ -1,5 +1,5 @@
 import { resume } from './content/resume'
-import { audience, viewedUseCases } from './content/mostViewed'
+import { viewedUseCases } from './content/mostViewed'
 
 const compact = (n: number) =>
   n >= 1_000_000
@@ -47,7 +47,7 @@ function WritingRail() {
             </p>
           )}
           <p className="mt-2 border-t border-[var(--resume-line)] pt-2 font-mono text-[0.75rem] print:text-[0.72rem] text-[var(--resume-muted)]">
-            <span className="font-semibold text-[var(--resume-fg)]">{compact(post.impressions)}</span> reads ·{' '}
+            <span className="font-semibold text-[var(--resume-fg)]">{compact(post.impressions)}</span> impressions ·{' '}
             <span className="font-semibold text-[var(--resume-fg)]">{post.bookmarks.toLocaleString('en-GB')}</span> saves
           </p>
         </a>
@@ -134,8 +134,7 @@ export default function ResumePage() {
 
         <h2 className="resume-h2">Writing</h2>
         <p className="mt-2 text-[0.82rem] leading-snug text-[var(--resume-copy)]">
-          {resume.writing} {compact(audience.impressions)} impressions in {audience.days} days to{' '}
-          {shortDate(audience.to)}, from my own X analytics export.
+          {resume.writing}
         </p>
         <WritingRail />
 

@@ -7,6 +7,7 @@ import { HeroTicker } from './HeroTicker'
 const BOT_FORGE = 'https://github.com/BkashJEE/hermes-bot-forge'
 // X Analytics, read 23 Nov 2026
 const X_IMPRESSIONS = '5.3M'
+const X_IMPRESSIONS_PERIOD = '12 months to Nov 23, 2026'
 
 /**
  * The strongest facts on the site, at first sight, each linking to its
@@ -33,8 +34,8 @@ function HeroProof() {
         </span>
       </a>
       <a href="/use-cases/" className={item}>
-        <span className="whitespace-nowrap">
-          <span className={figure}>{X_IMPRESSIONS}</span> X impressions · last 12 months
+        <span>
+          <span className={figure}>{X_IMPRESSIONS}</span> X impressions · {X_IMPRESSIONS_PERIOD}
         </span>
       </a>
     </div>

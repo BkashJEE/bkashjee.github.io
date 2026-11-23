@@ -138,7 +138,7 @@ function FlowStrip({ flow }: { flow: NonNullable<CaseStudyData['flow']> }) {
   )
 }
 
-export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean }) {
+export function CaseStudy({ study, flip, eagerImage }: { study: CaseStudyData; flip: boolean; eagerImage: boolean }) {
   const [primary, secondary] = study.video ? [null, study.images[0]] : study.images
   const [detailsOpen, setDetailsOpen] = useState(false)
   const techChips = (tech: string[]) => (
@@ -165,7 +165,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
           <div className="flex flex-wrap items-center gap-3 font-mono text-[13px]">
             {study.link?.href.startsWith('https://github.com/') && <StarBadge href={study.link.href} />}
             {study.sourceNote && <span className="rounded-full border border-line px-3 py-1 text-fg-dim">{study.sourceNote}</span>}
-            {study.stat && <span className={study.stat.includes('tests passing') ? 'text-teal' : 'text-fg-dim'}>{study.stat}</span>}
+            {study.stat && <span className="text-fg-dim">{study.stat}</span>}
           </div>
         </header>
 
@@ -181,7 +181,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                     aria-label={`Open ${study.name} screenshot at full size`}
                     className="block focus-visible:outline-offset-[-4px]"
                   >
-                    <img src={primary.src} width={primary.width} height={primary.height} alt={primary.alt} loading="lazy" className="block w-full" />
+                    <img src={primary.src} width={primary.width} height={primary.height} alt={primary.alt} loading={eagerImage ? 'eager' : 'lazy'} decoding="async" className="block w-full" />
                   </a>
                 )}
               </div>
@@ -203,7 +203,7 @@ export function CaseStudy({ study, flip }: { study: CaseStudyData; flip: boolean
                 className="mt-5 flex items-center gap-4 rounded-lg border border-line bg-surface p-3 text-sm text-fg-dim transition-colors hover:border-accent/50 hover:text-fg"
               >
                 {/* A 192px thumbnail for a 96px slot; the link opens the full-size image. */}
-                <img src={secondary.src.replace(/\.webp$/, '-thumb.webp')} width={secondary.width} height={secondary.height} alt={secondary.alt} loading="lazy" className="h-16 w-24 shrink-0 rounded object-contain" />
+                <img src={secondary.src.replace(/\.webp$/, '-thumb.webp')} width={secondary.width} height={secondary.height} alt={secondary.alt} loading={eagerImage && !primary ? 'eager' : 'lazy'} decoding="async" className="h-16 w-24 shrink-0 rounded object-contain" />
                 <span>View another screenshot <span aria-hidden="true">↗</span></span>
               </a>
             )}

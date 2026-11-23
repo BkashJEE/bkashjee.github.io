@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { identity } from '../content/projects'
 import { BrandMark } from './BrandMark'
 
@@ -47,10 +47,23 @@ export function SiteNav({ page }: { page?: NavItem }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [section, setSection] = useState<NavItem>()
   const menuButton = useRef<HTMLButtonElement>(null)
-  const menu = useRef<HTMLDivElement>(null)
-  const closeMenu = () => {
-    setMenuOpen(false)
-    menuButton.current?.focus({ preventScroll: true })
+  const menu = useRef<HTMLDialogElement>(null)
+  const closeMenu = () => menu.current?.close()
+
+  const followMenuLink = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    const { pathname, hash } = event.currentTarget
+    const target = pathname === window.location.pathname && hash
+      ? document.getElementById(hash.slice(1))
+      : null
+    closeMenu()
+    const heading = target?.querySelector('h2')
+    if (!target || !heading) return
+    event.preventDefault()
+    if (window.location.hash !== hash) window.history.pushState(null, '', hash)
+    heading.tabIndex = -1
+    heading.focus({ preventScroll: true })
+    target.scrollIntoView()
   }
 
   useEffect(() => {
@@ -72,22 +85,13 @@ export function SiteNav({ page }: { page?: NavItem }) {
   }, [page])
 
   useEffect(() => {
-    if (!menuOpen) return
-    menu.current?.querySelector('a')?.focus({ preventScroll: true })
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') closeMenu()
-    }
     const media = window.matchMedia('(min-width: 640px)')
-    const onResize = () => { if (media.matches) setMenuOpen(false) }
-    document.addEventListener('keydown', onKeyDown)
+    const onResize = () => { if (media.matches) menu.current?.close() }
     media.addEventListener('change', onResize)
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      media.removeEventListener('change', onResize)
-    }
-  }, [menuOpen])
+    return () => media.removeEventListener('change', onResize)
+  }, [])
 
-  const navLinks = (onClick?: () => void) => links.map(({ id, href, label }) => (
+  const navLinks = (onClick?: (event: MouseEvent<HTMLAnchorElement>) => void) => links.map(({ id, href, label }) => (
     <a key={id} href={href} onClick={onClick} className="nav-link inline-flex"
       aria-current={page === id ? 'page' : section === id ? 'location' : undefined}>
       {label}
@@ -103,17 +107,44 @@ export function SiteNav({ page }: { page?: NavItem }) {
           <SocialLinks />
         </div>
         <button ref={menuButton} type="button" aria-expanded={menuOpen} aria-controls="phone-navigation"
-          onClick={() => menuOpen ? closeMenu() : setMenuOpen(true)} className="nav-link inline-flex min-w-11 justify-center sm:hidden">
+          aria-haspopup="dialog" onClick={() => {
+            menu.current?.showModal()
+            setMenuOpen(true)
+          }} className="nav-link inline-flex min-w-11 justify-center sm:hidden">
           Menu
         </button>
       </nav>
-      <div ref={menu} id="phone-navigation" hidden={!menuOpen}
-        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-ink px-6 py-3 sm:hidden">
-        <nav aria-label="Phone menu" className="grid grid-cols-2 gap-2">
-          {navLinks(closeMenu)}
+      <dialog ref={menu} id="phone-navigation" aria-label="Phone menu"
+        onClose={() => setMenuOpen(false)}
+        onCancel={(event) => {
+          event.preventDefault()
+          closeMenu()
+          menuButton.current?.focus({ preventScroll: true })
+        }}
+        onKeyDown={(event) => {
+          if (event.key !== 'Tab') return
+          const controls = event.currentTarget.querySelectorAll<HTMLElement>('button, a[href]')
+          const first = controls[0]
+          const last = controls[controls.length - 1]
+          const edge = event.shiftKey ? first : last
+          if (document.activeElement === edge) {
+            event.preventDefault()
+            const next = event.shiftKey ? last : first
+            next.focus()
+          }
+        }}
+        className="fixed inset-x-0 top-0 m-0 max-h-dvh w-full max-w-none overflow-y-auto border-b border-line bg-ink px-6 py-3 text-fg backdrop:bg-ink/70 sm:hidden">
+        <div className="flex justify-end">
+          <button type="button" className="nav-link inline-flex" onClick={() => {
+            closeMenu()
+            menuButton.current?.focus({ preventScroll: true })
+          }}>Close</button>
+        </div>
+        <nav aria-label="Phone navigation" className="grid grid-cols-2 gap-2">
+          {navLinks(followMenuLink)}
           <div className="flex"><SocialLinks onClose={closeMenu} /></div>
         </nav>
-      </div>
+      </dialog>
     </header>
   )
 }

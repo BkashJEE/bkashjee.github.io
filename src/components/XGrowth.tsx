@@ -20,7 +20,7 @@ const grid = [gridStep, gridStep * 2].filter((v) => v < top)
 const firstOfMonth = new Set(weeks.filter((w, i) => i === 0 || w.week.slice(5, 7) !== weeks[i - 1].week.slice(5, 7)).map((w) => w.week))
 
 /**
- * Proof from my own X analytics: the headline totals as stat tiles, then views
+ * Proof from my own X analytics: the headline totals as stat tiles, then impressions
  * on the posts published each week. One series, so no legend; the peak is
  * labelled directly, every bar has a hover/tap tooltip, and the same numbers
  * are available as a table.
@@ -29,15 +29,16 @@ export function XGrowth() {
   const [active, setActive] = useState<string | null>(null)
   const shown = weeks.find((w) => w.week === active)
   const stats = [
-    ['Views', audience.impressions],
+    ['Impressions', audience.impressions],
     ['Bookmarks', audience.bookmarks],
     ['New follows', audience.newFollows],
   ] as const
 
   return (
     <figure className="mt-6 rounded-xl border border-line bg-surface p-5 sm:p-6">
-      <h3 className="mb-5 font-display text-2xl text-fg">Reach of these build notes</h3>
-      <dl className="grid grid-cols-3 gap-4 border-b border-line pb-5">
+      <h3 className="font-display text-2xl text-fg">X account reach</h3>
+      <p className="mt-1 mb-5 font-mono text-xs text-fg-dim">{dayMonth(audience.from)} – {dayMonth(audience.to, true)} · X export</p>
+      <dl className="grid grid-cols-3 gap-2 sm:gap-4 border-b border-line pb-5">
         {stats.map(([label, value]) => (
           <div key={label}>
             <dt className="font-mono text-xs text-fg-faint">{label}</dt>
@@ -48,7 +49,7 @@ export function XGrowth() {
         ))}
       </dl>
 
-      <p className="mt-5 text-base font-medium text-fg">Views on my X posts, by the week I posted them</p>
+      <p className="mt-5 text-base font-medium text-fg">Impressions on my X posts, by the week I posted them</p>
 
       <div className="relative mt-4 h-44 sm:h-52" aria-hidden="true" onPointerLeave={() => setActive(null)}>
         {/* Recessive hairline grid. */}
@@ -87,8 +88,8 @@ export function XGrowth() {
           <div
             className="pointer-events-none absolute top-0 left-11 rounded-lg border border-line bg-raised px-3 py-2 text-[13px] leading-snug text-fg"
           >
-            <span className="block text-fg-faint">Week of {dayMonth(shown.week, true)}</span>
-            <span className="block font-medium tabular-nums">{shown.views.toLocaleString('en-US')} views</span>
+            <span className="block text-fg-dim">Week of {dayMonth(shown.week, true)}</span>
+            <span className="block font-medium tabular-nums">{shown.views.toLocaleString('en-US')} impressions</span>
             <span className="block text-fg-dim tabular-nums">
               {shown.posts} post{shown.posts === 1 ? '' : 's'}
             </span>
@@ -104,8 +105,7 @@ export function XGrowth() {
       </div>
 
       <figcaption className="mt-4 text-sm leading-relaxed text-fg-dim">
-        From my X analytics export, counted {dayMonth(weekly.counted, true)}. Totals cover {dayMonth(audience.from)} to{' '}
-        {dayMonth(audience.to, true)}; the latest weeks keep growing as their posts gather views.
+        Weekly figures reflect the {dayMonth(weekly.counted, true)} export snapshot.
       </figcaption>
 
       <details className="mt-3">
@@ -114,7 +114,7 @@ export function XGrowth() {
           <thead className="text-fg-faint">
             <tr>
               <th className="py-1 font-normal">Week of</th>
-              <th className="py-1 text-right font-normal">Views</th>
+              <th className="py-1 text-right font-normal">Impressions</th>
               <th className="py-1 text-right font-normal">Posts</th>
             </tr>
           </thead>

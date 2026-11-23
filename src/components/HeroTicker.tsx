@@ -46,7 +46,7 @@ function PostCard({ post, copy }: { post: Post; copy: boolean }) {
         <img src="/assets/avatar.webp" alt="" width={32} height={32} loading="lazy" decoding="async" className="size-8 shrink-0 rounded-full" />
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-[13px] font-semibold">{identity.name}</p>
-          <p className="text-xs text-fg-faint">{handle}</p>
+          <p className="text-xs card-meta">{handle}</p>
         </div>
       </div>
       <p className="mt-2 line-clamp-2 whitespace-normal text-[13px] leading-snug text-fg-dim">{post.title}</p>
@@ -55,18 +55,18 @@ function PostCard({ post, copy }: { post: Post; copy: boolean }) {
         target="_blank"
         rel="noreferrer"
         tabIndex={tab}
-        aria-label={`${post.title}, ${count(post.impressions)} views. Open the post on X`}
-        className="mt-1 inline-flex min-h-6 items-center self-start text-xs text-fg-faint after:absolute after:inset-0 after:rounded-xl hover:underline"
+        aria-label={`${post.title}, ${count(post.impressions)} impressions. Open the post on X`}
+        className="mt-1 inline-flex min-h-6 items-center self-start text-xs card-meta after:absolute after:inset-0 after:rounded-xl hover:underline"
       >
         {day(post.date)}
       </a>
-      <div className="mt-auto flex items-center gap-4 pt-2 text-xs tabular-nums text-fg-faint">
+      <div className="mt-auto flex items-center justify-between gap-1 pt-2 text-xs tabular-nums card-meta">
         <Glyph k="reply" />
         {(['reposts', 'likes', 'impressions'] as const).map((k) => (
           <span key={k} className={`flex items-center gap-1.5 ${k === 'impressions' ? 'font-medium text-accent' : ''}`}>
             <Glyph k={k} />
             {count(post[k])}
-            {k === 'impressions' && <span className="font-normal text-fg-faint">views</span>}
+            {k === 'impressions' && <span className="font-normal card-meta">impressions</span>}
           </span>
         ))}
       </div>

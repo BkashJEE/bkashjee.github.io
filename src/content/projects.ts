@@ -146,8 +146,8 @@ export const caseStudies: CaseStudy[] = [
     name: 'Nous Calendar',
     tagline: 'Never miss a Nous drop.',
     description: [
-      'Nous Research merges 50–200 pull requests a day into Hermes Agent, and most of them are fixes. Nous Calendar shows the drops a Hermes user actually cares about, day by day, inside Hermes Desktop: releases, new official plugins, merged features, official-plugin updates and new catalog plugins, with every other merged pull request folded into one count. Tap a day to see what shipped and the day’s biggest posts.',
-      'I designed and built it. It keeps itself current: the backend re-reads the month from GitHub every six hours, a desktop notification fires for each new release or official plugin, and a status-bar chip counts what is new since you last looked. One command turns on alerts that reach every channel connected to your Hermes within fifteen minutes, with zero model tokens. It is also live on the web.',
+      'Hermes Agent gets many merged pull requests every day; Nous Calendar shows the drops a Hermes user cares about, day by day, inside Hermes Desktop: releases, new official plugins, merged features, official-plugin updates and new catalog plugins, with every other merged pull request folded into one count. Tap a day to see what shipped and the day’s biggest posts.',
+      'I designed and built it. It keeps itself current: the backend re-reads GitHub every six hours, a desktop notification fires for each new release or official plugin, and a status-bar chip counts what is new since you last looked. The opt-in alert service checks for new drops every 15 minutes and sends them to every channel connected to your Hermes. It is also live on the web.',
     ],
     tech: ['Python', 'Hermes Desktop plugin', 'GitHub API', 'hermes cron'],
     glow: 'amber',
