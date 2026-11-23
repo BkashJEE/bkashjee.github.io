@@ -51,18 +51,21 @@
     .brand .nm{font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--fg)}
     .brand .nm b{color:var(--accent)}
     .nav{display:flex;align-items:center}
-    .nav a,.menu-button{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 .55rem;border-radius:8px;color:var(--fg-dim);text-decoration:none;font:500 14px var(--body)}
-    .nav a:hover,.menu-button:hover{color:var(--fg)}
+    .nav a,.menu-button,.menu-close{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 .55rem;border-radius:8px;color:var(--fg-dim);text-decoration:none;font:500 14px var(--body)}
+    .nav a:hover,.menu-button:hover,.menu-close:hover{color:var(--fg)}
     .nav a[aria-current="page"]{color:var(--fg)}
     .nav a[aria-current="page"]::after{content:"";position:absolute;inset:auto .55rem .3rem;height:2px;background:var(--accent)}
-    .menu-button,.phone-navigation{display:none}
+    .menu-button{display:none}
     .nav-social{display:flex}
     .kit{margin:0}
     @media (max-width:639px){
       .brand .av{width:36px;height:36px}
-      .brand .nm,.desktop-navigation{display:none}
+      .brand .nm{font-size:16px}
+      .desktop-navigation{display:none}
       .menu-button{display:inline-flex;border:0;background:none;cursor:pointer}
-      .phone-navigation:not([hidden]){position:absolute;inset:100% 0 auto;display:block;max-height:calc(100dvh - 64px);overflow:auto;border-bottom:1px solid var(--line);background:var(--ink)}
+      .phone-navigation{position:fixed;inset:64px 0 auto;margin:0;width:100%;max-width:none;max-height:calc(100dvh - 64px);padding:0;overflow:auto;border:0;border-bottom:1px solid var(--line);background:var(--ink);color:var(--fg)}
+      .phone-navigation::backdrop{background:rgb(10 10 15 / .6)}
+      .menu-close{grid-column:1 / -1;justify-self:end;border:1px solid var(--fg-faint);background:var(--surface);cursor:pointer}
       .phone-navigation .nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-block:12px}
       .phone-navigation a:not([aria-label]){justify-content:flex-start}
     }
@@ -80,7 +83,7 @@
     .btn:hover{border-color:var(--accent);color:var(--accent)}
     .btn.p{background:var(--accent);color:var(--ink);border-color:var(--accent)}
     .btn.p:hover{background:var(--fg);border-color:var(--fg);color:var(--ink)}
-    .reel{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+    .reel{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
     .film{position:relative}
     .film video{display:block;width:100%;aspect-ratio:16/9;height:auto;background:#000;object-fit:contain}
     .film-play:not([hidden]){position:absolute;top:50%;left:50%;translate:-50% -50%;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--fg-dim);border-radius:50%;background:var(--ink);color:var(--fg);cursor:pointer}
@@ -157,7 +160,7 @@
     .copyrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
     #copied{font-family:var(--mono);font-size:12px;color:var(--accent)}
     .work:hover,.pack:hover,.box:hover,.contact:hover{border-color:rgb(125 125 138 / .6);background:var(--raised)}
-    .pack:hover .rows dt{color:var(--fg-dim)}
+    .pack:is(:hover,:focus-within) .rows dt{color:var(--fg-dim)}
     .partnerships article{padding:20px 0;border-block-start:1px solid var(--line)}
     .partnerships h3{margin:4px 0;font-size:20px;font-weight:800}
     .partnerships p{margin:0;color:var(--fg-dim)}
@@ -191,7 +194,7 @@
     }
     </style>
   </head>
-  <body>
+  <body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="site-header" class="site-header">
   <nav class="container top" aria-label="Main">
@@ -214,10 +217,11 @@
         </svg>
       </a>
     </div>
-    <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="phone-navigation">Menu</button>
+    <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-haspopup="dialog" aria-controls="phone-navigation">Menu</button>
   </nav>
-  <div id="phone-navigation" class="phone-navigation" hidden>
-    <nav class="container nav" aria-label="Phone menu">
+  <dialog id="phone-navigation" class="phone-navigation" aria-label="Phone menu">
+    <nav class="container nav" aria-label="Main">
+      <button class="menu-close" type="button" autofocus>Close</button>
       <a href="/#work">Work</a>
       <a href="/use-cases/">Playbook</a>
       <a href="/archive/">All work</a>
@@ -236,7 +240,7 @@
         </a>
       </div>
     </nav>
-  </div>
+  </dialog>
 </header>
 <main id="main" class="container wrap" tabindex="-1">
   <p class="lab kit">Partner Kit</p>
@@ -259,7 +263,7 @@
     <div>
       <div class="reel">
         <div class="film">
-          <video src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" playsinline preload="none"></video>
+          <video aria-label="Launch films reel" src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play the reel"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
       </div>
@@ -280,7 +284,7 @@
       <div class="stat"><div class="n k">5.3M</div><div class="d">impressions in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
       <div class="stat"><div class="n">40.5K</div><div class="d">bookmarks in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
       <div class="stat"><div class="n k">7,874</div><div class="d">median views on my launch films</div><div class="s">3 films · 17–25 Oct · read 25 Oct 2026</div></div>
-      <div class="stat"><div class="n">1,044</div><div class="d">median views across 51 posts</div><div class="s">17–25 Oct · read 25 Oct 2026</div></div>
+      <div class="stat"><div class="n">1,044</div><div class="d">median views across my posts</div><div class="s">51 posts · 17–25 Oct · read 25 Oct 2026</div></div>
       <div class="stat"><div class="n">1.5M</div><div class="d">impressions in the last four weeks</div><div class="s">X Analytics · 27 Oct–23 Nov 2026</div></div>
       <div class="stat"><div class="n">38K</div><div class="d">likes in the last 12 months</div><div class="s">X Analytics · 23 Nov 2026</div></div>
       <div class="stat"><div class="n">Jul 2026</div><div class="d">when I started posting video</div></div>
@@ -297,15 +301,15 @@
     </div>
     <div class="tbl"><div class="tbl-scroll">
       <table>
-        <thead><tr><th>Post</th><th>Reach</th><th>Saves</th><th>Source</th></tr></thead>
+        <thead><tr><th>Post</th><th>Post performance</th><th>Saves</th><th>Source</th></tr></thead>
         <tbody>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">Sep 9 2026 · Hermes Agent workflow</span></td><td data-label="Reach" class="num k">115,855</td><td data-label="Saves" class="num">457</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">Sep 26 2026 · 118 new follows from one post</span></td><td data-label="Reach" class="num">67,137</td><td data-label="Saves" class="num">506</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">Sep 18 2026 · product walkthrough · TypeSafe</span></td><td data-label="Reach" class="num">58,627</td><td data-label="Saves" class="num k">1,102</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">Sep 10 2026 · build</span></td><td data-label="Reach" class="num">51,405</td><td data-label="Saves" class="num">404</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">Sep 17 2026 · build</span></td><td data-label="Reach" class="num">44,988</td><td data-label="Saves" class="num">309</td><td data-label="Source" class="when">X export</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">Oct 18 2026 · real run video</span></td><td data-label="Reach" class="num">13,751</td><td data-label="Saves" class="num">54</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
-          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">Oct 23 2026 · launch film</span></td><td data-label="Reach" class="num">13,033</td><td data-label="Saves" class="num">95</td><td data-label="Source" class="when">Public views, Oct 25</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097555264803377456" target="_blank" rel="noopener">A Perfect Morning Briefing by an Agent</a><br><span class="when">Sep 9 2026 · Hermes Agent workflow</span></td><td class="num k">115,855 impressions</td><td data-label="Saves" class="num">457</td><td data-label="Source" class="when">X export · 21 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2103802512411345046" target="_blank" rel="noopener">Ten people build the same Hermes agent ten different ways</a><br><span class="when">Sep 26 2026 · 118 new follows from one post</span></td><td class="num">67,137 impressions</td><td data-label="Saves" class="num">506</td><td data-label="Source" class="when">X export · 21 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2101057981861552342" target="_blank" rel="noopener">Your Hermes can get faster with the Jev skill</a><br><span class="when">Sep 18 2026 · product walkthrough · TypeSafe</span></td><td class="num">58,627 impressions</td><td data-label="Saves" class="num k">1,102</td><td data-label="Source" class="when">X export · 21 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2097980995735785752" target="_blank" rel="noopener">The Hermes Agent Times, a newspaper my agent makes</a><br><span class="when">Sep 10 2026 · build</span></td><td class="num">51,405 impressions</td><td data-label="Saves" class="num">404</td><td data-label="Source" class="when">X export · 21 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2100528442752323623" target="_blank" rel="noopener">A bot that builds bots, for Hermes Agent</a><br><span class="when">Sep 17 2026 · build</span></td><td class="num">44,988 impressions</td><td data-label="Saves" class="num">309</td><td data-label="Source" class="when">X export · 21 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2111936100453568857" target="_blank" rel="noopener">One prompt. 5 videos on my TV.</a><br><span class="when">Oct 18 2026 · real run video</span></td><td class="num">13,751 views</td><td data-label="Saves" class="num">—</td><td data-label="Source" class="when">Public count · 25 Oct 2026</td></tr>
+          <tr><td><a href="https://x.com/BkashJosi/status/2113615743510319383" target="_blank" rel="noopener">Nous Calendar: what did Nous ship today?</a><br><span class="when">Oct 23 2026 · launch film</span></td><td class="num">13,033 views</td><td data-label="Saves" class="num">—</td><td data-label="Source" class="when">Public count · 25 Oct 2026</td></tr>
         </tbody>
       </table>
     </div></div>
@@ -322,7 +326,7 @@
     <div class="grid">
       <article class="work">
         <div class="film">
-          <video src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" playsinline preload="none"></video>
+          <video aria-label="Nous Calendar launch film" src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Nous Calendar launch film"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Nous Calendar launch film</h3><p>Plugin launch: the real app recorded in Hermes Desktop, one idea per beat, and an install command on the end card.</p>
@@ -330,7 +334,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes took over my TV" src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Hermes took over my TV"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes took over my TV</h3><p>Real terminal output from my own Roku TV. The TV screen is labelled as an illustration.</p>
@@ -338,7 +342,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" playsinline preload="none"></video>
+          <video aria-label="Website showcase: webdev.teknium.io" src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Website showcase: webdev.teknium.io"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Website showcase: webdev.teknium.io</h3><p>A tilt-shift 3D fly-over built from real 2x page captures, with cards that stand up off the page.</p>
@@ -346,7 +350,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Desktop, in a tab" src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Hermes Desktop, in a tab"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Desktop, in a tab</h3><p>A feature walkthrough with every screen captured from the real app.</p>
@@ -354,7 +358,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" playsinline preload="none"></video>
+          <video aria-label="10 apps Hermes users are connecting" src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play 10 apps Hermes users are connecting"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>10 apps Hermes users are connecting</h3><p>A ranked road-trip story film, with the ranking taken from GitHub issue data.</p>
@@ -362,7 +366,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" playsinline preload="none"></video>
+          <video aria-label="Terminal dies here. Hermes still answers." src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Terminal dies here. Hermes still answers."><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Terminal dies here. Hermes still answers.</h3><p>Stop #11 of the same story world, with setup steps quoted from the official docs.</p>
@@ -370,7 +374,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Agent Inbox" src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Hermes Agent Inbox"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Agent Inbox</h3><p>A launch video for my own open-source plugin, with real UI captured at 2x.</p>
@@ -378,7 +382,7 @@
       </article>
       <article class="work">
         <div class="film">
-          <video src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Agent: 41 releases in 217 days" src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" playsinline preload="none"></video>
           <button class="film-play" type="button" aria-label="Play Hermes Agent: 41 releases in 217 days"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Agent: 41 releases in 217 days</h3><p>A long-form timeline film. This is a 60 s excerpt of the 3-minute cut.</p>
@@ -451,7 +455,7 @@
           <li><div><b>I run it</b><span>I install and use your product on my own machine. No result, no post.</span></div></li>
           <li><div><b>Storyboard · day 2</b><span>Stills of every beat for you to check before the film is built.</span></div></li>
           <li><div><b>Film and fact check · day 5</b><span>You check facts and claims. The opinions stay mine.</span></div></li>
-          <li><div><b>Post and report</b><span>Posted in my best slot (06:00–08:00 PT has led recently), with real numbers at 48 h and 7 days.</span></div></li>
+          <li><div><b>Post and report</b><span>Posted at a time we agree on, with real numbers at 48 h and 7 days.</span></div></li>
         </ol>
       </div>
       <div style="display:grid;gap:22px;align-content:start">
@@ -513,26 +517,32 @@
 <script>
 var menuButton = document.getElementById('menu-button');
 var phoneNavigation = document.getElementById('phone-navigation');
-function setMenu(open) {
-  phoneNavigation.hidden = !open;
-  menuButton.setAttribute('aria-expanded', String(open));
-  if (open) phoneNavigation.querySelector('a').focus({ preventScroll: true });
-}
-menuButton.addEventListener('click', function () { setMenu(phoneNavigation.hidden); });
-phoneNavigation.addEventListener('click', function (event) {
-  if (event.target.closest('a')) {
-    setMenu(false);
-    menuButton.focus({ preventScroll: true });
-  }
+var closeMenuButton = phoneNavigation.querySelector('.menu-close');
+var menuLinks = phoneNavigation.querySelectorAll('a');
+var lastMenuLink = menuLinks[menuLinks.length - 1];
+menuButton.addEventListener('click', function () {
+  phoneNavigation.showModal();
+  menuButton.setAttribute('aria-expanded', 'true');
 });
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape' && !phoneNavigation.hidden) {
-    setMenu(false);
-    menuButton.focus({ preventScroll: true });
+phoneNavigation.addEventListener('close', function () {
+  menuButton.setAttribute('aria-expanded', 'false');
+  if (menuButton.getClientRects().length) menuButton.focus({ preventScroll: true });
+});
+phoneNavigation.addEventListener('click', function (event) {
+  if (event.target === closeMenuButton || event.target.closest('a')) phoneNavigation.close();
+});
+phoneNavigation.addEventListener('keydown', function (event) {
+  if (event.key !== 'Tab') return;
+  if (event.shiftKey && document.activeElement === closeMenuButton) {
+    event.preventDefault();
+    lastMenuLink.focus();
+  } else if (!event.shiftKey && document.activeElement === lastMenuLink) {
+    event.preventDefault();
+    closeMenuButton.focus();
   }
 });
 window.matchMedia('(min-width: 640px)').addEventListener('change', function (event) {
-  if (event.matches) setMenu(false);
+  if (event.matches) phoneNavigation.close();
 });
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 document.querySelectorAll('.film-play').forEach(function (button) {
