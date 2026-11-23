@@ -1,12 +1,16 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import '@fontsource-variable/inter'
 import '@fontsource-variable/jetbrains-mono'
 import './styles/index.css'
 import ArchivePage from './ArchivePage'
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const page = (
   <StrictMode>
     <ArchivePage />
-  </StrictMode>,
+  </StrictMode>
 )
+
+if (root.hasChildNodes()) hydrateRoot(root, page)
+else createRoot(root).render(page)
