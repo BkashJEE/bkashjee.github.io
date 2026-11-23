@@ -437,3 +437,19 @@ body {
     animation: none;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(.plugin-move) {
+    animation-duration: 350ms;
+    animation-timing-function: var(--ease-out);
+  }
+
+  ::view-transition-old(.plugin-move) { animation: none; }
+  ::view-transition-new(.plugin-move) { animation: none; }
+
+  ::view-transition-old(.plugin-exit) { animation: plugin-fade-out 150ms var(--ease-out) both; }
+  ::view-transition-new(.plugin-enter) { animation: plugin-fade-in 250ms var(--ease-out) 80ms both; }
+
+  @keyframes plugin-fade-out { to { opacity: 0; } }
+  @keyframes plugin-fade-in { from { opacity: 0; } }
+}

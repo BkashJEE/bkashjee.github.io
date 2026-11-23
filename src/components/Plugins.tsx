@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { startTransition, useState, ViewTransition } from 'react'
 import { plugins, upstreamPRs, upstreamPRsUrl, type Plugin } from '../content/projects'
 import github from '../content/github.json'
 import { useMotionPref } from '../motion/useMotionPref'
@@ -145,7 +145,6 @@ const icons: Record<string, React.ReactNode> = {
 
 function PluginIcon({ name, ink }: { name: string; ink: string }) {
   const icon = icons[name]
-  if (!icon) return null
   return (
     <svg
       width="22"
@@ -159,31 +158,22 @@ function PluginIcon({ name, ink }: { name: string; ink: string }) {
       className={ink}
       aria-hidden="true"
     >
-      {icon}
+      {icon ?? <path d="m5 7 5 5-5 5m7 0h7" />}
     </svg>
   )
 }
 
-/**
- * What each tool is, derived from its install command so the label can't
- * drift from the data. Drives the subtitle and the card's top edge.
- */
-function categoryOf(plugin: Plugin) {
-  if (plugin.install?.startsWith('hermes plugins install')) {
-    return 'Hermes plugin'
-  }
-  if (plugin.install?.startsWith('hermes skills tap add')) {
-    return 'Hermes skills tap'
-  }
-  return 'Open source'
-}
+const platforms = ['All', 'Hermes Agent', 'Hermes Desktop', 'Omarchy', 'Other'] as const
+type PlatformFilter = typeof platforms[number]
 
-/** The one-liner as the reference card's bullets: one per sentence. */
-const bulletsOf = (line: string) =>
-  line
-    .split('. ')
-    .map((part) => part.trim().replace(/\.$/, ''))
-    .filter(Boolean)
+const sortedPlugins = [...plugins].sort((a, b) => b.stars - a.stars)
+const pluginsByPlatform = new Map(
+  platforms.map((platform) => [
+    platform,
+    platform === 'All' ? sortedPlugins : sortedPlugins.filter((plugin) => plugin.platform === platform),
+  ]),
+)
+const previewCount = 6
 
 const prStatus: Record<string, { opened: string; state: string }> = github.prs
 
@@ -208,213 +198,154 @@ function PrMeta({ number }: { number: number }) {
 }
 
 function StarCount({ plugin }: { plugin: Plugin }) {
-  const stars = plugin.stars
   return (
-    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-xs text-fg-faint" title={`${stars} GitHub stars`}>
+    <span className="inline-flex items-center gap-1.5 font-mono text-xs text-fg-dim tabular-nums" title={`${plugin.stars} GitHub stars`}>
       <span className="text-accent" aria-hidden="true">★</span>
-      <span className="text-fg-dim tabular-nums">{stars}</span>
-      <span aria-hidden="true">GitHub stars</span>
-      <span className="sr-only">{stars} GitHub stars</span>
+      {plugin.stars}<span className="sr-only"> GitHub stars</span>
     </span>
   )
 }
 
-function InstallCommand({ command }: { command: string }) {
-  const [status, setStatus] = useState('')
+function InstallCommand({ command, name }: { command: string; name: string }) {
+  const [status, setStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(command)
-      setStatus('Copied')
+      setStatus('copied')
     } catch {
-      setStatus("Couldn't copy. Select the command above.")
+      setStatus('failed')
     }
   }
   return (
-    <div className="mt-4 min-w-0 rounded-lg border border-line bg-surface/70 px-3 py-2">
-      <code className="block whitespace-pre-wrap break-all font-mono text-xs text-fg-dim">{command}</code>
+    <div className="relative flex min-h-12 min-w-0 items-start gap-2 rounded-lg border border-line bg-ink pl-3">
+      <span className="pt-3 font-mono text-xs text-accent" aria-hidden="true">$</span>
+      <code className="min-w-0 flex-1 whitespace-pre-wrap break-all py-3 font-mono text-xs text-fg-dim">{command}</code>
       <button
         type="button"
         onClick={copy}
-        aria-label={`Copy install command: ${command}`}
-        className="mt-2 inline-flex min-h-11 items-center font-mono text-xs font-medium text-accent transition-colors hover:text-fg"
+        aria-label={`Copy install command for ${name}`}
+        className="inline-flex size-11 shrink-0 items-center justify-center rounded-lg text-fg-dim hover:bg-raised hover:text-accent"
       >
-        Copy command
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {status === 'copied' ? <path d="m20 6-11 11-5-5" /> : (
+            <>
+              <rect width="14" height="14" x="8" y="8" rx="2" />
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </>
+          )}
+        </svg>
       </button>
-      <p role="status" className="font-mono text-xs text-fg-dim">{status}</p>
+      <p role="status" className={status === 'failed' ? 'absolute inset-x-0 top-full z-10 mt-1 rounded-lg border border-line bg-ink px-3 py-2 font-mono text-xs text-fg' : 'sr-only'}>
+        {status === 'failed' ? "Couldn't copy. Select the command above." : status === 'copied' ? 'Copied' : ''}
+      </p>
     </div>
   )
 }
 
-/**
- * Horizontal rail for the tool cards.
- *
- * Ten tools in a three-column grid is four rows of wall; as a rail the
- * section stays one screen tall and keeps its shape as more ship. Scrolling
- * is manual on purpose - an auto-advancing marquee moves content under the
- * reader and repaints continuously, which is what made the hero flicker.
- */
-function Rail({ children, count, recent }: { children: React.ReactNode; count: number; recent: number }) {
-  const reduced = useMotionPref()
-  const ref = useRef<HTMLDivElement>(null)
-  const [at, setAt] = useState({ start: true, end: false })
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const read = () => {
-      const max = el.scrollWidth - el.clientWidth
-      // Snapping settles the last card a few pixels short of max, so the end
-      // check needs more slack than the start one or the button never
-      // disables.
-      setAt({ start: el.scrollLeft <= 2, end: el.scrollLeft >= max - 16 })
-    }
-    read()
-    el.addEventListener('scroll', read, { passive: true })
-    const observer = new ResizeObserver(read)
-    observer.observe(el)
-    return () => {
-      el.removeEventListener('scroll', read)
-      observer.disconnect()
-    }
-  }, [])
-
-  /** One card plus its gap, so a press lands the next card at the same edge. */
-  const page = (dir: 1 | -1) => {
-    const el = ref.current
-    if (!el) return
-    const card = el.querySelector('article')
-    const step = card ? card.getBoundingClientRect().width + 20 : el.clientWidth * 0.8
-    el.scrollBy({ left: dir * step, behavior: reduced ? 'auto' : 'smooth' })
-  }
-
-  const arrow =
-    'flex size-9 items-center justify-center rounded-full border border-line bg-ink font-mono text-sm text-fg-dim transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-line disabled:hover:text-fg-dim'
+function PluginCard({ plugin }: { plugin: Plugin }) {
+  const sentence = plugin.line.split(/(?<=[.!?])\s+/, 1)[0]
 
   return (
-    <div className="mx-auto mt-10 max-w-6xl px-6">
-      <div className="flex items-center justify-between gap-4">
-        <p className="font-mono text-xs text-fg-faint">
-          {count} published · {recent} in the last 30 days ·{' '}
-          <span className="sm:hidden">swipe →</span>
-          <span className="hidden sm:inline">most stars first</span>
-        </p>
-        <div className="hidden gap-2 sm:flex">
-          <button type="button" onClick={() => page(-1)} disabled={at.start} aria-label="Previous tools" className={arrow}>
-            ←
-          </button>
-          <button type="button" onClick={() => page(1)} disabled={at.end} aria-label="More tools" className={arrow}>
-            →
-          </button>
+    <article className="row-span-3 grid min-w-0 grid-rows-subgrid gap-0 rounded-xl border border-line bg-surface p-5 hover:border-fg-faint/60 hover:bg-raised">
+      <div className="pb-4">
+        <div className="flex items-start gap-3">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-raised">
+            <PluginIcon name={plugin.name} ink="text-fg-dim" />
+          </span>
+          <div className="min-w-0">
+            <h3 className="font-display text-base font-extrabold leading-tight">
+              <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center hover:text-accent">{plugin.name}</a>
+            </h3>
+            <p className="mt-1 font-mono text-xs text-fg-dim">{plugin.platform} · {plugin.lang}</p>
+          </div>
         </div>
+        <p className="mt-3 text-sm leading-relaxed text-fg-dim">{sentence}</p>
       </div>
-      {/*
-        The rail bleeds to the viewport edge so a partly visible card shows
-        there is more; the inner padding keeps the first card aligned with
-        every other section. Focusable, so arrow keys scroll it.
-      */}
-      <div
-        ref={ref}
-        tabIndex={0}
-        role="group"
-        aria-label={`${count} published tools, scrolls horizontally`}
-        className="flow-scroll mt-4 flex snap-x gap-5 overflow-x-auto pt-1 pb-4 [contain:paint]"
-      >
-        {children}
+
+      {plugin.install ? <InstallCommand command={plugin.install} name={plugin.name} /> : (
+        <a href={plugin.repo} target="_blank" rel="noreferrer" className="flex min-h-12 items-center rounded-lg border border-line bg-ink px-3 font-mono text-xs text-accent hover:text-fg">
+          Setup on GitHub <span className="ml-1.5" aria-hidden="true">↗</span>
+          <span className="sr-only"> for {plugin.name}</span>
+        </a>
+      )}
+
+      <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-2 font-mono text-xs">
+        <StarCount plugin={plugin} />
+        <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent hover:text-fg">
+          Source <span aria-hidden="true">↗</span><span className="sr-only"> for {plugin.name}</span>
+        </a>
       </div>
-    </div>
+    </article>
   )
 }
-
-/**
- * Tools on this list first published in the 30 days before the GitHub data
- * was fetched. Only listed tools count, so a README-only repo cannot
- * inflate it, and the window is anchored to the fetch date, not today.
- */
-const createdByRepo = new Map(github.repos.map((r) => [r.url.toLowerCase(), r.created]))
-const fetchedAt = new Date(`${github.fetched}T00:00:00Z`).getTime()
-const shippedRecently = plugins.filter((p) => {
-  const created = createdByRepo.get(p.repo.toLowerCase())
-  return created != null && fetchedAt - new Date(`${created}T00:00:00Z`).getTime() <= 30 * 86_400_000
-}).length
 
 // The date the build read star counts from GitHub (the site rebuilds daily).
 const starsChecked = new Date(github.fetched).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 
 export function Plugins() {
+  const reduced = useMotionPref()
+  const [platform, setPlatform] = useState<PlatformFilter>('All')
   const [expanded, setExpanded] = useState(false)
+  const matching = pluginsByPlatform.get(platform) ?? []
+  const visible = expanded ? matching : matching.slice(0, previewCount)
+  const updateGrid = (update: () => void) => {
+    if (reduced) update()
+    else startTransition(update)
+  }
+
   return (
-    <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
+    <section id="plugins" className="border-y border-line bg-surface/40 py-20 sm:py-28">
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" />
-      <Reveal className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-          Published tools and plugins, live on GitHub. The private case studies above show what I build; these show how
-          I build it.
+          {plugins.length} tools for Hermes Agent, Hermes Desktop and Omarchy. Most install with one command.
         </p>
-        <p className="mt-2 font-mono text-xs text-fg-faint">
-          ★ GitHub stars checked {starsChecked}
-        </p>
-      </Reveal>
-      <Rail count={plugins.length} recent={shippedRecently}>
-        {[...plugins].sort((a, b) => b.stars - a.stars).map((plugin, i) => (
-          <Reveal key={plugin.name} delay={0.04 * i} y={8} className="w-[min(20rem,80vw)] shrink-0 snap-start">
-            <article className="card group/card flex h-full min-w-0 flex-col p-5">
-              <div className="flex items-start gap-3">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-raised">
-                  <PluginIcon name={plugin.name} ink="text-fg-dim" />
-                </span>
-                <div className="min-w-0">
-                  <h3 className="font-display text-base font-semibold leading-tight text-fg">{plugin.name}</h3>
-                  <p className="mt-1 font-mono text-xs text-fg-faint">
-                    <span className="mr-1.5 inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
-                    {categoryOf(plugin)} · {plugin.lang}
-                  </p>
-                </div>
-              </div>
+        <p className="mt-2 font-mono text-xs text-fg-dim">GitHub stars checked {starsChecked}</p>
 
-              <p className="mt-4 font-mono text-xs text-fg-faint">What it does</p>
-              <ul className="mt-2 flex-1 space-y-1.5">
-                {bulletsOf(plugin.line).map((bullet) => (
-                  <li key={bullet} className="flex gap-2 text-sm leading-6 text-fg-dim">
-                    <span className="select-none text-fg-dim" aria-hidden="true">•</span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {plugin.install && <InstallCommand command={plugin.install} />}
-
-              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-xs">
-                <StarCount plugin={plugin} />
-                <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent transition-colors hover:text-fg">
-                  View source <span aria-hidden="true" className="motion-safe:transition-transform motion-safe:group-hover/card:translate-x-0.5">↗</span>
-                </a>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </Rail>
-      <div className="mx-auto mt-4 max-w-6xl px-6">
-        <button
-          type="button"
-          aria-expanded={expanded}
-          aria-controls="all-tools"
-          onClick={() => setExpanded((value) => !value)}
-          className="inline-flex min-h-11 items-center rounded-lg border border-line px-4 text-sm font-medium text-accent transition-colors hover:border-accent hover:text-fg"
-        >
-          {expanded ? 'Hide all tools' : `Browse all ${plugins.length} tools`}
-        </button>
-        <ul id="all-tools" hidden={!expanded} className={`mt-4 grid-cols-1 gap-4 sm:grid-cols-2 ${expanded ? 'grid' : 'hidden'}`}>
-          {plugins.map((plugin) => (
-            <li key={plugin.name} className="card min-w-0 p-5">
-              <h3 className="font-display text-lg text-fg">{plugin.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-fg-dim">{bulletsOf(plugin.line)[0]}.</p>
-              {plugin.install && <InstallCommand command={plugin.install} />}
-              <a href={plugin.repo} target="_blank" rel="noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-accent hover:text-fg">
-                View source ↗<span className="sr-only"> for {plugin.name}</span>
-              </a>
-            </li>
+        <div role="group" aria-label="Filter tools by platform" className="mt-6 inline-flex max-w-full flex-wrap gap-1 rounded-xl border border-line bg-ink p-1">
+          {platforms.map((option) => (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={platform === option}
+              aria-controls="plugin-grid"
+              onClick={() => updateGrid(() => {
+                if (platform === option) return
+                setPlatform(option)
+                setExpanded(false)
+              })}
+              className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg border border-transparent px-3 font-mono text-xs text-fg-dim hover:bg-surface aria-pressed:border-fg-faint/60 aria-pressed:bg-raised aria-pressed:text-accent"
+            >
+              {option} <span className="tabular-nums">{pluginsByPlatform.get(option)?.length ?? 0}</span>
+            </button>
           ))}
-        </ul>
+        </div>
+
+        <div id="plugin-grid" className="mt-4 grid grid-cols-1 gap-x-4 gap-y-5 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-3">
+          {visible.map((plugin) => (
+            <ViewTransition
+              key={plugin.repo}
+              default="none"
+              enter={reduced ? 'none' : 'plugin-enter'}
+              exit={reduced ? 'none' : 'plugin-exit'}
+              update={reduced ? 'none' : 'plugin-move'}
+            >
+              <PluginCard plugin={plugin} />
+            </ViewTransition>
+          ))}
+        </div>
+
+        {matching.length > previewCount && (
+          <button
+            type="button"
+            aria-expanded={expanded}
+            aria-controls="plugin-grid"
+            onClick={() => updateGrid(() => setExpanded((value) => !value))}
+            className="mt-5 inline-flex min-h-11 items-center rounded-lg border border-line bg-surface px-4 text-sm font-medium text-accent hover:border-fg-faint/60 hover:bg-raised"
+          >
+            {expanded ? 'Show fewer' : `Show all ${matching.length}`}
+          </button>
+        )}
       </div>
 
       <Reveal className="mx-auto mt-16 max-w-6xl px-6">
