@@ -1,5 +1,6 @@
 import { renderToString } from 'react-dom/server'
 import App from './App'
+import ArchivePage from './ArchivePage'
 import ResumePage from './ResumePage'
 
 /**
@@ -8,5 +9,6 @@ import ResumePage from './ResumePage'
  */
 export const pages: Record<string, () => string> = {
   '/': () => renderToString(<App />),
+  '/archive/': () => renderToString(<ArchivePage />),
   '/resume/': () => renderToString(<ResumePage />),
 }

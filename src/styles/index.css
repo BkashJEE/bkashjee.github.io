@@ -316,3 +316,124 @@ body {
     transition: none !important;
   }
 }
+
+.all-work-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 0.8rem var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.all-work-eyebrow::before {
+  content: '';
+  flex: 0 0 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.all-work-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--color-fg-dim);
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.all-work-filter:hover {
+  color: var(--color-fg);
+  background: var(--color-raised);
+}
+
+.all-work-filter[aria-pressed='true'] {
+  border-color: var(--color-fg-faint);
+  color: var(--color-fg);
+  background: var(--color-raised);
+}
+
+.all-work main :is(a, button, input):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.all-work-columns {
+  display: none;
+}
+
+.all-work-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'name name' 'date stars' 'stack stack' 'status status';
+  align-items: baseline;
+  gap: 8px 16px;
+  padding: 20px;
+  overflow-wrap: anywhere;
+}
+
+.all-work-row + .all-work-row {
+  border-top: 1px solid var(--color-line);
+}
+
+.all-work-date { grid-area: date; }
+.all-work-name { grid-area: name; }
+.all-work-stack { grid-area: stack; }
+.all-work-status { grid-area: status; }
+.all-work-stars { grid-area: stars; }
+
+@media (min-width: 48rem) {
+  .all-work :is(.all-work-row, .all-work-columns) {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr) minmax(0, 0.48fr) 7rem 3rem;
+    grid-template-areas: 'date name stack status stars';
+    gap: 16px;
+  }
+
+  .all-work-columns {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--color-line);
+  }
+}
+
+@media (hover: hover) {
+  .all-work-row:has(a):hover {
+    background: var(--color-raised);
+  }
+
+  .all-work-row:has(a):hover :is(.all-work-date, .all-work-stack, .all-work-name .text-fg-faint) {
+    color: var(--color-fg-dim);
+  }
+
+  .all-work-row:last-child {
+    border-radius: 0 0 11px 11px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(.all-work-move) {
+    animation-duration: 350ms;
+    animation-timing-function: var(--ease-out);
+  }
+
+  ::view-transition-old(.all-work-move) { animation: none; }
+  ::view-transition-new(.all-work-move) { animation: none; }
+
+  ::view-transition-old(.all-work-exit) { animation: all-work-fade-out 150ms var(--ease-out) both; }
+  ::view-transition-new(.all-work-enter) { animation: all-work-fade-in 250ms var(--ease-out) 80ms both; }
+
+  @keyframes all-work-fade-out { to { opacity: 0; } }
+  @keyframes all-work-fade-in { from { opacity: 0; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:has(.all-work)::view-transition-group(*),
+  :root:has(.all-work)::view-transition-old(*),
+  :root:has(.all-work)::view-transition-new(*) {
+    animation: none;
+  }
+}
