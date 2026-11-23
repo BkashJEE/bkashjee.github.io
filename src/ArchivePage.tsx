@@ -13,8 +13,12 @@ const monthFormat = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone:
 const dateFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 const numberFormat = new Intl.NumberFormat('en-US')
 
+function legacyFilters() {
+  return /^#(?:group|q)=/.test(location.hash)
+}
+
 function readFilters() {
-  const params = new URLSearchParams(location.hash.slice(1))
+  const params = new URLSearchParams(location.search)
   const group = params.get('group')
   return {
     group: filters.find(({ id }) => id === group)?.id ?? 'all',
@@ -29,11 +33,11 @@ function monthName(date: string) {
 function WorkRow({ item }: { item: WorkItem }) {
   const external = item.href?.startsWith('https://')
   const stars = item.repo ? workStars.get(item.repo) : undefined
-  const live = item.status === 'Released' || item.status === 'Live'
+  const live = item.status === 'Live'
 
   return (
     <li className="all-work-row">
-      <div className="all-work-date font-mono text-xs text-fg-faint">
+      <div className="all-work-date font-mono text-xs text-fg-dim">
         {item.date && (
           <time dateTime={item.date}>
             {item.date.slice(0, 4)} {monthName(item.date)}
@@ -51,14 +55,19 @@ function WorkRow({ item }: { item: WorkItem }) {
           ) : item.name}
         </h3>
         <p className="mt-1 text-sm leading-relaxed text-fg-dim">{item.description}</p>
+        {item.impressions !== undefined && (
+          <p className="mt-2 font-mono text-xs text-fg-dim">
+            {numberFormat.format(item.impressions)} impressions · X export · <time dateTime="2026-10-06">Oct 6, 2026</time>
+          </p>
+        )}
         {item.views !== undefined && item.viewsAsOf && (
-          <p className="mt-2 font-mono text-xs text-fg-faint">
+          <p className="mt-2 font-mono text-xs text-fg-dim">
             {numberFormat.format(item.views)} views · as of{' '}
             <time dateTime={item.viewsAsOf}>{dateFormat.format(new Date(item.viewsAsOf))}</time>
           </p>
         )}
       </div>
-      <p className="all-work-stack font-mono text-xs leading-relaxed text-fg-faint">{item.stack}</p>
+      <p className="all-work-stack font-mono text-xs leading-relaxed text-fg-dim">{item.stack}</p>
       <div className="all-work-status">
         <span className={`inline-block rounded-md border border-line px-2 py-1 font-mono text-xs ${live ? 'text-teal' : 'text-fg-dim'}`}>
           {item.status}
@@ -82,38 +91,37 @@ export default function ArchivePage() {
   useEffect(() => {
     const syncFilters = () => {
       window.clearTimeout(searchTimer.current)
+      if (legacyFilters()) {
+        const url = new URL(location.href)
+        const legacy = new URLSearchParams(url.hash.slice(1))
+        for (const key of ['group', 'q']) {
+          const value = legacy.get(key)
+          if (value !== null && !url.searchParams.has(key)) url.searchParams.set(key, value)
+        }
+        url.hash = ''
+        history.replaceState(history.state, '', url)
+      }
       const next = readFilters()
       setQuery(next.query)
       setSelection(next)
     }
-    const onKey = (event: KeyboardEvent) => {
-      const target = event.target
-      if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey ||
-        (target instanceof HTMLElement && (target.isContentEditable || target.matches('input, textarea, select')))) return
-      event.preventDefault()
-      search.current?.focus()
-    }
-
     syncFilters()
-    window.addEventListener('hashchange', syncFilters)
     window.addEventListener('popstate', syncFilters)
-    window.addEventListener('keydown', onKey)
     return () => {
       window.clearTimeout(searchTimer.current)
-      window.removeEventListener('hashchange', syncFilters)
       window.removeEventListener('popstate', syncFilters)
-      window.removeEventListener('keydown', onKey)
     }
   }, [])
 
   function applyFilters(group: string, text: string, push = false) {
     window.clearTimeout(searchTimer.current)
-    const params = new URLSearchParams()
+    const url = new URL(location.href)
+    const params = url.searchParams
     if (group !== 'all') params.set('group', group)
+    else params.delete('group')
     if (text) params.set('q', text)
-    const hash = params.size ? `#${params}` : ''
-    if (hash !== location.hash) {
-      const url = `${location.pathname}${location.search}${hash}`
+    else params.delete('q')
+    if (url.href !== location.href) {
       if (push) history.pushState(history.state, '', url)
       else history.replaceState(history.state, '', url)
     }
@@ -145,12 +153,12 @@ export default function ArchivePage() {
 
   return (
     <div className="all-work min-h-svh">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-white focus:px-4 focus:text-zinc-900 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900">Skip to content</a>
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-white focus:px-4 focus:text-zinc-900 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900">Skip to content</a>
       <SiteNav page="archive" />
 
-      <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-6 py-10 sm:py-20">
+      <main id="main" tabIndex={-1} className="mx-auto max-w-6xl scroll-mt-16 px-6 py-10 sm:py-20">
         <p className="all-work-eyebrow text-accent">{identity.name}</p>
-        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-6xl">All work</h1>
+        <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">All work</h1>
         <p className="mt-4 text-fg-dim">{workCount} projects, films, partnerships, contributions, and posts.</p>
         <p className="mt-4 font-mono text-[13px] leading-relaxed text-fg-dim">
           <span aria-hidden="true" className="mr-2 inline-block size-2 rounded-full bg-accent" />
@@ -172,8 +180,7 @@ export default function ArchivePage() {
             </svg>
             <input ref={search} id="archive-search" type="search" value={query}
               onChange={(event) => searchFor(event.target.value)} placeholder="Search work"
-              className="h-11 w-full rounded-lg border border-line bg-surface pl-10 pr-8 text-base text-fg placeholder:text-fg-dim" />
-            {!query && <kbd aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 hidden -translate-y-1/2 font-mono text-xs text-fg-dim sm:block">/</kbd>}
+              className="h-11 w-full rounded-lg border border-fg-faint bg-surface pl-10 pr-8 text-base text-fg placeholder:text-fg-dim" />
           </div>
 
           <div className="all-work-filters mt-4 flex flex-wrap gap-1 rounded-xl border border-line bg-surface p-1" role="group" aria-label="Filter by group">
@@ -186,12 +193,12 @@ export default function ArchivePage() {
           </div>
 
           <div className="mt-3 flex min-h-8 flex-wrap items-center gap-x-4 gap-y-1">
-            <p role="status" className="font-mono text-xs text-fg-faint">{shown} of {workCount} shown</p>
+            <p role="status" className="font-mono text-xs text-fg-dim">{shown} of {workCount} shown</p>
             <button type="button" className="min-h-8 rounded-sm text-sm text-accent hover:underline"
               style={{ visibility: active ? 'visible' : 'hidden' }}
               onClick={() => {
                 setQuery('')
-                applyFilters('all', '')
+                applyFilters('all', '', true)
                 search.current?.focus()
               }}>
               Clear filters
@@ -207,7 +214,7 @@ export default function ArchivePage() {
           <ViewTransition key={id} default="none" enter="all-work-enter" exit="all-work-exit">
             <section aria-labelledby={`work-${id}`} className="mt-9">
               <h2 id={`work-${id}`} className="all-work-eyebrow">
-                {label}<span className="tracking-normal text-fg-faint">{items.length}</span>
+                {label}<span className="tracking-normal text-fg-dim">{items.length}</span>
               </h2>
               <div className="mt-3 rounded-xl border border-line bg-surface">
                 <div aria-hidden="true" className="all-work-columns font-mono text-xs text-fg-dim">

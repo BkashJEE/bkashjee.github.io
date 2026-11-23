@@ -55,11 +55,7 @@
     "outcomes": [
       {
         "value": "732",
-        "label": "automated tests passing"
-      },
-      {
-        "value": "41",
-        "label": "recordings in the personal library"
+        "label": "automated tests passing · Sep 2026"
       },
       {
         "value": "3",
@@ -113,8 +109,8 @@
       },
       {
         "src": "/assets/work/botforge-demo.webp",
-        "width": 1200,
-        "height": 700,
+        "width": 1120,
+        "height": 225,
         "alt": "Hermes Bot Forge working bot demonstration"
       }
     ],
@@ -132,12 +128,8 @@
     ],
     "outcomes": [
       {
-        "value": "44",
-        "label": "tests passing in v0.4.1"
-      },
-      {
-        "value": "29",
-        "label": "GitHub stars checked Sep 2026"
+        "value": "451",
+        "label": "tests passing · verified 18 Oct 2026"
       },
       {
         "value": "Official",
@@ -178,15 +170,15 @@
     ],
     "image": {
       "src": "/assets/work/agentdock-floating.webp",
-      "width": 1000,
-      "height": 760,
+      "width": 720,
+      "height": 720,
       "alt": "Hermes Agent Dock floating specialist chat panel"
     },
     "screenshots": [
       {
         "src": "/assets/work/agentdock-floating.webp",
-        "width": 1000,
-        "height": 760,
+        "width": 720,
+        "height": 720,
         "alt": "Agent Dock floating specialist chat card"
       },
       {
@@ -209,10 +201,6 @@
       "Assign a message to Kanban only when it should become tracked work."
     ],
     "outcomes": [
-      {
-        "value": "42",
-        "label": "GitHub stars checked Sep 2026"
-      },
       {
         "value": "3",
         "label": "public repository forks"
@@ -289,10 +277,6 @@
       {
         "value": "15",
         "label": "use-case categories"
-      },
-      {
-        "value": "4",
-        "label": "GitHub stars checked Sep 2026"
       }
     ],
     "limitations": [
@@ -356,10 +340,6 @@
       "Run guarded local actions such as moving, renaming, cloning, or opening a repository, with conflicts and uncommitted work surfaced first."
     ],
     "outcomes": [
-      {
-        "value": "17",
-        "label": "GitHub stars checked Sep 2026"
-      },
       {
         "value": "5",
         "label": "public repository forks"
