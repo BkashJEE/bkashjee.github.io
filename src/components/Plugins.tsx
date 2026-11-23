@@ -298,7 +298,7 @@ export function Plugins() {
       <SectionHeading eyebrow="Plugins & open source" title="Install something I made" />
       <div className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-          {plugins.length} tools for Hermes Agent, Hermes Desktop and Omarchy. Most install with one command.
+          {plugins.length} tools for Hermes Agent, Hermes Desktop and Omarchy. {plugins.filter((p) => p.install).length} install with one command.
         </p>
         <p className="mt-2 font-mono text-xs text-fg-dim">GitHub stars checked {starsChecked}</p>
 
