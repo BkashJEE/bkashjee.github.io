@@ -50,14 +50,6 @@ export const workGroups: WorkGroup[] = [
         repo: 'ScreenPolish',
       },
       {
-        name: 'Hermes X Mission Control',
-        description: 'A private workspace where agents research, draft, and check X posts for review.',
-        date: '2026-09',
-        stack: 'Next.js · TypeScript · Supabase (RLS) · SQLite · zod',
-        status: 'Source private',
-        href: '/#mission-control',
-      },
-      {
         name: 'Hermes Newsroom',
         description: 'Collects and summarizes news about the Hermes Agent ecosystem.',
         date: '2026-09',
