@@ -1,3 +1,4 @@
+import { HomeDivider } from './HomeDivider'
 import { useState } from 'react'
 import { identity } from '../content/projects'
 import { Eyebrow } from './Eyebrow'
@@ -18,7 +19,7 @@ function CopyEmail() {
     <button
       type="button"
       onClick={copy}
-      className="rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs text-fg-dim transition-colors hover:border-accent hover:text-accent"
+      className="min-h-11 rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs text-fg-dim transition-colors hover:border-accent hover:text-accent"
     >
       {copied ? 'Copied ✓' : 'Copy email'}
     </button>
@@ -27,7 +28,8 @@ function CopyEmail() {
 
 export function ClosingBlock() {
   return (
-    <section id="contact" className="relative overflow-clip py-24 sm:py-32">
+    <section id="contact" className="relative overflow-clip py-14 sm:py-32">
+      <HomeDivider />
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <Eyebrow>Contact</Eyebrow>

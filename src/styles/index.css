@@ -465,3 +465,27 @@ input[type="search"]:not(:focus) {
   @keyframes plugin-fade-out { to { opacity: 0; } }
   @keyframes plugin-fade-in { from { opacity: 0; } }
 }
+
+.home-divider {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 48px;
+  pointer-events: none;
+  background: linear-gradient(var(--color-accent), var(--color-accent)) top / 100% 1px no-repeat;
+  transform-origin: left;
+}
+
+@keyframes draw-home-divider {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@supports (animation-timeline: view()) and (animation-range: entry) {
+  @media (prefers-reduced-motion: no-preference) {
+    .home-divider:not([data-drawn]) {
+      animation: draw-home-divider var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry;
+    }
+  }
+}

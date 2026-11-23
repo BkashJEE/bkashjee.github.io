@@ -1,3 +1,4 @@
+import { HomeDivider } from './HomeDivider'
 import { labItems, type LabItem } from '../content/projects'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -14,7 +15,8 @@ function PetPerch({ item }: { item: LabItem }) {
 
 export function LabGrid() {
   return (
-    <section id="lab" className="overflow-clip py-16 sm:py-28">
+    <section id="lab" className="relative overflow-clip py-14 sm:py-28">
+      <HomeDivider />
       <SectionHeading eyebrow="Lab" title="Desktop experiments" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">

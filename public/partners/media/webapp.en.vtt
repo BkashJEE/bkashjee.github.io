@@ -1,0 +1,126 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.600
+[Bass hit]
+Your Hermes Desktop. In a tab.
+
+2
+00:00:01.600 --> 00:00:03.200
+127.0.0.1:9120
+Countdown: 1:00 until the link dies
+
+3
+00:00:03.200 --> 00:00:05.500
+[Typing] 1/3 Turn it on.
+hermes config set webapp.enabled true
+
+4
+00:00:05.500 --> 00:00:08.400
+[Typing] 2/3 Restart the gateway.
+hermes gateway restart
+
+5
+00:00:08.400 --> 00:00:10.800
+[Typing] 3/3 Get the link.
+hermes webapp
+
+6
+00:00:10.800 --> 00:00:13.300
+[Bass hit]
+Your whole Desktop.
+
+7
+00:00:13.300 --> 00:00:15.800
+The app opens in a browser tab
+at 127.0.0.1:9120.
+
+8
+00:00:15.800 --> 00:00:20.800
+[Click]
+Messaging setup.
+
+9
+00:00:20.800 --> 00:00:25.400
+[Bass hit]
+Skills. Plugins. Tools.
+
+10
+00:00:25.400 --> 00:00:30.800
+[Click]
+Scheduled jobs.
+
+11
+00:00:30.800 --> 00:00:35.400
+[Bass hit]
+Every setting.
+
+12
+00:00:35.400 --> 00:00:40.800
+[Click]
+One gateway. One chat queue.
+
+13
+00:00:40.800 --> 00:00:43.000
+[Bass hit]
+Stays in the desktop app:
+
+14
+00:00:43.000 --> 00:00:46.800
+1. Global shortcuts 2. Always-on-top
+overlays 3. The updater (Hermes docs)
+
+15
+00:00:46.800 --> 00:00:50.800
+Sign in to Hermes
+A fresh tab can't get in.
+
+16
+00:00:50.800 --> 00:00:53.500
+[Bass hit]
+One link. One use.
+
+17
+00:00:53.500 --> 00:00:56.000
+[Clock ticking]
+127.0.0.1:9120/webapp/launch#ticket=…
+
+18
+00:00:56.000 --> 00:00:58.400
+[Ticking] Same link, second use: the page
+says it was already used or has expired.
+
+19
+00:00:58.400 --> 00:01:00.900
+[Ticking] It says to run hermes webapp
+again for a new one.
+
+20
+00:01:00.900 --> 00:01:03.600
+[Bass hit]
+Expired. One use. 60 seconds.
+
+21
+00:01:03.600 --> 00:01:05.400
+[Two bass hits]
+A red lock appears.
+
+22
+00:01:05.400 --> 00:01:07.400
+This tab can run any command as you.
+Keep it local. webapp.host: 127.0.0.1
+
+23
+00:01:07.400 --> 00:01:10.000
+Try it on canary. Copy this:
+hermes config set webapp.enabled true
+
+24
+00:01:10.000 --> 00:01:12.800
+hermes gateway restart · hermes webapp
+Or paste the safety check into Hermes.
+
+25
+00:01:12.800 --> 00:01:15.500
+Main / canary only. Not in stable yet.
+PR #141864 · port 9120

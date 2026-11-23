@@ -56,7 +56,7 @@ function PostCard({ post, copy }: { post: Post; copy: boolean }) {
         rel="noreferrer"
         tabIndex={tab}
         aria-label={`${post.title}, ${count(post.impressions)} impressions. Open the post on X`}
-        className="mt-1 inline-flex min-h-6 items-center self-start text-xs card-meta after:absolute after:inset-0 after:rounded-xl hover:underline"
+        className="mt-1 inline-flex min-h-11 sm:min-h-6 items-center self-start text-xs card-meta after:absolute after:inset-0 after:rounded-xl hover:underline"
       >
         {day(post.date)}
       </a>

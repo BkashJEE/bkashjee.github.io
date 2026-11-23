@@ -1,3 +1,4 @@
+import { HomeDivider } from './components/HomeDivider'
 import { caseStudies } from './content/projects'
 import { ScrollProgress } from './motion/ScrollProgress'
 import { SiteNav } from './components/SiteNav'
@@ -20,7 +21,8 @@ export default function App() {
       <SiteNav />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <section id="work" className="overflow-clip pt-8">
+        <section id="work" className="relative overflow-clip pt-8">
+          <HomeDivider />
           <SectionHeading eyebrow="Selected work" title="Projects, built and shipped" />
           {caseStudies.map((study, i) => (
             <CaseStudy key={study.id} study={study} flip={i % 2 === 1} eagerImage={i < 2} />
@@ -33,7 +35,10 @@ export default function App() {
         <About />
         <ClosingBlock />
       </main>
-      <SiteFooter />
+      <div className="relative">
+        <HomeDivider />
+        <SiteFooter />
+      </div>
     </div>
   )
 }

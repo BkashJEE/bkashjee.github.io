@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import weekly from '../content/xWeekly.json'
-import { audience } from '../content/mostViewed'
-import { CountUp } from '../motion/CountUp'
+import { identity } from '../content/projects'
 
 const compact = (n: number) =>
   n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : n >= 10_000 ? `${Math.round(n / 1000)}K` : n >= 1000 ? `${(n / 1000).toFixed(1)}K` : String(n)
@@ -29,21 +28,25 @@ export function XGrowth() {
   const [active, setActive] = useState<string | null>(null)
   const shown = weeks.find((w) => w.week === active)
   const stats = [
-    ['Impressions', audience.impressions],
-    ['Bookmarks', audience.bookmarks],
-    ['New follows', audience.newFollows],
+    ['Impressions', '5.3M', 'Last 12 months'],
+    ['Bookmarks', '40.5K', 'Last 12 months'],
+    ['Likes', '38K', 'Last 12 months'],
+    ['Impressions', '1.5M', 'Oct 27–Nov 23'],
+    ['Followers', '7.1K', 'As of Nov 23'],
   ] as const
 
   return (
     <figure className="mt-6 rounded-xl border border-line bg-surface p-5 sm:p-6">
       <h3 className="font-display text-2xl text-fg">X account reach</h3>
-      <p className="mt-1 mb-5 font-mono text-xs text-fg-dim">{dayMonth(audience.from)} – {dayMonth(audience.to, true)} · X export</p>
-      <dl className="grid grid-cols-3 gap-2 sm:gap-4 border-b border-line pb-5">
-        {stats.map(([label, value]) => (
-          <div key={label}>
-            <dt className="font-mono text-xs text-fg-faint">{label}</dt>
+      <p className="mt-1 mb-5 font-mono text-xs text-fg-dim">X Analytics, read 23 Nov 2026</p>
+      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 border-b border-line pb-5">
+        {stats.map(([label, value, period]) => (
+          <div key={value}>
+            <dt className="font-mono text-xs text-fg-dim">{label} <span className="block">{period}</span></dt>
             <dd className="mt-1 font-display text-xl font-semibold tabular-nums text-fg sm:text-2xl">
-              <CountUp value={value} format={compact} />
+              <a href={identity.x} aria-label={`${value} ${label.toLowerCase()}, ${period}. X Analytics, read 23 Nov 2026`} className="inline-flex min-h-11 min-w-11 items-center hover:underline">
+                {value}
+              </a>
             </dd>
           </div>
         ))}
@@ -65,8 +68,7 @@ export function XGrowth() {
               <div
                 key={w.week}
                 className="relative flex h-full flex-1 items-end justify-center px-px"
-                onPointerEnter={() => setActive(w.week)}
-                onPointerDown={() => setActive(w.week)}
+                onPointerEnter={(event) => { if (event.pointerType !== 'touch') setActive(w.week) }}
               >
                 {w === peak && (
                   <span
@@ -109,7 +111,7 @@ export function XGrowth() {
       </figcaption>
 
       <details className="mt-3">
-        <summary className="inline-flex min-h-11 cursor-pointer items-center font-mono text-[13px] text-fg-dim hover:text-fg">Show as a table</summary>
+        <summary className="min-h-11 cursor-pointer py-3 font-mono text-[13px] text-fg-dim hover:text-fg"><span className="sm:hidden">More<span className="sr-only">: weekly impressions table</span></span><span className="hidden sm:inline">Show as a table</span></summary>
         <table className="mt-2 w-full max-w-md text-left text-sm tabular-nums">
           <thead className="text-fg-faint">
             <tr>

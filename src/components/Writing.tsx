@@ -1,3 +1,4 @@
+import { HomeDivider } from './HomeDivider'
 import { writingPosts } from '../content/writing'
 import { Reveal } from '../motion/Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -5,11 +6,12 @@ import { XGrowth } from './XGrowth'
 
 export function Writing() {
   return (
-    <section id="writing" className="overflow-clip py-20 sm:py-28">
+    <section id="writing" className="relative overflow-clip py-14 sm:py-28">
+      <HomeDivider />
       <SectionHeading eyebrow="Writing" title="Notes from the build" />
-      <div className="mx-auto mt-10 max-w-6xl px-6 sm:mt-12">
+      <div className="mx-auto mt-6 max-w-6xl px-6 sm:mt-12">
         <Reveal>
-          <div className="flex flex-col gap-4 border-y border-line py-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 border-y border-line py-4 sm:py-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-2xl text-lg leading-relaxed text-fg-dim">
               I share real demos, benchmarks, and failure fixes from building with AI agents.
             </p>
