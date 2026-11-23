@@ -31,11 +31,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bkashjee.github.io/use-cases/hermes-x-mission-control/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://bkashjee.github.io/use-cases/hermes-bot-forge/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -54,7 +54,6 @@ const fullCaseSlugs: Record<string, string> = {
   screenpolish: 'screenpolish',
   'bot-forge': 'hermes-bot-forge',
   'agent-dock': 'hermes-agent-dock',
-  'mission-control': 'hermes-x-mission-control',
 }
 
 /**

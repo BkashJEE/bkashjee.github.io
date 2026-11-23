@@ -142,30 +142,64 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    id: 'mission-control',
-    name: 'Hermes X Mission Control',
-    tagline: 'A local-first content operating system, run by agents, reviewed by you.',
+    id: 'nous-calendar',
+    name: 'Nous Calendar',
+    tagline: 'Never miss a Nous drop.',
     description: [
-      'Running an X account well means researching, drafting, checking, and scheduling posts every day. Mission Control is my private workspace for doing that like a newsroom: thirteen screens cover today’s plan, the pipeline, the calendar, published posts, analytics, and a content graph. AI agents do the research, drafting, and checking, handing work along with a record of each step — and nothing is published until I review it.',
-      'I built it end to end: a Supabase backend with row-level security, a local SQLite fallback so it runs with no setup, and guarded research intake that only accepts video links from an allowlist of hosts.',
+      'Nous Research merges 50–200 pull requests a day into Hermes Agent, and most of them are fixes. Nous Calendar shows the drops a Hermes user actually cares about, day by day, inside Hermes Desktop: releases, new official plugins, merged features, official-plugin updates and new catalog plugins, with every other merged pull request folded into one count. Tap a day to see what shipped and the day’s biggest posts.',
+      'I designed and built it. It keeps itself current: the backend re-reads the month from GitHub every six hours, a desktop notification fires for each new release or official plugin, and a status-bar chip counts what is new since you last looked. One command turns on alerts that reach every channel connected to your Hermes within fifteen minutes, with zero model tokens. It is also live on the web.',
     ],
-    tech: ['Next.js', 'TypeScript', 'Supabase', 'RLS', 'SQLite', 'zod'],
-    glow: 'teal',
-    stat: '592 automated tests · checked Sep 2026',
-    flow: {
-      steps: ['research', 'draft', 'verify', 'owner review', 'publish'],
-      note: 'Named agent profiles hand work forward with receipts at every step.',
-    },
+    tech: ['Python', 'Hermes Desktop plugin', 'GitHub API', 'hermes cron'],
+    glow: 'amber',
     images: [
       {
-        src: '/assets/work/missioncontrol.webp',
+        src: '/assets/work/nouscalendar.webp',
         width: 1600,
         height: 1000,
-        alt: 'Hermes X Mission Control’s Today view: editorial team, work queues, and the daily content plan',
-        chrome: true,
+        alt: 'Nous Calendar in Hermes Desktop: October 2026 as a month of day cards with releases, launches and merged-PR counts',
+      },
+      {
+        src: '/assets/work/nouscalendar-day.webp',
+        width: 1600,
+        height: 1000,
+        alt: 'A Nous Calendar day sheet: what shipped that day and its biggest posts',
       },
     ],
-    sourceNote: 'Source private',
+    link: { href: 'https://github.com/BkashJEE/hermes-nous-calendar', label: 'View source on GitHub' },
+    platforms: 'Hermes Desktop · web: nous-calendar.vercel.app',
+    flow: {
+      steps: ['GitHub releases, catalog and PRs', 'one card per day', 'alerts on every channel'],
+      note: 'Fixes are counted, never listed, so the drops stay visible.',
+    },
+  },
+  {
+    id: 'hermes-eyes',
+    name: 'Hermes Eyes',
+    tagline: 'A pet that watches your agents so you don’t have to.',
+    description: [
+      'When several Hermes agents run at once, you end up checking every chat to see which one needs you. Hermes Eyes puts a pair of googly eyes on the Hermes Desktop message box that do the watching: they look up while the agent thinks, glance at each tool it runs, smile when it is done, and shoot a “!” at the Approve button when it needs an answer. Chats in other tabs that finish or wait show up as “1 waiting” in the status bar.',
+      'I designed and built it, with a matching “eyes” pet for the Hermes CLI and TUI that acts out what the agent is doing. A Calm motion setting keeps every alert and drops the flying letters, and Auto follows your system’s reduce-motion setting.',
+    ],
+    tech: ['JavaScript', 'Hermes Desktop plugin', 'petdex sprite atlas'],
+    glow: 'teal',
+    images: [
+      {
+        src: '/assets/work/hermeseyes-desktop.webp',
+        width: 1111,
+        height: 231,
+        alt: 'Hermes Eyes on the Hermes Desktop message box: file names and commands glowing in a reply, the eyes smiling',
+      },
+      {
+        src: '/assets/work/hermeseyes-pets.webp',
+        width: 1176,
+        height: 264,
+        alt: 'The eyes pet in its states: idle, working, thinking, waiting, done, failed',
+      },
+    ],
+    link: { href: 'https://github.com/BkashJEE/hermes-eyes', label: 'View source on GitHub' },
+    flow: {
+      steps: ['agent thinks, runs a tool or waits', 'the eyes react', 'they point at what needs you'],
+    },
   },
 ]
 
@@ -411,9 +445,8 @@ export const aboutParagraphs: string[] = [
 ]
 
 // Private projects listed in the archive next to the public repos.
-export const archiveExtras = [
-  { name: 'Hermes X Mission Control', description: 'Local-first content workspace for an X account, run by agents.', created: '2026-09-02', language: 'TypeScript', built: 'Next.js · Supabase', href: '/#mission-control' },
-]
+/** Private projects the All work list should still show (none today). */
+export const archiveExtras: { name: string; description: string; created: string; language: string; href: string }[] = []
 
 // Last full run of `npm run typesafe:audit`.
 export const factCheck = {
