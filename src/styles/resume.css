@@ -1,8 +1,19 @@
 @import 'tailwindcss';
 
 body {
-  background: #f4f4f5;
-  color: #18181b;
+  color-scheme: dark;
+  --resume-fg: #ededf2;
+  --resume-title: #ededf2;
+  --resume-copy: #ededf2;
+  --resume-muted: #a8a8b5;
+  --resume-meta: #a8a8b5;
+  --resume-card: #17171f;
+  --resume-rule: #26262f;
+  --resume-line: #26262f;
+  --resume-border: #7d7d8a;
+  --resume-hover: #f5a524;
+  background: #0a0a0f;
+  color: var(--resume-fg);
   font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -11,8 +22,8 @@ body {
   max-width: 8.5in;
   margin: 2rem auto;
   padding: 3rem 3.25rem;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1), 0 12px 32px rgb(0 0 0 / 0.08);
+  background: #12121a;
+  border: 1px solid var(--resume-line);
 }
 
 .resume-h2 {
@@ -21,9 +32,13 @@ body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #a16207;
-  border-bottom: 1px solid #e4e4e7;
+  color: #f5a524;
+  border-bottom: 1px solid var(--resume-line);
   padding-bottom: 0.25rem;
+}
+
+@media screen {
+  .resume-link { display: inline-flex; min-height: 24px; min-width: 24px; align-items: center; }
 }
 
 @media screen and (max-width: 639px) {
@@ -46,17 +61,32 @@ body {
     font-size: 13.2px;
   }
   body {
+    color-scheme: light;
+    --resume-fg: var(--color-zinc-900);
+    --resume-title: var(--color-zinc-800);
+    --resume-copy: var(--color-zinc-700);
+    --resume-muted: var(--color-zinc-600);
+    --resume-meta: var(--color-zinc-500);
+    --resume-card: #ffffff;
+    --resume-rule: var(--color-zinc-900);
+    --resume-line: var(--color-zinc-200);
+    --resume-border: var(--color-zinc-300);
+    --resume-hover: var(--color-zinc-500);
     background: #ffffff;
+    color: #18181b;
   }
   .resume-page {
     max-width: none;
     margin: 0;
     padding: 0;
-    box-shadow: none;
+    border: 0;
+    background: #ffffff;
   }
   /* 12px on screen, but paper keeps the size the one-page layout was fitted to. */
   .resume-h2 {
     font-size: 0.72rem;
+    color: #a16207;
+    border-color: #e4e4e7;
   }
 }
 

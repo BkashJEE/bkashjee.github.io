@@ -20,6 +20,8 @@ export const identity = {
   github: 'https://github.com/BkashJEE',
   x: 'https://x.com/BkashJosi',
   site: siteConfig.url,
+  available: 'Open to launch films and real-run demo posts for AI tools',
+  availableUpdated: '2026-11',
 }
 
 export interface CaseStudy {
@@ -80,8 +82,8 @@ export const caseStudies: CaseStudy[] = [
         alt: 'A polished ScreenPolish export: recorded app framed on a gradient background',
       },
     ],
-    sourceNote: 'Open source (AGPL-3.0)',
-    link: { href: 'https://github.com/BkashJEE/screenpolish', label: 'Source on GitHub' },
+    sourceNote: 'Open source (MIT)',
+    link: { href: 'https://github.com/BkashJEE/ScreenPolish', label: 'Source on GitHub' },
     platforms: 'Windows · Linux · macOS (early)',
   },
   {
@@ -94,7 +96,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ['Python', 'Hermes Agent', 'plugin.yaml', 'systemd', 'pytest'],
     glow: 'violet',
-    stat: '451 tests passing · in the official Hermes plugin catalog · verified 18 Oct 2026',
+    stat: '451 tests passing · verified 18 Oct 2026',
     images: [
       {
         src: '/assets/work/botforge-banner.webp',

@@ -27,11 +27,11 @@
       }
     ],
     "status": "working",
-    "sourcePrivate": true,
+    "sourcePrivate": false,
     "featured": true,
     "date": "2026-09-02",
     "problem": "Software demos usually need a second editing pass for framing, zooms, cursor cleanup, and exports. On Wayland, an application also cannot rely on the global input hooks used by conventional recorders.",
-    "solution": "ScreenPolish records the screen locally, reconstructs pointer motion from Hyprland IPC and clicks from evdev, and applies every visual effect through one pure renderer shared by preview and export.",
+    "solution": "ScreenPolish records the screen locally, reconstructs pointer motion from Hyprland IPC and clicks from evdev, and applies every visual effect through one pure renderer shared by preview and export. The source is available under the MIT license.",
     "workflow": [
       "Capture video through xdg-desktop-portal and PipeWire while recording pointer motion and click events without opening keyboard devices.",
       "Store the capture and event timeline together so every edit remains deterministic.",
@@ -45,11 +45,11 @@
     ],
     "limitations": [
       "The macOS build is still early.",
-      "The Linux input path is tailored to Hyprland for pointer coordinates and uses evdev only for click events.",
-      "Source is private; the case study documents behavior and architecture without publishing the repository."
+      "The Linux input path is tailored to Hyprland for pointer coordinates and uses evdev only for click events."
     ],
     "links": {
-      "demo": "/assets/video/screenpolish-demo.mp4"
+      "demo": "/assets/video/screenpolish-demo.mp4",
+      "source": "https://github.com/BkashJEE/ScreenPolish"
     },
     "related": ["hermes-x-mission-control", "repo-shelf"]
   },

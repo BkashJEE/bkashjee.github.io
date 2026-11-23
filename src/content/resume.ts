@@ -25,10 +25,10 @@ export const resume = {
   projects: [
     {
       name: 'ScreenPolish',
-      role: 'Creator · open source (AGPL-3.0)',
-      link: 'github.com/BkashJEE/screenpolish',
+      role: 'Creator · open source (MIT)',
+      link: 'github.com/BkashJEE/ScreenPolish',
       dates: 'Sep 2026 - present',
-      note: 'open source (AGPL-3.0)',
+      note: 'open source (MIT)',
       bullets: [
         'Built a local screen recorder used for personal demos and videos; 41 recordings in the library, with auto-zoom and MP4/GIF export.',
         'Shipped 3 formats (Windows installer, AppImage, pacman); Wayland capture uses PipeWire/portals, Hyprland IPC, and evdev clicks.',
@@ -43,7 +43,7 @@ export const resume = {
       link: 'github.com/BkashJEE/hermes-bot-forge',
       bullets: [
         `Published a Hermes Agent plugin (${botForge?.stars} GitHub stars, ${botForge?.forks} forks) that builds bots with identity, memory, tools, routines, and a gateway, rolling back on any failed step.`,
-        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review; now at v0.22.0 with 451 tests passing.',
+        'Accepted into NousResearch’s official Hermes plugin catalog (hermes-agent#114057) after a maintainer security review. 451 tests passing · verified 18 Oct 2026.',
       ],
       tech: 'Python · pytest · systemd',
     },
