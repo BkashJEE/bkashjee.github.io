@@ -89,6 +89,10 @@
     .film-play:not([hidden]){position:absolute;top:50%;left:50%;translate:-50% -50%;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--fg-dim);border-radius:50%;background:var(--ink);color:var(--fg);cursor:pointer}
     .film-play:hover{background:var(--raised);color:var(--accent)}
     .reel-cap{font-family:var(--mono);font-size:12px;color:var(--fg-faint);margin-top:10px}
+    .film video::cue{font-family:"Inter Variable",system-ui,-apple-system,"Segoe UI",sans-serif;background-color:rgb(10 10 15 / .82);color:#ededf2;line-height:1.35}
+    .film-desc summary{display:list-item;min-height:44px;padding-block:12px;line-height:20px;font-family:var(--mono);font-size:12.8px;color:var(--fg-dim);cursor:pointer}
+    .film-desc summary:hover{color:var(--fg)}
+    details.film-desc p{margin:0 0 6px;color:var(--fg-dim);font-size:15px;line-height:1.6;max-width:68ch}
 
     /* stats */
     section{margin-top:84px}
@@ -263,11 +267,12 @@
     <div>
       <div class="reel">
         <div class="film">
-          <video aria-label="Launch films reel" src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" playsinline preload="none"></video>
+          <video aria-label="Launch films reel" src="/partners/media/sizzle.mp4" poster="/partners/media/sizzle.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/sizzle.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play the reel"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
       </div>
       <div class="reel-cap">41 s reel · Sound on</div>
+      <details class="film-desc"><summary>Read what's in this film</summary><p>A 41-second reel of my launch films, set to music with no narration. It opens on “I film AI launches. People watch.” over a clip of the Nous Calendar launch film, with a note that launch films have a median of 7,874 views. Short clips follow, each under a headline: “Real runs, on my machine” (Hermes driving my own TV), “Real UI. No mock demos” (the Hermes Desktop web app film), “Websites, in 3D” (a tilt-shift fly-over of webdev.teknium.io) and “Story films for a roadmap” (a pixel-art road trip past 10 apps). A “Real numbers. Dated.” card lists public X numbers, such as 4,105 followers on Oct 25 and 3.68M impressions from May to Oct 21. “Your product, next.” names the formats: launch film, spec video, demo post, thread and real-run post. It ends on “Work with @BkashJosi” and a typed “DM @BkashJosi on X”, with a note that these are samples from my own posts, not client work.</p></details>
     </div>
   </div>
 
@@ -326,67 +331,75 @@
     <div class="grid">
       <article class="work">
         <div class="film">
-          <video aria-label="Nous Calendar launch film" src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" playsinline preload="none"></video>
+          <video aria-label="Nous Calendar launch film" src="/partners/media/ncal.mp4" poster="/partners/media/ncal.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/ncal.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Nous Calendar launch film"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Nous Calendar launch film</h3><p>Plugin launch: the real app recorded in Hermes Desktop, one idea per beat, and an install command on the end card.</p>
-          <div class="chips"><span class="chip">13,033 views · read 25 Oct 2026</span><span class="chip">Launch film</span><span class="chip">49 s</span></div></div>
+          <div class="chips"><span class="chip">13,033 views · read 25 Oct 2026</span><span class="chip">Launch film</span><span class="chip">49 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 49-second launch film for Nous Calendar, a Hermes plugin, with clicks and typing sounds and no narration. It opens on the install command, then shows the plugin inside Hermes Desktop: one page covering a month of Hermes releases, launches and merged pull requests (2,193 in October so far). A banner says the user is on v0.22.2, three releases behind, and one click copies the update command. Tapping a day opens the related post on X inside Hermes, tapping a release opens its notes on GitHub, and a plugin day offers a one-line install command. A terminal then shows the same data with “hermes nous-calendar --today”: 7 merged PRs on Fri Oct 23. The end card repeats the install command and says it is free, MIT licensed, reads public GitHub data only and is not affiliated with Nous Research.</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Hermes took over my TV" src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes took over my TV" src="/partners/media/roku.mp4" poster="/partners/media/roku.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/roku.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Hermes took over my TV"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes took over my TV</h3><p>Real terminal output from my own Roku TV. The TV screen is labelled as an illustration.</p>
-          <div class="chips"><span class="chip">Real run</span><span class="chip">Launch film</span><span class="chip">42 s</span></div></div>
+          <div class="chips"><span class="chip">Real run</span><span class="chip">Launch film</span><span class="chip">42 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 42-second film, set to music with no narration, about Hermes controlling a 58-inch Hisense Roku TV over Wi-Fi through Roku’s own local API. Terminal output shows a script finding the TV on the network by itself (control port 8060) and listing 42 apps and inputs, such as Netflix, YouTube and Disney Plus. A chat message asks to “Put the Tesla livestream on the TV”, shown on an illustrated TV screen; a label says the tool played this on the real TV on Oct 18. Three steps explain how: yt-dlp finds the video ID, a launch request goes to the TV, and the video plays. Remote buttons appear (Home, Play, Back, volume, power off, type and search), then an honest list of limits: it cannot remove ads or hide home rows, installing apps needs Roku dev mode, and it needs the same Wi-Fi with port 8060 open. It ends on “My TV. One skill.”</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Website showcase: webdev.teknium.io" src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" playsinline preload="none"></video>
+          <video aria-label="Website showcase: webdev.teknium.io" src="/partners/media/tek.mp4" poster="/partners/media/tek.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/tek.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Website showcase: webdev.teknium.io"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Website showcase: webdev.teknium.io</h3><p>A tilt-shift 3D fly-over built from real 2x page captures, with cards that stand up off the page.</p>
-          <div class="chips"><span class="chip">Website showcase</span><span class="chip">34 s</span></div></div>
+          <div class="chips"><span class="chip">Website showcase</span><span class="chip">34 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 34-second showcase of webdev.teknium.io, with whooshing sound effects and no narration. It opens on “One prompt. 20 minutes. 462 demos later.” and a quote from @Teknium on X saying he asked Hermes Agent for a webpage of demos for lesser-known styles and component libraries, and it did it in 20 minutes. The camera then flies in 3D over the page’s sections, such as Typography &amp; text, Shaders, WebGL &amp; 3D, CSS-only &amp; stylesheets, and Games, consoles &amp; emulators, while a live-demo counter climbs from 75 to 462. A stats card shows 462 demos, 425 libraries and 23 sections, up from 75 demos on Oct 22 to 462 on Oct 23. “Steal the idea for your own field” shows a prompt to copy for building a page like it, then a zoomed-out view shows the whole page before the film returns to its opening shot.</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Hermes Desktop, in a tab" src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Desktop, in a tab" src="/partners/media/webapp.mp4" poster="/partners/media/webapp.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/webapp.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Hermes Desktop, in a tab"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Desktop, in a tab</h3><p>A feature walkthrough with every screen captured from the real app.</p>
-          <div class="chips"><span class="chip">Feature film</span><span class="chip">76 s</span></div></div>
+          <div class="chips"><span class="chip">Feature film</span><span class="chip">76 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 75-second walkthrough of Hermes Desktop running in a browser tab on the canary build, with typing, clicks, bass hits and ticking, and no narration. A 60-second countdown labelled “until the link dies” runs at the top the whole time. Three terminal commands turn the web app on, restart the gateway and print a launch link, and the full Desktop interface opens in a browser tab at 127.0.0.1:9120. Quick tours show messaging setup, skills, plugins and tools, scheduled jobs, settings, and one gateway with one chat queue. A card from the Hermes docs lists what stays in the desktop app only: global shortcuts, always-on-top overlays and the updater. A fresh tab without the link gets a sign-in page, reusing the link shows a real “already used or has expired” page, and at zero the screen says “Expired. One use. 60 seconds.” It closes with a warning that the tab can run any command as you, so keep it on 127.0.0.1, the three commands to try it, and a note that it is on main and canary only, not stable yet (PR #141864).</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="10 apps Hermes users are connecting" src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" playsinline preload="none"></video>
+          <video aria-label="10 apps Hermes users are connecting" src="/partners/media/conn.mp4" poster="/partners/media/conn.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/conn.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play 10 apps Hermes users are connecting"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>10 apps Hermes users are connecting</h3><p>A ranked road-trip story film, with the ranking taken from GitHub issue data.</p>
-          <div class="chips"><span class="chip">Story film</span><span class="chip">Ranked by data</span><span class="chip">58 s</span></div></div>
+          <div class="chips"><span class="chip">Story film</span><span class="chip">Ranked by data</span><span class="chip">58 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 58-second animated story film, set to music with no narration, ranking 10 apps by how many GitHub issues in the NousResearch/hermes-agent repo named each one over 90 days. It starts with the ten app icons around a character, then one request: “Check my Gmail, post the summary to Slack, and ping me on Telegram.” The character then travels a pixel-art road from a lit-up city through farmland and snowy mountains, over a bridge, to a sunset beach, passing a signpost for each app with its issue count and setup command: #10 Notion (4), YouTube, Home Assistant, Browser, Signal, Google Workspace, Slack (142), WhatsApp (161), Discord (245) and #1 Telegram (506). After a short scene of a room with a laptop on a desk and a cat on the floor, real Hermes docs pages appear, highlighting that connectors need a Nous identity but no sign-in. It ends on a stopwatch at 00:44.52, “10 apps. One agent.”, and a note that the counts are GitHub issues, not users, and the journey is illustrative.</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Terminal dies here. Hermes still answers." src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" playsinline preload="none"></video>
+          <video aria-label="Terminal dies here. Hermes still answers." src="/partners/media/dead.mp4" poster="/partners/media/dead.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/dead.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Terminal dies here. Hermes still answers."><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Terminal dies here. Hermes still answers.</h3><p>Stop #11 of the same story world, with setup steps quoted from the official docs.</p>
-          <div class="chips"><span class="chip">Series</span><span class="chip">30 s</span></div></div>
+          <div class="chips"><span class="chip">Series</span><span class="chip">30 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 30-second illustrated scene with short tones and no narration: stop #11 of the same road-trip series, credited “via @NetworkChuck”. A character walks into a red “dead zone” circle on a forest trail, and an illustrated phone shows an SSH session to a homelab dropping with “No Service” and “Connection lost”. The scene rewinds, and this time the same request, “check my PRs”, goes to Hermes Agent by iMessage, which replies “3 open, #212 is green, ready to merge.” A real Hermes docs page and real “--help” output for the photon setup command follow, then three setup steps from the Photon iMessage docs: sign up free at app.photon.codes, run setup with your number, and start the gateway. It ends on “Texts get through”, “No Mac? Photon. Have a Mac? BlueBubbles.” and the Hermes docs address. Labels on screen say the phone scenes are illustrative and the steps were not tested hands-on.</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Hermes Agent Inbox" src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Agent Inbox" src="/partners/media/inbox.mp4" poster="/partners/media/inbox.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/inbox.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Hermes Agent Inbox"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Agent Inbox</h3><p>A launch video for my own open-source plugin, with real UI captured at 2x.</p>
-          <div class="chips"><span class="chip">1,559 views · Oct 20</span><span class="chip">Open source launch</span><span class="chip">40 s</span></div></div>
+          <div class="chips"><span class="chip">1,559 views · Oct 20</span><span class="chip">Open source launch</span><span class="chip">40 s</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 40-second launch video for Hermes Agent Inbox, my open-source plugin, set to music with no narration. It opens on “Your bots are working. Waiting on you.” over the Hermes Desktop app. An inbox panel shows a card for each thing a bot is waiting on; clicking one explains why it is there, the facts and the exact command, here a failed nightly backup job with a Copy button. A grid of sources follows (chats, crons, keys, vitals, PRs, posted items, X Studio, Claude Code and Codex), then one inbox per agent, where a Hermes bot picks up where Claude Code stopped. A terminal shows a bot adding its own question with “hermes inbox add”, which appears as a new card, and Done and Snooze hide a card until it changes or for a day. It ends on the name, the line “One list of everything your bots are waiting on you for” and the install command.</p></details></div>
       </article>
       <article class="work">
         <div class="film">
-          <video aria-label="Hermes Agent: 41 releases in 217 days" src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" playsinline preload="none"></video>
+          <video aria-label="Hermes Agent: 41 releases in 217 days" src="/partners/media/journey.mp4" poster="/partners/media/journey.jpg" playsinline preload="none"><track kind="captions" src="/partners/media/journey.en.vtt" srclang="en" label="English" default></video>
           <button class="film-play" type="button" aria-label="Play Hermes Agent: 41 releases in 217 days"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"></path></svg></button>
         </div>
         <div class="b"><h3>Hermes Agent: 41 releases in 217 days</h3><p>A long-form timeline film. This is a 60 s excerpt of the 3-minute cut.</p>
-          <div class="chips"><span class="chip">1,214 views · Oct 21</span><span class="chip">Journey film</span><span class="chip">Excerpt</span></div></div>
+          <div class="chips"><span class="chip">1,214 views · Oct 21</span><span class="chip">Journey film</span><span class="chip">Excerpt</span></div>
+          <details class="film-desc"><summary>Read what's in this film</summary><p>A 60-second excerpt of a longer timeline film about Hermes Agent and Nous Research, set to music with no narration. It opens on “Hermes Agent journey: from a GitHub org in 2023 to 255,571 stars” and the install command. Each chapter puts a big headline beside a dark timeline comparing Nous with the rest of the field, plus a dated card: the NousResearch GitHub org created May 20, 2023; Nous-Hermes 13B in June 2023; a Llama 2 version two days after Meta’s July 2023 release; the Nous Discord opening to the public in September 2023, two weeks after the YaRN context paper; a $5.2M seed from Distributed Global and OSS Capital; and Hermes 3 405B in August 2024, 23 days after Meta’s Llama 3.1 405B. The excerpt ends on NousCon at GitHub HQ in San Francisco, with 9 talks posted on Oct 2, 2024.</p></details></div>
       </article>
     </div>
   </section>
