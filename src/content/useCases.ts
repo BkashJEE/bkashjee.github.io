@@ -1,3 +1,4 @@
+import github from './github.json'
 import rawUseCases from './use-cases.json'
 
 export const useCaseCategories = [
@@ -50,6 +51,7 @@ export interface UseCaseEntry {
     post?: string
   }
   related: string[]
+  stars?: number
 }
 
 const categoryIds = new Set<string>(useCaseCategories.map((category) => category.id))
@@ -118,7 +120,13 @@ function validateUseCases(value: unknown): UseCaseEntry[] {
   return value as UseCaseEntry[]
 }
 
-export const useCases = validateUseCases(rawUseCases)
+const repoStars = new Map(github.repos.map(({ url, stars }) => [url.toLowerCase(), stars]))
+
+export const useCases = validateUseCases(rawUseCases).map((entry): UseCaseEntry => ({
+  ...entry,
+  stars: entry.links?.source ? repoStars.get(entry.links.source.toLowerCase()) : undefined,
+}))
+export const newestUseCases = [...useCases].sort((a, b) => b.date.localeCompare(a.date))
 
 export const categoryLabel = (category: UseCaseCategory) =>
   useCaseCategories.find((item) => item.id === category)?.label ?? category

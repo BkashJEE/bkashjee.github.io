@@ -142,7 +142,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
         {/* Figures, labelled and in full — no rounding to hide behind. */}
         <dl className="mt-5 flex gap-8 border-t border-line pt-4">
           {([
-            ['views', 'Views', entry.impressions],
+            ['views', 'Impressions', entry.impressions],
             ['saves', 'Saves', entry.bookmarks],
           ] as const).map(([kind, label, value]) => (
             <div key={kind}>
@@ -156,7 +156,7 @@ function Card({ entry, rank }: { entry: ViewedUseCase; rank: number }) {
             </div>
           ))}
         </dl>
-        <p className="mt-3 font-mono text-xs text-fg-dim">X post · {prettyDate(entry.date)}</p>
+        <p className="mt-3 font-mono text-xs text-fg-dim">X post · {prettyDate(entry.date)} · {viewedProvenance.source}</p>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs">
           <a href={entry.postUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-accent">
@@ -259,7 +259,7 @@ function AskStrip({ tab }: { tab: MostViewedTab }) {
 }
 
 const sortModes = [
-  { id: 'views', label: 'Most viewed', by: (a: ViewedUseCase, b: ViewedUseCase) => b.impressions - a.impressions },
+  { id: 'views', label: 'Most impressions', by: (a: ViewedUseCase, b: ViewedUseCase) => b.impressions - a.impressions },
   { id: 'saves', label: 'Most saved', by: (a: ViewedUseCase, b: ViewedUseCase) => b.bookmarks - a.bookmarks },
   { id: 'newest', label: 'Newest', by: (a: ViewedUseCase, b: ViewedUseCase) => b.date.localeCompare(a.date) },
 ] as const
@@ -343,7 +343,7 @@ export function MostViewed() {
       <div className="mt-6 flex flex-col gap-4 rounded-xl border border-line bg-ink/60 px-5 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
         <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:items-baseline sm:gap-x-5 sm:gap-y-2">
           {[
-            [compact(audience.impressions), 'views'],
+            [compact(audience.impressions), 'impressions'],
             [audience.bookmarks.toLocaleString('en-GB'), 'saves'],
             [audience.newFollows.toLocaleString('en-GB'), 'new followers'],
           ].map(([value, label]) => (
@@ -366,8 +366,8 @@ export function MostViewed() {
         </a>
       </div>
       <p className="mt-2 font-mono text-xs text-fg-faint">
-        {sortModes.find((m) => m.id === sort)!.label} · {compact(total)} views across these {entries.length} ·{' '}
-        {viewedProvenance.source}, exported {prettyDate(viewedProvenance.exported)}
+        {sortModes.find((m) => m.id === sort)!.label} · {compact(total)} impressions across these {entries.length} ·{' '}
+        {viewedProvenance.source}
       </p>
 
       <div id="related-post-cards" className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

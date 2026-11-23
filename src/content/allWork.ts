@@ -4,7 +4,6 @@ export const workStatuses = {
   'Released': 'A public versioned release is available.',
   'Live': 'The project is available to use on the web.',
   'Public repo': 'The source is available in a public repository.',
-  'Source private': 'A public case study describes work with private source.',
   'Showcase': 'The site shows the project or film.',
   'Sample': 'The film is available here as a sample.',
   'Paid partnership': 'A completed partnership disclosed on X.',
@@ -22,6 +21,7 @@ export interface WorkItem {
   status: keyof typeof workStatuses
   href?: string
   repo?: string
+  impressions?: number
   views?: number
   viewsAsOf?: string
 }
@@ -32,8 +32,7 @@ interface WorkGroup {
   items: WorkItem[]
 }
 
-// Inventory dated 23 Nov 2026. Writing views use the 6 Oct 2026 X export.
-const writingViewsAsOf = '2026-10-06'
+// Inventory dated 23 Nov 2026. Writing impressions use the 6 Oct 2026 X export.
 
 export const workGroups: WorkGroup[] = [
   {
@@ -528,8 +527,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2098522662268195175',
-        views: 33577,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 33577,
       },
       {
         name: '“Installed Hermes Agent. Now what?”',
@@ -538,8 +536,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2100136800044163148',
-        views: 28425,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 28425,
       },
       {
         name: 'Too many plugins: choosing by category instead of guessing',
@@ -548,8 +545,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101607087541469491',
-        views: 14839,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 14839,
       },
       {
         name: 'A bot that builds bots, open-sourced',
@@ -558,8 +554,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2100528442752323623',
-        views: 44283,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 44283,
       },
       {
         name: 'A library of Hermes guides, skills and plugins',
@@ -568,8 +563,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2099926011303625207',
-        views: 9523,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 9523,
       },
       {
         name: 'Shaping the whole desktop around how I work',
@@ -578,8 +572,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Omarchy',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101418237087101007',
-        views: 44017,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 44017,
       },
       {
         name: 'A 24/7 agent living inside the desktop, not in a chat window',
@@ -588,8 +581,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Omarchy',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2099557531396043079',
-        views: 4052,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 4052,
       },
       {
         name: 'Locked out of your desktop? Ask the agent',
@@ -598,8 +590,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Omarchy',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2100265298670792787',
-        views: 1806,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 1806,
       },
       {
         name: 'The desktop as a canvas for agents',
@@ -608,8 +599,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Omarchy',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2098625501812449501',
-        views: 1060,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 1060,
       },
       {
         name: 'Connect the Jev skill and let Hermes decide faster',
@@ -618,8 +608,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101057981861552342',
-        views: 58083,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 58083,
       },
       {
         name: 'Setting up Jev with Hermes, start to finish',
@@ -628,8 +617,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101022269623701558',
-        views: 40539,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 40539,
       },
       {
         name: 'What people are actually building with Jev',
@@ -638,8 +626,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101386077294805241',
-        views: 16720,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 16720,
       },
       {
         name: '“Hermes said done. I gave Jev the evidence.”',
@@ -648,8 +635,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2101254844506050596',
-        views: 11143,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 11143,
       },
       {
         name: 'Jev as the decision layer in an agent harness',
@@ -658,8 +644,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2102170466849063290',
-        views: 7637,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 7637,
       },
       {
         name: 'Hermes Newsroom: one place to follow the ecosystem',
@@ -668,8 +653,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Jev + Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2102354216144822581',
-        views: 5560,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 5560,
       },
       {
         name: 'A morning briefing that is ready before you wake',
@@ -678,8 +662,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2097555264803377456',
-        views: 115605,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 115605,
       },
       {
         name: 'Ten people, ten ways to build the same agent — so I built an archive',
@@ -688,8 +671,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2103802512411345046',
-        views: 64588,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 64588,
       },
       {
         name: 'Hermes ideas are scattered everywhere, so I put them in one place',
@@ -698,8 +680,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2103477119871291890',
-        views: 26944,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 26944,
       },
       {
         name: 'My agent writes me a newspaper',
@@ -708,8 +689,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2097980995735785752',
-        views: 46420,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 46420,
       },
       {
         name: 'Turning Hermes Desktop into an operator console',
@@ -718,8 +698,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2085904972152225827',
-        views: 44207,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 44207,
       },
       {
         name: 'Agent Dock: keep working while the main agent is busy',
@@ -728,8 +707,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2086016592874234068',
-        views: 38960,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 38960,
       },
       {
         name: 'A working chat is not a working agent',
@@ -738,8 +716,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2092873550596374855',
-        views: 37767,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 37767,
       },
       {
         name: 'Bot Forge lands in the official Hermes plugin catalog',
@@ -748,8 +725,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2103371422097621150',
-        views: 37517,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 37517,
       },
       {
         name: 'Ten community plugins and the everyday problem each one solves',
@@ -758,8 +734,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2106760764950511756',
-        views: 34058,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 34058,
       },
       {
         name: 'Stop pasting API keys into your agent’s chat',
@@ -768,8 +743,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2093541551356215615',
-        views: 33703,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 33703,
       },
       {
         name: 'Give an old security camera a Hermes brain',
@@ -778,8 +752,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Hermes',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2094712321163874578',
-        views: 28000,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 28000,
       },
       {
         name: 'Omarchy in one post: what it is and what you need',
@@ -788,8 +761,7 @@ export const workGroups: WorkGroup[] = [
         stack: 'X post · Omarchy',
         status: 'Published',
         href: 'https://x.com/BkashJosi/status/2093946160792899956',
-        views: 43724,
-        viewsAsOf: writingViewsAsOf,
+        impressions: 43724,
       },
     ],
   },

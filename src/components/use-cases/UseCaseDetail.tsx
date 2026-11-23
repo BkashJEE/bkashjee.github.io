@@ -1,6 +1,6 @@
 import { ScrollProgress } from '../../motion/ScrollProgress'
 import { Eyebrow } from '../Eyebrow'
-import { categoryLabel, statusLabel, useCases, type UseCaseEntry } from '../../content/useCases'
+import { categoryLabel, statusLabel, useCases, newestUseCases, type UseCaseEntry } from '../../content/useCases'
 import { UseCaseCard } from './UseCaseCard'
 
 const formatDate = (date: string) => new Intl.DateTimeFormat('en-US', {
@@ -15,10 +15,11 @@ function ExternalLink({ href, children }: { href: string; children: string }) {
 export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
   const related = entry.related.map((slug) => useCases.find((item) => item.slug === slug)).filter((item): item is UseCaseEntry => Boolean(item))
 
+  const next = newestUseCases[newestUseCases.findIndex(({ slug }) => slug === entry.slug) + 1]
   const screenshots = entry.screenshots.filter((image) => image.src !== entry.image.src)
 
   return (
-    <main id="main" tabIndex={-1} className="pb-24">
+    <main id="main" tabIndex={-1} className="scroll-mt-16 pb-24">
       <ScrollProgress />
       <article>
         <header className="border-b border-line">
@@ -41,9 +42,12 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
               </dl>
             </div>
             {entry.links && (
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-9 flex flex-wrap items-center gap-3">
                 {entry.links.demo && <ExternalLink href={entry.links.demo}>{/\.(mp4|webm|mov)(?:[?#]|$)/i.test(entry.links.demo) ? 'Watch demo video' : 'Live demo'}</ExternalLink>}
                 {entry.links.source && <ExternalLink href={entry.links.source}>Source code</ExternalLink>}
+                {entry.links.source && entry.slug === 'screenpolish' && (
+                  <span className="font-mono text-xs text-fg-dim">Public source · MIT license</span>
+                )}
                 {entry.links.post && <ExternalLink href={entry.links.post}>Original post</ExternalLink>}
               </div>
             )}
@@ -97,6 +101,12 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
                       <dd className="mt-1.5 text-sm leading-5 text-fg-dim">{outcome.label}</dd>
                     </div>
                   ))}
+                  {entry.stars !== undefined && (
+                    <div className="py-5 last:pb-0">
+                      <dt className="font-display text-4xl text-fg">{entry.stars.toLocaleString('en-US')}</dt>
+                      <dd className="mt-1.5 text-sm leading-5 text-fg-dim">GitHub stars</dd>
+                    </div>
+                  )}
                 </dl>
               </div>
             </aside>
@@ -125,7 +135,7 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
           )}
           <nav aria-label="Case study navigation" className="mt-16 flex flex-wrap justify-between gap-4 border-t border-line pt-6 font-mono text-sm">
             <a href="/use-cases/" className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">← All case studies</a>
-            {related[0] && <a href={`/use-cases/${related[0].slug}/`} className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">Next: {related[0].title} →</a>}
+            {next && <a href={`/use-cases/${next.slug}/`} className="inline-flex min-h-11 items-center text-fg-dim transition-colors hover:text-accent">Next: {next.title} →</a>}
           </nav>
         </div>
       </article>

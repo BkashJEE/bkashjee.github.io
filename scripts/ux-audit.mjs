@@ -25,7 +25,7 @@ const flag = (name) => {
 }
 const base = (flag('--base') ?? JSON.parse(readFileSync(new URL('../src/content/site.json', import.meta.url), 'utf8')).url).replace(/\/$/, '')
 const benchmark = flag('--benchmark')?.split(',').map((u) => u.trim()).filter(Boolean) ?? []
-const PAGES = ['/', '/use-cases/', '/archive/', '/resume/']
+const PAGES = ['/', '/use-cases/', '/use-cases/screenpolish/', '/archive/', '/partners/', '/resume/']
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844, touch: true },
   { name: 'desktop', width: 1440, height: 900, touch: false },
@@ -72,14 +72,25 @@ async function measurePage(browser, url, vp) {
   })
 
   const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 45_000 }).catch((e) => ({ status: () => `ERR ${e.message}` }))
-  await page.evaluate(async () => {
-    for (let y = 0; y < document.body.scrollHeight; y += 700) {
-      window.scrollTo(0, y)
+  const unloadedImages = await page.evaluate(async () => {
+    const seen = new Set()
+    for (let y = 0; y < document.documentElement.scrollHeight; y += window.innerHeight - 100) {
+      window.scrollTo({ top: y, behavior: 'instant' })
       await new Promise((r) => setTimeout(r, 50))
+      for (const img of document.images) {
+        const rect = img.getBoundingClientRect()
+        if (rect.width && rect.height && rect.bottom > 0 && rect.top < window.innerHeight &&
+          rect.right > 0 && rect.left < window.innerWidth && getComputedStyle(img).visibility === 'visible') seen.add(img)
+      }
     }
-    window.scrollTo(0, 0)
+    await Promise.race([
+      Promise.allSettled([...seen].map((img) => img.decode())),
+      new Promise((r) => setTimeout(r, 3000)),
+    ])
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    return [...seen].filter((img) => !img.complete || img.naturalWidth === 0)
+      .map((img) => (img.currentSrc || img.src).slice(0, 100))
   })
-  await page.waitForTimeout(900)
 
   const m = await page.evaluate(() => {
     const parse = (c) => {
@@ -160,6 +171,16 @@ async function measurePage(browser, url, vp) {
     const tiny = blockish.filter((el) => el.getBoundingClientRect().height < 24)
 
     const imgs = [...document.images].filter((i) => !i.closest('[aria-hidden="true"]'))
+    const brokenFragments = [...new Set([...document.querySelectorAll('a[href]')].flatMap((link) => {
+      const target = new URL(link.href, location.href)
+      if (!target.hash || target.origin !== location.origin ||
+        target.pathname !== location.pathname || target.search !== location.search) return []
+      try {
+        return document.getElementById(decodeURIComponent(target.hash.slice(1))) ? [] : [target.hash]
+      } catch {
+        return [target.hash]
+      }
+    }))]
     const headings = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map((h) => Number(h.tagName[1]))
     const skips = headings.filter((lvl, i) => i > 0 && lvl > headings[i - 1] + 1).length
     const meta = (k) => document.querySelector(`meta[name="${k}"],meta[property="${k}"]`)?.content ?? null
@@ -176,7 +197,7 @@ async function measurePage(browser, url, vp) {
       tapUnder24: tiny.length,
       tapUnder24Examples: tiny.slice(0, 6).map((el) => `${el.textContent.trim().slice(0, 30) || el.getAttribute('aria-label')} (${Math.round(el.getBoundingClientRect().height)}px)`),
       tapUnder44: blockish.filter((el) => el.getBoundingClientRect().height < 44).length,
-      brokenImages: imgs.filter((i) => i.complete && i.naturalWidth === 0).map((i) => i.src.slice(0, 100)),
+      brokenFragments,
       missingAlt: imgs.filter((i) => !i.hasAttribute('alt')).map((i) => i.src.slice(0, 100)),
       h1Count: headings.filter((h) => h === 1).length,
       headingSkips: skips,
@@ -188,7 +209,7 @@ async function measurePage(browser, url, vp) {
     }
   })
   await page.close()
-  return { status: typeof res?.status === 'function' ? res.status() : null, errors, failed: [...new Set(failed)], bytes, requests, ...m }
+  return { status: typeof res?.status === 'function' ? res.status() : null, errors, failed: [...new Set(failed)], bytes, requests, brokenImages: unloadedImages, ...m }
 }
 
 /**
@@ -230,7 +251,8 @@ async function firstLoad(browser, url) {
     await ctx.close()
   }
   const median = (k) => runs.map((r) => r[k]).sort((a, b) => a - b)[1]
-  return { fcp: median('fcp'), lcp: median('lcp'), cls: median('cls'), lcpElement: runs[1].lcpElement }
+  const paint = (k) => runs.every((r) => r[k] > 0) ? median(k) : null
+  return { fcp: paint('fcp'), lcp: paint('lcp'), cls: median('cls'), lcpElement: runs[1].lcpElement }
 }
 
 async function checkLinks(urls) {
@@ -311,6 +333,7 @@ function score(pages, site) {
     s -= cut(p.tapUnder24, 1, 6)
     s -= p.smallestFontPx != null && p.smallestFontPx < 11 ? 3 : 0
     s -= cut(p.brokenImages.length, 4, 8)
+    s -= cut(p.brokenFragments.length, 3, 12)
     s -= cut(p.missingAlt.length, 1, 4)
     s -= p.h1Count === 1 ? 0 : 2
   }
@@ -319,11 +342,10 @@ function score(pages, site) {
     s -= site.pdf && site.pdf.pages !== 1 ? 10 : 0
     s -= cut(site.figureDrift.length, 2, 8)
     s -= cut(site.missingMeta.length, 1, 6)
-    const f = site.firstLoad
-    if (f) {
-      s -= f.lcp > 4000 ? 10 : f.lcp > 2500 ? 5 : 0
-      s -= f.fcp > 1800 ? 3 : 0
-      s -= f.cls > 0.1 ? 5 : 0
+    for (const f of Object.values(site.firstLoads)) {
+      s -= f.lcp > 4000 ? 10 : f.lcp == null || f.lcp >= 2500 ? 5 : 0
+      s -= f.fcp == null || f.fcp >= 1800 ? 3 : 0
+      s -= f.cls >= 0.1 ? 5 : 0
     }
   }
   return Math.max(0, Math.round(s))
@@ -342,6 +364,7 @@ function toMarkdown(run, previous) {
     ...p.failed.map((f) => `${p.path} ${p.viewport}: request — ${f}`),
     ...p.lowContrast.map((c) => `${p.path} ${p.viewport}: contrast ${c}`),
     ...p.tapUnder24Examples.map((t) => `${p.path} ${p.viewport}: tap target ${t}`),
+    ...p.brokenFragments.map((fragment) => `${p.path} ${p.viewport}: missing fragment target ${fragment}`),
     ...p.brokenImages.map((i) => `${p.path} ${p.viewport}: broken image ${i}`),
     ...p.missingAlt.map((i) => `${p.path} ${p.viewport}: no alt ${i}`),
   ])
@@ -351,10 +374,9 @@ function toMarkdown(run, previous) {
     if (run.site.pdf) L.push(`- Resume PDF: HTTP ${run.site.pdf.status}, ${run.site.pdf.pages ?? '?'} page(s)`)
     L.push(`- Resume figures vs GitHub: ${run.site.figureDrift.length ? run.site.figureDrift.map((d) => `\n  - ${d}`).join('') : 'in step'}`)
     L.push(`- Missing metadata: ${run.site.missingMeta.length ? run.site.missingMeta.join('; ') : 'none'}`)
-    const f = run.site.firstLoad
-    if (f) {
-      const mark = (v, good) => (v <= good ? '✓' : '✗')
-      L.push(`- First load, home, phone on 4G with 4× slower CPU (median of 3): first paint ${f.fcp}ms ${mark(f.fcp, 1800)} · largest paint ${f.lcp}ms ${mark(f.lcp, 2500)} (${f.lcpElement}) · layout shift ${f.cls} ${mark(f.cls, 0.1)}`)
+    for (const [path, f] of Object.entries(run.site.firstLoads)) {
+      const mark = (v, good) => (v != null && v < good ? '✓' : '✗')
+      L.push(`- First load, ${path}, phone on 4G with 4× slower CPU (median of 3): first paint ${f.fcp == null ? 'missing' : `${f.fcp}ms`} ${mark(f.fcp, 1800)} · largest paint ${f.lcp == null ? 'missing' : `${f.lcp}ms`} ${mark(f.lcp, 2500)} (${f.lcpElement}) · layout shift ${f.cls} ${mark(f.cls, 0.1)}`)
     }
   }
   if (run.benchmark?.length) {
@@ -388,11 +410,11 @@ function diff(run, prev) {
       if (now !== was) out.push(`${key(p)}: ${label} ${was} → ${now} ${(now > was) === worseIfUp ? '(worse)' : '(better)'}`)
     }
   }
-  const now = run.site?.firstLoad
-  const was = prev.site?.firstLoad
+  const now = run.site?.firstLoads?.['/']
+  const was = prev.site?.firstLoads?.['/'] ?? prev.site?.firstLoad
   if (now && was) {
     for (const [k, label, slack] of [['fcp', 'first paint', 250], ['lcp', 'largest paint', 300]]) {
-      if (Math.abs(now[k] - was[k]) >= slack) out.push(`home first load: ${label} ${was[k]}ms → ${now[k]}ms ${now[k] > was[k] ? '(worse)' : '(better)'}`)
+      if (now[k] != null && was[k] != null && Math.abs(now[k] - was[k]) >= slack) out.push(`home first load: ${label} ${was[k]}ms → ${now[k]}ms ${now[k] > was[k] ? '(worse)' : '(better)'}`)
     }
   }
   return out
@@ -418,7 +440,11 @@ async function auditSite(browser, target, paths, withSiteChecks) {
     const missingMeta = pages
       .filter((p) => p.viewport === 'desktop')
       .flatMap((p) => [!p.description && `${p.path} description`, !p.ogImage && `${p.path} og:image`, !p.hasIcon && `${p.path} icon`].filter(Boolean))
-    site = { links, pdf, figureDrift, missingMeta, firstLoad: await firstLoad(browser, `${target}/`) }
+    const firstLoads = {}
+    for (const path of ['/', '/archive/', '/use-cases/', '/use-cases/screenpolish/']) {
+      firstLoads[path] = await firstLoad(browser, target + path)
+    }
+    site = { links, pdf, figureDrift, missingMeta, firstLoads }
   }
   for (const p of pages) delete p.links
   return { target, pages, site, score: score(pages, site) }

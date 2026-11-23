@@ -1,9 +1,9 @@
 import { Eyebrow } from '../Eyebrow'
-import { useMemo, useState } from 'react'
+import { startTransition, useMemo, useRef, useState, ViewTransition } from 'react'
 import { MostViewed } from './MostViewed'
 import { PlaybookNetwork } from './PlaybookNetwork'
 import { UseCaseCard } from './UseCaseCard'
-import { categoryLabel, useCaseCategories, useCases, type UseCaseCategory } from '../../content/useCases'
+import { categoryLabel, useCaseCategories, useCases, newestUseCases, type UseCaseCategory } from '../../content/useCases'
 
 type SortMode = 'newest' | 'featured' | 'alphabetical'
 
@@ -33,30 +33,41 @@ function Filters({ selected, setSelected }: { selected: UseCaseCategory | 'all';
 }
 
 export function UseCasesDirectory() {
+  const search = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
+  const [filterQuery, setFilterQuery] = useState('')
   const [category, setCategory] = useState<UseCaseCategory | 'all'>('all')
   const [sort, setSort] = useState<SortMode>('newest')
 
   const visible = useMemo(() => {
-    const term = query.trim().toLocaleLowerCase()
-    const filtered = useCases.filter((entry) => {
+    const term = filterQuery.trim().toLocaleLowerCase()
+    const filtered = newestUseCases.filter((entry) => {
       const haystack = [entry.title, entry.description, categoryLabel(entry.category), ...entry.tools, ...entry.keywords].join(' ').toLocaleLowerCase()
       return (category === 'all' || entry.category === category) && (!term || haystack.includes(term))
     })
-    return [...filtered].sort((a, b) => {
+    return filtered.sort((a, b) => {
       if (sort === 'alphabetical') return a.title.localeCompare(b.title)
       if (sort === 'featured') return Number(b.featured) - Number(a.featured) || b.date.localeCompare(a.date)
-      return b.date.localeCompare(a.date)
+      return 0
     })
-  }, [category, query, sort])
+  }, [category, filterQuery, sort])
+
+  function updateResults(update: () => void) {
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) startTransition(update)
+    else update()
+  }
 
   const reset = () => {
     setQuery('')
-    setCategory('all')
+    updateResults(() => {
+      setFilterQuery('')
+      setCategory('all')
+    })
+    search.current?.focus()
   }
 
   return (
-    <main id="main" className="pb-24">
+    <main id="main" tabIndex={-1} className="scroll-mt-16 pb-24">
       <section className="relative isolate overflow-hidden border-b border-line">
         <PlaybookNetwork />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
@@ -82,7 +93,7 @@ export function UseCasesDirectory() {
           <aside className="hidden lg:block">
             <div className="sticky top-24">
               <h2 className="mb-4 font-mono text-xs text-fg-dim">Categories</h2>
-              <Filters selected={category} setSelected={setCategory} />
+              <Filters selected={category} setSelected={(value) => updateResults(() => setCategory(value))} />
             </div>
           </aside>
 
@@ -96,18 +107,26 @@ export function UseCasesDirectory() {
                   <path d="m21 21-4.3-4.3" />
                 </svg>
                 <input
+                  ref={search}
                   type="search"
                   value={query}
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => {
+                    const value = event.target.value
+                    setQuery(value)
+                    updateResults(() => setFilterQuery(value))
+                  }}
                   placeholder="Search"
-                  className="h-11 w-full rounded-lg border border-line bg-surface pl-11 pr-4 text-base sm:text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent"
+                  className="h-11 w-full rounded-lg border border-fg-faint bg-surface pl-11 pr-4 text-base sm:text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent"
                 />
               </label>
               <label>
                 <span className="sr-only">Sort use cases</span>
                 <select
                   value={sort}
-                  onChange={(event) => setSort(event.target.value as SortMode)}
+                  onChange={(event) => {
+                    const value = event.target.value as SortMode
+                    updateResults(() => setSort(value))
+                  }}
                   className="h-11 w-full rounded-lg border border-line bg-surface px-4 font-mono text-base sm:text-sm text-fg transition-colors hover:border-fg-faint focus:border-accent"
                 >
                   <option value="newest">Newest first</option>
@@ -119,7 +138,7 @@ export function UseCasesDirectory() {
 
             <details className="mt-3 rounded-xl border border-line bg-surface lg:hidden">
               <summary className="cursor-pointer px-4 py-3 font-mono text-xs text-fg">Filter categories</summary>
-              <div className="border-t border-line p-2"><Filters selected={category} setSelected={setCategory} /></div>
+              <div className="border-t border-line p-2"><Filters selected={category} setSelected={(value) => updateResults(() => setCategory(value))} /></div>
             </details>
 
             <div className="my-7 flex items-center justify-between gap-4 border-b border-line pb-4">
@@ -133,7 +152,11 @@ export function UseCasesDirectory() {
 
             {visible.length > 0 ? (
               <div className="grid gap-5 md:grid-cols-2 xl:gap-6">
-                {visible.map((entry) => <UseCaseCard key={entry.slug} entry={entry} />)}
+                {visible.map((entry) => (
+                  <ViewTransition key={entry.slug} default="none" enter="all-work-enter" exit="all-work-exit" update="all-work-move">
+                    <UseCaseCard entry={entry} />
+                  </ViewTransition>
+                ))}
               </div>
             ) : (
               <div className="rounded-xl border border-dashed border-line px-6 py-20 text-center">
@@ -152,7 +175,7 @@ export function UseCasesDirectory() {
             Related posts on X
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
-            X posts ranked by recorded views. Each links to the original post.
+            Browse posts from my X analytics export. Each links to the original post.
           </p>
         </div>
         <div className="mt-10">
