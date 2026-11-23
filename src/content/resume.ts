@@ -55,8 +55,8 @@ export const resume = {
       dates: 'Oct 2026 - present',
       link: 'github.com/BkashJEE/hermes-nous-calendar',
       bullets: [
-        'Built a Hermes Desktop plugin that turns 50–200 daily Hermes Agent merges into one card per day: releases, official plugins, features and catalog additions.',
-        'Added self-refresh from GitHub every 6 hours and opt-in alerts to every Hermes channel within 15 minutes, using no model tokens; also live on the web.',
+        'Built a Hermes Desktop plugin that shows what Nous shipped for Hermes Agent, one card per day.',
+        'Refreshes from GitHub every 6 hours; opt-in alerts reach every Hermes channel within 15 minutes.',
       ],
       tech: 'Python · GitHub API · hermes cron',
     },
