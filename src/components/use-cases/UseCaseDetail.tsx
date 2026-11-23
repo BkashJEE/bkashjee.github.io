@@ -1,3 +1,5 @@
+import { ScrollProgress } from '../../motion/ScrollProgress'
+import { Eyebrow } from '../Eyebrow'
 import { categoryLabel, statusLabel, useCases, type UseCaseEntry } from '../../content/useCases'
 import { UseCaseCard } from './UseCaseCard'
 
@@ -16,25 +18,26 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
   const screenshots = entry.screenshots.filter((image) => image.src !== entry.image.src)
 
   return (
-    <main className="pb-24 pt-20">
+    <main id="main" tabIndex={-1} className="pb-24">
+      <ScrollProgress />
       <article>
         <header className="border-b border-line">
-          <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-            <a href="/use-cases/" className="font-mono text-xs text-fg-dim transition-colors hover:text-accent">← Back to the playbook</a>
-            <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end">
+          <div className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
+            <a href="/use-cases/" className="inline-flex min-h-6 items-center font-mono text-xs text-fg-dim transition-colors hover:text-accent">← Back to the playbook</a>
+            <div className="mt-6">
               <div>
-                <div className="flex flex-wrap items-center gap-3 font-mono text-[0.75rem] uppercase tracking-[0.16em]">
-                  <span className="text-accent">{categoryLabel(entry.category)}</span>
+                <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
+                  <Eyebrow>{categoryLabel(entry.category)}</Eyebrow>
                   <span className="text-fg-faint">·</span>
                   <span className="text-fg-dim">{statusLabel(entry.status)}</span>
                   {entry.sourcePrivate && <><span className="text-fg-faint">·</span><span className="text-fg-dim">Source private</span></>}
                 </div>
-                <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.8rem,7vw,6rem)] leading-[0.96] text-fg">{entry.title}</h1>
+                <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.96] text-fg">{entry.title}</h1>
                 <p className="mt-7 max-w-3xl text-lg leading-8 text-fg-dim sm:text-xl">{entry.description}</p>
               </div>
-              <dl className="space-y-4 border-l border-line pl-5 font-mono text-xs">
-                <div><dt className="uppercase tracking-[0.16em] text-fg-dim">Published</dt><dd className="mt-1.5 text-fg">{formatDate(entry.date)}</dd></div>
-                <div><dt className="uppercase tracking-[0.16em] text-fg-dim">Tools</dt><dd className="mt-1.5 leading-5 text-fg">{entry.tools.join(', ')}</dd></div>
+              <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs">
+                <div><dt className="text-fg-dim">Published</dt><dd className="mt-1.5 text-fg">{formatDate(entry.date)}</dd></div>
+                <div><dt className="text-fg-dim">Tools</dt><dd className="mt-1.5 leading-5 text-fg">{entry.tools.join(', ')}</dd></div>
               </dl>
             </div>
             {entry.links && (
@@ -44,29 +47,28 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
                 {entry.links.post && <ExternalLink href={entry.links.post}>Original post</ExternalLink>}
               </div>
             )}
+            <figure className="mt-8 overflow-hidden rounded-xl border border-line bg-surface p-2">
+              <img src={entry.image.src} width={entry.image.width} height={entry.image.height} alt={entry.image.alt} fetchPriority="high" className="mx-auto max-h-[42rem] w-full rounded-lg object-contain" />
+            </figure>
           </div>
         </header>
 
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
-          <figure className="overflow-hidden rounded-2xl border border-line bg-surface p-4 sm:p-8">
-            <img src={entry.image.src} width={entry.image.width} height={entry.image.height} alt={entry.image.alt} fetchPriority="high" className="mx-auto max-h-[42rem] w-full rounded-lg object-contain" />
-          </figure>
-
+        <div className="mx-auto max-w-6xl px-6">
           <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-20">
             <div className="space-y-16">
               <section aria-labelledby="problem-heading">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">01 · Problem</p>
-                <h2 id="problem-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">What needed to change</h2>
+                <Eyebrow>Problem</Eyebrow>
+                <h2 id="problem-heading" className="mt-4 font-display text-4xl text-fg">What needed to change</h2>
                 <p className="mt-5 text-lg leading-8 text-fg-dim">{entry.problem}</p>
               </section>
               <section aria-labelledby="solution-heading">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">02 · Solution</p>
-                <h2 id="solution-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">The working approach</h2>
+                <Eyebrow>Solution</Eyebrow>
+                <h2 id="solution-heading" className="mt-4 font-display text-4xl text-fg">The working approach</h2>
                 <p className="mt-5 text-lg leading-8 text-fg-dim">{entry.solution}</p>
               </section>
               <section aria-labelledby="workflow-heading">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">03 · Workflow</p>
-                <h2 id="workflow-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">How it works</h2>
+                <Eyebrow>Workflow</Eyebrow>
+                <h2 id="workflow-heading" className="mt-4 font-display text-4xl text-fg">How it works</h2>
                 <ol className="mt-7 space-y-3">
                   {entry.workflow.map((step, index) => (
                     <li key={step} className="grid grid-cols-[2.5rem_1fr] gap-4 rounded-xl border border-line bg-surface p-5">
@@ -77,8 +79,8 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
                 </ol>
               </section>
               <section aria-labelledby="lessons-heading">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">04 · Lessons</p>
-                <h2 id="lessons-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">Limits and tradeoffs</h2>
+                <Eyebrow>Lessons</Eyebrow>
+                <h2 id="lessons-heading" className="mt-4 font-display text-4xl text-fg">Limits and tradeoffs</h2>
                 <ul className="mt-6 space-y-4 text-base leading-7 text-fg-dim">
                   {entry.limitations.map((item) => <li key={item} className="border-l border-line pl-5">{item}</li>)}
                 </ul>
@@ -86,12 +88,12 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
             </div>
 
             <aside>
-              <div className="sticky top-24 rounded-2xl border border-line bg-surface p-5">
-                <h2 className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">Measured outcomes</h2>
+              <div className="sticky top-24 rounded-xl border border-line bg-surface p-5">
+                <h2 className="font-mono text-xs text-fg-dim">Measured outcomes</h2>
                 <dl className="mt-5 divide-y divide-line">
                   {entry.outcomes.map((outcome) => (
                     <div key={outcome.label} className="py-5 first:pt-0 last:pb-0">
-                      <dt className="font-display text-3xl text-fg">{outcome.value}</dt>
+                      <dt className="font-display text-4xl text-fg">{outcome.value}</dt>
                       <dd className="mt-1.5 text-sm leading-5 text-fg-dim">{outcome.label}</dd>
                     </div>
                   ))}
@@ -102,11 +104,11 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
 
           {screenshots.length > 0 && (
             <section className="mt-20 border-t border-line pt-16" aria-labelledby="screenshots-heading">
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">Screenshots</p>
-              <h2 id="screenshots-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">Inside the workflow</h2>
+              <Eyebrow>Screenshots</Eyebrow>
+              <h2 id="screenshots-heading" className="mt-4 font-display text-4xl text-fg">Inside the workflow</h2>
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
                 {screenshots.map((image) => (
-                  <figure key={image.src} className="overflow-hidden rounded-2xl border border-line bg-surface p-3">
+                  <figure key={image.src} className="overflow-hidden rounded-xl border border-line bg-surface p-3">
                     <img src={image.src} width={image.width} height={image.height} alt={image.alt} loading="lazy" decoding="async" className="h-full max-h-[34rem] w-full rounded-lg object-contain" />
                   </figure>
                 ))}
@@ -116,8 +118,8 @@ export function UseCaseDetail({ entry }: { entry: UseCaseEntry }) {
 
           {related.length > 0 && (
             <section className="mt-20 border-t border-line pt-16" aria-labelledby="related-heading">
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">Keep exploring</p>
-              <h2 id="related-heading" className="mt-4 font-display text-3xl text-fg sm:text-4xl">Related use cases</h2>
+              <Eyebrow>Keep Exploring</Eyebrow>
+              <h2 id="related-heading" className="mt-4 font-display text-4xl text-fg">Related use cases</h2>
               <div className="mt-8 grid gap-5 md:grid-cols-2">{related.map((item) => <UseCaseCard key={item.slug} entry={item} />)}</div>
             </section>
           )}

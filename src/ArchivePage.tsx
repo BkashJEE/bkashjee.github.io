@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { BrandMark } from './components/BrandMark'
+import { SiteNav } from './components/SiteNav'
+import { SiteFooter } from './components/SiteFooter'
 import github from './content/github.json'
 import { archiveExtras, identity } from './content/projects'
 
@@ -189,14 +190,7 @@ export default function ArchivePage() {
   return (
     <div className="min-h-svh">
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-md focus:bg-white focus:px-4 focus:text-zinc-900 focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900">Skip to content</a>
-      <header className="border-b border-line">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4" aria-label="Main">
-          <BrandMark />
-          <a href="/" className="inline-flex min-h-11 items-center font-mono text-[0.8rem] text-fg-dim transition-colors hover:text-fg">
-            ← Back to portfolio
-          </a>
-        </nav>
-      </header>
+      <SiteNav page="archive" />
 
       <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-6 py-10 sm:py-20">
         <p className="flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-accent">
@@ -310,8 +304,8 @@ export default function ArchivePage() {
             ))}
           </div>
         )}
-        <a href="/#work" className="mt-8 inline-flex min-h-11 items-center text-accent hover:underline">Back to selected work →</a>
       </main>
+      <SiteFooter />
     </div>
   )
 }

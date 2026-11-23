@@ -168,14 +168,14 @@ function PluginIcon({ name, ink }: { name: string; ink: string }) {
  * What each tool is, derived from its install command so the label can't
  * drift from the data. Drives the subtitle and the card's top edge.
  */
-function kindOf(plugin: Plugin) {
+function categoryOf(plugin: Plugin) {
   if (plugin.install?.startsWith('hermes plugins install')) {
-    return { label: 'Hermes plugin', edge: 'border-t-accent/70', tile: 'border-accent/25 bg-accent/10', ink: 'text-accent' }
+    return 'Hermes plugin'
   }
   if (plugin.install?.startsWith('hermes skills tap add')) {
-    return { label: 'Hermes skills tap', edge: 'border-t-teal/70', tile: 'border-teal/25 bg-teal/10', ink: 'text-teal' }
+    return 'Hermes skills tap'
   }
-  return { label: 'Open source', edge: 'border-t-violet/70', tile: 'border-violet/25 bg-violet/10', ink: 'text-violet' }
+  return 'Open source'
 }
 
 /** The one-liner as the reference card's bullets: one per sentence. */
@@ -188,7 +188,7 @@ const bulletsOf = (line: string) =>
 const prStatus: Record<string, { opened: string; state: string }> = github.prs
 
 const stateStyle: Record<string, string> = {
-  merged: 'border-violet/50 text-violet',
+  merged: 'border-line text-fg-dim',
   open: 'border-teal/50 text-teal',
   draft: 'border-line text-fg-faint',
   closed: 'border-line text-fg-faint',
@@ -200,7 +200,7 @@ function PrMeta({ number }: { number: number }) {
   if (!pr) return null
   const date = new Date(pr.opened + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
   return (
-    <span className="flex w-full shrink-0 flex-wrap items-center gap-3 font-mono text-[0.75rem] text-fg-faint sm:ml-auto sm:w-auto">
+    <span className="flex w-full shrink-0 flex-wrap items-center gap-3 font-mono text-xs text-fg-faint sm:ml-auto sm:w-auto">
       <span className="hidden sm:inline">{date}</span>
       <span className={`rounded-full border px-2 py-0.5 ${stateStyle[pr.state] ?? stateStyle.open}`}>{pr.state}</span>
     </span>
@@ -210,7 +210,7 @@ function PrMeta({ number }: { number: number }) {
 function StarCount({ plugin }: { plugin: Plugin }) {
   const stars = plugin.stars
   return (
-    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-[0.75rem] text-fg-faint" title={`${stars} GitHub stars`}>
+    <span className="inline-flex shrink-0 items-baseline gap-1.5 font-mono text-xs text-fg-faint" title={`${stars} GitHub stars`}>
       <span className="text-accent" aria-hidden="true">★</span>
       <span className="text-fg-dim tabular-nums">{stars}</span>
       <span aria-hidden="true">GitHub stars</span>
@@ -231,16 +231,16 @@ function InstallCommand({ command }: { command: string }) {
   }
   return (
     <div className="mt-4 min-w-0 rounded-lg border border-line bg-surface/70 px-3 py-2">
-      <code className="block whitespace-pre-wrap break-all font-mono text-[0.75rem] text-fg-dim">{command}</code>
+      <code className="block whitespace-pre-wrap break-all font-mono text-xs text-fg-dim">{command}</code>
       <button
         type="button"
         onClick={copy}
         aria-label={`Copy install command: ${command}`}
-        className="mt-2 inline-flex min-h-11 items-center font-mono text-[0.75rem] font-medium text-accent transition-colors hover:text-fg"
+        className="mt-2 inline-flex min-h-11 items-center font-mono text-xs font-medium text-accent transition-colors hover:text-fg"
       >
         Copy command
       </button>
-      <p role="status" className="font-mono text-[0.75rem] text-fg-dim">{status}</p>
+      <p role="status" className="font-mono text-xs text-fg-dim">{status}</p>
     </div>
   )
 }
@@ -293,7 +293,7 @@ function Rail({ children, count, recent }: { children: React.ReactNode; count: n
   return (
     <div className="mx-auto mt-10 max-w-6xl px-6">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
+        <p className="font-mono text-xs text-fg-faint">
           {count} published · {recent} in the last 30 days ·{' '}
           <span className="sm:hidden">swipe →</span>
           <span className="hidden sm:inline">most stars first</span>
@@ -344,37 +344,38 @@ export function Plugins() {
   const [expanded, setExpanded] = useState(false)
   return (
     <section id="plugins" className="overflow-x-clip border-y border-line bg-surface/40 py-20 sm:py-28">
-      <SectionHeading eyebrow="Plugins & open source" title="Install something I made" ghost="Tools" />
+      <SectionHeading eyebrow="Plugins & open source" title="Install something I made" />
       <Reveal className="mx-auto max-w-6xl px-6">
         <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">
           Published tools and plugins, live on GitHub. The private case studies above show what I build; these show how
           I build it.
         </p>
-        <p className="mt-2 font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">
+        <p className="mt-2 font-mono text-xs text-fg-faint">
           ★ GitHub stars checked {starsChecked}
         </p>
       </Reveal>
       <Rail count={plugins.length} recent={shippedRecently}>
         {[...plugins].sort((a, b) => b.stars - a.stars).map((plugin, i) => (
-          <Reveal key={plugin.name} delay={0.04 * Math.min(i, 3)} className="w-[min(20rem,80vw)] shrink-0 snap-start">
-            <article className={`group/card flex h-full min-w-0 flex-col rounded-xl border border-t-2 border-line ${kindOf(plugin).edge} bg-ink p-5 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:bg-surface/70 hover:shadow-lg hover:shadow-black/20 focus-within:border-accent/35 motion-safe:hover:-translate-y-1`}>
+          <Reveal key={plugin.name} delay={0.04 * i} y={8} className="w-[min(20rem,80vw)] shrink-0 snap-start">
+            <article className="card group/card flex h-full min-w-0 flex-col p-5">
               <div className="flex items-start gap-3">
-                <span className={`flex size-10 shrink-0 items-center justify-center rounded-lg border ${kindOf(plugin).tile}`}>
-                  <PluginIcon name={plugin.name} ink={kindOf(plugin).ink} />
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-raised">
+                  <PluginIcon name={plugin.name} ink="text-fg-dim" />
                 </span>
                 <div className="min-w-0">
-                  <h3 className="font-display text-[1.05rem] font-semibold leading-tight text-fg">{plugin.name}</h3>
-                  <p className="mt-1 font-mono text-[0.75rem] text-fg-faint">
-                    <span className={kindOf(plugin).ink}>{plugin.platform}</span> · {plugin.lang}
+                  <h3 className="font-display text-base font-semibold leading-tight text-fg">{plugin.name}</h3>
+                  <p className="mt-1 font-mono text-xs text-fg-faint">
+                    <span className="mr-1.5 inline-block size-1.5 rounded-full bg-accent" aria-hidden="true" />
+                    {categoryOf(plugin)} · {plugin.lang}
                   </p>
                 </div>
               </div>
 
-              <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.16em] text-fg-faint">What it does</p>
+              <p className="mt-4 font-mono text-xs text-fg-faint">What it does</p>
               <ul className="mt-2 flex-1 space-y-1.5">
                 {bulletsOf(plugin.line).map((bullet) => (
-                  <li key={bullet} className="flex gap-2 text-[0.88rem] leading-6 text-fg-dim">
-                    <span className={`${kindOf(plugin).ink} select-none`} aria-hidden="true">•</span>
+                  <li key={bullet} className="flex gap-2 text-sm leading-6 text-fg-dim">
+                    <span className="select-none text-fg-dim" aria-hidden="true">•</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -382,10 +383,10 @@ export function Plugins() {
 
               {plugin.install && <InstallCommand command={plugin.install} />}
 
-              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-[0.75rem]">
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-xs">
                 <StarCount plugin={plugin} />
                 <a href={plugin.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-8 items-center gap-1.5 font-medium text-accent transition-colors hover:text-fg">
-                  View source <span aria-hidden="true" className="transition-transform group-hover/card:translate-x-0.5">↗</span>
+                  View source <span aria-hidden="true" className="motion-safe:transition-transform motion-safe:group-hover/card:translate-x-0.5">↗</span>
                 </a>
               </div>
             </article>
@@ -404,7 +405,7 @@ export function Plugins() {
         </button>
         <ul id="all-tools" hidden={!expanded} className={`mt-4 grid-cols-1 gap-4 sm:grid-cols-2 ${expanded ? 'grid' : 'hidden'}`}>
           {plugins.map((plugin) => (
-            <li key={plugin.name} className="min-w-0 rounded-xl border border-line bg-ink p-5">
+            <li key={plugin.name} className="card min-w-0 p-5">
               <h3 className="font-display text-lg text-fg">{plugin.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-fg-dim">{bulletsOf(plugin.line)[0]}.</p>
               {plugin.install && <InstallCommand command={plugin.install} />}
@@ -417,7 +418,7 @@ export function Plugins() {
       </div>
 
       <Reveal className="mx-auto mt-16 max-w-6xl px-6">
-        <h3 className="font-mono text-[0.8rem] uppercase tracking-[0.2em] text-fg-dim">
+        <h3 className="font-mono text-[13px] text-fg-dim">
           Upstream · NousResearch/hermes-agent
         </h3>
         <ul className="mt-4 divide-y divide-line border-y border-line">
@@ -429,15 +430,15 @@ export function Plugins() {
                 rel="noreferrer"
                 className="group flex flex-wrap items-baseline gap-x-4 gap-y-2 py-3 transition-colors hover:bg-surface/60 sm:flex-nowrap"
               >
-                <span className="shrink-0 font-mono text-[0.78rem] text-accent">#{pr.number}</span>
+                <span className="shrink-0 font-mono text-xs text-accent">#{pr.number}</span>
                 <span className="text-sm text-fg-dim transition-colors group-hover:text-fg">{pr.title}</span>
                 <PrMeta number={pr.number} />
               </a>
             </li>
           ))}
         </ul>
-        <p className="mt-4 font-mono text-[0.8rem]">
-          <a href={upstreamPRsUrl} target="_blank" rel="noreferrer" className="link-sweep text-fg-dim hover:text-fg">
+        <p className="mt-4 font-mono text-[13px]">
+          <a href={upstreamPRsUrl} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-6 items-center text-fg-dim hover:text-fg">
             All pull requests by @BkashJEE ↗
           </a>
         </p>

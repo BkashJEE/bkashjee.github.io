@@ -1,29 +1,30 @@
+import { Eyebrow } from './Eyebrow'
 import { identity, plugins } from '../content/projects'
 import github from '../content/github.json'
-import { audience } from '../content/mostViewed'
 import { HeroPortrait } from './HeroPortrait'
 import { HeroTicker } from './HeroTicker'
 
 const BOT_FORGE = 'https://github.com/BkashJEE/hermes-bot-forge'
-const views = (n: number) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : `${Math.round(n / 1000)}K`)
-const monthDay = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+// X Analytics, read 23 Nov 2026
+const X_IMPRESSIONS = '5.3M'
 
 /**
  * The strongest facts on the site, at first sight, each linking to its
  * evidence. Stars are GitHub's count at the last build.
  */
 function HeroProof() {
-  const stars = plugins.find((p) => p.repo === BOT_FORGE)?.stars ?? 0
+  const stars = plugins.find((p) => p.repo === BOT_FORGE)?.stars
   // Spaced like the link row below rather than dot-separated, so a wrap can
   // never leave a separator dangling. Each fact says what its number counts.
   const item = 'inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-fg'
   const figure = 'font-medium text-fg tabular-nums'
   return (
-    <div className="pointer-events-auto flex max-w-xl flex-wrap gap-x-6 font-mono text-[0.8rem] text-fg-dim">
+    <div className="pointer-events-auto flex max-w-xl flex-wrap gap-x-6 font-mono text-[13px] text-fg-dim">
       <a href="#bot-forge" className={item}>
         <span>
-          Bot Forge · <span className="text-accent" aria-hidden="true">★</span> <span className={figure}>{stars}</span> GitHub
-          stars · in the official Hermes plugin catalog
+          Bot Forge · {typeof stars === 'number' && (
+            <><span className="text-accent" aria-hidden="true">★</span> <span className={figure}>{stars}</span> GitHub stars · </>
+          )}in the official Hermes plugin catalog
         </span>
       </a>
       <a href="/archive/" className={item}>
@@ -33,8 +34,7 @@ function HeroProof() {
       </a>
       <a href="/use-cases/" className={item}>
         <span className="whitespace-nowrap">
-          <span className={figure}>{views(audience.impressions)}</span> X impressions · {monthDay(audience.from)}–
-          {monthDay(audience.to)}, {audience.to.slice(0, 4)}
+          <span className={figure}>{X_IMPRESSIONS}</span> X impressions · last 12 months
         </span>
       </a>
     </div>
@@ -50,14 +50,9 @@ export function Hero() {
         <HeroPortrait />
         {/* pointer-events-none so the full-width text block doesn't swallow the
             portrait's hover; interactive children re-enable themselves. */}
-        <div className="pointer-events-none relative mx-auto my-auto w-full max-w-6xl px-6 pt-20 pb-6">
+        <div className="pointer-events-none relative mx-auto my-auto w-full max-w-6xl px-6 pt-8 pb-6">
           <div className="hero-rise">
-            <p className="mb-6 flex items-center gap-2.5 font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-dim">
-              <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-              {identity.role}
-              {/* On a phone the full list wraps mid-phrase; the bio below already says it. */}
-              <span className="hidden sm:inline"> · desktop apps · web · AI agent systems</span>
-            </p>
+            <Eyebrow className="mb-6">{identity.role}</Eyebrow>
           </div>
           <h1 className="font-display text-[clamp(3.25rem,10vw,8rem)] leading-[0.95]">
             {/* Each word slides up out of its own clip; the right padding keeps
@@ -89,19 +84,21 @@ export function Hero() {
             <HeroProof />
           </div>
           <div className="hero-rise mt-8 lg:mt-10" style={{ '--d': '0.35s' } as React.CSSProperties}>
-            <div className="pointer-events-auto flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[0.8rem]">
+            <div className="pointer-events-auto flex flex-col items-start gap-2 font-mono text-[13px]">
               <a href="#work" className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 py-2.5 font-medium text-ink transition-colors hover:bg-fg">
                 Selected work ↓
               </a>
-              <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-                GitHub
-              </a>
-              <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-                X
-              </a>
-              <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
-                {identity.email}
-              </a>
+              <div className="flex flex-wrap items-center gap-x-6">
+                <a href={identity.github} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                  GitHub
+                </a>
+                <a href={identity.x} target="_blank" rel="noreferrer" className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                  X
+                </a>
+                <a href={`mailto:${identity.email}`} className="link-sweep inline-flex min-h-11 items-center text-fg-dim hover:text-fg">
+                  {identity.email}
+                </a>
+              </div>
             </div>
           </div>
           {/* Phones never see the interactive portrait — give them a still, below

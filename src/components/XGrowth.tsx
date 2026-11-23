@@ -40,7 +40,7 @@ export function XGrowth() {
       <dl className="grid grid-cols-3 gap-4 border-b border-line pb-5">
         {stats.map(([label, value]) => (
           <div key={label}>
-            <dt className="font-mono text-[0.75rem] uppercase tracking-wider text-fg-faint">{label}</dt>
+            <dt className="font-mono text-xs text-fg-faint">{label}</dt>
             <dd className="mt-1 font-display text-xl font-semibold tabular-nums text-fg sm:text-2xl">
               <CountUp value={value} format={compact} />
             </dd>
@@ -48,13 +48,13 @@ export function XGrowth() {
         ))}
       </dl>
 
-      <p className="mt-5 text-[0.95rem] font-medium text-fg">Views on my X posts, by the week I posted them</p>
+      <p className="mt-5 text-base font-medium text-fg">Views on my X posts, by the week I posted them</p>
 
       <div className="relative mt-4 h-44 sm:h-52" aria-hidden="true" onPointerLeave={() => setActive(null)}>
         {/* Recessive hairline grid. */}
         {grid.map((v) => (
           <div key={v} className="pointer-events-none absolute inset-x-0 border-t border-line" style={{ bottom: `${(v / top) * 100}%` }}>
-            <span className="absolute -top-2.5 left-0 bg-surface pr-1.5 font-mono text-[0.75rem] tabular-nums text-fg-faint">{compact(v)}</span>
+            <span className="absolute -top-2.5 left-0 bg-surface pr-1.5 font-mono text-xs tabular-nums text-fg-faint">{compact(v)}</span>
           </div>
         ))}
         <div className="absolute inset-0 flex items-end border-b border-fg-faint/60 pl-9">
@@ -69,7 +69,7 @@ export function XGrowth() {
               >
                 {w === peak && (
                   <span
-                    className="pointer-events-none absolute whitespace-nowrap font-mono text-[0.75rem] font-medium tabular-nums text-fg"
+                    className="pointer-events-none absolute whitespace-nowrap font-mono text-xs font-medium tabular-nums text-fg"
                     style={{ bottom: `calc(${(w.views / top) * 100}% + 4px)` }}
                   >
                     {compact(w.views)}
@@ -85,7 +85,7 @@ export function XGrowth() {
         </div>
         {shown && (
           <div
-            className="pointer-events-none absolute top-0 left-11 rounded-lg border border-line bg-raised px-3 py-2 text-[0.8rem] leading-snug text-fg shadow-lg shadow-black/30"
+            className="pointer-events-none absolute top-0 left-11 rounded-lg border border-line bg-raised px-3 py-2 text-[13px] leading-snug text-fg"
           >
             <span className="block text-fg-faint">Week of {dayMonth(shown.week, true)}</span>
             <span className="block font-medium tabular-nums">{shown.views.toLocaleString('en-US')} views</span>
@@ -95,7 +95,7 @@ export function XGrowth() {
           </div>
         )}
       </div>
-      <div className="mt-2 flex pl-9 font-mono text-[0.75rem] text-fg-faint" aria-hidden="true">
+      <div className="mt-2 flex pl-9 font-mono text-xs text-fg-faint" aria-hidden="true">
         {weeks.map((w) => (
           <span key={w.week} className="flex-1 overflow-visible whitespace-nowrap">
             {firstOfMonth.has(w.week) ? dayMonth(w.week).split(' ')[0] : ''}
@@ -103,14 +103,14 @@ export function XGrowth() {
         ))}
       </div>
 
-      <figcaption className="mt-4 text-[0.85rem] leading-relaxed text-fg-dim">
+      <figcaption className="mt-4 text-sm leading-relaxed text-fg-dim">
         From my X analytics export, counted {dayMonth(weekly.counted, true)}. Totals cover {dayMonth(audience.from)} to{' '}
         {dayMonth(audience.to, true)}; the latest weeks keep growing as their posts gather views.
       </figcaption>
 
       <details className="mt-3">
-        <summary className="inline-flex min-h-11 cursor-pointer items-center font-mono text-[0.8rem] text-fg-dim hover:text-fg">Show as a table</summary>
-        <table className="mt-2 w-full max-w-md text-left text-[0.85rem] tabular-nums">
+        <summary className="inline-flex min-h-11 cursor-pointer items-center font-mono text-[13px] text-fg-dim hover:text-fg">Show as a table</summary>
+        <table className="mt-2 w-full max-w-md text-left text-sm tabular-nums">
           <thead className="text-fg-faint">
             <tr>
               <th className="py-1 font-normal">Week of</th>

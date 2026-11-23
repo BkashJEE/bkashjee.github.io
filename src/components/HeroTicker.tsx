@@ -1,3 +1,4 @@
+import { Eyebrow } from './Eyebrow'
 import { useState } from 'react'
 import { identity } from '../content/projects'
 import { viewedUseCases } from '../content/mostViewed'
@@ -40,26 +41,26 @@ type Post = (typeof top)[number]
 function PostCard({ post, copy }: { post: Post; copy: boolean }) {
   const tab = copy ? -1 : undefined
   return (
-    <article className="relative flex w-[16.5rem] flex-col rounded-xl border border-line bg-surface/75 p-3 text-left text-fg transition-colors hover:border-accent/60 hover:bg-surface">
+    <article className="relative flex w-[16.5rem] flex-col card p-5 text-left text-fg">
       <div className="flex items-center gap-2.5">
         <img src="/assets/avatar.webp" alt="" width={32} height={32} loading="lazy" decoding="async" className="size-8 shrink-0 rounded-full" />
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[0.82rem] font-semibold">{identity.name}</p>
-          <p className="text-[0.78rem] text-fg-faint">{handle}</p>
+          <p className="truncate text-[13px] font-semibold">{identity.name}</p>
+          <p className="text-xs text-fg-faint">{handle}</p>
         </div>
       </div>
-      <p className="mt-2 line-clamp-2 whitespace-normal text-[0.82rem] leading-snug text-fg-dim">{post.title}</p>
+      <p className="mt-2 line-clamp-2 whitespace-normal text-[13px] leading-snug text-fg-dim">{post.title}</p>
       <a
         href={post.postUrl}
         target="_blank"
         rel="noreferrer"
         tabIndex={tab}
         aria-label={`${post.title}, ${count(post.impressions)} views. Open the post on X`}
-        className="mt-1 inline-flex min-h-6 items-center self-start text-[0.78rem] text-fg-faint after:absolute after:inset-0 after:rounded-xl hover:underline"
+        className="mt-1 inline-flex min-h-6 items-center self-start text-xs text-fg-faint after:absolute after:inset-0 after:rounded-xl hover:underline"
       >
         {day(post.date)}
       </a>
-      <div className="mt-auto flex items-center gap-4 pt-2 text-[0.78rem] tabular-nums text-fg-faint">
+      <div className="mt-auto flex items-center gap-4 pt-2 text-xs tabular-nums text-fg-faint">
         <Glyph k="reply" />
         {(['reposts', 'likes', 'impressions'] as const).map((k) => (
           <span key={k} className={`flex items-center gap-1.5 ${k === 'impressions' ? 'font-medium text-accent' : ''}`}>
@@ -96,8 +97,8 @@ export function HeroTicker() {
     <div className="hero-rise relative z-10 border-t border-line bg-bg" style={{ '--d': '0.45s' } as React.CSSProperties}>
       <div className="mx-auto max-w-6xl px-6 pt-2 pb-3">
         <div className="mb-1 flex flex-wrap items-center gap-x-4 gap-y-1">
-          <p className="font-mono text-[0.8rem] uppercase tracking-[0.25em] text-fg-faint">Most viewed on X</p>
-          <a href={identity.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-[0.8rem] text-accent transition-colors hover:text-fg">
+          <Eyebrow>Most Viewed on X</Eyebrow>
+          <a href={identity.x} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-[13px] text-accent transition-colors hover:text-fg">
             View {handle} on X ↗
           </a>
           <button

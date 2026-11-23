@@ -1,3 +1,4 @@
+import { Eyebrow } from '../Eyebrow'
 import { useMemo, useState } from 'react'
 import { MostViewed } from './MostViewed'
 import { PlaybookNetwork } from './PlaybookNetwork'
@@ -55,33 +56,32 @@ export function UseCasesDirectory() {
   }
 
   return (
-    <main id="main" className="pb-24 pt-20">
+    <main id="main" className="pb-24">
       <section className="relative isolate overflow-hidden border-b border-line">
-        <div className="ambient absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
         <PlaybookNetwork />
-        <div className="relative z-10 mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">New entries as I build them</p>
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
+          <Eyebrow>New Entries as I Build Them</Eyebrow>
           <div className="mt-6 grid items-end gap-10 lg:grid-cols-[1fr_auto]">
             <div className="max-w-4xl">
-              <h1 className="font-display text-[clamp(3.2rem,9vw,7.5rem)] leading-[0.9] text-fg">Playbook<span className="text-accent">.</span></h1>
+              <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.9] text-fg">Playbook<span className="text-accent">.</span></h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-fg-dim sm:text-xl">
                 What I built, how it works, and where it still falls short.
               </p>
             </div>
             <div className="border-l-2 border-accent pl-5 lg:mb-2">
-              <strong className="block font-display text-5xl text-fg">{useCases.length}</strong>
-              <span className="mt-1 block font-mono text-xs uppercase tracking-[0.18em] text-fg-dim">Written up in full</span>
+              <strong className="block font-display text-4xl text-fg">{useCases.length}</strong>
+              <span className="mt-1 block font-mono text-xs text-fg-dim">Written up in full</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16" aria-label="Use-case directory">
-        <h2 className="mb-7 font-display text-3xl text-fg sm:text-4xl">Browse the playbook</h2>
+      <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16" aria-label="Use-case directory">
+        <h2 className="mb-7 font-display text-4xl text-fg">Browse the playbook</h2>
         <div className="grid gap-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12">
           <aside className="hidden lg:block">
             <div className="sticky top-24">
-              <h2 className="mb-4 font-mono text-[0.75rem] uppercase tracking-[0.2em] text-fg-dim">Categories</h2>
+              <h2 className="mb-4 font-mono text-xs text-fg-dim">Categories</h2>
               <Filters selected={category} setSelected={setCategory} />
             </div>
           </aside>
@@ -90,13 +90,17 @@ export function UseCasesDirectory() {
             <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_12rem]">
               <label className="relative block">
                 <span className="sr-only">Search use cases</span>
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 font-mono text-fg-dim" aria-hidden="true">⌕</span>
+                {/* Search icon from Lucide (ISC). */}
+                <svg className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-fg-dim" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
                 <input
                   type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search titles, tools, keywords…"
-                  className="h-12 w-full rounded-xl border border-line bg-surface pl-11 pr-4 text-base sm:text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent"
+                  placeholder="Search"
+                  className="h-11 w-full rounded-lg border border-line bg-surface pl-11 pr-4 text-base sm:text-sm text-fg placeholder:text-fg-dim transition-colors hover:border-fg-faint focus:border-accent"
                 />
               </label>
               <label>
@@ -104,7 +108,7 @@ export function UseCasesDirectory() {
                 <select
                   value={sort}
                   onChange={(event) => setSort(event.target.value as SortMode)}
-                  className="h-12 w-full rounded-xl border border-line bg-surface px-4 font-mono text-base sm:text-sm text-fg transition-colors hover:border-fg-faint focus:border-accent"
+                  className="h-11 w-full rounded-lg border border-line bg-surface px-4 font-mono text-base sm:text-sm text-fg transition-colors hover:border-fg-faint focus:border-accent"
                 >
                   <option value="newest">Newest first</option>
                   <option value="featured">Featured first</option>
@@ -123,7 +127,7 @@ export function UseCasesDirectory() {
                 {visible.length} {visible.length === 1 ? 'result' : 'results'}{category !== 'all' ? ` in ${categoryLabel(category)}` : ''}
               </p>
               {(query || category !== 'all') && (
-                <button type="button" onClick={reset} className="font-mono text-xs text-accent hover:text-fg">Clear filters</button>
+                <button type="button" onClick={reset} className="min-h-6 font-mono text-xs text-accent hover:text-fg">Clear filters</button>
               )}
             </div>
 
@@ -132,7 +136,7 @@ export function UseCasesDirectory() {
                 {visible.map((entry) => <UseCaseCard key={entry.slug} entry={entry} />)}
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-line px-6 py-20 text-center">
+              <div className="rounded-xl border border-dashed border-line px-6 py-20 text-center">
                 <p className="font-display text-2xl text-fg">No use cases match.</p>
                 <p className="mt-2 text-sm text-fg-dim">Try a different term or clear the category filter.</p>
                 <button type="button" onClick={reset} className="mt-6 rounded-full border border-line px-5 py-2.5 font-mono text-xs text-fg transition-colors hover:border-accent hover:text-accent">Clear filters</button>
@@ -143,11 +147,8 @@ export function UseCasesDirectory() {
       </section>
       <section className="scroll-mt-20 border-b border-line bg-surface/30 py-12 sm:py-20" aria-label="Related posts on X">
         <div className="mx-auto max-w-6xl px-6">
-          <p className="flex items-center gap-2.5 font-mono text-[0.78rem] uppercase tracking-[0.25em] text-accent">
-            <span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-            X posts
-          </p>
-          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight">
+          <Eyebrow>X Posts</Eyebrow>
+          <h2 className="mt-3 font-display text-4xl leading-tight">
             Related posts on X
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-fg-dim">

@@ -8,9 +8,9 @@ const formatDate = (date: string) => new Intl.DateTimeFormat('en-US', {
 
 export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
   return (
-    <article className="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 motion-safe:hover:-translate-y-1 hover:border-fg-faint/70">
-      <a href={`/use-cases/${entry.slug}/`} className="shine block overflow-hidden border-b border-line bg-raised" aria-label={`Read use case: ${entry.title}`}>
-        <div className="aspect-[16/10] p-5 sm:p-6">
+    <article className="card flex min-h-full flex-col overflow-hidden">
+      <a href={`/use-cases/${entry.slug}/`} className="block overflow-hidden border-b border-line bg-raised" aria-label={`Read use case: ${entry.title}`}>
+        <div className="aspect-[16/10]">
           <img
             src={entry.image.src}
             width={entry.image.width}
@@ -18,13 +18,13 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
             alt={entry.image.alt}
             loading="lazy"
             decoding="async"
-            className="h-full w-full rounded-lg object-contain transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
+            className="size-full object-cover object-top"
           />
         </div>
       </a>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[0.75rem] uppercase tracking-[0.14em]">
-          <span className="text-accent">{categoryLabel(entry.category)}</span>
+        <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+          <span className="flex items-center gap-2 text-fg-dim"><span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />{categoryLabel(entry.category)}</span>
           <span className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-fg-dim">
             {entry.sourcePrivate && <span>Source private</span>}
             <span className="flex items-center gap-2">
@@ -34,14 +34,14 @@ export function UseCaseCard({ entry }: { entry: UseCaseEntry }) {
           </span>
         </div>
         <h2 className="mt-4 font-display text-2xl leading-tight text-fg">
-          <a href={`/use-cases/${entry.slug}/`} className="transition-colors hover:text-accent">{entry.title}</a>
+          <a href={`/use-cases/${entry.slug}/`} className="inline-flex min-h-6 items-center transition-colors hover:text-accent">{entry.title}</a>
         </h2>
-        <p className="mt-3 text-[0.95rem] leading-7 text-fg-dim">{entry.description}</p>
+        <p className="mt-3 text-base leading-7 text-fg-dim">{entry.description}</p>
         <div className="mt-5 flex flex-wrap gap-2" aria-label="Tools">
           {entry.tools.slice(0, 3).map((tool) => (
-            <span key={tool} className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.75rem] text-fg-dim">{tool}</span>
+            <span key={tool} className="rounded-full border border-line px-2.5 py-1 font-mono text-xs text-fg-dim">{tool}</span>
           ))}
-          {entry.tools.length > 3 && <span className="px-1 py-1 font-mono text-[0.75rem] text-fg-dim">+{entry.tools.length - 3}</span>}
+          {entry.tools.length > 3 && <span className="px-1 py-1 font-mono text-xs text-fg-dim">+{entry.tools.length - 3}</span>}
         </div>
         <div className="mt-auto flex items-center justify-between border-t border-line pt-5 font-mono text-xs text-fg-dim">
           <time dateTime={entry.date}>{formatDate(entry.date)}</time>
