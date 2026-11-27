@@ -3,11 +3,20 @@ import { SiteNav } from './components/SiteNav'
 import { SiteFooter } from './components/SiteFooter'
 import { workCount, workGroups, workStars, workStatuses, type WorkItem } from './content/allWork'
 import { identity } from './content/projects'
+import { ArchiveBlueprint } from './components/ArchiveBlueprint'
 
 const filters = [
   { id: 'all', label: 'All', count: workCount },
   ...workGroups.map(({ id, label, items }) => ({ id, label, count: items.length })),
 ]
+
+const allDates = workGroups.flatMap(({ items }) => items.flatMap(({ date }) => (date ? [date] : []))).sort()
+const blueprintGroups = workGroups.map(({ id, label, items }) => ({
+  id,
+  label,
+  count: items.length,
+  newest: items.filter(({ date }) => date).sort((a, b) => b.date!.localeCompare(a.date!))[0]?.name,
+}))
 
 const monthFormat = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' })
 const dateFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
@@ -157,17 +166,27 @@ export default function ArchivePage() {
       <SiteNav page="archive" />
 
       <main id="main" tabIndex={-1} className="mx-auto max-w-6xl scroll-mt-16 px-6 py-10 sm:py-20">
-        <p className="all-work-eyebrow text-accent">{identity.name}</p>
-        <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">All work</h1>
-        <p className="mt-4 text-fg-dim">{workCount} projects, films, partnerships, contributions, and posts.</p>
-        <p className="mt-4 font-mono text-[13px] leading-relaxed text-fg-dim">
-          <span aria-hidden="true" className="mr-2 inline-block size-2 rounded-full bg-accent" />
-          <span className="sr-only">Available for. </span>
-          {identity.available} ·{' '}
-          <time dateTime={identity.availableUpdated} className="whitespace-nowrap">
-            Updated {monthName(identity.availableUpdated)} {identity.availableUpdated.slice(0, 4)}
-          </time>
-        </p>
+        <div className="archive-hero grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
+          <div>
+            <p className="all-work-eyebrow text-accent">{identity.name}</p>
+            <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">All work</h1>
+            <p className="mt-4 text-fg-dim">{workCount} projects, films, partnerships, contributions, and posts.</p>
+            <p className="mt-4 font-mono text-[13px] leading-relaxed text-fg-dim">
+              <span aria-hidden="true" className="mr-2 inline-block size-2 rounded-full bg-accent" />
+              <span className="sr-only">Available for. </span>
+              {identity.available} ·{' '}
+              <time dateTime={identity.availableUpdated} className="whitespace-nowrap">
+                Updated {monthName(identity.availableUpdated)} {identity.availableUpdated.slice(0, 4)}
+              </time>
+            </p>
+          </div>
+          <div className="hidden md:block">
+            <ArchiveBlueprint groups={blueprintGroups} total={workCount}
+              firstYear={allDates[0]?.slice(0, 4) ?? ''} lastYear={allDates.at(-1)?.slice(0, 4) ?? ''}
+              drawn={`${monthName(identity.availableUpdated).toUpperCase()} ${identity.availableUpdated.slice(0, 4)}`}
+              selected={selection.group} onPick={(id) => applyFilters(id, query, true)} />
+          </div>
+        </div>
 
         <div className="mt-8">
           <div className="relative max-w-md">
