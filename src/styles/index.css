@@ -489,3 +489,118 @@ input[type="search"]:not(:focus) {
     }
   }
 }
+
+/* ---------- Archive blueprint hero ---------- */
+
+/* A drawing-sheet grid behind the hero only, fading out at the edges. */
+.archive-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.archive-hero::before {
+  content: '';
+  position: absolute;
+  inset: -2.5rem -1.5rem;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgb(245 165 36 / 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(245 165 36 / 0.09) 1px, transparent 1px),
+    linear-gradient(to right, rgb(237 237 242 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(237 237 242 / 0.035) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  mask-image: radial-gradient(ellipse at 70% 50%, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.archive-blueprint {
+  overflow: visible;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.archive-blueprint text {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.bp-line {
+  stroke: var(--color-fg);
+  stroke-opacity: 0.75;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.bp-fill-ink { fill: var(--color-ink); }
+.bp-fill-surface { fill: var(--color-surface); }
+.bp-fill-raised { fill: var(--color-raised); }
+.bp-slot { fill: #050507; transition: opacity 300ms var(--ease-out); }
+
+.bp-drawer {
+  cursor: pointer;
+  transition: transform 450ms var(--ease-out);
+}
+
+.bp-face {
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.bp-drawer[data-open] .bp-face { opacity: 1; }
+.bp-drawer:not([data-open]):hover > rect.bp-line { stroke: var(--color-accent); stroke-opacity: 1; }
+
+.bp-block { fill: var(--color-accent); }
+
+.bp-label { fill: var(--color-fg-dim); }
+.bp-handle { fill: none; stroke: var(--color-fg-dim); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.bp-drawer[data-open] .bp-label { fill: var(--color-ink); font-weight: 700; }
+.bp-drawer[data-open] .bp-handle { stroke: var(--color-ink); }
+
+.bp-dim line { stroke: var(--color-accent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.bp-dim text { fill: var(--color-accent); }
+.bp-arrow { fill: none; stroke: var(--color-accent); stroke-width: 1.2; }
+
+.bp-callout circle { fill: var(--color-accent); }
+.bp-callout-line { fill: none; stroke: var(--color-accent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.archive-blueprint .bp-callout-title { fill: var(--color-fg); font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.bp-callout-text { fill: var(--color-fg-dim); }
+.archive-blueprint .bp-callout-strong { fill: var(--color-fg); font-size: 12px; letter-spacing: 0; }
+.bp-callout-hint { fill: var(--color-accent); }
+
+.bp-title rect, .bp-title line { fill: none; stroke: var(--color-fg-faint); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.bp-title text { fill: var(--color-fg-dim); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .bp-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: bp-draw 900ms var(--ease-out) var(--d, 0ms) forwards;
+  }
+
+  .bp-fade {
+    opacity: 0;
+    animation: bp-fade 500ms var(--ease-out) var(--d, 0ms) forwards;
+  }
+
+  .bp-block {
+    animation: bp-block-in 80ms linear both;
+  }
+
+  .bp-callout {
+    animation: bp-fade 300ms var(--ease-out) 120ms both;
+  }
+
+  .bp-callout-line {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: bp-draw 600ms var(--ease-out) forwards;
+  }
+
+  @keyframes bp-draw { to { stroke-dashoffset: 0; } }
+  @keyframes bp-fade { to { opacity: 1; } }
+  @keyframes bp-block-in { from { opacity: 0; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-drawer, .bp-face, .bp-slot { transition: none; }
+}
